@@ -1,0 +1,40 @@
+{
+  "name": "stream-overlays",
+  "version": "1.0.0",
+  "description": "Experimenting on using React for OBS stream overlays.",
+  "main": "N/A",
+  "repository": "https://github.com/resir014/stream-overlays.git",
+  "author": "Resi Respati <resir014@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next",
+    "export": "next export",
+    "start": "next start",
+    "test": "npm run type-check",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@zeit/next-typescript": "^1.1.1",
+    "date-fns": "^1.30.1",
+    "next": "^8.1.0",
+    "normalize.css": "^8.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/next": "^8.0.3",
+    "@types/react": "^16.8.14",
+    "@types/react-dom": "^16.8.4",
+    "@types/styled-components": "^4.1.14",
+    "@types/styled-jsx": "^2.2.8",
+    "eslint": "^5.16.0",
+    "eslint-config-blvd": "^0.1.1",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.17.0",
+    "typescript": "^3.4.4"
+  }
+}
