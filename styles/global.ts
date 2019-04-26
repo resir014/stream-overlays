@@ -32,15 +32,15 @@ body {
 
 a {
   text-decoration: none;
-  color: ${colors.black};
-  border-bottom: 2px solid ${colors.black};
+  color: ${colors.white};
+  border-bottom: 2px solid ${colors.white};
   border-top: 2px solid transparent;
 }
 
 a:hover, a:focus {
-  background-color: ${colors.black};
-  color: ${colors.white};
-  border-top-color: ${colors.black};
+  background-color: ${colors.white};
+  color: ${colors.grey90};
+  border-top-color: ${colors.white};
 }
 
 /* Make clicks pass-through */
