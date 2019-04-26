@@ -35,8 +35,7 @@ const BlockContent = styled('section')`
 
     strong {
       display: inline;
-      font-size: 32px;
-      line-height: 34px;
+      line-height: 1;
     }
   }
 `
