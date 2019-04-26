@@ -32,6 +32,12 @@ const BlockContent = styled('section')`
     font-family: ${fonts.serif};
     font-size: 32px;
     line-height: 40px;
+
+    strong {
+      display: inline;
+      font-size: 32px;
+      line-height: 34px;
+    }
   }
 `
 
