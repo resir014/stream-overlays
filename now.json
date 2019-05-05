@@ -1,0 +1,7 @@
+{
+  "name": "resir014-stream-overlays",
+  "alias": "resir014-stream-overlays.now.sh",
+  "version": 2,
+  "regions": ["sin1"],
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+}
