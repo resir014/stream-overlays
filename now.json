@@ -3,5 +3,5 @@
   "alias": "resir014-stream-overlays.now.sh",
   "version": 2,
   "regions": ["sin1"],
-  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+  "builds": [{ "src": "package.json", "use": "@now/static-build", "config": { "distDir": "out" } }]
 }

@@ -9,8 +9,11 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "deploy": "next build && next export",
     "dev": "next",
     "export": "next export",
+    "now-build": "next build && next export",
+    "now-dev": "next -p $PORT",
     "start": "next start",
     "test": "npm run type-check",
     "type-check": "tsc"
