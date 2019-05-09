@@ -15,7 +15,7 @@ const BlockContent = styled('section')`
     font-size: 36px;
     line-height: 42px;
     font-weight: 400;
-    text-transform: uppercase;
+    text-transform: lowercase;
   }
 
   h2 {
@@ -24,7 +24,6 @@ const BlockContent = styled('section')`
     font-size: 96px;
     line-height: 104px;
     font-weight: 600;
-    text-transform: uppercase;
   }
 
   p {
