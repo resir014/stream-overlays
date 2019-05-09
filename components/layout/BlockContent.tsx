@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 import { fonts } from '../../styles/variables'
 
-const BlockContent = styled('section')`
+interface BlockContentProps {
+  mainWindow?: boolean
+}
+
+const BlockContent = styled('section')<BlockContentProps>`
   display: flex;
   flex-direction: row;
   flex: 1;
+  ${props => props.mainWindow && 'align-items: center;'}
   width: 100%;
-  margin: 0 -24px;
-  padding: 48px 24px 0;
+  margin: 0;
+  padding: ${props => (props.mainWindow ? '8px' : '48px 24px')};
   font-size: 24px;
 
   h1 {
