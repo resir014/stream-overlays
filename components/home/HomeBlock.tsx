@@ -46,6 +46,11 @@ export default function HomeBlock() {
         </Link>
       </HeaderParagraph>
       <HeaderParagraph>
+        <Link href="/main-widget">
+          <a>Main Widget</a>
+        </Link>
+      </HeaderParagraph>
+      <HeaderParagraph>
         <Link href="/main-window">
           <a>Main Window</a>
         </Link>
