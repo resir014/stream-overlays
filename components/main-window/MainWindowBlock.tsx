@@ -32,7 +32,7 @@ const Content = styled('section')`
 
 const Block = styled('div')`
   flex: 1;
-  background-color: ${colors.green};
+  background-color: ${colors.greenscreen};
   width: 100%;
   border: 2px solid ${colors.white};
 `
