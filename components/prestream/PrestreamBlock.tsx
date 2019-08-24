@@ -60,7 +60,7 @@ export default function PrestreamBlock() {
       <BlockContent>
         <BlockSection>
           <h1>Coming Up</h1>
-          <h2>Random Gaming Hour</h2>
+          <h2>Random Gaming Hour #01</h2>
           <p>
             <strong>24.08.2019 &mdash;</strong> An hour (or two) of chill gaming, no microphones.
             Feel free to interact in chat!
