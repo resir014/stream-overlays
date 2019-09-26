@@ -1,9 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { format } from 'date-fns'
 
 import { colors } from '../../styles/variables'
-import useClock from '../../utils/useClock'
 
 import BlockRoot from '../layout/BlockRoot'
 import BlockHeader from '../layout/BlockHeader'
@@ -36,9 +34,11 @@ const Block = styled('div')`
   border: 4px solid ${colors.white};
 `
 
-export default function MainWindowBlock() {
-  const time = useClock()
+interface MainWindowBlockProps {
+  title?: string
+}
 
+export default function MainWindowBlock({ title }: MainWindowBlockProps) {
   return (
     <BlockRoot>
       <BlockHeader small>
@@ -49,7 +49,7 @@ export default function MainWindowBlock() {
         </BlockHeaderInner>
         <BlockHeaderInner right>
           <HeaderTitle as="h2">
-            <span>{format(time, 'DD MMMM YYYY')}</span>
+            <span>{title || 'Untitled Stream'}</span>
           </HeaderTitle>
         </BlockHeaderInner>
       </BlockHeader>

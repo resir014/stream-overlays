@@ -75,7 +75,7 @@ export default function PrestreamBlock({
       <BlockContent>
         <BlockSection>
           <h1>{customHeader || 'Coming Up'}</h1>
-          <h2>{title}</h2>
+          <h2>{title || 'Untitled Stream'}</h2>
           <p>
             <strong>{format(streamDate, 'dd.MM.yyyy')} &mdash;</strong> {description}
           </p>
