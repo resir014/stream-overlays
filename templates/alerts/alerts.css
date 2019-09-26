@@ -73,6 +73,26 @@ body {
   padding: 10px 20px;
 }
 
+.ck-alert--streamlabs-prime .ck-alert__header {
+  background-color: #caa368;
+}
+
+.ck-alert--raid .ck-alert__header {
+  background-color: #ff369a;
+}
+
+.ck-alert--cheer .ck-alert__header {
+  background-color: #9b45ff;
+}
+
+.ck-alert--host .ck-alert__header {
+  background-color: #2234ce;
+}
+
+.ck-alert--donation .ck-alert__header {
+  background-color: #0076ff;
+}
+
 .ck-alert--follow .ck-alert__header {
   background-color: #00bf80;
 }
