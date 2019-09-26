@@ -11,7 +11,7 @@ import BlockContent from '../layout/BlockContent'
 import BlockSection from '../layout/BlockSection'
 
 const BlockFooter = styled('footer')`
-  padding: 18px 24px;
+  padding: 12px 16px;
 `
 
 const FooterParagraph = styled('p')`
@@ -40,30 +40,44 @@ const HeaderTime = styled('p')`
   font-weight: 400;
 `
 
-export default function PrestreamBlock() {
+interface PrestreamBlockProps {
+  customHeader?: string
+  no?: number
+  title?: string
+  date?: Date
+  description?: string
+}
+
+export default function PrestreamBlock({
+  customHeader,
+  no,
+  title,
+  date,
+  description
+}: PrestreamBlockProps) {
   const time = useClock()
+  const streamDate = date ? new Date(date || undefined) : new Date()
 
   return (
     <BlockRoot>
       <BlockHeader>
         <BlockHeaderInner>
-          <HeaderTitle>Livestream #01</HeaderTitle>
-          <HeaderSub>Pre-stream scene</HeaderSub>
+          <HeaderTitle>@resir014</HeaderTitle>
+          <HeaderSub>Livestream #{no || 0}</HeaderSub>
         </BlockHeaderInner>
         <BlockHeaderInner right>
           <HeaderDate>
-            <span>{format(time, 'dddd')}</span> {format(time, 'DD MMMM YYYY')}
+            <span>{format(time, 'EEEE')}</span> {format(time, 'dd MMMM yyyy')}
           </HeaderDate>
           <HeaderTime>{format(time, 'HH:mm:ss')}</HeaderTime>
         </BlockHeaderInner>
       </BlockHeader>
       <BlockContent>
         <BlockSection>
-          <h1>Coming Up</h1>
-          <h2>Random Gaming Hour #01</h2>
+          <h1>{customHeader || 'Coming Up'}</h1>
+          <h2>{title}</h2>
           <p>
-            <strong>24.08.2019 &mdash;</strong> An hour (or two) of chill gaming, no microphones.
-            Feel free to interact in chat!
+            <strong>{format(streamDate, 'dd.MM.yyyy')} &mdash;</strong> {description}
           </p>
         </BlockSection>
       </BlockContent>

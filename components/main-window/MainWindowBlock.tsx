@@ -27,24 +27,13 @@ const Content = styled('section')`
   align-items: center;
   width: 100%;
   margin: 0;
-  padding: 0 16px;
 `
 
 const Block = styled('div')`
   flex: 1;
   background-color: ${colors.greenscreen};
   width: 100%;
-  border: 2px solid ${colors.white};
-`
-const BlockFooter = styled('footer')`
-  padding: 12px 16px;
-`
-
-const FooterParagraph = styled('p')`
-  margin: 0;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  border: 4px solid ${colors.white};
 `
 
 export default function MainWindowBlock() {
@@ -54,7 +43,9 @@ export default function MainWindowBlock() {
     <BlockRoot>
       <BlockHeader small>
         <BlockHeaderInner>
-          <HeaderTitle>Twitch-Driven Development</HeaderTitle>
+          <HeaderTitle>
+            @resir014 <span>// resir014.xyz</span>
+          </HeaderTitle>
         </BlockHeaderInner>
         <BlockHeaderInner right>
           <HeaderTitle as="h2">
@@ -65,9 +56,6 @@ export default function MainWindowBlock() {
       <Content>
         <Block />
       </Content>
-      <BlockFooter>
-        <FooterParagraph>@resir014 // resir014.xyz</FooterParagraph>
-      </BlockFooter>
     </BlockRoot>
   )
 }

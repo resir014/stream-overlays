@@ -1,8 +1,10 @@
 /* eslint-disable */
 
-const withTypescript = require('@zeit/next-typescript')
-
 const nextConfig = {
+  target: 'serverless',
+  env: {
+    AIRTABLE_API_KEY: process.env['AIRTABLE_API_KEY']
+  },
   webpack: (config, { defaultLoaders }) => {
     config.module.rules.push({
       test: /\.css$/,
@@ -21,4 +23,4 @@ const nextConfig = {
   }
 }
 
-module.exports = withTypescript(nextConfig)
+module.exports = nextConfig

@@ -32,16 +32,14 @@ const HeaderTitle = styled('h1')`
 export default function MainWidgetBlock() {
   return (
     <Wrapper>
-      <BlockHeader small>
+      <BlockHeader>
         <BlockHeaderInner>
           <HeaderTitle>
             @resir014 <span>// resir014.xyz</span>
           </HeaderTitle>
         </BlockHeaderInner>
         <BlockHeaderInner right>
-          <HeaderTitle as="h2">
-            Twitch-Driven Development <span>#01</span>
-          </HeaderTitle>
+          <HeaderTitle as="h2">Twitch-Driven Development</HeaderTitle>
         </BlockHeaderInner>
       </BlockHeader>
     </Wrapper>
