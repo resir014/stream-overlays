@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { NextPage } from 'next'
+import fetch from 'isomorphic-unfetch'
 
 import PrestreamBase from '../components/prestream/PrestreamBase'
 import Inner from '../components/layout/Inner'

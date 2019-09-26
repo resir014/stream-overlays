@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { NextPage } from 'next'
+import fetch from 'isomorphic-unfetch'
 
 import HomeWidgetBase from '../components/home/HomeWidgetBase'
 import MainWindowBlock from '../components/main-window/MainWindowBlock'
