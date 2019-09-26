@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.widget-AlertBox {
+  position: relative;
+}
+
+#alert-box {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#alert-box.hidden,
+.hidden {
+  opacity: 0;
+}
+
+#wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.ck-alert-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 8px;
+}
+
+.ck-alert-wrapper__inner {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ck-alert {
+  background-color: #2d2d34;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px 0px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ck-alert:not(:first-child) {
+  margin-top: 20px;
+}
+
+.ck-alert__header {
+  padding: 10px 20px;
+}
+
+.ck-alert--follow .ck-alert__header {
+  background-color: #00bf80;
+}
+
+.ck-alert--sub .ck-alert__header {
+  background-color: #f5a623;
+}
+
+.ck-alert__header h2 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.25px;
+  color: #fff;
+  text-shadow: 0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+    0px 0px 5px #000;
+}
+
+.ck-alert-text {
+  text-align: center;
+}
+
+.ck-alert-text__inner {
+  padding: 20px;
+  text-shadow: 0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+    0px 0px 5px #000;
+}
+
+.ck-alert-image {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+}
+.ck-alert-image__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.ck-alert-image__inner video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ck-alert-image {
+  z-index: 6;
+  position: relative;
+}
+
+#alert-message,
+#alert-user-message {
+  text-align: center;
+}
+#alert-user-message img {
+  vertical-align: middle;
+  height: 1em;
+}
+#alert-message > span > span {
+  display: inline-block;
+}
+#alert-text {
+  z-index: 6;
+  position: relative;
+}
+#alert-text-wrap {
+  z-index: 6;
+  position: relative;
+}
