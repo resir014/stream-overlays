@@ -12,13 +12,14 @@ const BlockContent = styled('section')<BlockContentProps>`
   ${props => props.mainWindow && 'align-items: center;'}
   width: 100%;
   margin: 0;
-  padding: ${props => (props.mainWindow ? '8px' : '48px 24px')};
+  padding: ${props => (props.mainWindow ? '8px' : '32px 16px')};
   font-size: 24px;
 
   h1 {
-    margin: 0;
-    font-size: 36px;
-    line-height: 42px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 30px;
+    line-height: 38px;
     font-weight: 400;
     text-transform: lowercase;
   }
@@ -26,16 +27,16 @@ const BlockContent = styled('section')<BlockContentProps>`
   h2 {
     margin-top: 0;
     margin-bottom: 32px;
-    font-size: 96px;
-    line-height: 104px;
+    font-size: 72px;
+    line-height: 80px;
     font-weight: 600;
   }
 
   p {
     margin: 8px 0;
     font-family: ${fonts.serif};
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 28px;
+    line-height: 36px;
 
     strong {
       display: inline;

@@ -1,9 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { format } from 'date-fns'
 
 import { colors } from '../../styles/variables'
-import useClock from '../../utils/useClock'
 
 import BlockRoot from '../layout/BlockRoot'
 import BlockHeader from '../layout/BlockHeader'
@@ -27,47 +25,37 @@ const Content = styled('section')`
   align-items: center;
   width: 100%;
   margin: 0;
-  padding: 0 16px;
 `
 
 const Block = styled('div')`
   flex: 1;
   background-color: ${colors.greenscreen};
   width: 100%;
-  border: 2px solid ${colors.white};
-`
-const BlockFooter = styled('footer')`
-  padding: 12px 16px;
+  border: 4px solid ${colors.white};
 `
 
-const FooterParagraph = styled('p')`
-  margin: 0;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-`
+interface MainWindowBlockProps {
+  title?: string
+}
 
-export default function MainWindowBlock() {
-  const time = useClock()
-
+export default function MainWindowBlock({ title }: MainWindowBlockProps) {
   return (
     <BlockRoot>
       <BlockHeader small>
         <BlockHeaderInner>
-          <HeaderTitle>Twitch-Driven Development</HeaderTitle>
+          <HeaderTitle>
+            @resir014 <span>// resir014.xyz</span>
+          </HeaderTitle>
         </BlockHeaderInner>
         <BlockHeaderInner right>
           <HeaderTitle as="h2">
-            <span>{format(time, 'DD MMMM YYYY')}</span>
+            <span>{title || 'Untitled Stream'}</span>
           </HeaderTitle>
         </BlockHeaderInner>
       </BlockHeader>
       <Content>
         <Block />
       </Content>
-      <BlockFooter>
-        <FooterParagraph>@resir014 // resir014.xyz</FooterParagraph>
-      </BlockFooter>
     </BlockRoot>
   )
 }

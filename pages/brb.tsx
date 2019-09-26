@@ -1,18 +1,17 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import fetch from 'isomorphic-unfetch'
 
 import PrestreamBase from '../components/prestream/PrestreamBase'
-import PrestreamBlock from '../components/prestream/PrestreamBlock'
 import Inner from '../components/layout/Inner'
-import { AirtableData, AirtableRecord } from '../interfaces/types'
+import PrestreamBlock from '../components/prestream/PrestreamBlock'
+import { AirtableRecord, AirtableData } from '../interfaces/types'
 
-interface PrestreamPageProps {
+interface BeRightBackPageProps {
   records?: AirtableRecord[]
   errors?: Error['message']
 }
 
-const PrestreamPage: NextPage<PrestreamPageProps> = ({ records }) => {
+const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ records }) => {
   const firstRecord = records ? records[0] : undefined
   const no = firstRecord ? firstRecord.fields['No'] : undefined
   const title = firstRecord ? firstRecord.fields['Stream Name'] : undefined
@@ -22,13 +21,19 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ records }) => {
   return (
     <PrestreamBase>
       <Inner>
-        <PrestreamBlock no={no} title={title} date={date} description={description} />
+        <PrestreamBlock
+          customHeader="Be right back..."
+          no={no}
+          title={title}
+          date={date}
+          description={description}
+        />
       </Inner>
     </PrestreamBase>
   )
 }
 
-PrestreamPage.getInitialProps = async () => {
+BeRightBackPage.getInitialProps = async () => {
   try {
     const apiKey = process.env.AIRTABLE_API_KEY
 
@@ -47,4 +52,4 @@ PrestreamPage.getInitialProps = async () => {
   }
 }
 
-export default PrestreamPage
+export default BeRightBackPage

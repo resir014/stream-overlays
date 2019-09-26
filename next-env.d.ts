@@ -1,8 +1,5 @@
-/* eslint-disable import/export */
-
-interface Window {
-  GA_INITIALIZED?: boolean
-}
+/// <reference types="next" />
+/// <reference types="next/types/global" />
 
 // CSS Modules
 declare module '*.css' {
