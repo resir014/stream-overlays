@@ -9,8 +9,7 @@ const BlockHeader = styled('header')<BlockHeaderProps>`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
-  text-transform: lowercase;
+  padding: 8px 16px;
   letter-spacing: 0.05rem;
 `
 
