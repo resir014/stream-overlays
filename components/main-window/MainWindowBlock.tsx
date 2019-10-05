@@ -32,8 +32,13 @@ const Content = styled('section')`
   margin: 0;
 `
 
-const Block = styled('div')`
+interface BlockProps {
+  isWindowStream?: boolean
+}
+
+const Block = styled('div')<BlockProps>`
   flex: 1;
+  margin-bottom: ${props => (props.isWindowStream ? '40px' : 0)};
   background-color: ${colors.greenscreen};
   width: 100%;
   border: 4px solid ${colors.white};
@@ -41,9 +46,10 @@ const Block = styled('div')`
 
 interface MainWindowBlockProps {
   title?: string
+  isWindowStream?: boolean
 }
 
-export default function MainWindowBlock({ title }: MainWindowBlockProps) {
+export default function MainWindowBlock({ title, isWindowStream }: MainWindowBlockProps) {
   return (
     <BlockRoot>
       <BlockHeader small>
@@ -59,7 +65,7 @@ export default function MainWindowBlock({ title }: MainWindowBlockProps) {
         </BlockHeaderInner>
       </BlockHeader>
       <Content>
-        <Block />
+        <Block isWindowStream={isWindowStream} />
       </Content>
     </BlockRoot>
   )
