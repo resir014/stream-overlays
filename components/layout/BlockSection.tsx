@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const BlockSection = styled('section')`
+const BlockSection = styled('div')`
   flex-grow: 0;
   flex-basis: 1;
   width: 100%;

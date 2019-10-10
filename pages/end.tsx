@@ -8,14 +8,14 @@ import { AirtableRecord } from '../interfaces/types'
 import useInterval from '../utils/useInterval'
 import fetchAirtableData from '../utils/fetchAirtableData'
 import { colors } from '../styles/variables'
-import brbSplashes from '../utils/brbSplashes'
+import endCardSplashes from '../utils/endCardSplashes'
 
 interface BeRightBackPageProps {
   records?: AirtableRecord[]
   errors?: Error['message']
 }
 
-const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ records }) => {
+const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
   const [fetchedRecords, setRecords] = React.useState(records)
 
   useInterval(() => {
@@ -41,18 +41,18 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ records }) => {
         <PrestreamBlock
           no={no}
           streamName={streamName}
-          heading="We'll be right back!"
-          title="Please stand by..."
-          gradientStart={colors.blue}
-          gradientEnd={colors.magenta}
-          splashes={brbSplashes}
+          heading="Thanks for watching!"
+          title="Stream has ended."
+          gradientStart={colors.red}
+          gradientEnd={colors.orange}
+          splashes={endCardSplashes}
         />
       </Inner>
     </PrestreamBase>
   )
 }
 
-BeRightBackPage.getInitialProps = async () => {
+EndScreenPage.getInitialProps = async () => {
   try {
     const records = await fetchAirtableData()
 
@@ -62,4 +62,4 @@ BeRightBackPage.getInitialProps = async () => {
   }
 }
 
-export default BeRightBackPage
+export default EndScreenPage

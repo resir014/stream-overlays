@@ -14,6 +14,10 @@ export const HeaderTitle = styled('h1')`
   font-size: 24px;
   line-height: 32px;
   font-weight: 600;
+
+  span {
+    font-weight: 400;
+  }
 `
 
 export const HeaderSub = styled('h2')`
