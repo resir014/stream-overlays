@@ -17,11 +17,10 @@ const BlockContent = styled('section')<BlockContentProps>`
 
   h1 {
     margin-top: 0;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     font-size: 30px;
     line-height: 38px;
     font-weight: 400;
-    text-transform: lowercase;
   }
 
   h2 {

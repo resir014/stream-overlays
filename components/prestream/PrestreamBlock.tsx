@@ -1,24 +1,51 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { Transition } from 'react-transition-group'
+import { TransitionStatus } from 'react-transition-group/Transition'
 import { format } from 'date-fns'
 
 import useClock from '../../utils/useClock'
 
-import BlockRoot from '../layout/BlockRoot'
 import BlockHeader from '../layout/BlockHeader'
 import BlockHeaderInner, { HeaderTitle, HeaderSub } from '../layout/BlockHeaderInner'
 import BlockContent from '../layout/BlockContent'
-import BlockSection from '../layout/BlockSection'
+import PrestreamRoot from './PrestreamRoot'
+import PrestreamSection from './PrestreamSection'
+import welcomeSplashes from '../../utils/welcomeSplashes'
+import useInterval from '../../utils/useInterval'
+import sleep from '../../utils/sleep'
+
+const TRANSITION_DURATION = 500
 
 const BlockFooter = styled('footer')`
   padding: 12px 16px;
+  height: 56px;
 `
 
-const FooterParagraph = styled('p')`
+interface FooterParagraphProps {
+  state: TransitionStatus
+}
+
+const Exited = css`
+  opacity: 0;
+`
+
+const Entered = css`
+  opacity: 1;
+`
+
+const FooterParagraph = styled('p')<FooterParagraphProps>`
   margin: 0;
   font-size: 24px;
   line-height: 32px;
   font-weight: 400;
+  transition: all ${TRANSITION_DURATION}ms ease;
+  opacity: 0;
+
+  ${props => props.state === 'entering' && Entered}
+  ${props => props.state === 'entered' && Entered}
+  ${props => props.state === 'exiting' && Exited}
+  ${props => props.state === 'exited' && Exited}
 `
 
 const HeaderDate = styled('p')`
@@ -38,32 +65,56 @@ const HeaderTime = styled('p')`
   font-size: 24px;
   line-height: 32px;
   font-weight: 400;
+  font-variant-numeric: tabular-nums;
 `
 
 interface PrestreamBlockProps {
-  customHeader?: string
   no?: number
-  title?: string
-  date?: Date
-  description?: string
+  heading: string
+  title: string
+  streamName?: string
+  gradientStart?: string
+  gradientEnd?: string
+  splashes?: string[]
 }
 
 export default function PrestreamBlock({
-  customHeader,
-  no,
+  heading,
+  streamName,
   title,
-  date,
-  description
+  gradientStart,
+  gradientEnd,
+  splashes = welcomeSplashes
 }: PrestreamBlockProps) {
+  const [transitioning, setTransitioning] = React.useState(false)
+  const [currentIndex, setCurrentIndex] = React.useState(0)
   const time = useClock()
-  const streamDate = date ? new Date(date || undefined) : new Date()
+
+  useInterval(() => {
+    ;(async () => {
+      const next = currentIndex + 1
+      setTransitioning(true)
+
+      await sleep(1000)
+
+      if (!splashes[next]) {
+        setCurrentIndex(0)
+      } else {
+        setCurrentIndex(next)
+      }
+
+      setTransitioning(false)
+    })()
+  }, 8000)
 
   return (
-    <BlockRoot>
+    <PrestreamRoot gradientStart={gradientStart} gradientEnd={gradientEnd}>
       <BlockHeader>
         <BlockHeaderInner>
-          <HeaderTitle>@resir014</HeaderTitle>
-          <HeaderSub>Livestream #{no || 0}</HeaderSub>
+          <HeaderTitle>
+            @resir014<span> // resir014.xyz</span>
+          </HeaderTitle>
+          <HeaderSub>{streamName || 'Untitled Stream'}</HeaderSub>
         </BlockHeaderInner>
         <BlockHeaderInner right>
           <HeaderDate>
@@ -73,17 +124,16 @@ export default function PrestreamBlock({
         </BlockHeaderInner>
       </BlockHeader>
       <BlockContent>
-        <BlockSection>
-          <h1>{customHeader || 'Coming Up'}</h1>
-          <h2>{title || 'Untitled Stream'}</h2>
-          <p>
-            <strong>{format(streamDate, 'dd.MM.yyyy')} &mdash;</strong> {description}
-          </p>
-        </BlockSection>
+        <PrestreamSection>
+          <h1>{heading}</h1>
+          <h2>{title}</h2>
+        </PrestreamSection>
       </BlockContent>
       <BlockFooter>
-        <FooterParagraph>@resir014 // resir014.xyz</FooterParagraph>
+        <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
+          {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
+        </Transition>
       </BlockFooter>
-    </BlockRoot>
+    </PrestreamRoot>
   )
 }
