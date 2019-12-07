@@ -51,7 +51,7 @@ interface MainWindowBlockProps {
 export default function MainWindowBlock({ title, isDisplayStream }: MainWindowBlockProps) {
   return (
     <BlockRoot isDisplayStream={isDisplayStream}>
-      <BlockHeader small>
+      <BlockHeader isFrame>
         <BlockHeaderInner>
           <HeaderTitle>
             @resir014 <span>// resir014.xyz</span>

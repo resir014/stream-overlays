@@ -1,8 +1,17 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 interface BlockHeaderProps {
-  small?: boolean
+  isFrame?: boolean
 }
+
+const fullScreenStyles = css`
+  padding: 8px;
+`
+
+const frameStyles = css`
+  height: 40px;
+  padding: 0 8px;
+`
 
 const BlockHeader = styled('header')<BlockHeaderProps>`
   display: flex;
@@ -10,9 +19,9 @@ const BlockHeader = styled('header')<BlockHeaderProps>`
   align-items: center;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
-  padding: 0 8px;
   letter-spacing: 0.05rem;
+
+  ${props => (props.isFrame ? frameStyles : fullScreenStyles)};
 `
 
 export default BlockHeader
