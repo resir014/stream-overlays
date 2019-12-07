@@ -45,12 +45,12 @@ const Block = styled('div')<BlockProps>`
 
 interface MainWindowBlockProps {
   title?: string
-  isWindowStream?: boolean
+  isDisplayStream?: boolean
 }
 
-export default function MainWindowBlock({ title, isWindowStream }: MainWindowBlockProps) {
+export default function MainWindowBlock({ title, isDisplayStream }: MainWindowBlockProps) {
   return (
-    <BlockRoot isWindowStream={isWindowStream}>
+    <BlockRoot isDisplayStream={isDisplayStream}>
       <BlockHeader small>
         <BlockHeaderInner>
           <HeaderTitle>

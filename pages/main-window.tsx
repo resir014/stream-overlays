@@ -10,11 +10,11 @@ import fetchAirtableData from '../utils/fetchAirtableData'
 
 interface MainWindowProps {
   records?: AirtableRecord[]
-  isWindowStream?: boolean
+  isDisplayStream?: boolean
   errors?: Error['message']
 }
 
-const MainWindow: NextPage<MainWindowProps> = ({ records, isWindowStream }) => {
+const MainWindow: NextPage<MainWindowProps> = ({ records, isDisplayStream }) => {
   const [fetchedRecords, setRecords] = React.useState(records)
 
   useInterval(() => {
@@ -36,7 +36,7 @@ const MainWindow: NextPage<MainWindowProps> = ({ records, isWindowStream }) => {
   return (
     <HomeWidgetBase>
       <Inner isCentered>
-        <MainWindowBlock title={title} isWindowStream={isWindowStream} />
+        <MainWindowBlock title={title} isDisplayStream={isDisplayStream} />
       </Inner>
     </HomeWidgetBase>
   )
@@ -46,7 +46,7 @@ MainWindow.getInitialProps = async ({ query }) => {
   try {
     const records = await fetchAirtableData()
 
-    return { records, isWindowStream: !!query.window }
+    return { records, isDisplayStream: !!query.window || !!query.isDisplayStream }
   } catch (err) {
     return { errors: err.message }
   }
