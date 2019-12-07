@@ -21,8 +21,7 @@ const HeaderTitle = styled('h1')`
   margin: 0;
   font-size: 36px;
   line-height: 42px;
-  font-weight: 400;
-  text-transform: lowercase;
+  font-weight: 600;
 `
 
 const HeaderParagraph = styled('p')`
@@ -39,7 +38,7 @@ const HeaderParagraph = styled('p')`
 export default function HomeBlock() {
   return (
     <HomeWidget>
-      <HeaderTitle>Home</HeaderTitle>
+      <HeaderTitle>Scenes</HeaderTitle>
       <HeaderParagraph>
         <Link href="/pre-stream">
           <a>Pre-Stream Screen</a>
