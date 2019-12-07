@@ -7,9 +7,11 @@ interface BlockHeaderProps {
 const BlockHeader = styled('header')<BlockHeaderProps>`
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
+  height: 40px;
+  padding: 0 8px;
   letter-spacing: 0.05rem;
 `
 

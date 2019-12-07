@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import { colors } from '../../styles/variables'
 
-const BlockRoot = styled('section')`
+interface BlockRootProps {
+  isWindowStream?: boolean
+}
+
+const BlockRoot = styled('div')<BlockRootProps>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${props => (props.isWindowStream ? 'column-reverse' : 'column')};
   flex: 1;
   width: 100%;
   min-width: 450px;
