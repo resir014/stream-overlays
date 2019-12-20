@@ -1,3 +1,14 @@
+import { AlertKinds } from '../interfaces/types'
+
+export const alertColors: Record<AlertKinds, string> = {
+  raid: '#ff369a',
+  cheer: '#9b45ff',
+  host: '#2234ce',
+  donation: '#0076ff',
+  follow: '#00bf80',
+  sub: '#f5a623z'
+}
+
 export const colors = {
   red: '#e00',
   orange: '#f5a623',
@@ -18,7 +29,8 @@ export const colors = {
   grey80: '#45454a',
   grey90: '#2d2d34',
   white: '#ffffff',
-  black: '#16161d'
+  black: '#16161d',
+  ...alertColors
 }
 
 export const fonts = {

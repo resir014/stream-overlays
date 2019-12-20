@@ -22,6 +22,10 @@ const HeaderTitle = styled('h1')`
   font-size: 36px;
   line-height: 42px;
   font-weight: 600;
+
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
 `
 
 const HeaderParagraph = styled('p')`
@@ -57,6 +61,12 @@ export default function HomeBlock() {
       <HeaderParagraph>
         <Link href="/main-window">
           <a>Main Window</a>
+        </Link>
+      </HeaderParagraph>
+      <HeaderTitle>Widgets</HeaderTitle>
+      <HeaderParagraph>
+        <Link href="/saweria">
+          <a>Saweria Alerts</a>
         </Link>
       </HeaderParagraph>
     </HomeWidget>

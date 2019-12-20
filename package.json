@@ -25,8 +25,10 @@
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-spring": "^8.0.27",
     "react-transition-group": "^4.3.0",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "toasted-notes": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.14",

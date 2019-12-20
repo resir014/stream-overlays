@@ -9,3 +9,5 @@ export interface AirtableRecord {
 export interface AirtableData {
   records: AirtableRecord[]
 }
+
+export type AlertKinds = 'raid' | 'cheer' | 'host' | 'donation' | 'follow' | 'sub'
