@@ -9,7 +9,7 @@ const SaweriaWidgetBox = dynamic(() => import('../components/alerts/SaweriaWidge
 
 const SaweriaAlerts: NextPage = () => {
   return (
-    <LayoutRoot isGreenScreen>
+    <LayoutRoot isTransparent>
       <SaweriaWidgetBox />
     </LayoutRoot>
   )

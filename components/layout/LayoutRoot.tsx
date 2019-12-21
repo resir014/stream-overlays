@@ -6,6 +6,19 @@ import GlobalStyles from './GlobalStyles'
 
 interface RootProps {
   isGreenScreen?: boolean
+  isTransparent?: boolean
+}
+
+const backgroundColor = (isGreenScreen = false, isTransparent = false) => {
+  if (isGreenScreen) {
+    return colors.greenscreen
+  }
+
+  if (isTransparent) {
+    return 'transparent'
+  }
+
+  return colors.white
 }
 
 const Base = styled('div')<RootProps>`
@@ -14,18 +27,19 @@ const Base = styled('div')<RootProps>`
   width: 100%;
   height: 100%;
   min-height: 100vh;
-  background-color: ${props => (props.isGreenScreen ? '#0f0' : colors.white)};
+  background-color: ${props => backgroundColor(props.isGreenScreen, props.isTransparent)};
 `
 
-const LayoutRoot: React.FC<RootProps> = ({ children, isGreenScreen }) => (
-  <Base isGreenScreen={isGreenScreen}>
+const LayoutRoot: React.FC<RootProps> = ({ children, isGreenScreen, isTransparent }) => (
+  <Base isGreenScreen={isGreenScreen} isTransparent={isTransparent}>
     <GlobalStyles />
     {children}
   </Base>
 )
 
 LayoutRoot.defaultProps = {
-  isGreenScreen: false
+  isGreenScreen: false,
+  isTransparent: false
 }
 
 export default LayoutRoot
