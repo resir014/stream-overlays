@@ -5,7 +5,8 @@
   "regions": ["sin1"],
   "build": {
     "env": {
-      "AIRTABLE_API_KEY": "@airtable-api-key"
+      "AIRTABLE_API_KEY": "@airtable-api-key",
+      "SAWERIA_ALERTS_API": "@saweria-alerts-api"
     }
   },
   "builds": [{ "src": "next.config.js", "use": "@now/next" }]
