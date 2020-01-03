@@ -6,7 +6,7 @@
   "build": {
     "env": {
       "AIRTABLE_API_KEY": "@airtable-api-key",
-      "SAWERIA_ALERTS_API": "@saweria-alerts-api"
+      "SAWERIA_STREAM_KEY": "@saweria-stream-key"
     }
   },
   "builds": [{ "src": "next.config.js", "use": "@now/next" }]
