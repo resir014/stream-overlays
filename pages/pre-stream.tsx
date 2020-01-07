@@ -39,6 +39,9 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ records }) => {
         <PrestreamBlock
           no={no}
           streamName={streamName}
+          backgroundColor="#000"
+          gradientStart="#000"
+          gradientEnd="#000"
           heading="Welcome!"
           title="Stream starting soon..."
         />

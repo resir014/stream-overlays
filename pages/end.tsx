@@ -43,8 +43,9 @@ const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
           streamName={streamName}
           heading="Thanks for watching!"
           title="Stream has ended."
-          gradientStart={colors.red}
-          gradientEnd={colors.orange}
+          backgroundColor="#000"
+          gradientStart="#000"
+          gradientEnd="#000"
           splashes={endCardSplashes}
         />
       </Inner>

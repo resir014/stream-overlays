@@ -43,8 +43,9 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ records }) => {
           streamName={streamName}
           heading="We'll be right back!"
           title="Please stand by..."
-          gradientStart={colors.blue}
-          gradientEnd={colors.magenta}
+          backgroundColor="#000"
+          gradientStart="#000"
+          gradientEnd="#000"
           splashes={brbSplashes}
         />
       </Inner>
