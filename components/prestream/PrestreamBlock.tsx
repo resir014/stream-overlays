@@ -73,6 +73,7 @@ interface PrestreamBlockProps {
   heading: string
   title: string
   streamName?: string
+  backgroundColor?: string
   gradientStart?: string
   gradientEnd?: string
   splashes?: string[]
@@ -82,6 +83,7 @@ export default function PrestreamBlock({
   heading,
   streamName,
   title,
+  backgroundColor,
   gradientStart,
   gradientEnd,
   splashes = welcomeSplashes
@@ -108,7 +110,11 @@ export default function PrestreamBlock({
   }, 8000)
 
   return (
-    <PrestreamRoot gradientStart={gradientStart} gradientEnd={gradientEnd}>
+    <PrestreamRoot
+      backgroundColor={backgroundColor}
+      gradientStart={gradientStart}
+      gradientEnd={gradientEnd}
+    >
       <BlockHeader>
         <BlockHeaderInner>
           <HeaderTitle>
