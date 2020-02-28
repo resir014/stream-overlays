@@ -21,10 +21,10 @@
   "dependencies": {
     "date-fns": "^2.8.1",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.1.4",
+    "next": "^9.2.2",
     "normalize.css": "^8.0.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.3.0",
     "styled-components": "^4.4.1",
@@ -32,8 +32,8 @@
   },
   "devDependencies": {
     "@types/node": "^12.12.14",
-    "@types/react": "^16.9.15",
-    "@types/react-dom": "^16.9.4",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
     "@types/react-transition-group": "^4.2.3",
     "@types/styled-components": "^4.4.0",
     "@types/styled-jsx": "^2.2.8",
@@ -42,6 +42,6 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.19.1",
-    "typescript": "^3.7.3"
+    "typescript": "^3.8.2"
   }
 }
