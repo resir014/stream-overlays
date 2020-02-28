@@ -30,7 +30,6 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ records }) => {
   }, 10000)
 
   const firstRecord = fetchedRecords?.[0]
-  const no = firstRecord?.fields['No']
   const streamName = firstRecord?.fields['Stream Name']
   const description = firstRecord?.fields['Description']
 

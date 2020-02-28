@@ -69,7 +69,7 @@ const HeaderTime = styled('p')`
 `
 
 interface PrestreamBlockProps {
-  heading: string
+  heading?: string
   title: string
   streamName?: string
   description?: string
@@ -80,6 +80,7 @@ interface PrestreamBlockProps {
 }
 
 export default function PrestreamBlock({
+  heading,
   description,
   title,
   backgroundColor,
@@ -130,6 +131,7 @@ export default function PrestreamBlock({
       </BlockHeader>
       <BlockContent>
         <PrestreamSection>
+          {heading && <h1>{heading}</h1>}
           <h2>{title}</h2>
           <p>
             <strong>{format(time, 'dd.MM.yyyy')} —</strong> {description || 'No description given.'}

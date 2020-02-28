@@ -31,18 +31,18 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ records }) => {
     })()
   }, 15000)
 
-  const firstRecord = fetchedRecords ? fetchedRecords[0] : undefined
-  const no = firstRecord ? firstRecord.fields.No : undefined
-  const streamName = firstRecord ? firstRecord.fields['Stream Name'] : undefined
+  const firstRecord = fetchedRecords?.[0]
+  const streamName = firstRecord?.fields['Stream Name']
+  const description = firstRecord?.fields['Description']
 
   return (
     <PrestreamBase>
       <Inner>
         <PrestreamBlock
-          no={no}
           streamName={streamName}
-          heading="We'll be right back!"
-          title="Please stand by..."
+          heading="Please stand by..."
+          title={streamName || 'Untitled Stream'}
+          description={description}
           gradientStart={colors.blue}
           gradientEnd={colors.magenta}
           splashes={brbSplashes}
