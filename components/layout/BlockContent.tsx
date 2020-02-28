@@ -16,24 +16,24 @@ const BlockContent = styled('section')<BlockContentProps>`
 
   h1 {
     margin-top: 0;
-    margin-bottom: 8px;
-    font-size: 30px;
-    line-height: 38px;
-    font-weight: 400;
+    margin-bottom: 4px;
+    font-size: 36px;
+    line-height: 1.15;
+    font-weight: 300;
   }
 
   h2 {
     margin-top: 0;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     font-size: 72px;
-    line-height: 80px;
+    line-height: 1.15;
     font-weight: 600;
   }
 
   p {
     margin: 8px 0;
     font-size: 28px;
-    line-height: 36px;
+    line-height: 1.5;
 
     strong {
       display: inline;
