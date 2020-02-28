@@ -6,6 +6,7 @@ interface PrestreamRootProps {
   backgroundColor?: string
   gradientStart?: string
   gradientEnd?: string
+  hasChatbox?: boolean
 }
 
 const Root = styled('section')<Pick<PrestreamRootProps, 'backgroundColor'>>`
@@ -16,6 +17,7 @@ const Root = styled('section')<Pick<PrestreamRootProps, 'backgroundColor'>>`
   flex: 1;
   width: 100%;
   min-width: 450px;
+  padding: 24px;
   font-size: 24px;
   color: ${colors.white};
   background-color: ${props => props.backgroundColor || colors.black};
@@ -26,7 +28,28 @@ const Inner = styled('div')<PrestreamRootProps>`
   flex-direction: column;
   flex: 1;
   width: 100%;
-  max-width: 1280px;
+  max-width: ${props => (props.hasChatbox ? '1024px' : '1280px')};
+  height: 100%;
+  max-height: 600px;
+  font-size: 24px;
+  margin-right: 24px;
+  color: ${colors.white};
+  background-color: ${props => props.backgroundColor || colors.black};
+  border: 12px solid;
+  border-image-source: linear-gradient(
+    to right,
+    ${props => props.gradientStart},
+    ${props => props.gradientEnd}
+  );
+  border-image-slice: 1;
+`
+
+export const Chatbox = styled('div')<Omit<PrestreamRootProps, 'hasChatbox'>>`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  max-width: 504px;
   height: 100%;
   max-height: 600px;
   font-size: 24px;

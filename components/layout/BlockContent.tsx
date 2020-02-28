@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { fonts } from '../../styles/variables'
 
 interface BlockContentProps {
   mainWindow?: boolean
@@ -33,7 +32,6 @@ const BlockContent = styled('section')<BlockContentProps>`
 
   p {
     margin: 8px 0;
-    font-family: ${fonts.serif};
     font-size: 28px;
     line-height: 36px;
 

@@ -29,18 +29,19 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ records }) => {
     })()
   }, 10000)
 
-  const firstRecord = fetchedRecords ? fetchedRecords[0] : undefined
-  const no = firstRecord ? firstRecord.fields.No : undefined
-  const streamName = firstRecord ? firstRecord.fields['Stream Name'] : undefined
+  const firstRecord = fetchedRecords?.[0]
+  const no = firstRecord?.fields['No']
+  const streamName = firstRecord?.fields['Stream Name']
+  const description = firstRecord?.fields['Description']
 
   return (
     <PrestreamBase>
       <Inner>
         <PrestreamBlock
-          no={no}
           streamName={streamName}
-          heading="Welcome!"
-          title="Stream starting soon..."
+          heading="Stream starting soon..."
+          title={streamName || 'Untitled Stream'}
+          description={description}
         />
       </Inner>
     </PrestreamBase>

@@ -4,7 +4,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 
-import { colors, fonts } from '../../styles/variables'
+import { colors } from '../../styles/variables'
 
 const HomeWidget = styled('section')`
   display: block;
@@ -30,7 +30,6 @@ const HeaderTitle = styled('h1')`
 
 const HeaderParagraph = styled('p')`
   margin: 8px 0;
-  font-family: ${fonts.serif};
   font-size: 24px;
   line-height: 32px;
 
