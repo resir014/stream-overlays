@@ -37,8 +37,8 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ records }) => {
     <PrestreamBase>
       <Inner>
         <PrestreamBlock
-          streamName={streamName}
           heading="Stream starting soon..."
+          streamName={streamName}
           title={streamName || 'Untitled Stream'}
           description={description}
         />
