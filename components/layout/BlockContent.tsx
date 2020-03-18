@@ -16,8 +16,8 @@ const BlockContent = styled('section')<BlockContentProps>`
 
   h1 {
     margin-top: 0;
-    margin-bottom: 8px;
-    font-size: 36px;
+    margin-bottom: 16px;
+    font-size: 28px;
     line-height: 1.15;
     font-weight: 300;
   }
