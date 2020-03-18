@@ -55,7 +55,7 @@ const HeaderDate = styled('p')`
   font-weight: 400;
 
   span {
-    margin-right: 16px;
+    margin-right: 8px;
     font-weight: 600;
   }
 `
