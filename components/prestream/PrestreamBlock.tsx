@@ -120,7 +120,7 @@ export default function PrestreamBlock({
           <HeaderTitle>
             @resir014<span> // resir014.xyz</span>
           </HeaderTitle>
-          <HeaderSub>{heading}</HeaderSub>
+          <HeaderSub>twitch.tv/resir014</HeaderSub>
         </BlockHeaderInner>
         <BlockHeaderInner right>
           <HeaderDate>
@@ -131,6 +131,7 @@ export default function PrestreamBlock({
       </BlockHeader>
       <BlockContent>
         <PrestreamSection>
+          <h1>{heading}</h1>
           <h2>{title}</h2>
           <p>
             <strong>{format(time, 'dd.MM.yyyy')} —</strong> {description || 'No description given.'}
