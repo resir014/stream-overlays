@@ -78,6 +78,11 @@ const PrestreamRoot: React.FC<PrestreamRootProps> = ({
     >
       {children}
     </Inner>
+    <Chatbox
+      backgroundColor={backgroundColor}
+      gradientStart={gradientEnd}
+      gradientEnd={gradientStart}
+    />
   </Root>
 )
 
