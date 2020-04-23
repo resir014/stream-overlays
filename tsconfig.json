@@ -7,7 +7,6 @@
     "moduleResolution": "node",
     "strict": true,
     "allowJs": true,
-    "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "removeComments": false,
