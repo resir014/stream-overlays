@@ -1,13 +1,9 @@
 import styled from 'styled-components'
 import { colors } from '../../styles/variables'
 
-interface BlockRootProps {
-  isDisplayStream?: boolean
-}
-
-const BlockRoot = styled('div')<BlockRootProps>`
+const BlockRoot = styled('div')`
   display: flex;
-  flex-direction: ${props => (props.isDisplayStream ? 'column-reverse' : 'column')};
+  flex-direction: column;
   flex: 1;
   width: 100%;
   min-width: 450px;

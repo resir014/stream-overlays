@@ -18,7 +18,6 @@ const BlockHeader = styled('header')<BlockHeaderProps>`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  align-items: center;
   letter-spacing: 0.05rem;
 
   ${props => (props.isFrame ? frameStyles : fullScreenStyles)};

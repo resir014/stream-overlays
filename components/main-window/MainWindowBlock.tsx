@@ -6,6 +6,7 @@ import { colors } from '../../styles/variables'
 import BlockRoot from '../layout/BlockRoot'
 import BlockHeader from '../layout/BlockHeader'
 import BlockHeaderInner from '../layout/BlockHeaderInner'
+import BlockFooter from '../layout/BlockFooter'
 
 interface HeaderTitleProps {
   lowercase?: boolean
@@ -50,7 +51,7 @@ interface MainWindowBlockProps {
 
 export default function MainWindowBlock({ title, isDisplayStream }: MainWindowBlockProps) {
   return (
-    <BlockRoot isDisplayStream={isDisplayStream}>
+    <BlockRoot>
       <BlockHeader isFrame>
         <BlockHeaderInner>
           <HeaderTitle>
@@ -66,6 +67,7 @@ export default function MainWindowBlock({ title, isDisplayStream }: MainWindowBl
       <Content>
         <Block />
       </Content>
+      {isDisplayStream && <BlockFooter />}
     </BlockRoot>
   )
 }
