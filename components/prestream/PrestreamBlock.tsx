@@ -72,6 +72,7 @@ interface PrestreamBlockProps {
   heading?: string
   title: string
   streamName?: string
+  date?: string
   description?: string
   backgroundColor?: string
   gradientStart?: string
@@ -83,6 +84,7 @@ export default function PrestreamBlock({
   heading,
   description,
   title,
+  date,
   backgroundColor,
   gradientStart,
   gradientEnd,
@@ -134,7 +136,12 @@ export default function PrestreamBlock({
           <h1>{heading}</h1>
           <h2>{title}</h2>
           <p>
-            <strong>{format(time, 'dd.MM.yyyy')} —</strong> {description || 'No description given.'}
+            {date && (
+              <>
+                <strong>{format(Date.parse(date), 'dd.MM.yyyy')} —</strong>{' '}
+              </>
+            )}
+            {description || 'No description given.'}
           </p>
         </PrestreamSection>
       </BlockContent>

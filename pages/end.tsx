@@ -34,6 +34,7 @@ const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
   const firstRecord = fetchedRecords?.[0]
   const streamName = firstRecord?.fields['Stream Name']
   const description = firstRecord?.fields['Description']
+  const date = firstRecord?.fields['Date']
 
   return (
     <PrestreamBase>
@@ -43,6 +44,7 @@ const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
           heading="Stream ended. Thanks for watching!"
           title={streamName || 'Untitled Stream'}
           description={description}
+          date={date}
           gradientStart={colors.red}
           gradientEnd={colors.orange}
           splashes={endCardSplashes}

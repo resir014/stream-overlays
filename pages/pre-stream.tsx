@@ -32,6 +32,7 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ records }) => {
   const firstRecord = fetchedRecords?.[0]
   const streamName = firstRecord?.fields['Stream Name']
   const description = firstRecord?.fields['Description']
+  const date = firstRecord?.fields['Date']
 
   return (
     <PrestreamBase>
@@ -41,6 +42,7 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ records }) => {
           streamName={streamName}
           title={streamName || 'Untitled Stream'}
           description={description}
+          date={date}
         />
       </Inner>
     </PrestreamBase>
