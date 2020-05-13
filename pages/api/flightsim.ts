@@ -10,7 +10,6 @@ const flightsim = async (_: NextApiRequest, res: NextApiResponse) => {
     const data = await response.text()
     res.status(200).json({ status: 'ok', data: JSON.parse(data) })
   } catch (err) {
-    console.error(err)
     res.status(500).json({
       status: 'error',
       data: {
