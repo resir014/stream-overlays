@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch'
+
 import { AirtableData } from '../interfaces/types'
 
 export default async function fetchAirtableData() {

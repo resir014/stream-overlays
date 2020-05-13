@@ -5,31 +5,14 @@ import PrestreamBase from '../components/prestream/PrestreamBase'
 import Inner from '../components/layout/Inner'
 import PrestreamBlock from '../components/prestream/PrestreamBlock'
 import { AirtableRecord } from '../interfaces/types'
-import useInterval from '../utils/useInterval'
-import fetchAirtableData from '../utils/fetchAirtableData'
 import { colors } from '../styles/variables'
 import brbSplashes from '../utils/brbSplashes'
+import useAirtableData from '../utils/useAirtableData'
 
-interface BeRightBackPageProps {
-  records?: AirtableRecord[]
-  errors?: Error['message']
-}
+const BeRightBackPage: NextPage = () => {
+  const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
 
-const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ records }) => {
-  const [fetchedRecords, setRecords] = React.useState(records)
-
-  useInterval(() => {
-    ;(async () => {
-      try {
-        const newRecords = await fetchAirtableData()
-
-        setRecords(newRecords)
-      } catch (err) {
-        // eslint-disable-next-line
-        console.error(err)
-      }
-    })()
-  }, 15000)
+  useAirtableData(setRecords)
 
   const firstRecord = fetchedRecords?.[0]
   const streamName = firstRecord?.fields['Stream Name']
@@ -52,16 +35,6 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ records }) => {
       </Inner>
     </PrestreamBase>
   )
-}
-
-BeRightBackPage.getInitialProps = async () => {
-  try {
-    const records = await fetchAirtableData()
-
-    return { records }
-  } catch (err) {
-    return { errors: err.message }
-  }
 }
 
 export default BeRightBackPage

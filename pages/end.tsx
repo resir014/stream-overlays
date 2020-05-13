@@ -5,31 +5,14 @@ import PrestreamBase from '../components/prestream/PrestreamBase'
 import Inner from '../components/layout/Inner'
 import PrestreamBlock from '../components/prestream/PrestreamBlock'
 import { AirtableRecord } from '../interfaces/types'
-import useInterval from '../utils/useInterval'
-import fetchAirtableData from '../utils/fetchAirtableData'
 import { colors } from '../styles/variables'
 import endCardSplashes from '../utils/endCardSplashes'
+import useAirtableData from '../utils/useAirtableData'
 
-interface BeRightBackPageProps {
-  records?: AirtableRecord[]
-  errors?: Error['message']
-}
+const EndScreenPage: NextPage = () => {
+  const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
 
-const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
-  const [fetchedRecords, setRecords] = React.useState(records)
-
-  useInterval(() => {
-    ;(async () => {
-      try {
-        const newRecords = await fetchAirtableData()
-
-        setRecords(newRecords)
-      } catch (err) {
-        // eslint-disable-next-line
-        console.error(err)
-      }
-    })()
-  }, 15000)
+  useAirtableData(setRecords)
 
   const firstRecord = fetchedRecords?.[0]
   const streamName = firstRecord?.fields['Stream Name']
@@ -52,16 +35,6 @@ const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
       </Inner>
     </PrestreamBase>
   )
-}
-
-EndScreenPage.getInitialProps = async () => {
-  try {
-    const records = await fetchAirtableData()
-
-    return { records }
-  } catch (err) {
-    return { errors: err.message }
-  }
 }
 
 export default EndScreenPage
