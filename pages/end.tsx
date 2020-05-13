@@ -10,16 +10,11 @@ import fetchAirtableData from '../utils/fetchAirtableData'
 import { colors } from '../styles/variables'
 import endCardSplashes from '../utils/endCardSplashes'
 
-interface BeRightBackPageProps {
-  records?: AirtableRecord[]
-  errors?: Error['message']
-}
+const EndScreenPage: NextPage = () => {
+  const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
 
-const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
-  const [fetchedRecords, setRecords] = React.useState(records)
-
-  useInterval(() => {
-    ;(async () => {
+  const fetcher = () => {
+    const doFetch = async () => {
       try {
         const newRecords = await fetchAirtableData()
 
@@ -28,8 +23,14 @@ const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
         // eslint-disable-next-line
         console.error(err)
       }
-    })()
-  }, 15000)
+    }
+
+    doFetch()
+  }
+
+  React.useEffect(fetcher, [])
+
+  useInterval(fetcher, 10000)
 
   const firstRecord = fetchedRecords?.[0]
   const streamName = firstRecord?.fields['Stream Name']
@@ -52,16 +53,6 @@ const EndScreenPage: NextPage<BeRightBackPageProps> = ({ records }) => {
       </Inner>
     </PrestreamBase>
   )
-}
-
-EndScreenPage.getInitialProps = async () => {
-  try {
-    const records = await fetchAirtableData()
-
-    return { records }
-  } catch (err) {
-    return { errors: err.message }
-  }
 }
 
 export default EndScreenPage

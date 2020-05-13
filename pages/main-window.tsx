@@ -9,16 +9,14 @@ import useInterval from '../utils/useInterval'
 import fetchAirtableData from '../utils/fetchAirtableData'
 
 interface MainWindowProps {
-  records?: AirtableRecord[]
   isDisplayStream?: boolean
-  errors?: Error['message']
 }
 
-const MainWindow: NextPage<MainWindowProps> = ({ records, isDisplayStream }) => {
-  const [fetchedRecords, setRecords] = React.useState(records)
+const MainWindow: NextPage<MainWindowProps> = ({ isDisplayStream }) => {
+  const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
 
-  useInterval(() => {
-    ;(async () => {
+  const fetcher = () => {
+    const doFetch = async () => {
       try {
         const newRecords = await fetchAirtableData()
 
@@ -27,8 +25,14 @@ const MainWindow: NextPage<MainWindowProps> = ({ records, isDisplayStream }) => 
         // eslint-disable-next-line
         console.error(err)
       }
-    })()
-  }, 15000)
+    }
+
+    doFetch()
+  }
+
+  React.useEffect(fetcher, [])
+
+  useInterval(fetcher, 10000)
 
   const firstRecord = fetchedRecords ? fetchedRecords[0] : undefined
   const title = firstRecord ? firstRecord.fields['Stream Name'] : undefined
@@ -40,16 +44,6 @@ const MainWindow: NextPage<MainWindowProps> = ({ records, isDisplayStream }) => 
       </Inner>
     </HomeWidgetBase>
   )
-}
-
-MainWindow.getInitialProps = async ({ query }) => {
-  try {
-    const records = await fetchAirtableData()
-
-    return { records, isDisplayStream: !!query.window || !!query.isDisplayStream }
-  } catch (err) {
-    return { errors: err.message }
-  }
 }
 
 export default MainWindow
