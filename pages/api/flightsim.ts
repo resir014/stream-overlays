@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import fetch from 'isomorphic-unfetch'
 
 const flightsim = async (_: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -7,7 +8,7 @@ const flightsim = async (_: NextApiRequest, res: NextApiResponse) => {
       headers: { 'Content-Type': 'text/plain' }
     })
     const data = await response.text()
-    res.status(200).json(data)
+    res.status(200).json({ status: 'ok', data: JSON.parse(data) })
   } catch (err) {
     console.error(err)
     res.status(500).json({

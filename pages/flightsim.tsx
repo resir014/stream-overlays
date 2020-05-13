@@ -8,6 +8,7 @@ import { STKPOverlayResponse } from '../interfaces/simToolkitPro'
 import FlightItinerary from '../components/flightsim/FlightItinerary'
 import FlightInfo from '../components/flightsim/FlightInfo'
 import fetch from '../utils/fetch'
+import { APIResponse } from '../interfaces/types'
 
 const OverlayWrapper = styled('div')`
   display: flex;
@@ -49,32 +50,38 @@ export const dummyData: STKPOverlayResponse = {
 
 const FlightSimOverlayPage: NextPage = () => {
   // Calls the local STKP overlay endpoint and refetches every second
-  const { data } = useSWR<STKPOverlayResponse>('/api/flightsim', fetch, {
+  const { data } = useSWR<APIResponse<STKPOverlayResponse>>('/api/flightsim', fetch, {
     refreshInterval: 1000
   })
 
-  return (
-    <LayoutRoot isTransparent>
-      <FlightProgress value={data?.v.Progress || 0} max={100} />
-      <OverlayWrapper>
-        {data?.v.Departure && data?.v.Destination && (
-          <FlightItinerary origin={data.v.Departure} destination={data.v.Destination} />
-        )}
-        {data?.v.Callsign && <FlightInfo name="ATC" value={data.v.Callsign} />}
-        {data?.v.Reg && <FlightInfo name="REC" value={data.v.Reg} />}
-        {data?.v.Airframe && <FlightInfo name="AC" value={data.v.Airframe} />}
-        {data?.v.Network && <FlightInfo name="NW" value={data.v.Network} />}
-        {data?.v.Groundspeed && <FlightInfo name="GSPD" value={`${data.v.Groundspeed}kts`} />}
-        {data?.v.AirSpeed && <FlightInfo name="IAS" value={`${data.v.AirSpeed}kts`} />}
-        {data?.v.TrueSpeed && <FlightInfo name="TAS" value={`${data.v.TrueSpeed}kts`} />}
-        {data?.v.Heading && <FlightInfo name="HDG" value={`${data.v.Heading}°`} />}
-        {data?.v.VSpeed && <FlightInfo name="VSPD" value={`${data.v.VSpeed}ft/min`} />}
-        {data?.v.Altitude && <FlightInfo name="ALT" value={`${data.v.Altitude}ft`} />}
-        {data?.v.ETE && <FlightInfo name="ETE" value={`${data.v.ETE}`} />}
-        {data?.v.currentphase && <FlightInfo name="Phase" value={data.v.currentphase} />}
-      </OverlayWrapper>
-    </LayoutRoot>
-  )
+  if (data?.status === 'ok') {
+    const { data: res } = data
+
+    return (
+      <LayoutRoot isTransparent>
+        <FlightProgress value={res.v.Progress || 0} max={100} />
+        <OverlayWrapper>
+          {res.v.Departure && res.v.Destination && (
+            <FlightItinerary origin={res.v.Departure} destination={res.v.Destination} />
+          )}
+          {res.v.Callsign && <FlightInfo name="ATC" value={res.v.Callsign} />}
+          {res.v.Reg && <FlightInfo name="REC" value={res.v.Reg} />}
+          {res.v.Airframe && <FlightInfo name="AC" value={res.v.Airframe} />}
+          {res.v.Network && <FlightInfo name="NW" value={res.v.Network} />}
+          {res.v.Groundspeed && <FlightInfo name="GSPD" value={`${res.v.Groundspeed}kts`} />}
+          {res.v.AirSpeed && <FlightInfo name="IAS" value={`${res.v.AirSpeed}kts`} />}
+          {res.v.TrueSpeed && <FlightInfo name="TAS" value={`${res.v.TrueSpeed}kts`} />}
+          {res.v.Heading && <FlightInfo name="HDG" value={`${res.v.Heading}°`} />}
+          {res.v.VSpeed && <FlightInfo name="VSPD" value={`${res.v.VSpeed}ft/min`} />}
+          {res.v.Altitude && <FlightInfo name="ALT" value={`${res.v.Altitude}ft`} />}
+          {res.v.ETE && <FlightInfo name="ETE" value={`${res.v.ETE}`} />}
+          {res.v.currentphase && <FlightInfo name="Phase" value={res.v.currentphase} />}
+        </OverlayWrapper>
+      </LayoutRoot>
+    )
+  }
+
+  return null
 }
 
 export default FlightSimOverlayPage
