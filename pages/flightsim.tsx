@@ -65,7 +65,7 @@ const FlightSimOverlayPage: NextPage = () => {
             <FlightItinerary origin={res.v.Departure} destination={res.v.Destination} />
           )}
           {res.v.Callsign && <FlightInfo name="ATC" value={res.v.Callsign} />}
-          {res.v.Reg && <FlightInfo name="REC" value={res.v.Reg} />}
+          {res.v.Reg && <FlightInfo name="REG" value={res.v.Reg} />}
           {res.v.Airframe && <FlightInfo name="AC" value={res.v.Airframe} />}
           {res.v.Network && <FlightInfo name="NW" value={res.v.Network} />}
           {res.v.Groundspeed && <FlightInfo name="GSPD" value={`${res.v.Groundspeed}kts`} />}
