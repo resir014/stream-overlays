@@ -5,32 +5,14 @@ import PrestreamBase from '../components/prestream/PrestreamBase'
 import Inner from '../components/layout/Inner'
 import PrestreamBlock from '../components/prestream/PrestreamBlock'
 import { AirtableRecord } from '../interfaces/types'
-import useInterval from '../utils/useInterval'
-import fetchAirtableData from '../utils/fetchAirtableData'
 import { colors } from '../styles/variables'
 import brbSplashes from '../utils/brbSplashes'
+import useAirtableData from '../utils/useAirtableData'
 
 const BeRightBackPage: NextPage = () => {
   const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
 
-  const fetcher = () => {
-    const doFetch = async () => {
-      try {
-        const newRecords = await fetchAirtableData()
-
-        setRecords(newRecords)
-      } catch (err) {
-        // eslint-disable-next-line
-        console.error(err)
-      }
-    }
-
-    doFetch()
-  }
-
-  React.useEffect(fetcher, [])
-
-  useInterval(fetcher, 10000)
+  useAirtableData(setRecords)
 
   const firstRecord = fetchedRecords?.[0]
   const streamName = firstRecord?.fields['Stream Name']

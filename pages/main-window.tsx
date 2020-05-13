@@ -5,8 +5,7 @@ import HomeWidgetBase from '../components/home/HomeWidgetBase'
 import MainWindowBlock from '../components/main-window/MainWindowBlock'
 import Inner from '../components/layout/Inner'
 import { AirtableRecord } from '../interfaces/types'
-import useInterval from '../utils/useInterval'
-import fetchAirtableData from '../utils/fetchAirtableData'
+import useAirtableData from '../utils/useAirtableData'
 
 interface MainWindowProps {
   isDisplayStream?: boolean
@@ -15,24 +14,7 @@ interface MainWindowProps {
 const MainWindow: NextPage<MainWindowProps> = ({ isDisplayStream }) => {
   const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
 
-  const fetcher = () => {
-    const doFetch = async () => {
-      try {
-        const newRecords = await fetchAirtableData()
-
-        setRecords(newRecords)
-      } catch (err) {
-        // eslint-disable-next-line
-        console.error(err)
-      }
-    }
-
-    doFetch()
-  }
-
-  React.useEffect(fetcher, [])
-
-  useInterval(fetcher, 10000)
+  useAirtableData(setRecords)
 
   const firstRecord = fetchedRecords ? fetchedRecords[0] : undefined
   const title = firstRecord ? firstRecord.fields['Stream Name'] : undefined
