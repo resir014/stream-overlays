@@ -11,3 +11,8 @@ export interface AirtableData {
 }
 
 export type AlertKinds = 'raid' | 'cheer' | 'host' | 'donation' | 'follow' | 'sub'
+
+export interface APIResponse<TResponse = any> {
+  status: 'ok' | 'error'
+  data: TResponse
+}
