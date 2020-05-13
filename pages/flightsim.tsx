@@ -4,11 +4,10 @@ import useSWR from 'swr'
 import styled from 'styled-components'
 import LayoutRoot from '../components/layout/LayoutRoot'
 import FlightProgress from '../components/flightsim/FlightProgress'
-import { colors } from '../styles/variables'
 import { STKPOverlayResponse } from '../interfaces/simToolkitPro'
-import fetch from '../utils/fetch'
 import FlightItinerary from '../components/flightsim/FlightItinerary'
 import FlightInfo from '../components/flightsim/FlightInfo'
+import fetch from '../utils/fetch'
 
 const OverlayWrapper = styled('div')`
   display: flex;

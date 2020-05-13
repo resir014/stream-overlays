@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-const handler = async (_: NextApiRequest, res: NextApiResponse) => {
+const flightsim = async (_: NextApiRequest, res: NextApiResponse) => {
   const response = await fetch('http://localhost:51011/overlay.json', {
     mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain' }
@@ -9,4 +9,4 @@ const handler = async (_: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json(data)
 }
 
-export default handler
+export default flightsim
