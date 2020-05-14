@@ -1,10 +1,10 @@
 import * as React from 'react'
+import dynamic from 'next/dynamic'
 import styled, { css } from 'styled-components'
 import { Transition } from 'react-transition-group'
 import { TransitionStatus } from 'react-transition-group/Transition'
 import { format } from 'date-fns'
 
-import useClock from 'utils/useClock'
 import useInterval from 'utils/useInterval'
 import sleep from 'utils/sleep'
 import welcomeSplashes from 'utils/welcomeSplashes'
@@ -48,26 +48,6 @@ const FooterParagraph = styled('p')<FooterParagraphProps>`
   ${props => props.state === 'exited' && Exited}
 `
 
-const HeaderDate = styled('p')`
-  margin: 0;
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 400;
-
-  span {
-    margin-right: 8px;
-    font-weight: 600;
-  }
-`
-
-const HeaderTime = styled('p')`
-  margin: 0;
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
-`
-
 interface PrestreamBlockProps {
   heading?: string
   title: string
@@ -79,6 +59,8 @@ interface PrestreamBlockProps {
   gradientEnd?: string
   splashes?: string[]
 }
+
+const PrestreamDateTime = dynamic(() => import('./PrestreamDateTime'), { ssr: false })
 
 export default function PrestreamBlock({
   heading,
@@ -92,10 +74,9 @@ export default function PrestreamBlock({
 }: PrestreamBlockProps) {
   const [transitioning, setTransitioning] = React.useState(false)
   const [currentIndex, setCurrentIndex] = React.useState(0)
-  const time = useClock()
 
   useInterval(() => {
-    ;(async () => {
+    const getSplashIndex = async () => {
       const next = currentIndex + 1
       setTransitioning(true)
 
@@ -108,7 +89,9 @@ export default function PrestreamBlock({
       }
 
       setTransitioning(false)
-    })()
+    }
+
+    getSplashIndex()
   }, 8000)
 
   return (
@@ -124,12 +107,7 @@ export default function PrestreamBlock({
           </HeaderTitle>
           <HeaderSub>twitch.tv/resir014</HeaderSub>
         </BlockHeaderInner>
-        <BlockHeaderInner right>
-          <HeaderDate>
-            <span>{format(time, 'EEEE')}</span> {format(time, 'dd MMMM yyyy')}
-          </HeaderDate>
-          <HeaderTime>{format(time, 'HH:mm:ss')}</HeaderTime>
-        </BlockHeaderInner>
+        <PrestreamDateTime />
       </BlockHeader>
       <BlockContent>
         <PrestreamSection>
