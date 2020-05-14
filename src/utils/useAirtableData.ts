@@ -14,10 +14,11 @@ export async function fetchAirtableData() {
       headers: {
         Authorization: `Bearer ${apiKey}`
       }
-    }).then(res => res.json())
+    })
 
     return data
   } catch (err) {
+    console.error(err)
     return null
   }
 }
