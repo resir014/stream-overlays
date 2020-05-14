@@ -4,15 +4,18 @@ import { NextPage } from 'next'
 import PrestreamBase from 'components/prestream/PrestreamBase'
 import Inner from 'components/layout/Inner'
 import PrestreamBlock from 'components/prestream/PrestreamBlock'
-import { AirtableRecord } from 'interfaces/types'
+import { AirtableData } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import brbSplashes from 'utils/brbSplashes'
-import useAirtableData from 'utils/useAirtableData'
+import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'
 
-const BeRightBackPage: NextPage = () => {
-  const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
+interface BeRightBackPageProps {
+  initialData?: AirtableData
+  errors?: Error['message']
+}
 
-  useAirtableData(setRecords)
+const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
+  const fetchedRecords = useAirtableData(initialData)
 
   const firstRecord = fetchedRecords?.[0]
   const streamName = firstRecord?.fields['Stream Name']
@@ -35,6 +38,11 @@ const BeRightBackPage: NextPage = () => {
       </Inner>
     </PrestreamBase>
   )
+}
+
+export async function getServerSideProps() {
+  const initialData = await fetchAirtableData()
+  return { props: { initialData } }
 }
 
 export default BeRightBackPage

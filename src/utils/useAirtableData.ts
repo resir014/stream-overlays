@@ -1,26 +1,38 @@
-import * as React from 'react'
+import useSWR from 'swr'
 
-import { AirtableRecord } from 'interfaces/types'
-import fetchAirtableData from './fetchAirtableData'
-import useInterval from './useInterval'
+import { AirtableRecord, AirtableData } from 'interfaces/types'
+import fetch from './fetch'
 
-export default function useAirtableData(setData: (data: AirtableRecord[]) => void) {
-  const doFetch = async () => {
-    try {
-      const newRecords = await fetchAirtableData()
+const airtableAPIURL =
+  'https://api.airtable.com/v0/appGvPegCJWtb4nSp/Streams?maxRecords=3&view=Grid%20view'
 
-      setData(newRecords)
-    } catch (err) {
-      // eslint-disable-next-line
-      console.error(err)
-    }
+export async function fetchAirtableData() {
+  try {
+    const apiKey = process.env.AIRTABLE_API_KEY
+
+    const data: AirtableData = await fetch(airtableAPIURL, {
+      headers: {
+        Authorization: `Bearer ${apiKey}`
+      }
+    })
+
+    return data
+  } catch (err) {
+    console.error(err)
+    return null
+  }
+}
+
+export function useAirtableData(initialData?: AirtableData): AirtableRecord[] | undefined {
+  const { data, error } = useSWR<AirtableData | null>(airtableAPIURL, fetchAirtableData, {
+    initialData,
+    refreshInterval: 10000
+  })
+
+  if (data && !error) {
+    const { records } = data
+    return records
   }
 
-  React.useEffect(() => {
-    doFetch()
-  }, [])
-
-  useInterval(() => {
-    doFetch()
-  }, 10000)
+  return undefined
 }
