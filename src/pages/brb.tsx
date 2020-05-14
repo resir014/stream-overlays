@@ -4,13 +4,13 @@ import { NextPage } from 'next'
 import PrestreamBase from 'components/prestream/PrestreamBase'
 import Inner from 'components/layout/Inner'
 import PrestreamBlock from 'components/prestream/PrestreamBlock'
-import { AirtableData } from 'interfaces/types'
+import { AirtableRecord } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import brbSplashes from 'utils/brbSplashes'
 import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'
 
 interface BeRightBackPageProps {
-  initialData?: AirtableData
+  initialData?: AirtableRecord[]
   errors?: Error['message']
 }
 

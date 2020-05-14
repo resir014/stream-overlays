@@ -4,11 +4,11 @@ import { NextPage } from 'next'
 import PrestreamBase from 'components/prestream/PrestreamBase'
 import PrestreamBlock from 'components/prestream/PrestreamBlock'
 import Inner from 'components/layout/Inner'
-import { AirtableData } from 'interfaces/types'
+import { AirtableRecord } from 'interfaces/types'
 import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'
 
 interface PrestreamPageProps {
-  initialData?: AirtableData
+  initialData?: AirtableRecord[]
   errors?: Error['message']
 }
 

@@ -10,28 +10,27 @@ export async function fetchAirtableData() {
   try {
     const apiKey = process.env.AIRTABLE_API_KEY
 
-    const data: AirtableData = await fetch(airtableAPIURL, {
+    const { records }: AirtableData = await fetch(airtableAPIURL, {
       headers: {
         Authorization: `Bearer ${apiKey}`
       }
     })
 
-    return data
+    return records
   } catch (err) {
     console.error(err)
     return null
   }
 }
 
-export function useAirtableData(initialData?: AirtableData): AirtableRecord[] | undefined {
-  const { data, error } = useSWR<AirtableData | null>(airtableAPIURL, fetchAirtableData, {
+export function useAirtableData(initialData?: AirtableRecord[]): AirtableRecord[] | undefined {
+  const { data, error } = useSWR<AirtableRecord[] | null>(airtableAPIURL, fetchAirtableData, {
     initialData,
     refreshInterval: 10000
   })
 
   if (data && !error) {
-    const { records } = data
-    return records
+    return data
   }
 
   return undefined

@@ -4,11 +4,11 @@ import { NextPage } from 'next'
 import HomeWidgetBase from 'components/home/HomeWidgetBase'
 import MainWindowBlock from 'components/main-window/MainWindowBlock'
 import Inner from 'components/layout/Inner'
-import { AirtableData } from 'interfaces/types'
+import { AirtableRecord } from 'interfaces/types'
 import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'
 
 interface MainWindowProps {
-  initialData?: AirtableData
+  initialData?: AirtableRecord[]
   errors?: Error['message']
   isDisplayStream?: boolean
 }
