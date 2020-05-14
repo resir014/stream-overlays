@@ -4,13 +4,16 @@ import { NextPage } from 'next'
 import PrestreamBase from 'components/prestream/PrestreamBase'
 import PrestreamBlock from 'components/prestream/PrestreamBlock'
 import Inner from 'components/layout/Inner'
-import { AirtableRecord } from 'interfaces/types'
-import useAirtableData from 'utils/useAirtableData'
+import { AirtableData } from 'interfaces/types'
+import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'
 
-const PrestreamPage: NextPage = () => {
-  const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
+interface PrestreamPageProps {
+  initialData?: AirtableData
+  errors?: Error['message']
+}
 
-  useAirtableData(setRecords)
+const PrestreamPage: NextPage<PrestreamPageProps> = ({ initialData }) => {
+  const fetchedRecords = useAirtableData(initialData)
 
   const firstRecord = fetchedRecords?.[0]
   const streamName = firstRecord?.fields['Stream Name']
@@ -30,6 +33,11 @@ const PrestreamPage: NextPage = () => {
       </Inner>
     </PrestreamBase>
   )
+}
+
+export async function getServerSideProps() {
+  const initialData = await fetchAirtableData()
+  return { props: { initialData } }
 }
 
 export default PrestreamPage

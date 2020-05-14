@@ -4,17 +4,17 @@ import { NextPage } from 'next'
 import HomeWidgetBase from 'components/home/HomeWidgetBase'
 import MainWindowBlock from 'components/main-window/MainWindowBlock'
 import Inner from 'components/layout/Inner'
-import { AirtableRecord } from 'interfaces/types'
-import useAirtableData from 'utils/useAirtableData'
+import { AirtableData } from 'interfaces/types'
+import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'
 
 interface MainWindowProps {
+  initialData?: AirtableData
+  errors?: Error['message']
   isDisplayStream?: boolean
 }
 
-const MainWindow: NextPage<MainWindowProps> = ({ isDisplayStream }) => {
-  const [fetchedRecords, setRecords] = React.useState<AirtableRecord[] | undefined>(undefined)
-
-  useAirtableData(setRecords)
+const MainWindow: NextPage<MainWindowProps> = ({ initialData, isDisplayStream }) => {
+  const fetchedRecords = useAirtableData(initialData)
 
   const firstRecord = fetchedRecords ? fetchedRecords[0] : undefined
   const title = firstRecord ? firstRecord.fields['Stream Name'] : undefined
@@ -26,6 +26,11 @@ const MainWindow: NextPage<MainWindowProps> = ({ isDisplayStream }) => {
       </Inner>
     </HomeWidgetBase>
   )
+}
+
+export async function getServerSideProps() {
+  const initialData = await fetchAirtableData()
+  return { props: { initialData } }
 }
 
 export default MainWindow
