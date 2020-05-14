@@ -4,6 +4,14 @@
     "module": "esnext",
     "jsx": "preserve",
     "lib": ["dom", "es2017"],
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "interfaces/*": ["src/interfaces/*"],
+      "pages/*": ["src/pages/*"],
+      "styles/*": ["src/styles/*"],
+      "utils/*": ["src/utils/*"]
+    },
     "moduleResolution": "node",
     "strict": true,
     "noEmit": true,
