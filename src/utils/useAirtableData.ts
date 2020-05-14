@@ -16,7 +16,11 @@ export async function fetchAirtableData() {
       }
     })
 
-    return records
+    if (records) {
+      return records
+    }
+
+    return null
   } catch (err) {
     console.error(err)
     return null
