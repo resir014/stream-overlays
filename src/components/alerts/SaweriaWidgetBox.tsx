@@ -3,7 +3,7 @@ import toast from 'toasted-notes'
 
 import Alert from './Alert'
 
-const saweriaAlertURL = `https://api.saweria.co/stream?channel=donation.${process.env.SAWERIA_STREAM_KEY}`
+const saweriaAlertURL = `https://api.saweria.co/stream?channel=donation.${process.env.NEXT_PUBLIC_SAWERIA_STREAM_KEY}`
 
 const SaweriaAlerts: React.FC = () => {
   const [listening, setListening] = React.useState(false)
