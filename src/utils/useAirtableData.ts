@@ -8,7 +8,7 @@ const airtableAPIURL =
 
 export async function fetchAirtableData() {
   try {
-    const apiKey = process.env.AIRTABLE_API_KEY
+    const apiKey = process.env.NEXT_PUBLIC_AIRTABLE_API_KEY
 
     const { records }: AirtableData = await fetch(airtableAPIURL, {
       headers: {
