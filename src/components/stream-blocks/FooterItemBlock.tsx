@@ -25,7 +25,7 @@ const Title = styled('span')`
 `
 
 const TextSourceBox = styled('div')`
-  background-color: ${colors.black};
+  background-color: ${colors.grey90};
   flex: 1 1 auto;
   width: 100%;
   height: 32px;

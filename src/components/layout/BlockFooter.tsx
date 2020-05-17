@@ -15,7 +15,7 @@ const Root = styled('footer')`
   height: 40px;
   letter-spacing: 0.05rem;
   padding: 0 8px;
-  background-color: ${colors.grey90};
+  background-color: ${colors.black};
   color: ${colors.white};
 `
 

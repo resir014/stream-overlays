@@ -26,7 +26,7 @@ const Root = styled('header')<BlockHeaderProps>`
   align-items: center;
   justify-content: space-between;
   letter-spacing: 0.05rem;
-  background-color: ${colors.grey90};
+  background-color: ${colors.black};
   color: ${colors.white};
 
   ${props => (props.isFrame ? frameStyles : fullScreenStyles)};
