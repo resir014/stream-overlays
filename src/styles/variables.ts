@@ -36,7 +36,7 @@ export const colors = {
 export const fonts = {
   serif: "'Crimson Text', Georgia, Times New Roman, Times, serif",
   sansSerif: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-  monospace: `Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono',
+  monospace: `'Roboto Mono', Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono',
     'Bitstream Vera Sans Mono', 'Courier New', monospace, monospace`
 }
 
