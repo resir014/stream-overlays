@@ -15,18 +15,20 @@ const Root = styled('div')`
 
 const Title = styled('span')`
   display: inline-block;
+  width: 200px;
   margin-right: 16px;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 32px;
   font-family: ${fonts.monospace};
   text-transform: uppercase;
+  text-align: right;
 `
 
 const TextSourceBox = styled('div')`
   background-color: ${colors.black};
   flex: 1 1 auto;
   width: 100%;
-  height: 24px;
+  height: 32px;
   border-radius: 4px;
 `
 
