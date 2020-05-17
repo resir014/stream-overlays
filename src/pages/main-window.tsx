@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { NextPage } from 'next'
+import { NextPage, GetServerSidePropsContext } from 'next'
 
 import HomeWidgetBase from 'components/home/HomeWidgetBase'
 import MainWindowBlock from 'components/main-window/MainWindowBlock'
@@ -28,9 +28,9 @@ const MainWindow: NextPage<MainWindowProps> = ({ initialData, isDisplayStream })
   )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const initialData = await fetchAirtableData()
-  return { props: { initialData } }
+  return { props: { initialData, isDisplayStream: !!query.window || !!query.isDisplayStream } }
 }
 
 export default MainWindow
