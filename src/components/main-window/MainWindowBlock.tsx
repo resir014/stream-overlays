@@ -5,24 +5,11 @@ import { colors } from 'styles/variables'
 
 import BlockRoot from '../layout/BlockRoot'
 import BlockHeader from '../layout/BlockHeader'
-import BlockHeaderInner from '../layout/BlockHeaderInner'
 import BlockFooter from '../layout/BlockFooter'
 
 interface HeaderTitleProps {
   lowercase?: boolean
 }
-
-const HeaderTitle = styled('h1')<HeaderTitleProps>`
-  margin: 0;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-  ${props => props.lowercase && 'text-transform: lowercase;'}
-
-  span {
-    font-weight: 400;
-  }
-`
 
 const Content = styled('section')`
   display: flex;

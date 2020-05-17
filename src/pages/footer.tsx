@@ -3,11 +3,11 @@ import { NextPage } from 'next'
 import LayoutRoot from 'components/layout/LayoutRoot'
 import BlockFooter from 'components/layout/BlockFooter'
 
-interface FooterBlocProps {
+interface FooterPageProps {
   errors?: Error['message']
 }
 
-const HeaderPage: NextPage<FooterBlocProps> = () => {
+const FooterPage: NextPage<FooterPageProps> = () => {
   return (
     <LayoutRoot isTransparent>
       <BlockFooter hasLabels />
@@ -15,4 +15,4 @@ const HeaderPage: NextPage<FooterBlocProps> = () => {
   )
 }
 
-export default HeaderPage
+export default FooterPage

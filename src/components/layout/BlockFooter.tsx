@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { colors, fonts } from 'styles/variables'
+import { colors } from 'styles/variables'
 import FooterItemBlock from 'components/stream-blocks/FooterItemBlock'
 
 interface BlockFooterProps {

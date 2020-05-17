@@ -1,7 +1,6 @@
 import * as React from 'react'
 import dynamic from 'next/dynamic'
 import styled, { css } from 'styled-components'
-import { colors } from 'styles/variables'
 
 interface PrestreamHeaderProps {
   isFrame?: boolean
