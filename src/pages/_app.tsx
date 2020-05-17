@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import 'typeface-inter'
 import 'typeface-crimson-text'
-import 'typeface-work-sans'
+import 'typeface-roboto-mono'
 import 'normalize.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
