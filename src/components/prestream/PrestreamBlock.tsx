@@ -1,5 +1,4 @@
 import * as React from 'react'
-import dynamic from 'next/dynamic'
 import styled, { css } from 'styled-components'
 import { Transition } from 'react-transition-group'
 import { TransitionStatus } from 'react-transition-group/Transition'
@@ -9,11 +8,10 @@ import useInterval from 'utils/useInterval'
 import sleep from 'utils/sleep'
 import welcomeSplashes from 'utils/welcomeSplashes'
 
-import BlockHeader from '../layout/BlockHeader'
-import BlockHeaderInner, { HeaderTitle, HeaderSub } from '../layout/BlockHeaderInner'
 import BlockContent from '../layout/BlockContent'
 import PrestreamRoot from './PrestreamRoot'
 import PrestreamSection from './PrestreamSection'
+import PrestreamHeader from './PrestreamHeader'
 
 const TRANSITION_DURATION = 500
 
@@ -60,8 +58,6 @@ interface PrestreamBlockProps {
   splashes?: string[]
 }
 
-const PrestreamDateTime = dynamic(() => import('./PrestreamDateTime'), { ssr: false })
-
 export default function PrestreamBlock({
   heading,
   description,
@@ -100,15 +96,7 @@ export default function PrestreamBlock({
       gradientStart={gradientStart}
       gradientEnd={gradientEnd}
     >
-      <BlockHeader>
-        <BlockHeaderInner>
-          <HeaderTitle>
-            @resir014<span> // resir014.xyz</span>
-          </HeaderTitle>
-          <HeaderSub>twitch.tv/resir014</HeaderSub>
-        </BlockHeaderInner>
-        <PrestreamDateTime />
-      </BlockHeader>
+      <PrestreamHeader title="twitch.tv/resir014" />
       <BlockContent>
         <PrestreamSection>
           <h1>{heading}</h1>
