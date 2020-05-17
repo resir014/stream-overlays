@@ -52,18 +52,7 @@ interface MainWindowBlockProps {
 export default function MainWindowBlock({ title, isDisplayStream }: MainWindowBlockProps) {
   return (
     <BlockRoot>
-      <BlockHeader isFrame>
-        <BlockHeaderInner>
-          <HeaderTitle>
-            @resir014 <span>// resir014.xyz</span>
-          </HeaderTitle>
-        </BlockHeaderInner>
-        <BlockHeaderInner right>
-          <HeaderTitle as="h2">
-            <span>{title || 'Untitled Stream'}</span>
-          </HeaderTitle>
-        </BlockHeaderInner>
-      </BlockHeader>
+      <BlockHeader isFrame title={title || 'Untitled Stream'} />
       <Content>
         <Block />
       </Content>

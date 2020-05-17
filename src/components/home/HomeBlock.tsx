@@ -10,8 +10,6 @@ const HomeWidget = styled('section')`
   display: block;
   width: 100%;
   max-width: 460px;
-  height: 100%;
-  max-height: 380px;
   padding: 24px;
   background-color: ${colors.grey90};
   color: white;
@@ -60,6 +58,17 @@ export default function HomeBlock() {
       <HeaderParagraph>
         <Link href="/main-window">
           <a>Main Window</a>
+        </Link>
+      </HeaderParagraph>
+      <HeaderTitle>Blocks</HeaderTitle>
+      <HeaderParagraph>
+        <Link href="/header">
+          <a>Header</a>
+        </Link>
+      </HeaderParagraph>
+      <HeaderParagraph>
+        <Link href="/footer">
+          <a>Footer</a>
         </Link>
       </HeaderParagraph>
       <HeaderTitle>Widgets</HeaderTitle>

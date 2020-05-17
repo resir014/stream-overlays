@@ -33,6 +33,7 @@
     "react-transition-group": "^4.4.1",
     "styled-components": "^5.1.0",
     "swr": "^0.2.0",
+    "text-case": "^1.0.7",
     "toasted-notes": "^3.2.0",
     "typeface-crimson-text": "^0.0.72",
     "typeface-inter": "^3.12.0",
