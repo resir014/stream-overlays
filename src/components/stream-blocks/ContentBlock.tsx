@@ -7,12 +7,14 @@ interface ContentBlockProps {
   style?: React.CSSProperties
   title: string
   backgroundColor?: string
+  textColor?: string
 }
 
-const Root = styled('div')<Pick<ContentBlockProps, 'backgroundColor'>>`
+const Root = styled('div')<Pick<ContentBlockProps, 'backgroundColor' | 'textColor'>>`
   display: flex;
   flex-direction: column;
   background-color: ${props => props.backgroundColor || colors.grey90};
+  color: ${props => props.textColor || colors.white};
   border-radius: 8px;
 `
 
@@ -35,7 +37,6 @@ const StreamStatus = styled('span')`
   margin-top: 0;
   font-size: 20px;
   line-height: 1.15;
-  font-weight: 300;
   font-family: ${fonts.monospace};
   text-transform: uppercase;
 `
@@ -45,10 +46,16 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
   style,
   title,
   children,
-  backgroundColor
+  backgroundColor,
+  textColor
 }) => {
   return (
-    <Root className={className} style={style} backgroundColor={backgroundColor}>
+    <Root
+      className={className}
+      style={style}
+      backgroundColor={backgroundColor}
+      textColor={textColor}
+    >
       <Header>
         <StreamStatus>{title}</StreamStatus>
       </Header>

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { NextPage } from 'next'
 
 import PrestreamBase from 'components/prestream/PrestreamBase'
-import PrestreamBlock from 'components/prestream/PrestreamBlock'
+import PrestreamBlock from 'src/modules/prestream/PrestreamBlock'
 import Inner from 'components/layout/Inner'
 import { AirtableRecord } from 'interfaces/types'
 import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'

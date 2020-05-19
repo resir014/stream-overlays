@@ -11,9 +11,9 @@ import { colors } from 'styles/variables'
 
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
-import BlockContent from '../layout/BlockContent'
-import PrestreamRoot from './PrestreamRoot'
-import PrestreamSection from './PrestreamSection'
+import BlockContent from '../../components/layout/BlockContent'
+import PrestreamRoot from '../../components/prestream/PrestreamRoot'
+import PrestreamSection from '../../components/prestream/PrestreamSection'
 
 const TRANSITION_DURATION = 500
 
@@ -29,6 +29,7 @@ interface PrestreamBlockProps {
   description?: string
   titleColor?: string
   backgroundColor?: string
+  textColor?: string
   splashes?: string[]
 }
 
@@ -70,6 +71,7 @@ export default function PrestreamBlock({
   date,
   titleColor,
   backgroundColor,
+  textColor,
   splashes = welcomeSplashes
 }: PrestreamBlockProps) {
   const [transitioning, setTransitioning] = React.useState(false)
@@ -103,6 +105,7 @@ export default function PrestreamBlock({
               style={{ flex: 1, marginBottom: 24 }}
               title={heading || 'Untitled'}
               backgroundColor={backgroundColor}
+              textColor={textColor}
             >
               <StreamTitle titleColor={titleColor}>{title}</StreamTitle>
               <p>
