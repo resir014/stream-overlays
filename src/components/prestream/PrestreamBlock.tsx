@@ -7,21 +7,29 @@ import { format } from 'date-fns'
 import useInterval from 'utils/useInterval'
 import sleep from 'utils/sleep'
 import welcomeSplashes from 'utils/welcomeSplashes'
+import { colors } from 'styles/variables'
+
+import ContentBlock from 'components/stream-blocks/ContentBlock'
 
 import BlockContent from '../layout/BlockContent'
 import PrestreamRoot from './PrestreamRoot'
 import PrestreamSection from './PrestreamSection'
-import PrestreamHeader from './PrestreamHeader'
 
 const TRANSITION_DURATION = 500
 
-const BlockFooter = styled('footer')`
-  padding: 12px 16px;
-  height: 56px;
-`
-
 interface FooterParagraphProps {
   state: TransitionStatus
+}
+
+interface PrestreamBlockProps {
+  heading?: string
+  title: string
+  streamName?: string
+  date?: string
+  description?: string
+  titleColor?: string
+  backgroundColor?: string
+  splashes?: string[]
 }
 
 const Exited = css`
@@ -46,26 +54,22 @@ const FooterParagraph = styled('p')<FooterParagraphProps>`
   ${props => props.state === 'exited' && Exited}
 `
 
-interface PrestreamBlockProps {
-  heading?: string
-  title: string
-  streamName?: string
-  date?: string
-  description?: string
-  backgroundColor?: string
-  gradientStart?: string
-  gradientEnd?: string
-  splashes?: string[]
-}
+const StreamTitle = styled('h2')<Pick<PrestreamBlockProps, 'titleColor'>>`
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 72px;
+  line-height: 1.15;
+  font-weight: 600;
+  color: ${props => props.titleColor || colors.white};
+`
 
 export default function PrestreamBlock({
   heading,
   description,
   title,
   date,
+  titleColor,
   backgroundColor,
-  gradientStart,
-  gradientEnd,
   splashes = welcomeSplashes
 }: PrestreamBlockProps) {
   const [transitioning, setTransitioning] = React.useState(false)
@@ -91,31 +95,37 @@ export default function PrestreamBlock({
   }, 8000)
 
   return (
-    <PrestreamRoot
-      backgroundColor={backgroundColor}
-      gradientStart={gradientStart}
-      gradientEnd={gradientEnd}
-    >
-      <PrestreamHeader title="twitch.tv/resir014" />
+    <PrestreamRoot>
       <BlockContent>
         <PrestreamSection>
-          <h1>{heading}</h1>
-          <h2>{title}</h2>
-          <p>
-            {date && (
-              <>
-                <strong>{format(Date.parse(date), 'dd.MM.yyyy')} —</strong>{' '}
-              </>
-            )}
-            {description || 'No description given.'}
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <ContentBlock
+              style={{ flex: 1, marginBottom: 24 }}
+              title={heading || 'Untitled'}
+              backgroundColor={backgroundColor}
+            >
+              <StreamTitle titleColor={titleColor}>{title}</StreamTitle>
+              <p>
+                {date && (
+                  <>
+                    <strong>{format(Date.parse(date), 'dd.MM.yyyy')} —</strong>{' '}
+                  </>
+                )}
+                {description || 'No description given.'}
+              </p>
+            </ContentBlock>
+            <ContentBlock style={{ height: 240 }} title="NOTES">
+              <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
+                {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
+              </Transition>
+            </ContentBlock>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <ContentBlock style={{ flex: 1, marginBottom: 24 }} title="CHAT_BOX" />
+            <ContentBlock style={{ height: 240 }} title="EVENTS" />
+          </div>
         </PrestreamSection>
       </BlockContent>
-      <BlockFooter>
-        <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
-          {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
-        </Transition>
-      </BlockFooter>
     </PrestreamRoot>
   )
 }

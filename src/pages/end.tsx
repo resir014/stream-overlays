@@ -31,8 +31,8 @@ const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
           title={streamName || 'Untitled Stream'}
           description={description}
           date={date}
-          gradientStart={colors.red}
-          gradientEnd={colors.orange}
+          backgroundColor={colors.ultramarine}
+          titleColor={colors.orange}
           splashes={endCardSplashes}
         />
       </Inner>

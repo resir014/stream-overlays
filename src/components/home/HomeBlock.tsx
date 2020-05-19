@@ -55,11 +55,6 @@ export default function HomeBlock() {
           <a>End Screen</a>
         </Link>
       </HeaderParagraph>
-      <HeaderParagraph>
-        <Link href="/main-window">
-          <a>Main Window</a>
-        </Link>
-      </HeaderParagraph>
       <HeaderTitle>Blocks</HeaderTitle>
       <HeaderParagraph>
         <Link href="/header">

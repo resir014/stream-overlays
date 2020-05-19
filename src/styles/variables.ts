@@ -17,7 +17,7 @@ export const colors = {
   cyan: '#79ffe1',
   ultramarine: '#2234ce',
   magenta: '#ff1493',
-  green: '#00d28a',
+  green: '#08ffc8',
   greenscreen: '#0f0',
   grey10: '#e8e8e8',
   grey20: '#d0d0d2',
