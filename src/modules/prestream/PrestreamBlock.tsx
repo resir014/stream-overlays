@@ -127,7 +127,7 @@ export default function PrestreamBlock({
                 <ContentBlock title="Time">21:00 (GMT +7) / 1400z</ContentBlock>
                 <ContentBlock title="Location">twitch.tv/resir014</ContentBlock>
               </div>
-              <ContentBlock style={{ height: 240, flex: 1 }} title="Notes">
+              <ContentBlock style={{ height: 122, flex: 1 }} title="Notes">
                 <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
                   {state => (
                     <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>
