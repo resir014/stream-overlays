@@ -35,7 +35,7 @@ const Header = styled('div')`
 const StreamStatus = styled('span')`
   display: inline-block;
   margin-top: 0;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.15;
   font-family: ${fonts.monospace};
   text-transform: uppercase;
