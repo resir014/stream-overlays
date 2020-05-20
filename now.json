@@ -8,5 +8,26 @@
       "NEXT_PUBLIC_AIRTABLE_API_KEY": "@airtable-api-key",
       "NEXT_PUBLIC_SAWERIA_STREAM_KEY": "@saweria-stream-key"
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "^/_next/static/(.*)",
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
+      "dest": "/_next/static/$1"
+    },
+    {
+      "src": "^/static/(.*)",
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1",
+      "headers": {
+        "X-Frame-Options": "DENY",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff"
+      }
+    }
+  ]
 }
