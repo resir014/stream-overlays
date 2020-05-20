@@ -31,7 +31,7 @@ const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
           title={streamName || 'Untitled Stream'}
           description={description}
           date={date}
-          backgroundColor={colors.ultramarine}
+          backgroundColor={colors.red}
           titleColor={colors.orange}
           splashes={endCardSplashes}
         />

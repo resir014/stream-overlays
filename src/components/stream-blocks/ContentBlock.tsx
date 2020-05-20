@@ -24,18 +24,17 @@ const Content = styled('div')`
   display: flex;
   align-items: center;
   flex: 1;
+  padding: 0 24px 12px;
 `
 
-const Inner = styled('div')`
-  padding: 0 24px 24px;
-`
+const Inner = styled('div')``
 
 const Header = styled('div')`
-  padding: 8px 24px 0;
+  padding: 12px 24px 8px;
 `
 
 const StreamStatus = styled('span')`
-  display: inline-block;
+  display: block;
   margin-top: 0;
   font-size: 16px;
   line-height: 1.15;

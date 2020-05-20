@@ -31,7 +31,7 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
           title={streamName || 'Untitled Stream'}
           description={description}
           date={date}
-          backgroundColor={colors.ultramarine}
+          backgroundColor={colors.purple}
           titleColor={colors.cyan}
           splashes={brbSplashes}
         />

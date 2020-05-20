@@ -108,23 +108,36 @@ export default function PrestreamBlock({
               textColor={textColor}
             >
               <StreamTitle titleColor={titleColor}>{title}</StreamTitle>
-              <p>
+              <p>{description || 'No description given.'}</p>
+            </ContentBlock>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr 1fr',
+                  gridGap: 24,
+                  marginBottom: 24
+                }}
+              >
                 {date && (
-                  <>
-                    <strong>{format(Date.parse(date), 'dd.MM.yyyy')} —</strong>{' '}
-                  </>
+                  <ContentBlock title="Date">
+                    {format(Date.parse(date), 'dd MMMM yyyy')}
+                  </ContentBlock>
                 )}
-                {description || 'No description given.'}
-              </p>
-            </ContentBlock>
-            <ContentBlock style={{ height: 240 }} title="Notes">
-              <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
-                {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
-              </Transition>
-            </ContentBlock>
+                <ContentBlock title="Time">21:00 (GMT +7) / 1400z</ContentBlock>
+                <ContentBlock title="Location">twitch.tv/resir014</ContentBlock>
+              </div>
+              <ContentBlock style={{ height: 240, flex: 1 }} title="Notes">
+                <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
+                  {state => (
+                    <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>
+                  )}
+                </Transition>
+              </ContentBlock>
+            </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <ContentBlock style={{ flex: 1, marginBottom: 24 }} title="Chat Box" />
+            <ContentBlock style={{ flex: 1, marginBottom: 24 }} title="Chatbox" />
             <ContentBlock style={{ height: 240 }} title="Events" />
           </div>
         </PrestreamSection>
