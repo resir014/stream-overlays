@@ -11,7 +11,7 @@ interface FooterPageProps {
 const ChatBlockPage: NextPage<FooterPageProps> = () => {
   return (
     <LayoutRoot isTransparent>
-      <ContentBlock style={{ height: 240 }} title="Chat Box" />
+      <ContentBlock style={{ height: 364 }} title="Chat Box" />
     </LayoutRoot>
   )
 }

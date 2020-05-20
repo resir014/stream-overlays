@@ -11,7 +11,7 @@ interface FooterPageProps {
 const EventsBlockPage: NextPage<FooterPageProps> = () => {
   return (
     <LayoutRoot isTransparent>
-      <ContentBlock style={{ height: 240 }} title="Events" />
+      <ContentBlock style={{ height: 224 }} title="Events" />
     </LayoutRoot>
   )
 }
