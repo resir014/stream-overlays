@@ -117,15 +117,15 @@ export default function PrestreamBlock({
                 {description || 'No description given.'}
               </p>
             </ContentBlock>
-            <ContentBlock style={{ height: 240 }} title="NOTES">
+            <ContentBlock style={{ height: 240 }} title="Notes">
               <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
                 {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
               </Transition>
             </ContentBlock>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <ContentBlock style={{ flex: 1, marginBottom: 24 }} title="CHAT_BOX" />
-            <ContentBlock style={{ height: 240 }} title="EVENTS" />
+            <ContentBlock style={{ flex: 1, marginBottom: 24 }} title="Chat Box" />
+            <ContentBlock style={{ height: 240 }} title="Events" />
           </div>
         </PrestreamSection>
       </BlockContent>
