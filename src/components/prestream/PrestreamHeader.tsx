@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
 import dynamic from 'next/dynamic'
 import styled, { css } from 'styled-components'

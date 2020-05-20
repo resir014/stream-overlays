@@ -1,3 +1,13 @@
+:root {
+  --accent-streamlabs-prime: #caa368;
+  --accent-raid: #ff369a;
+  --accent-bits: #9b45ff;
+  --accent-host: #2234ce;
+  --accent-donation: #0076ff;
+  --accent-follow: #00bf80;
+  --accent-sub: #f5a623;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -74,31 +84,31 @@ body {
 }
 
 .ck-alert--streamlabs-prime .ck-alert__header {
-  background-color: #caa368;
+  background-color: var(--accent-streamlabs-prime);
 }
 
 .ck-alert--raid .ck-alert__header {
-  background-color: #ff369a;
+  background-color: var(--accent-raid);
 }
 
 .ck-alert--cheer .ck-alert__header {
-  background-color: #9b45ff;
+  background-color: var(--accent-bits);
 }
 
 .ck-alert--host .ck-alert__header {
-  background-color: #2234ce;
+  background-color: var(--accent-host);
 }
 
 .ck-alert--donation .ck-alert__header {
-  background-color: #0076ff;
+  background-color: var(--accent-donation);
 }
 
 .ck-alert--follow .ck-alert__header {
-  background-color: #00bf80;
+  background-color: var(--accent-follow);
 }
 
 .ck-alert--sub .ck-alert__header {
-  background-color: #f5a623;
+  background-color: var(--accent-sub);
 }
 
 .ck-alert__header h2 {
@@ -116,7 +126,7 @@ body {
 
 .ck-alert-text__inner {
   display: block !important;
-  padding: 20px;
+  padding: 10px 20px 20px;
   text-shadow: 0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
     0px 0px 5px #000;
 }

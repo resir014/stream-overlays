@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 
 import PrestreamBase from 'components/prestream/PrestreamBase'
 import Inner from 'components/layout/Inner'
-import PrestreamBlock from 'components/prestream/PrestreamBlock'
+import PrestreamBlock from 'src/modules/prestream/PrestreamBlock'
 import { AirtableRecord } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import endCardSplashes from 'utils/endCardSplashes'
@@ -31,8 +31,8 @@ const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
           title={streamName || 'Untitled Stream'}
           description={description}
           date={date}
-          gradientStart={colors.red}
-          gradientEnd={colors.orange}
+          backgroundColor={colors.red}
+          titleColor={colors.orange}
           splashes={endCardSplashes}
         />
       </Inner>

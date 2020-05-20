@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 
 import PrestreamBase from 'components/prestream/PrestreamBase'
 import Inner from 'components/layout/Inner'
-import PrestreamBlock from 'components/prestream/PrestreamBlock'
+import PrestreamBlock from 'src/modules/prestream/PrestreamBlock'
 import { AirtableRecord } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import brbSplashes from 'utils/brbSplashes'
@@ -31,8 +31,8 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
           title={streamName || 'Untitled Stream'}
           description={description}
           date={date}
-          gradientStart={colors.blue}
-          gradientEnd={colors.magenta}
+          backgroundColor={colors.purple}
+          titleColor={colors.cyan}
           splashes={brbSplashes}
         />
       </Inner>
