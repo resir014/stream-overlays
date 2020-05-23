@@ -6,11 +6,11 @@
 
 ### Live Coding
 
-![Overlay Preview](./public/static/code-overlay-preview.png)
+![Code overlay Preview](./public/static/code-overlay-preview.png)
 
 ### Gaming
 
-![Prestream preview](./public/static/game-overlay-preview.png)
+![Game overlay preview](./public/static/game-overlay-preview.jpg)
 
 ### Titlecards
 
