@@ -16,7 +16,7 @@ const fullScreenStyles = css`
 `
 
 const frameStyles = css`
-  height: 40px;
+  height: 32px;
   padding: 0 8px;
 `
 
