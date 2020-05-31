@@ -11,7 +11,7 @@ import FlightInfo from 'components/flightsim/FlightInfo'
 import fetch from 'utils/fetch'
 import OverlayWrapper from 'components/flightsim/OverlayWrapper'
 
-const FlightSimOverlayPage: NextPage = () => {
+const FlyLiveOverlayPage: NextPage = () => {
   // Calls the local FlyLive telemetry API endpoint and refetches every second
   const { data } = useSWR<APIResponse<FlyLiveParsedData>>('/api/flylive', fetch, {
     refreshInterval: 1000
@@ -61,4 +61,4 @@ const FlightSimOverlayPage: NextPage = () => {
   return null
 }
 
-export default FlightSimOverlayPage
+export default FlyLiveOverlayPage

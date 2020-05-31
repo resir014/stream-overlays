@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import useSWR from 'swr'
-import styled from 'styled-components'
 import LayoutRoot from 'components/layout/LayoutRoot'
 import FlightProgress from 'components/flightsim/FlightProgress'
 import { STKPOverlayResponse } from 'interfaces/simToolkitPro'
