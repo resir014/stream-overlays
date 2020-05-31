@@ -10,7 +10,7 @@ const FlightItinerary: React.FC<FlightItineraryProps> = ({ origin, destination }
   return (
     <ItemCard>
       <ItemTitle>
-        {origin} &gt; {destination}
+        {origin} -&gt; {destination}
       </ItemTitle>
     </ItemCard>
   )
