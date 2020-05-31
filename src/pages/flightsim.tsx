@@ -9,20 +9,7 @@ import { APIResponse } from 'interfaces/types'
 import FlightItinerary from 'components/flightsim/FlightItinerary'
 import FlightInfo from 'components/flightsim/FlightInfo'
 import fetch from 'utils/fetch'
-
-const OverlayWrapper = styled('div')`
-  display: flex;
-  flex-direction: row;
-  padding: 8px;
-
-  > section {
-    margin-right: 8px;
-
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
-`
+import OverlayWrapper from 'components/flightsim/OverlayWrapper'
 
 export const dummyData: STKPOverlayResponse = {
   opts: {

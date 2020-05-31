@@ -2,53 +2,14 @@ import * as React from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import styled from 'styled-components'
 import LayoutRoot from 'components/layout/LayoutRoot'
 import FlightProgress from 'components/flightsim/FlightProgress'
-import { STKPOverlayResponse } from 'interfaces/simToolkitPro'
 import { FlyLiveParsedData } from 'interfaces/flylive'
 import { APIResponse } from 'interfaces/types'
 import FlightItinerary from 'components/flightsim/FlightItinerary'
 import FlightInfo from 'components/flightsim/FlightInfo'
 import fetch from 'utils/fetch'
-
-const OverlayWrapper = styled('div')`
-  display: flex;
-  flex-direction: row;
-  padding: 8px;
-
-  > section {
-    margin-right: 8px;
-
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
-`
-
-export const dummyData: STKPOverlayResponse = {
-  opts: {
-    color: '#0081FF',
-    opacity: 1
-  },
-  v: {
-    Departure: 'WADD',
-    Destination: 'WIII',
-    Progress: 16,
-    ETE: '0:57:52',
-    Groundspeed: '460',
-    AirSpeed: '278',
-    TrueSpeed: '451',
-    VSpeed: '1509',
-    Altitude: 31959,
-    Heading: 298,
-    Callsign: 'GIA401',
-    Network: 'OFFLINE',
-    Reg: 'PK-GNV',
-    Airframe: 'B738',
-    currentphase: 'Climb'
-  }
-}
+import OverlayWrapper from 'components/flightsim/OverlayWrapper'
 
 const FlightSimOverlayPage: NextPage = () => {
   // Calls the local FlyLive telemetry API endpoint and refetches every second
