@@ -10,6 +10,7 @@ export const ItemCard = styled('section')`
   color: ${colors.white};
   font-size: 14px;
   line-height: 1;
+  font-feature-settings: 'kern' 1, 'ss01' 1, 'ss02' 1;
 `
 
 export const ItemTitle = styled('span')`
