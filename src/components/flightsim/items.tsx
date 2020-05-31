@@ -8,8 +8,9 @@ export const ItemCard = styled('section')`
   border-left: 4px solid ${colors.blue};
   background-color: ${rgba(colors.black, 0.7)};
   color: ${colors.white};
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1;
+  font-feature-settings: 'kern' 1, 'ss01' 1, 'ss02' 1;
 `
 
 export const ItemTitle = styled('span')`
