@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
-import styled, { css } from 'styled-components'
+import { css } from '@emotion/core'
+import styled from '@emotion/styled'
 import { colors } from 'styles/variables'
 
 interface BlockHeaderProps {
@@ -47,6 +49,8 @@ const HeaderTitle = styled('h1')`
   }
 `
 
+const HeaderSubtitle = HeaderTitle.withComponent('h2')
+
 export default function BlockHeader({ isFrame, title }: BlockHeaderProps) {
   return (
     <Root isFrame={isFrame}>
@@ -56,9 +60,9 @@ export default function BlockHeader({ isFrame, title }: BlockHeaderProps) {
         </HeaderTitle>
       </BlockHeaderInner>
       <BlockHeaderInner right>
-        <HeaderTitle as="h2">
+        <HeaderSubtitle>
           <span>{title || 'Untitled Stream'}</span>
-        </HeaderTitle>
+        </HeaderSubtitle>
       </BlockHeaderInner>
     </Root>
   )
