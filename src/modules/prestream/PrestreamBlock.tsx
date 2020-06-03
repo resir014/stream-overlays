@@ -1,5 +1,6 @@
 import * as React from 'react'
-import styled, { css } from 'styled-components'
+import { css } from '@emotion/core'
+import styled from '@emotion/styled'
 import { Transition } from 'react-transition-group'
 import { TransitionStatus } from 'react-transition-group/Transition'
 import { format } from 'date-fns'

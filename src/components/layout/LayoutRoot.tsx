@@ -1,8 +1,7 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import { colors } from 'styles/variables'
-import GlobalStyles from './GlobalStyles'
 
 interface RootProps {
   isGreenScreen?: boolean
@@ -32,7 +31,6 @@ const Base = styled('div')<RootProps>`
 
 const LayoutRoot: React.FC<RootProps> = ({ children, isGreenScreen, isTransparent }) => (
   <Base isGreenScreen={isGreenScreen} isTransparent={isTransparent}>
-    <GlobalStyles />
     {children}
   </Base>
 )

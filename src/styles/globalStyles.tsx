@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import css from 'styled-jsx/css'
+import { css } from '@emotion/core'
 import { fonts, colors } from './variables'
 
 const progressBarColor = '#000'
 
-const global = css.global`
+const globalStyles = css`
   html {
     box-sizing: border-box;
   }
@@ -129,4 +129,4 @@ const global = css.global`
   }
 `
 
-export default global
+export default globalStyles

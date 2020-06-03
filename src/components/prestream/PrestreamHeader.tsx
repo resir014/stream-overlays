@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
 import dynamic from 'next/dynamic'
-import styled, { css } from 'styled-components'
+import { css } from '@emotion/core'
+import styled from '@emotion/styled'
 
 interface PrestreamHeaderProps {
   isFrame?: boolean

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { format } from 'date-fns'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import useClock from 'utils/useClock'
 
