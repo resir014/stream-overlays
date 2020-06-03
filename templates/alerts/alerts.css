@@ -8,11 +8,11 @@
   --accent-sub: #f5a623;
 }
 
-* {
+html {
   box-sizing: border-box;
 }
 
-html {
+* {
   box-sizing: inherit;
 }
 
