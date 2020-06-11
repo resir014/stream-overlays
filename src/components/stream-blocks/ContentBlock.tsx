@@ -40,7 +40,7 @@ const StreamStatus = styled('span')`
   line-height: 1.15;
   font-family: ${fonts.monospace};
   text-transform: uppercase;
-  box-shadow: 0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+  text-shadow: 0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
     0px 0px 5px #000;
 `
 
