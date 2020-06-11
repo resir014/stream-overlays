@@ -24,13 +24,13 @@ const Content = styled('div')`
   display: flex;
   align-items: center;
   flex: 1;
-  padding: 0 24px 12px;
+  padding: 0 16px 8px;
 `
 
 const Inner = styled('div')``
 
 const Header = styled('div')`
-  padding: 12px 24px 8px;
+  padding: 8px 16px 8px;
 `
 
 const StreamStatus = styled('span')`
