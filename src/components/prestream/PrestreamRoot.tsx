@@ -1,7 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+
 import { colors } from 'styles/variables'
-import { topoPattern } from 'styles/pattern'
+import topoPattern from 'styles/topoPattern'
 
 import PrestreamHeader from './PrestreamHeader'
 

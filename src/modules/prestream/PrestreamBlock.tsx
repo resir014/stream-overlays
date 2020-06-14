@@ -15,6 +15,7 @@ import ContentBlock from 'components/stream-blocks/ContentBlock'
 import BlockContent, { BlockParagraph } from '../../components/layout/BlockContent'
 import PrestreamRoot from '../../components/prestream/PrestreamRoot'
 import PrestreamSection from '../../components/prestream/PrestreamSection'
+import PrestreamLogo from '../../components/prestream/PrestreamLogo'
 
 const TRANSITION_DURATION = 500
 
@@ -113,6 +114,7 @@ export default function PrestreamBlock({
                 flex: 1;
               `}
             >
+              <PrestreamLogo />
               <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
             </div>
           </ContentBlock>

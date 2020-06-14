@@ -61,6 +61,9 @@ export default function PrestreamHeader({ isFrame }: PrestreamHeaderProps) {
           @resir014 <span>// resir014.xyz</span>
         </PrestreamTitle>
       </PrestreamHeaderInner>
+      <PrestreamHeaderInner right>
+        <HeaderSub>twitch.tv/resir014</HeaderSub>
+      </PrestreamHeaderInner>
     </Root>
   )
 }
