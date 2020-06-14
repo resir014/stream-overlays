@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import PrestreamBase from 'components/prestream/PrestreamBase'
-import Inner from 'components/layout/Inner'
-import PrestreamBlock from 'src/modules/prestream/PrestreamBlock'
+import LayoutRoot from 'components/layout/LayoutRoot'
+import PrestreamBlock from 'modules/prestream/PrestreamBlock'
+
 import { AirtableRecord } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import brbSplashes from 'utils/brbSplashes'
@@ -23,19 +23,17 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
   const date = firstRecord?.fields['Date']
 
   return (
-    <PrestreamBase>
-      <Inner>
-        <PrestreamBlock
-          heading="Please stand by..."
-          title={streamName || 'Untitled Stream'}
-          description={description}
-          date={date}
-          backgroundColor={colors.purple}
-          titleColor={colors.cyan}
-          splashes={brbSplashes}
-        />
-      </Inner>
-    </PrestreamBase>
+    <LayoutRoot isTransparent>
+      <PrestreamBlock
+        heading="Please stand by..."
+        title={streamName || 'Untitled Stream'}
+        description={description}
+        date={date}
+        backgroundColor={colors.purple}
+        titleColor={colors.cyan}
+        splashes={brbSplashes}
+      />
+    </LayoutRoot>
   )
 }
 

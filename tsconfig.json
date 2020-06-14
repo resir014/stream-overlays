@@ -8,6 +8,7 @@
     "paths": {
       "components/*": ["src/components/*"],
       "interfaces/*": ["src/interfaces/*"],
+      "modules/*": ["src/modules/*"],
       "pages/*": ["src/pages/*"],
       "styles/*": ["src/styles/*"],
       "utils/*": ["src/utils/*"]
