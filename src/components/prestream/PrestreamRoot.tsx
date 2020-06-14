@@ -1,6 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'styles/variables'
+import { topoPattern } from 'styles/pattern'
+
 import PrestreamHeader from './PrestreamHeader'
 
 const Root = styled('section')`
@@ -14,7 +16,9 @@ const Root = styled('section')`
   padding: 24px 48px;
   font-size: 24px;
   color: ${colors.white};
-  background-color: ${colors.black};
+  z-index: 1;
+
+  ${topoPattern}
 `
 
 const GridWrapper = styled('div')`
@@ -22,6 +26,7 @@ const GridWrapper = styled('div')`
   grid-template-columns: 1fr 1fr minmax(auto, 1920px) 1fr 1fr;
   height: 100%;
   flex: 1;
+  z-index: 2;
 `
 
 const Inner = styled('div')`

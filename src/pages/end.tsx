@@ -26,8 +26,7 @@ const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
     <PrestreamBase>
       <Inner>
         <PrestreamBlock
-          streamName={streamName}
-          heading="Stream ended. Thanks for watching!"
+          heading={<>Stream ended. Thanks&nbsp;for&nbsp;watching!</>}
           title={streamName || 'Untitled Stream'}
           description={description}
           date={date}

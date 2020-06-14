@@ -26,7 +26,6 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
     <PrestreamBase>
       <Inner>
         <PrestreamBlock
-          streamName={streamName}
           heading="Please stand by..."
           title={streamName || 'Untitled Stream'}
           description={description}

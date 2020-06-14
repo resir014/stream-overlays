@@ -54,19 +54,13 @@ export const HeaderSub = styled('h2')`
   font-weight: 400;
 `
 
-const PrestreamDateTime = dynamic(() => import('./PrestreamDateTime'), { ssr: false })
-
-export default function PrestreamHeader({ isFrame, title }: PrestreamHeaderProps) {
+export default function PrestreamHeader({ isFrame }: PrestreamHeaderProps) {
   return (
     <Root isFrame={isFrame}>
       <PrestreamHeaderInner>
         <PrestreamTitle>
           @resir014 <span>// resir014.xyz</span>
         </PrestreamTitle>
-        {title && <HeaderSub>{title}</HeaderSub>}
-      </PrestreamHeaderInner>
-      <PrestreamHeaderInner right>
-        <PrestreamDateTime />
       </PrestreamHeaderInner>
     </Root>
   )

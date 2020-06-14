@@ -3,28 +3,35 @@ import { format } from 'date-fns'
 import styled from '@emotion/styled'
 
 import useClock from 'utils/useClock'
+import { colors } from 'styles/variables'
+
+interface PrestreamDateTimeProps {
+  titleColor?: string
+}
 
 const HeaderDate = styled('p')`
   margin: 0;
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 400;
+  margin-right: 4px;
+  font-size: 28px;
+  line-height: 1.5;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
 
   span {
-    margin-right: 8px;
     font-weight: 600;
   }
 `
 
-const HeaderTime = styled('p')`
+const HeaderTime = styled('span')<Pick<PrestreamDateTimeProps, 'titleColor'>>`
+  display: block;
   margin: 0;
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
+  font-size: 96px;
+  line-height: 104px;
+  color: ${props => props.titleColor || colors.white};
+  font-weight: 600;
 `
 
-const PrestreamDateTime = () => {
+const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor }) => {
   const time = useClock()
 
   return (
@@ -32,7 +39,7 @@ const PrestreamDateTime = () => {
       <HeaderDate>
         <span>{format(time, 'EEEE')}</span> {format(time, 'dd MMMM yyyy')}
       </HeaderDate>
-      <HeaderTime>{format(time, 'HH:mm:ss')}</HeaderTime>
+      <HeaderTime titleColor={titleColor}>{format(time, 'HH:mm:ss')}</HeaderTime>
     </>
   )
 }

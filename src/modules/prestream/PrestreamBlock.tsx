@@ -1,4 +1,5 @@
 import * as React from 'react'
+import dynamic from 'next/dynamic'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Transition } from 'react-transition-group'
@@ -8,11 +9,10 @@ import { format } from 'date-fns'
 import useInterval from 'utils/useInterval'
 import sleep from 'utils/sleep'
 import welcomeSplashes from 'utils/welcomeSplashes'
-import { colors } from 'styles/variables'
 
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
-import BlockContent from '../../components/layout/BlockContent'
+import BlockContent, { BlockParagraph } from '../../components/layout/BlockContent'
 import PrestreamRoot from '../../components/prestream/PrestreamRoot'
 import PrestreamSection from '../../components/prestream/PrestreamSection'
 
@@ -23,9 +23,9 @@ interface FooterParagraphProps {
 }
 
 interface PrestreamBlockProps {
-  heading?: string
+  heading?: React.ReactNode
   title: string
-  streamName?: string
+  subheading?: string
   date?: string
   description?: string
   titleColor?: string
@@ -56,14 +56,9 @@ const FooterParagraph = styled('p')<FooterParagraphProps>`
   ${props => props.state === 'exited' && Exited}
 `
 
-const StreamTitle = styled('h2')<Pick<PrestreamBlockProps, 'titleColor'>>`
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 72px;
-  line-height: 1.15;
-  font-weight: 600;
-  color: ${props => props.titleColor || colors.white};
-`
+const PrestreamDateTime = dynamic(() => import('components/prestream/PrestreamDateTime'), {
+  ssr: false
+})
 
 export default function PrestreamBlock({
   heading,
@@ -101,46 +96,50 @@ export default function PrestreamBlock({
     <PrestreamRoot>
       <BlockContent>
         <PrestreamSection>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <ContentBlock
-              style={{ flex: 1, marginBottom: 24 }}
-              title={heading || 'Untitled'}
-              backgroundColor={backgroundColor}
-              textColor={textColor}
+          <ContentBlock
+            hasShadow
+            css={css`
+              height: 640px;
+              margin-bottom: 24px;
+            `}
+            backgroundColor={backgroundColor}
+            textColor={textColor}
+          >
+            <div
+              css={css`
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 24px;
+                flex: 1;
+              `}
             >
-              <StreamTitle titleColor={titleColor}>{title}</StreamTitle>
-              <p>{description || 'No description given.'}</p>
-            </ContentBlock>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr 1fr',
-                  gridGap: 24,
-                  marginBottom: 24
-                }}
-              >
-                {date && (
-                  <ContentBlock title="Date">
-                    {format(Date.parse(date), 'dd MMMM yyyy')}
-                  </ContentBlock>
-                )}
-                <ContentBlock title="Time">21:00 (GMT +7) / 1400z</ContentBlock>
-                <ContentBlock title="Location">twitch.tv/resir014</ContentBlock>
+              <div>
+                <PrestreamDateTime titleColor={titleColor} />
+                <BlockParagraph>{heading || 'Untitled'}</BlockParagraph>
               </div>
-              <ContentBlock style={{ height: 122, flex: 1 }} title="Notes">
-                <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
-                  {state => (
-                    <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>
-                  )}
-                </Transition>
-              </ContentBlock>
             </div>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <ContentBlock style={{ flex: 1, marginBottom: 24 }} title="Chatbox" />
-            <ContentBlock style={{ height: 240 }} title="Events" />
-          </div>
+          </ContentBlock>
+          <ContentBlock
+            hasShadow
+            css={css`
+              margin-bottom: 24px;
+            `}
+          >
+            <BlockParagraph>
+              {date && (
+                <strong>
+                  {format(Date.parse(date), 'yyyy.MM.dd')} — {title}
+                </strong>
+              )}
+              <br />
+              {description || 'No description given.'}
+            </BlockParagraph>
+          </ContentBlock>
+          <ContentBlock hasShadow>
+            <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
+              {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
+            </Transition>
+          </ContentBlock>
         </PrestreamSection>
       </BlockContent>
     </PrestreamRoot>
