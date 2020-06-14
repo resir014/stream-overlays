@@ -100,6 +100,26 @@ export default function PrestreamBlock({
           <ContentBlock
             hasShadow
             css={css`
+              margin-bottom: 24px;
+            `}
+          >
+            <BlockParagraph
+              css={css`
+                margin-bottom: 24px;
+              `}
+            >
+              {date && (
+                <strong>
+                  {format(Date.parse(date), 'yyyy.MM.dd')} — {title}
+                </strong>
+              )}
+              <br />
+              {description || 'No description given.'}
+            </BlockParagraph>
+          </ContentBlock>
+          <ContentBlock
+            hasShadow
+            css={css`
               height: 640px;
               margin-bottom: 24px;
             `}
@@ -118,25 +138,7 @@ export default function PrestreamBlock({
               <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
             </div>
           </ContentBlock>
-          <ContentBlock
-            hasShadow
-            css={css`
-              margin-bottom: 24px;
-            `}
-          >
-            <BlockParagraph
-              css={css`
-                margin-bottom: 24px;
-              `}
-            >
-              {date && (
-                <strong>
-                  {format(Date.parse(date), 'yyyy.MM.dd')} — {title}
-                </strong>
-              )}
-              <br />
-              {description || 'No description given.'}
-            </BlockParagraph>
+          <ContentBlock>
             <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
               {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
             </Transition>
