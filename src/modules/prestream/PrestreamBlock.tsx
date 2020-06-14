@@ -113,10 +113,7 @@ export default function PrestreamBlock({
                 flex: 1;
               `}
             >
-              <div>
-                <PrestreamDateTime titleColor={titleColor} />
-                <BlockParagraph>{heading || 'Untitled'}</BlockParagraph>
-              </div>
+              <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
             </div>
           </ContentBlock>
           <ContentBlock
@@ -125,7 +122,11 @@ export default function PrestreamBlock({
               margin-bottom: 24px;
             `}
           >
-            <BlockParagraph>
+            <BlockParagraph
+              css={css`
+                margin-bottom: 24px;
+              `}
+            >
               {date && (
                 <strong>
                   {format(Date.parse(date), 'yyyy.MM.dd')} — {title}
@@ -134,8 +135,6 @@ export default function PrestreamBlock({
               <br />
               {description || 'No description given.'}
             </BlockParagraph>
-          </ContentBlock>
-          <ContentBlock hasShadow>
             <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
               {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
             </Transition>

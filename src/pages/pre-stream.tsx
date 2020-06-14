@@ -25,7 +25,7 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ initialData }) => {
     <PrestreamBase>
       <Inner>
         <PrestreamBlock
-          heading="Stream Starting Soon..."
+          heading="Stream starting soon..."
           title={streamName || 'Untitled Stream'}
           description={description}
           date={date}

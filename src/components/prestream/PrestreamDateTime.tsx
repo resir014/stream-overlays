@@ -7,13 +7,14 @@ import { colors } from 'styles/variables'
 
 interface PrestreamDateTimeProps {
   titleColor?: string
+  text?: React.ReactNode
 }
 
-const HeaderDate = styled('p')`
+const TimestampText = styled('time')`
   margin: 0;
-  margin-right: 4px;
-  font-size: 28px;
-  line-height: 1.5;
+  margin-left: 4px;
+  font-size: 44px;
+  line-height: 48px;
   font-weight: 300;
   font-variant-numeric: tabular-nums;
 
@@ -22,25 +23,26 @@ const HeaderDate = styled('p')`
   }
 `
 
-const HeaderTime = styled('span')<Pick<PrestreamDateTimeProps, 'titleColor'>>`
+const TimestampTime = styled('span')<Pick<PrestreamDateTimeProps, 'titleColor'>>`
   display: block;
   margin: 0;
-  font-size: 96px;
-  line-height: 104px;
+  font-size: 140px;
+  line-height: 148px;
   color: ${props => props.titleColor || colors.white};
   font-weight: 600;
 `
 
-const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor }) => {
+const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text }) => {
   const time = useClock()
 
   return (
-    <>
-      <HeaderDate>
+    <div>
+      <TimestampText dateTime={time.toISOString()}>
         <span>{format(time, 'EEEE')}</span> {format(time, 'dd MMMM yyyy')}
-      </HeaderDate>
-      <HeaderTime titleColor={titleColor}>{format(time, 'HH:mm:ss')}</HeaderTime>
-    </>
+      </TimestampText>
+      <TimestampTime titleColor={titleColor}>{format(time, 'HH:mm:ss')}</TimestampTime>
+      {text && <TimestampText>{text}</TimestampText>}
+    </div>
   )
 }
 
