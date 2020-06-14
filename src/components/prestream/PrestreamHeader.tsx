@@ -2,10 +2,13 @@
 import * as React from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
+import format from 'date-fns/format'
 
 interface PrestreamHeaderProps {
   isFrame?: boolean
   title?: string
+  date?: string
+  subtitle?: string
 }
 
 interface PrestreamHeaderInnerProps {
@@ -13,7 +16,7 @@ interface PrestreamHeaderInnerProps {
 }
 
 const fullScreenStyles = css`
-  padding: 8px;
+  padding: 0;
 `
 
 const frameStyles = css`
@@ -41,6 +44,10 @@ const PrestreamTitle = styled('h1')`
   line-height: 32px;
   font-weight: 600;
 
+  strong {
+    font-weight: 700;
+  }
+
   span {
     font-weight: 400;
   }
@@ -53,16 +60,37 @@ export const HeaderSub = styled('h2')`
   font-weight: 400;
 `
 
-export default function PrestreamHeader({ isFrame }: PrestreamHeaderProps) {
+export default function PrestreamHeader({ isFrame, title, date, subtitle }: PrestreamHeaderProps) {
+  if (isFrame) {
+    return (
+      <Root isFrame={isFrame}>
+        <PrestreamHeaderInner>
+          <PrestreamTitle>
+            @resir014 <span>// resir014.xyz</span>
+          </PrestreamTitle>
+        </PrestreamHeaderInner>
+        <PrestreamHeaderInner right>
+          <HeaderSub>twitch.tv/resir014</HeaderSub>
+        </PrestreamHeaderInner>
+      </Root>
+    )
+  }
+
   return (
-    <Root isFrame={isFrame}>
+    <Root
+      isFrame={isFrame}
+      css={css`
+        position: absolute;
+      `}
+    >
       <PrestreamHeaderInner>
         <PrestreamTitle>
-          @resir014 <span>// resir014.xyz</span>
+          <strong>
+            {date && <>{format(Date.parse(date), 'yyyy.MM.dd')} — </>}
+            {title}
+          </strong>
         </PrestreamTitle>
-      </PrestreamHeaderInner>
-      <PrestreamHeaderInner right>
-        <HeaderSub>twitch.tv/resir014</HeaderSub>
+        {subtitle && <HeaderSub>{subtitle}</HeaderSub>}
       </PrestreamHeaderInner>
     </Root>
   )

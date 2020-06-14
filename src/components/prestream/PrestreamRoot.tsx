@@ -6,6 +6,12 @@ import topoPattern from 'styles/topoPattern'
 
 import PrestreamHeader from './PrestreamHeader'
 
+interface PrestreamRootProps {
+  title?: string
+  date?: string
+  subtitle?: string
+}
+
 const Root = styled('section')`
   display: flex;
   flex-direction: row;
@@ -37,11 +43,11 @@ const Inner = styled('div')`
   flex: 1;
 `
 
-const PrestreamRoot: React.FC = ({ children }) => (
+const PrestreamRoot: React.FC<PrestreamRootProps> = ({ children, title, date, subtitle }) => (
   <Root>
     <GridWrapper>
       <Inner>
-        <PrestreamHeader title="twitch.tv/resir014" />
+        <PrestreamHeader title={title || 'twitch.tv/resir014'} date={date} subtitle={subtitle} />
         {children}
       </Inner>
     </GridWrapper>

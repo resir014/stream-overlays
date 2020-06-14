@@ -6,16 +6,18 @@ import { Transition } from 'react-transition-group'
 import { TransitionStatus } from 'react-transition-group/Transition'
 import { format } from 'date-fns'
 
+import { colors } from 'styles/variables'
 import useInterval from 'utils/useInterval'
 import sleep from 'utils/sleep'
 import welcomeSplashes from 'utils/welcomeSplashes'
 
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
-import BlockContent, { BlockParagraph } from '../../components/layout/BlockContent'
-import PrestreamRoot from '../../components/prestream/PrestreamRoot'
-import PrestreamSection from '../../components/prestream/PrestreamSection'
-import PrestreamLogo from '../../components/prestream/PrestreamLogo'
+import BlockContent from 'components/layout/BlockContent'
+import PrestreamRoot from 'components/prestream/PrestreamRoot'
+import PrestreamSection from 'components/prestream/PrestreamSection'
+import PrestreamLogo from 'components/prestream/PrestreamLogo'
+import PrestreamFooterBlock from 'components/stream-blocks/PrestreamFooterBlock'
 
 const TRANSITION_DURATION = 500
 
@@ -94,57 +96,53 @@ export default function PrestreamBlock({
   }, 8000)
 
   return (
-    <PrestreamRoot>
-      <BlockContent>
-        <PrestreamSection>
-          <ContentBlock
-            hasShadow
-            css={css`
-              margin-bottom: 24px;
-            `}
-          >
-            <BlockParagraph
+    <>
+      <PrestreamRoot
+        title={title}
+        date={date ? format(Date.parse(date), 'yyyy.MM.dd') : undefined}
+        subtitle={description || 'No description given.'}
+      >
+        <BlockContent>
+          <PrestreamSection>
+            <ContentBlock
+              hasShadow
               css={css`
-                margin-bottom: 24px;
+                height: 640px;
               `}
+              backgroundColor={backgroundColor}
+              textColor={textColor}
             >
-              {date && (
-                <strong>
-                  {format(Date.parse(date), 'yyyy.MM.dd')} — {title}
-                </strong>
-              )}
-              <br />
-              {description || 'No description given.'}
-            </BlockParagraph>
-          </ContentBlock>
-          <ContentBlock
-            hasShadow
-            css={css`
-              height: 640px;
-              margin-bottom: 24px;
-            `}
-            backgroundColor={backgroundColor}
-            textColor={textColor}
-          >
-            <div
-              css={css`
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-gap: 24px;
-                flex: 1;
-              `}
-            >
-              <PrestreamLogo />
-              <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
-            </div>
-          </ContentBlock>
-          <ContentBlock>
-            <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
-              {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
-            </Transition>
-          </ContentBlock>
-        </PrestreamSection>
-      </BlockContent>
-    </PrestreamRoot>
+              <div
+                css={css`
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  grid-gap: 24px;
+                  flex: 1;
+                `}
+              >
+                <PrestreamLogo />
+                <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
+              </div>
+            </ContentBlock>
+          </PrestreamSection>
+        </BlockContent>
+      </PrestreamRoot>
+      <PrestreamFooterBlock
+        css={css`
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          border-radius: 0;
+          border: none;
+          border-top: 4px solid ${colors.grey90};
+          z-index: 3;
+        `}
+      >
+        <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
+          {state => <FooterParagraph state={state}>{splashes[currentIndex]}</FooterParagraph>}
+        </Transition>
+      </PrestreamFooterBlock>
+    </>
   )
 }
