@@ -40,7 +40,6 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
   return (
     <div
       css={css`
-        margin-right: 32px;
         text-align: right;
       `}
     >

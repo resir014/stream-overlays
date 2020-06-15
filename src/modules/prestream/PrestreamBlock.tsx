@@ -63,8 +63,26 @@ export default function PrestreamBlock({
                 flex: 1;
               `}
             >
-              <PrestreamLogo />
-              <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
+              <div
+                css={css`
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                  margin-left: 32px;
+                `}
+              >
+                <PrestreamLogo />
+              </div>
+              <div
+                css={css`
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  margin-right: 32px;
+                `}
+              >
+                <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
+              </div>
             </div>
           </ContentBlock>
         </PrestreamSection>

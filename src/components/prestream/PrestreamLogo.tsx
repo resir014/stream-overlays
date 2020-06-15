@@ -7,7 +7,6 @@ const Root = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 32px;
 `
 
 const Image = styled('img')`
