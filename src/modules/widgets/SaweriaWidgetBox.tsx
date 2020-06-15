@@ -1,11 +1,11 @@
 import * as React from 'react'
 import toast from 'toasted-notes'
 
-import Alert from './Alert'
+import Alert from '../../components/alerts/Alert'
 
 const saweriaAlertURL = `https://api.saweria.co/stream?channel=donation.${process.env.NEXT_PUBLIC_SAWERIA_STREAM_KEY}`
 
-const SaweriaAlerts: React.FC = () => {
+const SaweriaWidgetBox: React.FC = () => {
   const [listening, setListening] = React.useState(false)
   const audio = new Audio('/static/audio/91926__tim-kahn__ding-jVE.wav')
   const eventSource = saweriaAlertURL ? new EventSource(saweriaAlertURL) : undefined
@@ -52,4 +52,4 @@ const SaweriaAlerts: React.FC = () => {
   return null
 }
 
-export default SaweriaAlerts
+export default SaweriaWidgetBox
