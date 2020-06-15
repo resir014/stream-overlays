@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import PrestreamBase from 'components/prestream/PrestreamBase'
-import Inner from 'components/layout/Inner'
-import PrestreamBlock from 'src/modules/prestream/PrestreamBlock'
+import LayoutRoot from 'components/layout/LayoutRoot'
+import PrestreamBlock from 'modules/prestream/PrestreamBlock'
+
 import { AirtableRecord } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import endCardSplashes from 'utils/endCardSplashes'
@@ -23,20 +23,17 @@ const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
   const date = firstRecord?.fields['Date']
 
   return (
-    <PrestreamBase>
-      <Inner>
-        <PrestreamBlock
-          streamName={streamName}
-          heading="Stream ended. Thanks for watching!"
-          title={streamName || 'Untitled Stream'}
-          description={description}
-          date={date}
-          backgroundColor={colors.red}
-          titleColor={colors.orange}
-          splashes={endCardSplashes}
-        />
-      </Inner>
-    </PrestreamBase>
+    <LayoutRoot isTransparent>
+      <PrestreamBlock
+        heading={<>Stream ended. Thanks&nbsp;for&nbsp;watching!</>}
+        title={streamName || 'Untitled Stream'}
+        description={description}
+        date={date}
+        backgroundColor={colors.red}
+        titleColor={colors.orange}
+        splashes={endCardSplashes}
+      />
+    </LayoutRoot>
   )
 }
 

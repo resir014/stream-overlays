@@ -1,12 +1,14 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
-import dynamic from 'next/dynamic'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
+import format from 'date-fns/format'
 
 interface PrestreamHeaderProps {
   isFrame?: boolean
   title?: string
+  date?: string
+  subtitle?: string
 }
 
 interface PrestreamHeaderInnerProps {
@@ -14,7 +16,7 @@ interface PrestreamHeaderInnerProps {
 }
 
 const fullScreenStyles = css`
-  padding: 8px;
+  padding: 0;
 `
 
 const frameStyles = css`
@@ -42,6 +44,10 @@ const PrestreamTitle = styled('h1')`
   line-height: 32px;
   font-weight: 600;
 
+  strong {
+    font-weight: 700;
+  }
+
   span {
     font-weight: 400;
   }
@@ -54,19 +60,37 @@ export const HeaderSub = styled('h2')`
   font-weight: 400;
 `
 
-const PrestreamDateTime = dynamic(() => import('./PrestreamDateTime'), { ssr: false })
+export default function PrestreamHeader({ isFrame, title, date, subtitle }: PrestreamHeaderProps) {
+  if (isFrame) {
+    return (
+      <Root isFrame={isFrame}>
+        <PrestreamHeaderInner>
+          <PrestreamTitle>
+            @resir014 <span>// resir014.xyz</span>
+          </PrestreamTitle>
+        </PrestreamHeaderInner>
+        <PrestreamHeaderInner right>
+          <HeaderSub>twitch.tv/resir014</HeaderSub>
+        </PrestreamHeaderInner>
+      </Root>
+    )
+  }
 
-export default function PrestreamHeader({ isFrame, title }: PrestreamHeaderProps) {
   return (
-    <Root isFrame={isFrame}>
+    <Root
+      isFrame={isFrame}
+      css={css`
+        position: absolute;
+      `}
+    >
       <PrestreamHeaderInner>
         <PrestreamTitle>
-          @resir014 <span>// resir014.xyz</span>
+          <strong>
+            {date && <>{format(Date.parse(date), 'yyyy.MM.dd')} — </>}
+            {title}
+          </strong>
         </PrestreamTitle>
-        {title && <HeaderSub>{title}</HeaderSub>}
-      </PrestreamHeaderInner>
-      <PrestreamHeaderInner right>
-        <PrestreamDateTime />
+        {subtitle && <HeaderSub>{subtitle}</HeaderSub>}
       </PrestreamHeaderInner>
     </Root>
   )

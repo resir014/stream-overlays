@@ -1,33 +1,42 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { colors, fonts } from 'styles/variables'
 import { transparentize } from 'polished'
 
 interface ContentBlockProps {
   className?: string
   style?: React.CSSProperties
-  title: string
+  title?: string
   backgroundColor?: string
   textColor?: string
+  hasShadow?: boolean
 }
 
-const Root = styled('div')<Pick<ContentBlockProps, 'backgroundColor' | 'textColor'>>`
+const Root = styled('div')<Pick<ContentBlockProps, 'backgroundColor' | 'textColor' | 'hasShadow'>>`
   display: flex;
   flex-direction: column;
   background-color: ${props => transparentize(0.6, props.backgroundColor || colors.grey90)};
   border: 4px solid ${props => props.backgroundColor || colors.grey90};
   color: ${props => props.textColor || colors.white};
   border-radius: 8px;
+  ${props =>
+    props.hasShadow &&
+    css`
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+    `}
 `
 
-const Content = styled('div')`
+const Content = styled('div')<{ hasTitle?: boolean }>`
   display: flex;
   align-items: center;
   flex: 1;
-  padding: 0 16px 8px;
+  padding: ${props => (props.hasTitle ? `0 16px 8px` : `8px 16px 8px`)};
 `
 
-const Inner = styled('div')``
+const Inner = styled('div')`
+  width: 100%;
+`
 
 const Header = styled('div')`
   padding: 8px 16px 8px;
@@ -50,7 +59,8 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
   title,
   children,
   backgroundColor,
-  textColor
+  textColor,
+  hasShadow
 }) => {
   return (
     <Root
@@ -58,11 +68,14 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
       style={style}
       backgroundColor={backgroundColor}
       textColor={textColor}
+      hasShadow={hasShadow}
     >
-      <Header>
-        <StreamStatus>{title}</StreamStatus>
-      </Header>
-      <Content>
+      {title && (
+        <Header>
+          <StreamStatus>{title}</StreamStatus>
+        </Header>
+      )}
+      <Content hasTitle={!!title}>
         <Inner>{children}</Inner>
       </Content>
     </Root>

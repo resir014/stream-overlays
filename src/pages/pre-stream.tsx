@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import PrestreamBase from 'components/prestream/PrestreamBase'
-import PrestreamBlock from 'src/modules/prestream/PrestreamBlock'
-import Inner from 'components/layout/Inner'
+import LayoutRoot from 'components/layout/LayoutRoot'
+import PrestreamBlock from 'modules/prestream/PrestreamBlock'
+
 import { AirtableRecord } from 'interfaces/types'
 import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'
 import { colors } from 'styles/variables'
@@ -22,19 +22,16 @@ const PrestreamPage: NextPage<PrestreamPageProps> = ({ initialData }) => {
   const date = firstRecord?.fields['Date']
 
   return (
-    <PrestreamBase>
-      <Inner>
-        <PrestreamBlock
-          heading="Stream Starting Soon..."
-          streamName={streamName}
-          title={streamName || 'Untitled Stream'}
-          description={description}
-          date={date}
-          titleColor={colors.green}
-          backgroundColor={colors.ultramarine}
-        />
-      </Inner>
-    </PrestreamBase>
+    <LayoutRoot isTransparent>
+      <PrestreamBlock
+        heading="Stream starting soon..."
+        title={streamName || 'Untitled Stream'}
+        description={description}
+        date={date}
+        titleColor={colors.green}
+        backgroundColor={colors.ultramarine}
+      />
+    </LayoutRoot>
   )
 }
 

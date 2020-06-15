@@ -7,17 +7,20 @@ const BlockContent = styled('section')`
   flex: 1;
   width: 100%;
   margin: 0;
-  font-size: 24px;
+`
 
-  p {
-    margin: 8px 0;
-    font-size: 28px;
-    line-height: 1.5;
+export const BlockParagraph = styled('p')`
+  margin: 0 0 8px;
+  font-size: 28px;
+  line-height: 1.5;
 
-    strong {
-      display: inline;
-      line-height: 1;
-    }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  strong {
+    display: inline;
+    line-height: 1;
   }
 `
 
