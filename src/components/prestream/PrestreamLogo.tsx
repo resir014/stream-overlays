@@ -45,7 +45,7 @@ export default function PrestreamLogo() {
         `}
       >
         <PrestreamTitle>
-          resir014 <span>&#47;&#47; resir014.xyz</span>
+          @resir014 <span>&#47;&#47; resir014.xyz</span>
         </PrestreamTitle>
         <HeaderSub>twitch.tv/resir014</HeaderSub>
       </div>
