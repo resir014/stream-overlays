@@ -51,7 +51,7 @@ const HeaderTitle = styled('h1')`
 
 const HeaderSubtitle = HeaderTitle.withComponent('h2')
 
-export default function BlockHeader({ isFrame, title }: BlockHeaderProps) {
+export default function HeaderWidget({ isFrame, title }: BlockHeaderProps) {
   return (
     <Root isFrame={isFrame}>
       <BlockHeaderInner>

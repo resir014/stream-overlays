@@ -4,8 +4,8 @@ import styled from '@emotion/styled'
 import { colors } from 'styles/variables'
 
 import BlockRoot from '../layout/BlockRoot'
-import BlockHeader from '../layout/BlockHeader'
-import BlockFooter from '../layout/BlockFooter'
+import HeaderWidget from '../../modules/widgets/HeaderWidget'
+import FooterWidget from '../../modules/widgets/FooterWidget'
 
 interface HeaderTitleProps {
   lowercase?: boolean
@@ -39,11 +39,11 @@ interface MainWindowBlockProps {
 export default function MainWindowBlock({ title, isDisplayStream }: MainWindowBlockProps) {
   return (
     <BlockRoot>
-      <BlockHeader isFrame title={title || 'Untitled Stream'} />
+      <HeaderWidget isFrame title={title || 'Untitled Stream'} />
       <Content>
         <Block />
       </Content>
-      {isDisplayStream && <BlockFooter />}
+      {isDisplayStream && <FooterWidget />}
     </BlockRoot>
   )
 }

@@ -5,12 +5,11 @@ import { format } from 'date-fns'
 
 import welcomeSplashes from 'utils/welcomeSplashes'
 
-import ContentBlock from 'components/stream-blocks/ContentBlock'
-
-import BlockContent from 'components/layout/BlockContent'
 import PrestreamRoot from 'components/prestream/PrestreamRoot'
 import PrestreamSection from 'components/prestream/PrestreamSection'
-import PrestreamLogo from 'components/prestream/PrestreamLogo'
+
+import PrestreamContentBlock from './components/PrestreamContentBlock'
+import PrestreamChatWidget from './components/PrestreamChatWidget'
 
 interface PrestreamBlockProps {
   heading?: React.ReactNode
@@ -45,15 +44,15 @@ export default function PrestreamBlock({
       subtitle={description || 'No description given.'}
       splashes={splashes}
     >
-      <BlockContent>
+      <PrestreamContentBlock>
         <PrestreamSection>
-          <ContentBlock
-            hasShadow
+          <div
             css={css`
+              display: flex;
+              flex-direction: row;
+              align-items: center;
               height: 640px;
             `}
-            backgroundColor={backgroundColor}
-            textColor={textColor}
           >
             <div
               css={css`
@@ -66,27 +65,25 @@ export default function PrestreamBlock({
               <div
                 css={css`
                   display: flex;
-                  align-items: center;
-                  justify-content: flex-start;
-                  margin-left: 32px;
+                  flex-direction: column;
+                  align-items: flex-start;
                 `}
               >
-                <PrestreamLogo />
+                <PrestreamChatWidget backgroundColor={backgroundColor} textColor={textColor} />
               </div>
               <div
                 css={css`
                   display: flex;
                   align-items: center;
                   justify-content: flex-end;
-                  margin-right: 32px;
                 `}
               >
                 <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
               </div>
             </div>
-          </ContentBlock>
+          </div>
         </PrestreamSection>
-      </BlockContent>
+      </PrestreamContentBlock>
     </PrestreamRoot>
   )
 }

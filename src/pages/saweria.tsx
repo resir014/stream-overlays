@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 import LayoutRoot from 'components/layout/LayoutRoot'
 
-const SaweriaWidgetBox = dynamic(() => import('modules/widgets/SaweriaWidgetBox'), {
+const SaweriaWidgetBox = dynamic(() => import('modules/widgets/SaweriaWidget'), {
   ssr: false
 })
 

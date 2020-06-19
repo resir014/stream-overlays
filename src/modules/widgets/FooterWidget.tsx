@@ -19,7 +19,7 @@ const Root = styled('footer')`
   color: ${colors.white};
 `
 
-export default function BlockFooter({ hasLabels }: BlockFooterProps) {
+export default function FooterWidget({ hasLabels }: BlockFooterProps) {
   if (hasLabels) {
     return (
       <Root>
