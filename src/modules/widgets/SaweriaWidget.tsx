@@ -5,7 +5,7 @@ import Alert from '../../components/alerts/Alert'
 
 const saweriaAlertURL = `https://api.saweria.co/stream?channel=donation.${process.env.NEXT_PUBLIC_SAWERIA_STREAM_KEY}`
 
-const SaweriaWidgetBox: React.FC = () => {
+const SaweriaWidget: React.FC = () => {
   const [listening, setListening] = React.useState(false)
   const audio = new Audio('/static/audio/91926__tim-kahn__ding-jVE.wav')
   const eventSource = saweriaAlertURL ? new EventSource(saweriaAlertURL) : undefined
@@ -52,4 +52,4 @@ const SaweriaWidgetBox: React.FC = () => {
   return null
 }
 
-export default SaweriaWidgetBox
+export default SaweriaWidget

@@ -1,26 +1,30 @@
 import * as React from 'react'
 import { css } from '@emotion/core'
-import { transparentize } from 'polished'
 
-import { colors, fonts } from 'styles/variables'
+import { fonts } from 'styles/variables'
+import ContentBlock from 'components/stream-blocks/ContentBlock'
 
 interface PrestreamRecentEventsWidgetProps {
   title: string
+  textColor?: string
+  backgroundColor?: string
 }
 
-const PrestreamRecentEventsWidget: React.FC<PrestreamRecentEventsWidgetProps> = ({ title }) => {
+const PrestreamRecentEventsWidget: React.FC<PrestreamRecentEventsWidgetProps> = ({
+  title,
+  backgroundColor,
+  textColor
+}) => {
   return (
-    <div
+    <ContentBlock
+      hasShadow
+      backgroundColor={backgroundColor}
+      textColor={textColor}
       css={css`
-        display: inline-flex;
-        align-items: center;
         width: 100%;
         max-width: 640px;
-        height: 48px;
-        margin-top: 8px;
-        padding: 0 16px;
-        background-color: ${transparentize(0.7, colors.black)};
-        border-radius: 8px;
+        height: 60px;
+        margin-top: 24px;
       `}
     >
       <div
@@ -37,7 +41,7 @@ const PrestreamRecentEventsWidget: React.FC<PrestreamRecentEventsWidgetProps> = 
           flex: 1 1 auto;
         `}
       />
-    </div>
+    </ContentBlock>
   )
 }
 

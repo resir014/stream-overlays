@@ -31,7 +31,6 @@ const Root = styled('section')`
   flex: 1;
   width: 100%;
   min-width: 450px;
-  padding: 24px 48px;
   font-size: 24px;
   color: ${colors.white};
   z-index: 1;
@@ -89,25 +88,17 @@ const PrestreamRoot: React.FC<PrestreamRootProps> = ({
         <Inner>
           <PrestreamHeader title={title || 'twitch.tv/resir014'} date={date} subtitle={subtitle} />
           {children}
+          <PrestreamFooterBlock>
+            <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
+              {state => (
+                <PrestreamFooterParagraph state={state}>
+                  {splashes[currentIndex]}
+                </PrestreamFooterParagraph>
+              )}
+            </Transition>
+          </PrestreamFooterBlock>
         </Inner>
       </GridWrapper>
-      <PrestreamFooterBlock
-        css={css`
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          z-index: 3;
-        `}
-      >
-        <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
-          {state => (
-            <PrestreamFooterParagraph state={state}>
-              {splashes[currentIndex]}
-            </PrestreamFooterParagraph>
-          )}
-        </Transition>
-      </PrestreamFooterBlock>
     </Root>
   )
 }

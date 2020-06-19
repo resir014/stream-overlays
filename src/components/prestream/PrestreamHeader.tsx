@@ -16,7 +16,7 @@ interface PrestreamHeaderInnerProps {
 }
 
 const fullScreenStyles = css`
-  padding: 0;
+  padding: 24px 48px 0;
 `
 
 const frameStyles = css`
@@ -80,7 +80,7 @@ export default function PrestreamHeader({ isFrame, title, date, subtitle }: Pres
     <Root
       isFrame={isFrame}
       css={css`
-        position: absolute;
+        /* position: absolute; */
       `}
     >
       <PrestreamHeaderInner>

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import LayoutRoot from 'components/layout/LayoutRoot'
-import BlockHeader from 'components/layout/BlockHeader'
+import HeaderWidget from 'modules/widgets/HeaderWidget'
 
 import { AirtableRecord } from 'interfaces/types'
 import { fetchAirtableData, useAirtableData } from 'utils/useAirtableData'
@@ -20,7 +20,7 @@ const HeaderPage: NextPage<HeaderBlockProps> = ({ initialData }) => {
 
   return (
     <LayoutRoot isTransparent>
-      <BlockHeader isFrame title={streamName} />
+      <HeaderWidget isFrame title={streamName} />
     </LayoutRoot>
   )
 }

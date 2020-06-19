@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import LayoutRoot from 'components/layout/LayoutRoot'
-import BlockFooter from 'components/layout/BlockFooter'
+import FooterWidget from 'modules/widgets/FooterWidget'
 
 interface FooterPageProps {
   errors?: Error['message']
@@ -10,7 +10,7 @@ interface FooterPageProps {
 const FooterPage: NextPage<FooterPageProps> = () => {
   return (
     <LayoutRoot isTransparent>
-      <BlockFooter hasLabels />
+      <FooterWidget hasLabels />
     </LayoutRoot>
   )
 }
