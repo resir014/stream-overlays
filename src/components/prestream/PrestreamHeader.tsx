@@ -3,6 +3,7 @@ import * as React from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import format from 'date-fns/format'
+import PrestreamLogo from './PrestreamLogo'
 
 interface PrestreamHeaderProps {
   isFrame?: boolean
@@ -77,20 +78,27 @@ export default function PrestreamHeader({ isFrame, title, date, subtitle }: Pres
   }
 
   return (
-    <Root
-      isFrame={isFrame}
-      css={css`
-        /* position: absolute; */
-      `}
-    >
-      <PrestreamHeaderInner>
-        <PrestreamTitle>
-          <strong>
-            {date && <>{format(Date.parse(date), 'yyyy.MM.dd')} — </>}
-            {title}
-          </strong>
-        </PrestreamTitle>
-        {subtitle && <HeaderSub>{subtitle}</HeaderSub>}
+    <Root isFrame={isFrame}>
+      <PrestreamHeaderInner
+        css={css`
+          display: flex;
+          flex-direction: row;
+        `}
+      >
+        <PrestreamLogo />
+        <div
+          css={css`
+            margin-left: 24px;
+          `}
+        >
+          <PrestreamTitle>
+            <strong>
+              {date && <>{format(Date.parse(date), 'yyyy.MM.dd')} — </>}
+              {title}
+            </strong>
+          </PrestreamTitle>
+          {subtitle && <HeaderSub>{subtitle}</HeaderSub>}
+        </div>
       </PrestreamHeaderInner>
     </Root>
   )
