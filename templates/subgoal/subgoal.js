@@ -30,6 +30,7 @@ function goalEvent(obj) {
   // obj.detail will contain information about the goal
   console.log(obj.detail)
   $goalCurrent.innerText = obj.detail.amount.current
+  $goalBar.style.width = `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
 }
 
 document.addEventListener('goalLoad', goalLoad)
