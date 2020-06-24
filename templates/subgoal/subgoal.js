@@ -1,5 +1,5 @@
 /**
- * @typedef {Object} GoalEvent
+ * @typedef {*} GoalEvent
  */
 
 const $title = document.getElementById('title')
@@ -9,6 +9,39 @@ const $goalEndDate = document.getElementById('goal-end-date')
 const $goalBar = document.getElementById('goal-bar')
 
 /**
+ * @param {HTMLElement | null} [element]
+ * @param {*} text
+ */
+function appendHTML(element, text) {
+  if (element) {
+    // eslint-disable-next-line no-param-reassign
+    element.innerHTML = text
+  }
+}
+
+/**
+ * @param {HTMLElement | null} [element]
+ * @param {*} text
+ */
+function appendText(element, text) {
+  if (element) {
+    // eslint-disable-next-line no-param-reassign
+    element.innerText = text
+  }
+}
+
+/**
+ * @param {HTMLElement | null} [element]
+ * @param {*} width
+ */
+function manipulateProgressBar(element, width) {
+  if (element) {
+    // eslint-disable-next-line no-param-reassign
+    element.style.width = width
+  }
+}
+
+/**
  * Events will be sent when someone subscribed.
  * @param {GoalEvent} obj
  */
@@ -16,11 +49,14 @@ function goalLoad(obj) {
   // obj.detail will contain information about the current goal
   // this will fire only once when the widget loads
   console.log(obj.detail)
-  $title.innerHTML = obj.detail.title
-  $goalCurrent.innerText = obj.detail.amount.current
-  $goalBar.style.width = `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
-  $goalTotal.innerText = obj.detail.amount.target
-  $goalEndDate.innerText = obj.detail.to_go.ends_at
+  appendHTML($title, obj.detail.title)
+  appendText($goalCurrent, obj.detail.amount.current)
+  manipulateProgressBar(
+    $goalBar,
+    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
+  )
+  appendText($goalTotal, obj.detail.amount.target)
+  appendText($goalEndDate, obj.detail.to_go.ends_at)
 }
 
 /**
@@ -29,8 +65,11 @@ function goalLoad(obj) {
 function goalEvent(obj) {
   // obj.detail will contain information about the goal
   console.log(obj.detail)
-  $goalCurrent.innerText = obj.detail.amount.current
-  $goalBar.style.width = `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
+  appendText($goalCurrent, obj.detail.amount.current)
+  manipulateProgressBar(
+    $goalBar,
+    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
+  )
 }
 
 document.addEventListener('goalLoad', goalLoad)
