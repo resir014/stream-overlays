@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+:root {
+  --background-color: rgba(45, 45, 52, 0.4);
+  --border-color: rgb(45, 45, 52);
+
+  --color-background: #2d2d34;
+  --color-text: #fff;
+  --color-text-muted: #a2a2a5;
+  --color-accent: #0076ff;
+
+  --font-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-monospace: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace, monospace;
+
+  --text-shadow: 0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+    0px 0px 5px #000;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  background-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.widget-EventList {
+  display: flex;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.ck-event-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 28px;
+  padding: 0;
+  border-radius: 4px;
+  margin-right: 8px;
+  background-color: var(--color-background);
+  color: var(--color-text-muted);
+  text-shadow: var(--text-shadow);
+  font-weight: 700;
+  font-size: 16px;
+  transform: translateX(-100%);
+  animation: slide-in 0.5s forwards;
+}
+
+.ck-event-list-item__inner {
+  display: flex;
+  flex-direction: row;
+  word-break: keep-all;
+}
+.ck-event-list-item__inner > span {
+  margin: 0 8px;
+  white-space: nowrap;
+}
+
+.ck-event-list-item:first-child {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.ck-event-list-item:last-child {
+  margin-right: 0;
+}
