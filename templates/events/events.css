@@ -33,11 +33,10 @@ html {
 
 .widget-EventList {
   display: flex;
-  overflow: hidden;
-  list-style: none;
+  position: relative;
   padding: 0;
   text-transform: uppercase;
-  position: relative;
+  list-style: none;
   overflow: hidden;
   transition: transform 300ms;
 }
