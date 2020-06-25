@@ -21,7 +21,7 @@ export const TRANSITION_DURATION = 500
 export const PrestreamFooterParagraph = styled('p')<FooterParagraphProps>`
   margin: 0;
   font-size: 24px;
-  line-height: 32px;
+  line-height: 28px;
   font-weight: 400;
   transition: all ${TRANSITION_DURATION}ms ease;
   opacity: 0;
@@ -35,7 +35,8 @@ export const PrestreamFooterParagraph = styled('p')<FooterParagraphProps>`
 const PrestreamFooterBlock = styled('div')`
   display: flex;
   align-items: flex-start;
-  padding: 8px 48px 48px;
+  height: 52px;
+  padding: 0 48px;
   background-color: ${transparentize(0.6, colors.grey90)};
   border-top: 4px solid ${colors.grey90};
   color: ${colors.white};
