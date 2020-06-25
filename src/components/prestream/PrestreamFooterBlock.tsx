@@ -34,7 +34,8 @@ export const PrestreamFooterParagraph = styled('p')<FooterParagraphProps>`
 
 const PrestreamFooterBlock = styled('div')`
   display: flex;
-  padding: 8px 48px;
+  align-items: flex-end;
+  padding: 48px 48px 8px;
   background-color: ${transparentize(0.6, colors.grey90)};
   border-top: 4px solid ${colors.grey90};
   color: ${colors.white};
