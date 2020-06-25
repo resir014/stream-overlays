@@ -2,18 +2,12 @@ import * as React from 'react'
 import dynamic from 'next/dynamic'
 import { css } from '@emotion/core'
 import { format } from 'date-fns'
-import { Transition } from 'react-transition-group'
 
 import welcomeSplashes from 'utils/welcomeSplashes'
-import useInterval from 'utils/useInterval'
-import sleep from 'utils/sleep'
 
 import PrestreamRoot from 'components/prestream/PrestreamRoot'
 import PrestreamSection from 'components/prestream/PrestreamSection'
-import {
-  PrestreamFooterParagraph,
-  TRANSITION_DURATION
-} from 'components/prestream/PrestreamFooterBlock'
+import PrestreamLoopingText from 'components/prestream/PrestreamLoopingText'
 
 import PrestreamContentBlock from './components/PrestreamContentBlock'
 import PrestreamChatWidget from './components/PrestreamChatWidget'
@@ -44,28 +38,6 @@ export default function PrestreamBlock({
   textColor,
   splashes = welcomeSplashes
 }: PrestreamBlockProps) {
-  const [currentIndex, setCurrentIndex] = React.useState(0)
-  const [transitioning, setTransitioning] = React.useState(false)
-
-  useInterval(() => {
-    const getSplashIndex = async () => {
-      const next = currentIndex + 1
-      setTransitioning(true)
-
-      await sleep(1000)
-
-      if (!splashes[next]) {
-        setCurrentIndex(0)
-      } else {
-        setCurrentIndex(next)
-      }
-
-      setTransitioning(false)
-    }
-
-    getSplashIndex()
-  }, 8000)
-
   return (
     <PrestreamRoot
       title={title}
@@ -111,16 +83,10 @@ export default function PrestreamBlock({
                 <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
                 <div
                   css={css`
-                    margin-top: 8px;
+                    margin-top: 16px;
                   `}
                 >
-                  <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
-                    {state => (
-                      <PrestreamFooterParagraph state={state}>
-                        {splashes[currentIndex]}
-                      </PrestreamFooterParagraph>
-                    )}
-                  </Transition>
+                  <PrestreamLoopingText splashes={splashes} />
                 </div>
               </div>
             </div>
