@@ -74,8 +74,9 @@ export default function PrestreamBlock({
               <div
                 css={css`
                   display: flex;
-                  align-items: center;
-                  justify-content: flex-end;
+                  flex-direction: column;
+                  align-items: flex-end;
+                  justify-content: center;
                 `}
               >
                 <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
