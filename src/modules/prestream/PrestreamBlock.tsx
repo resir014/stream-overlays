@@ -7,7 +7,6 @@ import welcomeSplashes from 'utils/welcomeSplashes'
 
 import PrestreamRoot from 'components/prestream/PrestreamRoot'
 import PrestreamSection from 'components/prestream/PrestreamSection'
-import PrestreamLoopingText from 'components/prestream/PrestreamLoopingText'
 
 import PrestreamContentBlock from './components/PrestreamContentBlock'
 import PrestreamChatWidget from './components/PrestreamChatWidget'
@@ -81,13 +80,6 @@ export default function PrestreamBlock({
                 `}
               >
                 <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
-                <div
-                  css={css`
-                    margin-top: 16px;
-                  `}
-                >
-                  <PrestreamLoopingText splashes={splashes} />
-                </div>
               </div>
             </div>
           </div>
