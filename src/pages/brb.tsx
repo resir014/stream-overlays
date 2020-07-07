@@ -7,17 +7,16 @@ import PrestreamBlock from 'modules/prestream/PrestreamBlock'
 import { NotionData } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import brbSplashes from 'utils/brbSplashes'
-import { useNotionData, fetchNotionData, currentDate } from 'utils/useNotionData'
+import { useNotionData, fetchNotionData } from 'utils/notionData'
 
 interface BeRightBackPageProps {
-  initialData?: NotionData[]
+  initialData?: NotionData
   errors?: Error['message']
 }
 
 const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
-  const fetchedRecords = useNotionData(initialData)
+  const currentStream = useNotionData(initialData)
 
-  const currentStream = fetchedRecords?.find(record => record.Date === currentDate)
   const streamName = currentStream?.['Stream Name']
   const description = currentStream?.Description
   const date = currentStream?.Date

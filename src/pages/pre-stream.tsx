@@ -5,18 +5,17 @@ import LayoutRoot from 'components/layout/LayoutRoot'
 import PrestreamBlock from 'modules/prestream/PrestreamBlock'
 
 import { NotionData } from 'interfaces/types'
-import { useNotionData, fetchNotionData, currentDate } from 'utils/useNotionData'
+import { useNotionData, fetchNotionData } from 'utils/notionData'
 import { colors } from 'styles/variables'
 
 interface PrestreamPageProps {
-  initialData?: NotionData[]
+  initialData?: NotionData
   errors?: Error['message']
 }
 
 const PrestreamPage: NextPage<PrestreamPageProps> = ({ initialData }) => {
-  const fetchedRecords = useNotionData(initialData)
+  const currentStream = useNotionData(initialData)
 
-  const currentStream = fetchedRecords?.find(record => record.Date === currentDate)
   const streamName = currentStream?.['Stream Name']
   const description = currentStream?.Description
   const date = currentStream?.Date

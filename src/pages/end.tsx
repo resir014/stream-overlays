@@ -7,17 +7,16 @@ import PrestreamBlock from 'modules/prestream/PrestreamBlock'
 import { NotionData } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import endCardSplashes from 'utils/endCardSplashes'
-import { useNotionData, fetchNotionData, currentDate } from 'utils/useNotionData'
+import { useNotionData, fetchNotionData } from 'utils/notionData'
 
 interface EndScreenPageProps {
-  initialData?: NotionData[]
+  initialData?: NotionData
   errors?: Error['message']
 }
 
 const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
-  const fetchedRecords = useNotionData(initialData)
+  const currentStream = useNotionData(initialData)
 
-  const currentStream = fetchedRecords?.find(record => record.Date === currentDate)
   const streamName = currentStream?.['Stream Name']
   const description = currentStream?.Description
   const date = currentStream?.Date

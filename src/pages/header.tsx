@@ -4,19 +4,18 @@ import LayoutRoot from 'components/layout/LayoutRoot'
 import HeaderWidget from 'modules/widgets/HeaderWidget'
 
 import { NotionData } from 'interfaces/types'
-import { fetchNotionData, useNotionData, currentDate } from 'utils/useNotionData'
+import { fetchNotionData, useNotionData } from 'utils/notionData'
 
 interface HeaderBlockProps {
-  initialData?: NotionData[]
+  initialData?: NotionData
   errors?: Error['message']
   isDisplayStream?: boolean
 }
 
 const HeaderPage: NextPage<HeaderBlockProps> = ({ initialData }) => {
-  const fetchedRecords = useNotionData(initialData)
+  const currentStream = useNotionData(initialData)
 
-  const firstRecord = fetchedRecords?.find(record => record.Date === currentDate)
-  const streamName = firstRecord?.['Stream Name']
+  const streamName = currentStream?.['Stream Name']
 
   return (
     <LayoutRoot isTransparent>
