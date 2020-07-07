@@ -8,9 +8,9 @@ import PrestreamFooterBlock from './PrestreamFooterBlock'
 import PrestreamHeader from './PrestreamHeader'
 
 interface PrestreamRootProps {
-  title?: string
+  title: string
+  subtitle: string
   date?: string
-  subtitle?: string
   splashes?: string[]
 }
 
@@ -49,7 +49,7 @@ const PrestreamRoot: React.FC<PrestreamRootProps> = ({ children, title, date, su
     <Root>
       <GridWrapper>
         <Inner>
-          <PrestreamHeader title={title || 'twitch.tv/resir014'} date={date} subtitle={subtitle} />
+          <PrestreamHeader title={title} date={date} subtitle={subtitle} />
           {children}
           <PrestreamFooterBlock />
         </Inner>

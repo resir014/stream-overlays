@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import HomeWidgetBase from 'components/home/HomeWidgetBase'
-import HomeBlock from 'components/home/HomeBlock'
+import HomeWidgetBase from 'modules/home/HomeWidgetBase'
+import HomeBlock from 'modules/home/HomeBlock'
 import Inner from 'components/layout/Inner'
 
 export default function IndexPage() {

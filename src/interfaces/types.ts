@@ -10,6 +10,15 @@ export interface AirtableData {
   records: AirtableRecord[]
 }
 
+export interface NotionData {
+  id: string
+  Description: string
+  Category: string
+  Series: string
+  Date: string
+  [key: string]: string
+}
+
 export type AlertKinds = 'raid' | 'cheer' | 'host' | 'donation' | 'follow' | 'sub'
 
 export interface APIResponse<TResponse = any> {

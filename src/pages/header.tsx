@@ -3,20 +3,19 @@ import { NextPage } from 'next'
 import LayoutRoot from 'components/layout/LayoutRoot'
 import HeaderWidget from 'modules/widgets/HeaderWidget'
 
-import { AirtableRecord } from 'interfaces/types'
-import { fetchAirtableData, useAirtableData } from 'utils/useAirtableData'
+import { NotionData } from 'interfaces/types'
+import { fetchNotionData, useNotionData } from 'utils/notionData'
 
 interface HeaderBlockProps {
-  initialData?: AirtableRecord[]
+  initialData?: NotionData
   errors?: Error['message']
   isDisplayStream?: boolean
 }
 
 const HeaderPage: NextPage<HeaderBlockProps> = ({ initialData }) => {
-  const fetchedRecords = useAirtableData(initialData)
+  const currentStream = useNotionData(initialData)
 
-  const firstRecord = fetchedRecords?.[0]
-  const streamName = firstRecord?.fields['Stream Name']
+  const streamName = currentStream?.['Stream Name']
 
   return (
     <LayoutRoot isTransparent>
@@ -26,7 +25,7 @@ const HeaderPage: NextPage<HeaderBlockProps> = ({ initialData }) => {
 }
 
 export async function getServerSideProps() {
-  const initialData = await fetchAirtableData()
+  const initialData = await fetchNotionData()
   return { props: { initialData } }
 }
 
