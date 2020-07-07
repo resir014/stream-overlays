@@ -4,23 +4,23 @@ import { NextPage } from 'next'
 import LayoutRoot from 'components/layout/LayoutRoot'
 import PrestreamBlock from 'modules/prestream/PrestreamBlock'
 
-import { AirtableRecord } from 'interfaces/types'
+import { NotionData } from 'interfaces/types'
 import { colors } from 'styles/variables'
 import brbSplashes from 'utils/brbSplashes'
-import { useAirtableData, fetchAirtableData } from 'utils/useAirtableData'
+import { useNotionData, fetchNotionData, currentDate } from 'utils/useNotionData'
 
 interface BeRightBackPageProps {
-  initialData?: AirtableRecord[]
+  initialData?: NotionData[]
   errors?: Error['message']
 }
 
 const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
-  const fetchedRecords = useAirtableData(initialData)
+  const fetchedRecords = useNotionData(initialData)
 
-  const firstRecord = fetchedRecords?.[0]
-  const streamName = firstRecord?.fields['Stream Name']
-  const description = firstRecord?.fields['Description']
-  const date = firstRecord?.fields['Date']
+  const currentStream = fetchedRecords?.find(record => record.Date === currentDate)
+  const streamName = currentStream?.['Stream Name']
+  const description = currentStream?.Description
+  const date = currentStream?.Date
 
   return (
     <LayoutRoot isTransparent>
@@ -38,7 +38,7 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
 }
 
 export async function getServerSideProps() {
-  const initialData = await fetchAirtableData()
+  const initialData = await fetchNotionData()
   return { props: { initialData } }
 }
 

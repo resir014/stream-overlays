@@ -13,7 +13,7 @@ import PrestreamChatWidget from './components/PrestreamChatWidget'
 
 interface PrestreamBlockProps {
   heading?: React.ReactNode
-  title: string
+  title?: string
   subheading?: string
   date?: string
   description?: string
@@ -29,8 +29,8 @@ const PrestreamDateTime = dynamic(() => import('components/prestream/PrestreamDa
 
 export default function PrestreamBlock({
   heading,
-  description,
-  title,
+  description = 'No description given.',
+  title = 'Untitled Stream',
   date,
   titleColor,
   backgroundColor,
@@ -41,7 +41,7 @@ export default function PrestreamBlock({
     <PrestreamRoot
       title={title}
       date={date ? format(Date.parse(date), 'yyyy.MM.dd') : undefined}
-      subtitle={description || 'No description given.'}
+      subtitle={description}
       splashes={splashes}
     >
       <PrestreamContentBlock>
