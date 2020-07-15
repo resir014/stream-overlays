@@ -3,6 +3,7 @@ import { parseToHsl, hsl } from 'polished'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from 'styles/variables'
+import { SteeringValues } from 'interfaces/trackmania'
 
 interface ThrottleIndicatorProps {
   axisValue?: number
@@ -32,26 +33,22 @@ const Steering = styled('div')`
 
 const SteeringInner = styled('div')`
   background-color: ${hsl(orangeHsl.hue, orangeHsl.saturation, orangeHsl.lightness * 0.75)};
+  height: 100%;
 `
 
 const SteeringIndicator: React.FC<ThrottleIndicatorProps> = ({
   axisValue,
   steeringDeadzone = 0
 }) => {
-  const steerLeftWidth = React.useMemo(() => {
-    if (axisValue && axisValue < steeringDeadzone) {
-      return Math.abs(axisValue * 100)
+  const steerWidths = React.useMemo<SteeringValues>(() => {
+    if (axisValue) {
+      return {
+        left: axisValue <= steeringDeadzone ? Math.abs(axisValue * 100) : 0,
+        right: axisValue >= steeringDeadzone ? Math.abs(axisValue * 100) : 0
+      }
     }
 
-    return 0
-  }, [axisValue])
-
-  const steerLeftRight = React.useMemo(() => {
-    if (axisValue && axisValue > steeringDeadzone) {
-      return Math.abs(axisValue * 100)
-    }
-
-    return 0
+    return { left: 0, right: 0 }
   }, [axisValue])
 
   return (
@@ -66,18 +63,16 @@ const SteeringIndicator: React.FC<ThrottleIndicatorProps> = ({
     >
       <Steering css={SteeringLeft}>
         <SteeringInner
-          css={css`
-            width: ${steerLeftWidth}%;
-            height: 100%;
-          `}
+          style={{
+            width: `${steerWidths.left}%`
+          }}
         />
       </Steering>
       <Steering css={SteeringRight}>
         <SteeringInner
-          css={css`
-            width: ${steerLeftRight}%;
-            height: 100%;
-          `}
+          css={{
+            width: `${steerWidths.right}%`
+          }}
         />
       </Steering>
     </div>
