@@ -5,6 +5,7 @@ import { ControllerData } from 'interfaces/trackmania'
 import ThrottleIndicator from './ThrottleIndicator'
 import BrakeIndicator from './BrakeIndicator'
 import SteeringIndicator from './SteeringIndicator'
+import ResetIndicator from './ResetIndicator'
 
 interface ControllerTelemetryProps {
   controller?: ControllerData
@@ -27,10 +28,10 @@ const ControllerTelemetry: React.FC<ControllerTelemetryProps> = ({
       <div
         css={css`
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 208px auto;
           grid-gap: 24px;
           width: 100%;
-          max-width: 600px;
+          max-width: 768px;
         `}
       >
         <div
@@ -47,17 +48,36 @@ const ControllerTelemetry: React.FC<ControllerTelemetryProps> = ({
           css={css`
             display: flex;
             align-items: center;
+            justify-content: center;
           `}
         >
           <div
             css={css`
+              display: grid;
+              grid-template-columns: 1fr 108px;
+              grid-gap: 8px;
               width: 100%;
-              border-radius: 8px;
-              overflow: hidden;
             `}
           >
-            <ThrottleIndicator pressed={controller?.accelerate} />
-            <BrakeIndicator pressed={controller?.brake} />
+            <div
+              css={css`
+                width: 100%;
+                border-radius: 8px;
+                overflow: hidden;
+              `}
+            >
+              <ThrottleIndicator value={controller?.accelerate} />
+              <BrakeIndicator value={controller?.brake} />
+            </div>
+            <div
+              css={css`
+                width: 100%;
+                border-radius: 8px;
+                overflow: hidden;
+              `}
+            >
+              <ResetIndicator value={controller?.reset} />
+            </div>
           </div>
         </div>
       </div>

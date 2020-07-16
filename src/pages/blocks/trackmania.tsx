@@ -16,6 +16,7 @@ interface FooterPageProps {
 
 const MILLISECONDS_PER_FRAME = 1000 / 60
 const ACCELERATE_BUTTON = 0
+const RESET_BUTTON = 1
 const BRAKE_BUTTON = 2
 const STEERING_DEADZONE = 0.01
 
@@ -61,10 +62,11 @@ const TrackManiaControlBlockPage: NextPage<FooterPageProps> = () => {
 
       if (activeGamepad) {
         // eslint-disable-next-line no-console
-        const accelerate = activeGamepad.buttons[ACCELERATE_BUTTON].pressed
-        const brake = activeGamepad.buttons[BRAKE_BUTTON].pressed
+        const accelerate = activeGamepad.buttons[ACCELERATE_BUTTON].value
+        const brake = activeGamepad.buttons[BRAKE_BUTTON].value
+        const reset = activeGamepad.buttons[RESET_BUTTON].value
         const steering = activeGamepad.axes[0]
-        setControllerData({ accelerate, brake, steering })
+        setControllerData({ accelerate, brake, reset, steering })
       }
     }
   }, MILLISECONDS_PER_FRAME)
