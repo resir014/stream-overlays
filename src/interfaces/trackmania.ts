@@ -1,6 +1,7 @@
 export interface ControllerData {
-  accelerate: boolean
-  brake: boolean
+  accelerate: number
+  brake: number
+  reset: number
   steering: number
 }
 
