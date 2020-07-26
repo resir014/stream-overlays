@@ -11,7 +11,7 @@ interface FooterPageProps {
 const FlightsimPIPPage: NextPage<FooterPageProps> = () => {
   return (
     <LayoutRoot isTransparent>
-      <ContentBlock style={{ height: 376 }} title="Pitcure-in-Picture" />
+      <ContentBlock style={{ height: 376 }} title="Picture-in-Picture" />
     </LayoutRoot>
   )
 }
