@@ -30,7 +30,7 @@ const ControllerTelemetry: React.FC<ControllerTelemetryProps> = ({
       <div
         css={css`
           display: grid;
-          grid-template-columns: 208px auto;
+          grid-template-columns: 204px auto;
           grid-gap: 24px;
           width: 100%;
           max-width: 768px;

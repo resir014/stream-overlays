@@ -23,7 +23,7 @@ const Root = styled('div')`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 36px;
+  height: 40px;
   background-color: ${ThrottleHsla};
   color: ${props => (props.value && props.value > 0 ? colors.white : darken(0.25, colors.white))};
   text-align: center;

@@ -58,7 +58,7 @@ const SteeringIndicator: React.FC<ThrottleIndicatorProps> = ({
         grid-template-columns: 1fr 1fr;
         grid-gap: 16px;
         width: 100%;
-        max-width: 208px;
+        max-width: 204px;
       `}
     >
       <Steering css={SteeringLeft}>
