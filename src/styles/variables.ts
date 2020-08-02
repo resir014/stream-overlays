@@ -6,7 +6,7 @@ export const alertColors: Record<AlertKinds, string> = {
   host: '#2234ce',
   donation: '#0076ff',
   follow: '#00bf80',
-  sub: '#f5a623z'
+  sub: '#f5a623'
 }
 
 export const colors = {
