@@ -16,7 +16,7 @@ interface ContentBlockProps {
 const Root = styled('div')<Pick<ContentBlockProps, 'backgroundColor' | 'textColor' | 'hasShadow'>>`
   display: flex;
   flex-direction: column;
-  background-color: ${props => transparentize(0.6, props.backgroundColor || colors.grey90)};
+  background-color: ${props => transparentize(0.5, props.backgroundColor || colors.grey90)};
   border: 4px solid ${props => props.backgroundColor || colors.grey90};
   color: ${props => props.textColor || colors.white};
   border-radius: 8px;

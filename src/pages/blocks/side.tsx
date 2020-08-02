@@ -23,7 +23,7 @@ const SideBlockPage: NextPage<FooterPageProps> = () => {
             css={css`
               display: flex;
               align-items: center;
-              height: 30px;
+              height: 24px;
             `}
           >
             <DollarSign
@@ -53,7 +53,7 @@ const SideBlockPage: NextPage<FooterPageProps> = () => {
             css={css`
               display: flex;
               align-items: center;
-              height: 30px;
+              height: 24px;
             `}
           >
             <Star
@@ -74,7 +74,7 @@ const SideBlockPage: NextPage<FooterPageProps> = () => {
             css={css`
               display: flex;
               align-items: center;
-              height: 30px;
+              height: 24px;
             `}
           >
             <BarChart
