@@ -1,7 +1,6 @@
 {
-  "name": "resir014-stream-overlays",
-  "alias": "resir014-stream-overlays.now.sh",
   "version": 2,
+  "alias": ["resir014-stream-overlays.now.sh"],
   "regions": ["sin1"],
   "build": {
     "env": {
@@ -10,25 +9,41 @@
       "NEXT_PUBLIC_NOTION_STREAMS_TABLE_ID": "@notion-streams-table-id"
     }
   },
-  "routes": [
+  "headers": [
     {
-      "src": "^/_next/static/(.*)",
-      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
-      "dest": "/_next/static/$1"
+      "source": "^/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
-      "src": "^/static/(.*)",
-      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
-      "dest": "/static/$1"
+      "source": "^/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
-      "src": "/(.*)",
-      "dest": "/$1",
-      "headers": {
-        "X-Frame-Options": "DENY",
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff"
-      }
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
     }
   ]
 }
