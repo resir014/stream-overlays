@@ -10,7 +10,7 @@ interface FooterPageProps {
   errors?: Error['message']
 }
 
-const ChatBlockPage: NextPage<FooterPageProps> = () => {
+const SideBlockPage: NextPage<FooterPageProps> = () => {
   return (
     <LayoutRoot isTransparent>
       <div
@@ -96,4 +96,4 @@ const ChatBlockPage: NextPage<FooterPageProps> = () => {
   )
 }
 
-export default ChatBlockPage
+export default SideBlockPage
