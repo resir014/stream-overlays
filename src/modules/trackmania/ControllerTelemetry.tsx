@@ -10,11 +10,13 @@ import ResetIndicator from './ResetIndicator'
 interface ControllerTelemetryProps {
   controller?: ControllerData
   steeringDeadzone?: number
+  showReset?: boolean
 }
 
 const ControllerTelemetry: React.FC<ControllerTelemetryProps> = ({
   controller,
-  steeringDeadzone
+  steeringDeadzone,
+  showReset
 }) => {
   return (
     <div
@@ -69,15 +71,17 @@ const ControllerTelemetry: React.FC<ControllerTelemetryProps> = ({
               <ThrottleIndicator value={controller?.accelerate} />
               <BrakeIndicator value={controller?.brake} />
             </div>
-            <div
-              css={css`
-                width: 100%;
-                border-radius: 8px;
-                overflow: hidden;
-              `}
-            >
-              <ResetIndicator value={controller?.reset} />
-            </div>
+            {showReset && (
+              <div
+                css={css`
+                  width: 100%;
+                  border-radius: 8px;
+                  overflow: hidden;
+                `}
+              >
+                <ResetIndicator value={controller?.reset} />
+              </div>
+            )}
           </div>
         </div>
       </div>

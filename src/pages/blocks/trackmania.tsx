@@ -1,11 +1,9 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import { parseToHsl, hsl } from 'polished'
 
 import LayoutRoot from 'components/layout/LayoutRoot'
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
-import { colors } from 'styles/variables'
 import { ControllerData } from 'interfaces/trackmania'
 import useInterval from 'utils/useInterval'
 import ControllerTelemetry from 'modules/trackmania/ControllerTelemetry'
@@ -23,7 +21,6 @@ const STEERING_DEADZONE = 0.01
 const TrackManiaControlBlockPage: NextPage<FooterPageProps> = () => {
   const [, setIsControllerConnected] = React.useState(false)
   const [controllerData, setControllerData] = React.useState<ControllerData | undefined>(undefined)
-  const greyHsla = parseToHsl(colors.grey90)
 
   const handleGamepadConnected = (e: GamepadEvent) => {
     // eslint-disable-next-line no-console
@@ -75,8 +72,7 @@ const TrackManiaControlBlockPage: NextPage<FooterPageProps> = () => {
     <LayoutRoot isTransparent>
       <ContentBlock
         style={{
-          height: 128,
-          backgroundColor: hsl(greyHsla.hue, greyHsla.saturation, greyHsla.lightness * 0.5)
+          height: 128
         }}
       >
         <ControllerTelemetry controller={controllerData} steeringDeadzone={STEERING_DEADZONE} />
