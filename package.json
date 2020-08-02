@@ -34,6 +34,7 @@
     "polished": "^3.6.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-feather": "^2.0.8",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.4.1",
     "swr": "^0.3.0",
