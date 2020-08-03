@@ -7,6 +7,7 @@ import ContentBlock from 'components/stream-blocks/ContentBlock'
 import { ControllerData } from 'interfaces/trackmania'
 import useInterval from 'utils/useInterval'
 import ControllerTelemetry from 'modules/trackmania/ControllerTelemetry'
+import { css } from '@emotion/core'
 
 interface FooterPageProps {
   errors?: Error['message']
@@ -70,13 +71,23 @@ const TrackManiaControlBlockPage: NextPage<FooterPageProps> = () => {
 
   return (
     <LayoutRoot isTransparent>
-      <ContentBlock
-        style={{
-          height: 128
-        }}
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          padding: 4px 8px;
+        `}
       >
-        <ControllerTelemetry controller={controllerData} steeringDeadzone={STEERING_DEADZONE} />
-      </ContentBlock>
+        <ContentBlock
+          css={css`
+            height: 128px;
+          `}
+          hasShadow
+        >
+          <ControllerTelemetry controller={controllerData} steeringDeadzone={STEERING_DEADZONE} />
+        </ContentBlock>
+      </div>
     </LayoutRoot>
   )
 }

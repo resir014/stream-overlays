@@ -15,83 +15,97 @@ const SideBlockPage: NextPage<FooterPageProps> = () => {
     <LayoutRoot isTransparent>
       <div
         css={css`
-          margin-bottom: 8px;
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          padding: 4px 8px;
         `}
       >
-        <ContentBlock>
-          <div
-            css={css`
-              display: flex;
-              align-items: center;
-              height: 24px;
-            `}
-          >
-            <DollarSign
-              css={css`
-                margin-right: 16px;
-              `}
-            />
+        <div
+          css={css`
+            margin-bottom: 8px;
+          `}
+        >
+          <ContentBlock hasShadow>
             <div
               css={css`
-                flex: 1 1 auto;
+                display: flex;
+                align-items: center;
                 height: 24px;
               `}
-            />
-          </div>
-        </ContentBlock>
+            >
+              <DollarSign
+                css={css`
+                  margin-right: 16px;
+                `}
+              />
+              <div
+                css={css`
+                  flex: 1 1 auto;
+                  height: 24px;
+                `}
+              />
+            </div>
+          </ContentBlock>
+        </div>
+        <div
+          css={css`
+            display: grid;
+            grid-template-columns: auto 156px;
+            grid-gap: 8px;
+            margin-bottom: 8px;
+          `}
+        >
+          <ContentBlock hasShadow>
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                height: 24px;
+              `}
+            >
+              <Star
+                css={css`
+                  margin-right: 16px;
+                `}
+              />
+              <div
+                css={css`
+                  flex: 1 1 auto;
+                  height: 24px;
+                `}
+              />
+            </div>
+          </ContentBlock>
+          <ContentBlock hasShadow>
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+                height: 24px;
+              `}
+            >
+              <BarChart
+                css={css`
+                  margin-right: 16px;
+                `}
+              />
+              <div
+                css={css`
+                  flex: 1 1 auto;
+                  height: 24px;
+                `}
+              />
+            </div>
+          </ContentBlock>
+        </div>
+        <ContentBlock
+          css={css`
+            flex: 1 1 auto;
+          `}
+          hasShadow
+        />
       </div>
-      <div
-        css={css`
-          display: grid;
-          grid-template-columns: auto 156px;
-          grid-gap: 8px;
-          margin-bottom: 8px;
-        `}
-      >
-        <ContentBlock>
-          <div
-            css={css`
-              display: flex;
-              align-items: center;
-              height: 24px;
-            `}
-          >
-            <Star
-              css={css`
-                margin-right: 16px;
-              `}
-            />
-            <div
-              css={css`
-                flex: 1 1 auto;
-                height: 24px;
-              `}
-            />
-          </div>
-        </ContentBlock>
-        <ContentBlock>
-          <div
-            css={css`
-              display: flex;
-              align-items: center;
-              height: 24px;
-            `}
-          >
-            <BarChart
-              css={css`
-                margin-right: 16px;
-              `}
-            />
-            <div
-              css={css`
-                flex: 1 1 auto;
-                height: 24px;
-              `}
-            />
-          </div>
-        </ContentBlock>
-      </div>
-      <ContentBlock style={{ height: 280 }} />
     </LayoutRoot>
   )
 }
