@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "alias": ["resir014-stream-overlays.now.sh"],
   "regions": ["sin1"],
   "build": {
     "env": {
