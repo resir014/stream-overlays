@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --color-background: transparent;
+  --color-text: #fafafa;
+  --color-text-muted: #a2a2a5;
+  --color-accent: #0076ff;
+
+  --font-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-monospace: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace, monospace;
+  --font-size: 16px;
+
+  --text-shadow: 0px 0px 1px #000, 0px 0px 2px #000;
+
+  --message-hide-delay: 99999999s; /* always show messages */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  text-shadow: var(--text-shadow);
+  background-color: var(--color-background);
+  font-family: var(--font-sans-serif);
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: 1.5em;
+  color: var(--color-text);
+}
+
+.colon {
+  display: none;
+}
+
+#log {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 10px 10px;
+  width: 100%;
+}
+
+#log > .ck-chatlist-item {
+  display: block;
+  animation: fadeInRight 0.3s ease forwards, fadeOut 0.5s ease var(--message-hide-delay) forwards;
+  -webkit-animation: fadeInRight 0.3s ease forwards,
+    fadeOut 0.5s ease var(--message-hide-delay) forwards;
+}
+
+#log > .ck-chatlist-item.deleted {
+  visibility: hidden;
+}
+
+.ck-chatlist-item .emote {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 0.4em 0.2em;
+  position: relative;
+}
+
+.ck-chatlist-item .emote img {
+  display: inline-block;
+  height: 1em;
+  opacity: 0;
+}
+
+.ck-chatlist-item .badge {
+  display: inline-block;
+  margin-right: 0.2em;
+  position: relative;
+  height: 1em;
+  vertical-align: middle;
+  top: -0.1em;
+}
+
+.ck-chatlist-item__message,
+.ck-chatlist-item__meta {
+  vertical-align: top;
+  display: inline;
+  padding-bottom: 0.1em;
+}
+
+.ck-chatlist-item__meta {
+  padding-right: 0.5em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 700;
+}
+
+.ck-chatlist-item__message {
+  word-wrap: break-word;
+}
