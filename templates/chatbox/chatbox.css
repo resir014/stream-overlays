@@ -32,7 +32,7 @@ body {
   background-color: var(--color-background);
   font-family: var(--font-sans-serif);
   font-size: var(--font-size);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.5em;
   color: var(--color-text);
 }
@@ -96,9 +96,9 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  font-weight: 700;
 }
 
 .ck-chatlist-item__message {
   word-wrap: break-word;
-  width: 65%;
 }
