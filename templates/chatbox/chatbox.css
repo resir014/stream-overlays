@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --color-background: transparent;
+  --color-text: #fafafa;
+  --color-text-muted: #a2a2a5;
+  --color-accent: #0076ff;
+
+  --font-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-monospace: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace, monospace;
+  --font-size: 16px;
+
+  --text-shadow: 0px 0px 1px #000, 0px 0px 2px #000, 0px 0px 3px #000, 0px 0px 4px #000,
+    0px 0px 5px #000;
+
+  --message-hide-delay: 99999999s; /* always show messages */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  text-shadow: var(--text-shadow);
+  background-color: var(--color-background);
+  font-family: var(--font-sans-serif);
+  font-size: var(--font-size);
+  font-weight: 700;
+  line-height: 1.5em;
+  color: var(--color-text);
+}
+
+#log > div {
+  animation: fadeInRight 0.3s ease forwards, fadeOut 0.5s ease var(--message-hide-delay) forwards;
+  -webkit-animation: fadeInRight 0.3s ease forwards,
+    fadeOut 0.5s ease var(--message-hide-delay) forwards;
+}
+
+.colon {
+  display: none;
+}
+
+#log {
+  display: table;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 10px 10px;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#log > div {
+  display: table-row;
+}
+
+#log > div.deleted {
+  visibility: hidden;
+}
+
+#log .emote {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 0.4em 0.2em;
+  position: relative;
+}
+
+#log .emote img {
+  display: inline-block;
+  height: 1em;
+  opacity: 0;
+}
+
+#log .message,
+#log .meta {
+  vertical-align: top;
+  display: table-cell;
+  padding-bottom: 0.1em;
+}
+
+#log .meta {
+  width: 35%;
+  text-align: right;
+  padding-right: 0.5em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#log .message {
+  word-wrap: break-word;
+  width: 65%;
+}
+
+.badge {
+  display: inline-block;
+  margin-right: 0.2em;
+  position: relative;
+  height: 1em;
+  vertical-align: middle;
+  top: -0.1em;
+}
+
+.name {
+  margin-left: 0.2em;
+}

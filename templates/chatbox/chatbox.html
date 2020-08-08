@@ -1,0 +1,17 @@
+<!-- item will be appened to this layout -->
+<div id="log" class="sl__chat__layout"></div>
+
+<!-- chat item -->
+<script type="text/template" id="chatlist_item">
+  <div class="ck-chatlist-item" data-from="{from}" data-id="{messageId}">
+    <span class="meta ck-chatlist-item__meta" style="color: {color}">
+      <span class="badges">
+      </span>
+      <span class="name">{from}</span>
+    </span>
+
+    <span class="message ck-chatlist-item__message">
+      {message}
+    </span>
+  </div>
+</script>
