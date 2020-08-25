@@ -17,7 +17,8 @@ interface EndScreenPageProps {
 const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
   const currentStream = useNotionData(initialData)
 
-  const streamName = currentStream?.['Stream Name']
+  const streamName =
+    typeof currentStream?.['Stream Name'] === 'string' ? currentStream?.['Stream Name'] : undefined
   const description = currentStream?.Description
   const date = currentStream?.Date
 
