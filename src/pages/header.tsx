@@ -15,7 +15,8 @@ interface HeaderBlockProps {
 const HeaderPage: NextPage<HeaderBlockProps> = ({ initialData }) => {
   const currentStream = useNotionData(initialData)
 
-  const streamName = currentStream?.['Stream Name']
+  const streamName =
+    typeof currentStream?.['Stream Name'] === 'string' ? currentStream?.['Stream Name'] : undefined
 
   return (
     <LayoutRoot isTransparent>
