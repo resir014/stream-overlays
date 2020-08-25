@@ -15,15 +15,23 @@ const currentFormattedDate = format(currentDate, 'yyyy-MM-dd')
 // need to check 1 day prior just in case
 const yesterdayFormattedDate = format(subDays(currentDate, 1), 'yyyy-MM-dd')
 
-function isTodayOrYesterday(notionData: NotionData) {
-  return notionData.Date === currentFormattedDate || notionData.Date === yesterdayFormattedDate
+function isCurrentStream(notionData: NotionData) {
+  return notionData['Current Stream'] === true
+}
+
+function isToday(notionData: NotionData) {
+  return notionData.Date === currentFormattedDate
+}
+
+function isYesterday(notionData: NotionData) {
+  return notionData.Date === yesterdayFormattedDate
 }
 
 export async function fetchNotionData(): Promise<NotionData | null> {
   try {
     const schedule: NotionData[] = await fetch(airtableAPIURL)
 
-    return schedule?.find(isTodayOrYesterday) || null
+    return schedule?.find(isCurrentStream || isToday || isYesterday) || null
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err)

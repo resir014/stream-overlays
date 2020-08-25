@@ -16,7 +16,7 @@ export interface NotionData {
   Category: string
   Series: string
   Date: string
-  [key: string]: string
+  [key: string]: string | boolean
 }
 
 export type AlertKinds = 'raid' | 'cheer' | 'host' | 'donation' | 'follow' | 'sub'
