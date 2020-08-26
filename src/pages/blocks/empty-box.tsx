@@ -2,12 +2,12 @@ import * as React from 'react'
 import { css } from '@emotion/core'
 import { NextPage } from 'next'
 
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/overlay/OverlayRoot'
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
 const EmptyBoxPage: NextPage = () => {
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <div
         css={css`
           display: flex;
@@ -23,7 +23,7 @@ const EmptyBoxPage: NextPage = () => {
           hasShadow
         />
       </div>
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/overlay/OverlayRoot'
 import FlightProgress from 'components/flightsim/FlightProgress'
 import { FlyLiveParsedData } from 'interfaces/flylive'
 import { APIResponse } from 'interfaces/types'
@@ -34,7 +34,7 @@ const FlyLiveOverlayPage: NextPage = () => {
     const { data: res } = data
 
     return (
-      <LayoutRoot isTransparent>
+      <OverlayRoot isTransparent>
         <FlightProgress value={res.flightData.flightPercent || 0} max={100} />
         <OverlayWrapper>
           {res.flightData.dep && res.flightData.arr && (
@@ -54,7 +54,7 @@ const FlyLiveOverlayPage: NextPage = () => {
           {res.flightData.altitude && <FlightInfo name="ALT" value={res.flightData.altitude} />}
           {res.flightData.eta && <FlightInfo name="ETA" value={res.flightData.eta} />}
         </OverlayWrapper>
-      </LayoutRoot>
+      </OverlayRoot>
     )
   }
 

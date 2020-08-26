@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/overlay/OverlayRoot'
 import PrestreamBlock from 'modules/prestream/PrestreamBlock'
 
 import { NotionData } from 'interfaces/types'
@@ -23,7 +23,7 @@ const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
   const date = currentStream?.Date
 
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <PrestreamBlock
         heading={<>Stream ended. Thanks&nbsp;for&nbsp;watching!</>}
         title={streamName || 'Untitled Stream'}
@@ -33,7 +33,7 @@ const EndScreenPage: NextPage<EndScreenPageProps> = ({ initialData }) => {
         titleColor={colors.orange}
         splashes={endCardSplashes}
       />
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 

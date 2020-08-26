@@ -67,3 +67,8 @@ export default function HeaderWidget({ isFrame, title }: BlockHeaderProps) {
     </Root>
   )
 }
+
+HeaderWidget.defaultProps = {
+  isFrame: false,
+  title: undefined
+}

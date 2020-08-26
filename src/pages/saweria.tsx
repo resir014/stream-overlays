@@ -2,7 +2,7 @@ import * as React from 'react'
 import { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/overlay/OverlayRoot'
 
 const SaweriaWidgetBox = dynamic(() => import('modules/widgets/SaweriaWidget'), {
   ssr: false
@@ -10,9 +10,9 @@ const SaweriaWidgetBox = dynamic(() => import('modules/widgets/SaweriaWidget'), 
 
 const SaweriaAlerts: NextPage = () => {
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <SaweriaWidgetBox />
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 

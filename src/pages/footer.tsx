@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/overlay/OverlayRoot'
 import FooterWidget from 'modules/widgets/FooterWidget'
 
 interface FooterPageProps {
@@ -9,9 +9,9 @@ interface FooterPageProps {
 
 const FooterPage: NextPage<FooterPageProps> = () => {
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <FooterWidget hasLabels />
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 

@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 import { colors } from 'styles/variables'
 
-interface RootProps {
+interface OverlayRootProps {
   isGreenScreen?: boolean
   isTransparent?: boolean
 }
@@ -20,7 +20,7 @@ const backgroundColor = (isGreenScreen = false, isTransparent = false) => {
   return colors.white
 }
 
-const Base = styled('div')<RootProps>`
+const Base = styled('div')<OverlayRootProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -29,15 +29,15 @@ const Base = styled('div')<RootProps>`
   background-color: ${props => backgroundColor(props.isGreenScreen, props.isTransparent)};
 `
 
-const LayoutRoot: React.FC<RootProps> = ({ children, isGreenScreen, isTransparent }) => (
+const OverlayRoot: React.FC<OverlayRootProps> = ({ children, isGreenScreen, isTransparent }) => (
   <Base isGreenScreen={isGreenScreen} isTransparent={isTransparent}>
     {children}
   </Base>
 )
 
-LayoutRoot.defaultProps = {
+OverlayRoot.defaultProps = {
   isGreenScreen: false,
   isTransparent: false
 }
 
-export default LayoutRoot
+export default OverlayRoot

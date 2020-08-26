@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import { css } from '@emotion/core'
 import { DollarSign, Star, BarChart } from 'react-feather'
 
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/overlay/OverlayRoot'
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
 interface FooterPageProps {
@@ -12,7 +12,7 @@ interface FooterPageProps {
 
 const SideBlockPage: NextPage<FooterPageProps> = () => {
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <div
         css={css`
           display: flex;
@@ -106,7 +106,7 @@ const SideBlockPage: NextPage<FooterPageProps> = () => {
           hasShadow
         />
       </div>
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 
