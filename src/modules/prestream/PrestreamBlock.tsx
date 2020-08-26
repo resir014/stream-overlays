@@ -14,7 +14,6 @@ import PrestreamChatWidget from './components/PrestreamChatWidget'
 interface PrestreamBlockProps {
   heading?: React.ReactNode
   title?: string
-  subheading?: string
   date?: string
   description?: string
   titleColor?: string
@@ -87,4 +86,15 @@ export default function PrestreamBlock({
       </PrestreamContentBlock>
     </PrestreamRoot>
   )
+}
+
+PrestreamBlock.defaultProps = {
+  heading: undefined,
+  description: 'No description given.',
+  title: 'Untitled Stream',
+  date: undefined,
+  titleColor: undefined,
+  backgroundColor: undefined,
+  textColor: undefined,
+  splashes: welcomeSplashes
 }

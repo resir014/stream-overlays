@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import { css } from '@emotion/core'
 import { DollarSign, Star, BarChart } from 'react-feather'
 
-import OverlayRoot from 'components/layout/OverlayRoot'
+import OverlayRoot from 'components/overlay/OverlayRoot'
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
 interface FooterPageProps {

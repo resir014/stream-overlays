@@ -103,3 +103,10 @@ export default function PrestreamHeader({ isFrame, title, date, subtitle }: Pres
     </Root>
   )
 }
+
+PrestreamHeader.defaultProps = {
+  isFrame: false,
+  title: undefined,
+  date: undefined,
+  subtitle: undefined
+}

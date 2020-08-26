@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import OverlayRoot from 'components/layout/OverlayRoot'
+import OverlayRoot from 'components/overlay/OverlayRoot'
 import PrestreamBlock from 'modules/prestream/PrestreamBlock'
 
 import { NotionData } from 'interfaces/types'

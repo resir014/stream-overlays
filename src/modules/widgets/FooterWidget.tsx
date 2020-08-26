@@ -42,3 +42,7 @@ export default function FooterWidget({ hasLabels }: BlockFooterProps) {
 
   return <Root />
 }
+
+FooterWidget.defaultProps = {
+  hasLabels: false
+}
