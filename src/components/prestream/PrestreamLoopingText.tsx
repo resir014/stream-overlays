@@ -14,6 +14,10 @@ interface PrestreamLoopingTextProps {
 
 export const TRANSITION_DURATION = 500
 
+interface TextProps {
+  state: TransitionStatus
+}
+
 const Exited = css`
   opacity: 0;
 `
@@ -22,8 +26,24 @@ const Entered = css`
   opacity: 1;
 `
 
-interface TextProps {
-  state: TransitionStatus
+const transitionStyles = ({ state }: TextProps) => {
+  switch (state) {
+    case 'entering': {
+      return Entered
+    }
+    case 'entered': {
+      return Entered
+    }
+    case 'exiting': {
+      return Exited
+    }
+    case 'exited': {
+      return Exited
+    }
+    default: {
+      return undefined
+    }
+  }
 }
 
 const Text = styled('p')<TextProps>`
@@ -34,10 +54,7 @@ const Text = styled('p')<TextProps>`
   transition: all ${TRANSITION_DURATION}ms ease;
   opacity: 0;
 
-  ${props => props.state === 'entering' && Entered}
-  ${props => props.state === 'entered' && Entered}
-  ${props => props.state === 'exiting' && Exited}
-  ${props => props.state === 'exited' && Exited}
+  ${transitionStyles}
 `
 
 const PrestreamLoopingText: React.FC<PrestreamLoopingTextProps> = ({
