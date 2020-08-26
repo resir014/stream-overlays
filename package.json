@@ -17,7 +17,8 @@
     "format": "prettier --write \"./src/**/*.{ts,tsx}\" \"./*.{js,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\" \"*.{js,ts,tsx}\"",
     "start": "next start",
-    "test": "npm run type-check",
+    "test": "jest --watch",
+    "test:ci": "jest --ci",
     "type-check": "tsc --noEmit",
     "validate": "npm run type-check && npm run lint"
   },
@@ -45,15 +46,19 @@
     "typeface-roboto-mono": "^0.0.75"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^10.4.9",
     "@types/node": "^12.12.39",
     "@types/react": "^16.9.47",
     "@types/react-dom": "^16.9.8",
     "@types/react-transition-group": "^4.4.0",
     "@types/styled-jsx": "^2.2.8",
+    "babel-jest": "^26.3.0",
     "eslint": "^6.8.0",
     "eslint-config-blvd": "^1.0.2",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
     "prettier": "^2.1.1",
     "typescript": "^4.0.2"
   }
