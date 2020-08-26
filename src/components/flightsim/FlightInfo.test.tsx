@@ -4,7 +4,7 @@ import FlightInfo from './FlightInfo'
 
 describe('components/flightsim', () => {
   describe('FlightInfo', () => {
-    test('renders flight itinerary', () => {
+    test('renders flight info', () => {
       const { getByText } = render(<FlightInfo name="GSPD" value="472kts" />)
       const nameText = getByText(/GSPD/)
       const valueText = getByText(/472kts/)
