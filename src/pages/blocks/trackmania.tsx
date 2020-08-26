@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/layout/OverlayRoot'
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
 import { ControllerData } from 'interfaces/trackmania'
@@ -70,7 +70,7 @@ const TrackManiaControlBlockPage: NextPage<FooterPageProps> = () => {
   }, MILLISECONDS_PER_FRAME)
 
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <div
         css={css`
           display: flex;
@@ -88,7 +88,7 @@ const TrackManiaControlBlockPage: NextPage<FooterPageProps> = () => {
           <ControllerTelemetry controller={controllerData} steeringDeadzone={STEERING_DEADZONE} />
         </ContentBlock>
       </div>
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 

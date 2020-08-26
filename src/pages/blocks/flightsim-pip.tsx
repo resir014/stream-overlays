@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/layout/OverlayRoot'
 import ContentBlock from 'components/stream-blocks/ContentBlock'
 
 interface FooterPageProps {
@@ -10,9 +10,9 @@ interface FooterPageProps {
 
 const FlightsimPIPPage: NextPage<FooterPageProps> = () => {
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <ContentBlock style={{ height: 376 }} title="Picture-in-Picture" />
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 

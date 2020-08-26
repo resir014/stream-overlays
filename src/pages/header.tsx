@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/layout/OverlayRoot'
 import HeaderWidget from 'modules/widgets/HeaderWidget'
 
 import { NotionData } from 'interfaces/types'
@@ -19,9 +19,9 @@ const HeaderPage: NextPage<HeaderBlockProps> = ({ initialData }) => {
     typeof currentStream?.['Stream Name'] === 'string' ? currentStream?.['Stream Name'] : undefined
 
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <HeaderWidget isFrame title={streamName} />
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 

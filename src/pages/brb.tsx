@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/layout/OverlayRoot'
 import PrestreamBlock from 'modules/prestream/PrestreamBlock'
 
 import { NotionData } from 'interfaces/types'
@@ -23,7 +23,7 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
   const date = currentStream?.Date
 
   return (
-    <LayoutRoot isTransparent>
+    <OverlayRoot isTransparent>
       <PrestreamBlock
         heading="Please stand by..."
         title={streamName || 'Untitled Stream'}
@@ -33,7 +33,7 @@ const BeRightBackPage: NextPage<BeRightBackPageProps> = ({ initialData }) => {
         titleColor={colors.cyan}
         splashes={brbSplashes}
       />
-    </LayoutRoot>
+    </OverlayRoot>
   )
 }
 

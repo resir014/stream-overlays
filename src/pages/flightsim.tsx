@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import useSWR from 'swr'
-import LayoutRoot from 'components/layout/LayoutRoot'
+import OverlayRoot from 'components/layout/OverlayRoot'
 import FlightProgress from 'components/flightsim/FlightProgress'
 import { STKPOverlayResponse } from 'interfaces/simToolkitPro'
 import { APIResponse } from 'interfaces/types'
@@ -44,7 +44,7 @@ const FlightSimOverlayPage: NextPage = () => {
     const { data: res } = data
 
     return (
-      <LayoutRoot isTransparent>
+      <OverlayRoot isTransparent>
         <FlightProgress value={res.v.Progress || 0} max={100} />
         <OverlayWrapper>
           {res.v.Departure && res.v.Destination && (
@@ -63,7 +63,7 @@ const FlightSimOverlayPage: NextPage = () => {
           {res.v.ETE && <FlightInfo name="ETE" value={`${res.v.ETE}`} />}
           {res.v.currentphase && <FlightInfo name="Phase" value={res.v.currentphase} />}
         </OverlayWrapper>
-      </LayoutRoot>
+      </OverlayRoot>
     )
   }
 
