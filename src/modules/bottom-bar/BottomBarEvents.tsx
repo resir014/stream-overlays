@@ -1,6 +1,8 @@
 import { css } from '@emotion/core'
+import DollarSign from 'components/icons/DollarSign'
+import Star from 'components/icons/Star'
+import TrendingUp from 'components/icons/TrendingUp'
 import * as React from 'react'
-import { BarChart, DollarSign, Star } from 'react-feather'
 import { colors } from 'styles/variables'
 
 const BottomBarEvents: React.FC = () => {
@@ -71,7 +73,7 @@ const BottomBarEvents: React.FC = () => {
           border-left: 2px solid ${colors.green};
         `}
       >
-        <BarChart
+        <TrendingUp
           css={css`
             margin-right: 16px;
           `}
