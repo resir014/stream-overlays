@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 import { colors } from 'styles/variables'
 
 interface BlockHeaderProps {
-  isFrame?: boolean
   title?: string
 }
 
@@ -12,7 +11,7 @@ interface BlockHeaderInnerProps {
   right?: boolean
 }
 
-const Root = styled('header')<BlockHeaderProps>`
+const Root = styled('header')`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -41,9 +40,9 @@ const HeaderTitle = styled('h1')`
 
 const HeaderSubtitle = HeaderTitle.withComponent('h2')
 
-export default function HeaderWidget({ isFrame, title }: BlockHeaderProps) {
+export default function HeaderWidget({ title }: BlockHeaderProps) {
   return (
-    <Root isFrame={isFrame}>
+    <Root>
       <BlockHeaderInner>
         <HeaderTitle>
           @resir014 <span>// resir014.xyz</span>
@@ -59,6 +58,5 @@ export default function HeaderWidget({ isFrame, title }: BlockHeaderProps) {
 }
 
 HeaderWidget.defaultProps = {
-  isFrame: false,
   title: undefined
 }

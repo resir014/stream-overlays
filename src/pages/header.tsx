@@ -20,7 +20,7 @@ const HeaderPage: NextPage<HeaderBlockProps> = ({ initialData }) => {
 
   return (
     <OverlayRoot isTransparent>
-      <HeaderWidget isFrame title={streamName} />
+      <HeaderWidget title={streamName} />
     </OverlayRoot>
   )
 }
