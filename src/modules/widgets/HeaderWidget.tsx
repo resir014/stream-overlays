@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
-import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from 'styles/variables'
 
@@ -13,25 +12,16 @@ interface BlockHeaderInnerProps {
   right?: boolean
 }
 
-const fullScreenStyles = css`
-  padding: 8px;
-`
-
-const frameStyles = css`
-  height: 32px;
-  padding: 0 8px;
-`
-
 const Root = styled('header')<BlockHeaderProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  height: 36px;
+  padding: 0 48px;
   letter-spacing: 0.05rem;
   background-color: ${colors.black};
   color: ${colors.white};
-
-  ${props => (props.isFrame ? frameStyles : fullScreenStyles)};
 `
 
 const BlockHeaderInner = styled('div')<BlockHeaderInnerProps>`
@@ -40,7 +30,7 @@ const BlockHeaderInner = styled('div')<BlockHeaderInnerProps>`
 
 const HeaderTitle = styled('h1')`
   margin: 0;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   font-weight: 600;
 
