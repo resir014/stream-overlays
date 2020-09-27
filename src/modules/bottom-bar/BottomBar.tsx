@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 import * as React from 'react'
 import { colors } from 'styles/variables'
-import BottomBarClock from './BottomBarClock'
+import BottomBarClockWrapper from './BottomBarClockWrapper'
 import BottomBarEvents from './BottomBarEvents'
 
 const BottomBar: React.FC = () => {
@@ -28,7 +28,7 @@ const BottomBar: React.FC = () => {
         `}
       />
       <BottomBarEvents />
-      <BottomBarClock />
+      <BottomBarClockWrapper />
       <div
         css={css`
           display: block;
