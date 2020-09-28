@@ -1,21 +1,13 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
 import OverlayRoot from '~/components/overlay/OverlayRoot'
-import FlightProgress from '~/components/flightsim/FlightProgress'
-import { FlyLiveParsedData } from '~/interfaces/flylive'
-import { APIResponse } from '~/interfaces/types'
-import FlightItinerary from '~/components/flightsim/FlightItinerary'
-import FlightInfo from '~/components/flightsim/FlightInfo'
-import fetch from '~/utils/fetch'
-import OverlayWrapper from '~/components/flightsim/OverlayWrapper'
+import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim'
+import useFlyLiveData from '~/modules/flightsim/useFlyLiveData'
 
 const FlyLiveOverlayPage: NextPage = () => {
   // Calls the local FlyLive telemetry API endpoint and refetches every second
-  const { data } = useSWR<APIResponse<FlyLiveParsedData>>('/api/flylive', fetch, {
-    refreshInterval: 1000
-  })
+  const { data, isLoading } = useFlyLiveData()
   const router = useRouter()
 
   const network = React.useMemo(() => {
@@ -28,31 +20,27 @@ const FlyLiveOverlayPage: NextPage = () => {
     }
 
     return undefined
-  }, [router.query.network])
+  }, [router.query])
 
-  if (data?.status === 'ok') {
-    const { data: res } = data
+  if (!isLoading && data) {
+    const { flightData } = data
 
     return (
       <OverlayRoot isTransparent>
-        <FlightProgress value={res.flightData.flightPercent || 0} max={100} />
+        <FlightProgress value={flightData.flightPercent || 0} max={100} />
         <OverlayWrapper>
-          {res.flightData.dep && res.flightData.arr && (
-            <FlightItinerary origin={res.flightData.dep} destination={res.flightData.arr} />
+          {flightData.dep && flightData.arr && (
+            <FlightItinerary origin={flightData.dep} destination={flightData.arr} />
           )}
-          {res.flightData.callsign && <FlightInfo name="ATC" value={res.flightData.callsign} />}
-          {res.flightData.aircraftType && (
-            <FlightInfo name="AC" value={res.flightData.aircraftType} />
-          )}
+          {flightData.callsign && <FlightInfo name="ATC" value={flightData.callsign} />}
+          {flightData.aircraftType && <FlightInfo name="AC" value={flightData.aircraftType} />}
           {network && <FlightInfo name="NW" value={network} />}
-          {res.flightData.groundSpeed && (
-            <FlightInfo name="GSPD" value={res.flightData.groundSpeed} />
-          )}
-          {res.flightData.airSpeed && <FlightInfo name="IAS" value={res.flightData.airSpeed} />}
-          {res.flightData.heading && <FlightInfo name="HDG" value={res.flightData.heading} />}
-          {res.flightData.vSpeed && <FlightInfo name="VSPD" value={res.flightData.vSpeed} />}
-          {res.flightData.altitude && <FlightInfo name="ALT" value={res.flightData.altitude} />}
-          {res.flightData.eta && <FlightInfo name="ETA" value={res.flightData.eta} />}
+          {flightData.groundSpeed && <FlightInfo name="GSPD" value={flightData.groundSpeed} />}
+          {flightData.airSpeed && <FlightInfo name="IAS" value={flightData.airSpeed} />}
+          {flightData.heading && <FlightInfo name="HDG" value={flightData.heading} />}
+          {flightData.vSpeed && <FlightInfo name="VSPD" value={flightData.vSpeed} />}
+          {flightData.altitude && <FlightInfo name="ALT" value={flightData.altitude} />}
+          {flightData.eta && <FlightInfo name="ETA" value={flightData.eta} />}
         </OverlayWrapper>
       </OverlayRoot>
     )

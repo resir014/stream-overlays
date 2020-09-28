@@ -1,14 +1,9 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import useSWR from 'swr'
 import OverlayRoot from '~/components/overlay/OverlayRoot'
-import FlightProgress from '~/components/flightsim/FlightProgress'
+import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim'
 import { STKPOverlayResponse } from '~/interfaces/simToolkitPro'
-import { APIResponse } from '~/interfaces/types'
-import FlightItinerary from '~/components/flightsim/FlightItinerary'
-import FlightInfo from '~/components/flightsim/FlightInfo'
-import fetch from '~/utils/fetch'
-import OverlayWrapper from '~/components/flightsim/OverlayWrapper'
+import useSTKPData from '~/modules/flightsim/useSTKPData'
 
 export const dummyData: STKPOverlayResponse = {
   opts: {
@@ -36,32 +31,29 @@ export const dummyData: STKPOverlayResponse = {
 
 const FlightSimOverlayPage: NextPage = () => {
   // Calls the local STKP overlay endpoint and refetches every second
-  const { data } = useSWR<APIResponse<STKPOverlayResponse>>('/api/flightsim', fetch, {
-    refreshInterval: 1000
-  })
+  const { data, isLoading } = useSTKPData()
 
-  if (data?.status === 'ok') {
-    const { data: res } = data
-
+  if (!isLoading && data) {
+    const { v } = data
     return (
       <OverlayRoot isTransparent>
-        <FlightProgress value={res.v.Progress || 0} max={100} />
+        <FlightProgress value={v.Progress || 0} max={100} />
         <OverlayWrapper>
-          {res.v.Departure && res.v.Destination && (
-            <FlightItinerary origin={res.v.Departure} destination={res.v.Destination} />
+          {v.Departure && v.Destination && (
+            <FlightItinerary origin={v.Departure} destination={v.Destination} />
           )}
-          {res.v.Callsign && <FlightInfo name="ATC" value={res.v.Callsign} />}
-          {res.v.Reg && <FlightInfo name="REG" value={res.v.Reg} />}
-          {res.v.Airframe && <FlightInfo name="AC" value={res.v.Airframe} />}
-          {res.v.Network && <FlightInfo name="NW" value={res.v.Network} />}
-          {res.v.Groundspeed && <FlightInfo name="GSPD" value={`${res.v.Groundspeed}kts`} />}
-          {res.v.AirSpeed && <FlightInfo name="IAS" value={`${res.v.AirSpeed}kts`} />}
-          {res.v.TrueSpeed && <FlightInfo name="TAS" value={`${res.v.TrueSpeed}kts`} />}
-          {res.v.Heading && <FlightInfo name="HDG" value={`${res.v.Heading}°`} />}
-          {res.v.VSpeed && <FlightInfo name="VSPD" value={`${res.v.VSpeed}ft/min`} />}
-          {res.v.Altitude && <FlightInfo name="ALT" value={`${res.v.Altitude}ft`} />}
-          {res.v.ETE && <FlightInfo name="ETE" value={`${res.v.ETE}`} />}
-          {res.v.currentphase && <FlightInfo name="Phase" value={res.v.currentphase} />}
+          {v.Callsign && <FlightInfo name="ATC" value={v.Callsign} />}
+          {v.Reg && <FlightInfo name="REG" value={v.Reg} />}
+          {v.Airframe && <FlightInfo name="AC" value={v.Airframe} />}
+          {v.Network && <FlightInfo name="NW" value={v.Network} />}
+          {v.Groundspeed && <FlightInfo name="GSPD" value={`${v.Groundspeed}kts`} />}
+          {v.AirSpeed && <FlightInfo name="IAS" value={`${v.AirSpeed}kts`} />}
+          {v.TrueSpeed && <FlightInfo name="TAS" value={`${v.TrueSpeed}kts`} />}
+          {v.Heading && <FlightInfo name="HDG" value={`${v.Heading}°`} />}
+          {v.VSpeed && <FlightInfo name="VSPD" value={`${v.VSpeed}ft/min`} />}
+          {v.Altitude && <FlightInfo name="ALT" value={`${v.Altitude}ft`} />}
+          {v.ETE && <FlightInfo name="ETE" value={`${v.ETE}`} />}
+          {v.currentphase && <FlightInfo name="Phase" value={v.currentphase} />}
         </OverlayWrapper>
       </OverlayRoot>
     )

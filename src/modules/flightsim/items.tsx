@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { rgba } from 'polished'
-import { colors } from '../chungking-core'
+import { colors } from '../../components/chungking-core'
 
 export const ItemCard = styled('section')`
   display: flex;
