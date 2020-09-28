@@ -1,5 +1,10 @@
 import unfetch from 'isomorphic-unfetch'
 
+interface ErrorBuilder extends Error {
+  info?: any
+  status?: number
+}
+
 /**
  * Helper for fetch which automatically returns the JSON and works both on server and client-side.
  *
@@ -11,7 +16,17 @@ export default async function fetch<TResponse = any>(
   init?: RequestInit
 ): Promise<TResponse> {
   const res = await unfetch(input, init)
-  const data: Promise<TResponse> = await res.json()
 
+  // If the status code is not in the range 200-299,
+  // we still try to parse and throw it.
+  if (!res.ok) {
+    const error: ErrorBuilder = new Error('An error occurred while fetching the data.')
+    // Attach extra info to the error object.
+    error.info = await res.json()
+    error.status = res.status
+    throw error
+  }
+
+  const data: TResponse = await res.json()
   return data
 }

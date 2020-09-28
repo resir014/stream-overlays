@@ -1,25 +1,20 @@
 import * as React from 'react'
 import dynamic from 'next/dynamic'
 import { css } from '@emotion/core'
-import { format } from 'date-fns'
-
-import welcomeSplashes from 'utils/welcomeSplashes'
 
 import PrestreamRoot from 'components/prestream/PrestreamRoot'
+import PrestreamHeader from 'components/prestream/PrestreamHeader'
 import PrestreamSection from 'components/prestream/PrestreamSection'
+import PrestreamFooterBlock from 'components/prestream/PrestreamFooterBlock'
 
 import PrestreamContentBlock from './components/PrestreamContentBlock'
 import PrestreamChatWidget from './components/PrestreamChatWidget'
 
 interface PrestreamBlockProps {
   heading?: React.ReactNode
-  title?: string
-  date?: string
-  description?: string
   titleColor?: string
   backgroundColor?: string
   textColor?: string
-  splashes?: string[]
 }
 
 const PrestreamDateTime = dynamic(() => import('components/prestream/PrestreamDateTime'), {
@@ -28,21 +23,13 @@ const PrestreamDateTime = dynamic(() => import('components/prestream/PrestreamDa
 
 export default function PrestreamBlock({
   heading,
-  description = 'No description given.',
-  title = 'Untitled Stream',
-  date,
   titleColor,
   backgroundColor,
-  textColor,
-  splashes = welcomeSplashes
+  textColor
 }: PrestreamBlockProps) {
   return (
-    <PrestreamRoot
-      title={title}
-      date={date ? format(Date.parse(date), 'yyyy.MM.dd') : undefined}
-      subtitle={description}
-      splashes={splashes}
-    >
+    <PrestreamRoot>
+      <PrestreamHeader />
       <PrestreamContentBlock>
         <PrestreamSection>
           <div
@@ -84,17 +71,14 @@ export default function PrestreamBlock({
           </div>
         </PrestreamSection>
       </PrestreamContentBlock>
+      <PrestreamFooterBlock />
     </PrestreamRoot>
   )
 }
 
 PrestreamBlock.defaultProps = {
   heading: undefined,
-  description: 'No description given.',
-  title: 'Untitled Stream',
-  date: undefined,
   titleColor: undefined,
   backgroundColor: undefined,
-  textColor: undefined,
-  splashes: welcomeSplashes
+  textColor: undefined
 }

@@ -3,36 +3,20 @@ import * as React from 'react'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import format from 'date-fns/format'
+import { useStreamSchedule } from 'utils/useCurrentStream'
 import PrestreamLogo from './PrestreamLogo'
-
-interface PrestreamHeaderProps {
-  isFrame?: boolean
-  title?: string
-  date?: string
-  subtitle?: string
-}
 
 interface PrestreamHeaderInnerProps {
   right?: boolean
 }
 
-const fullScreenStyles = css`
-  padding: 24px 48px 0;
-`
-
-const frameStyles = css`
-  height: 40px;
-  padding: 0 8px;
-`
-
-const Root = styled('header')<PrestreamHeaderProps>`
+const Root = styled('header')`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 24px 48px 0;
   letter-spacing: 0.05rem;
-
-  ${props => (props.isFrame ? frameStyles : fullScreenStyles)};
 `
 
 export const PrestreamHeaderInner = styled('div')<PrestreamHeaderInnerProps>`
@@ -61,24 +45,11 @@ export const HeaderSub = styled('h2')`
   font-weight: 400;
 `
 
-export default function PrestreamHeader({ isFrame, title, date, subtitle }: PrestreamHeaderProps) {
-  if (isFrame) {
-    return (
-      <Root isFrame={isFrame}>
-        <PrestreamHeaderInner>
-          <PrestreamTitle>
-            @resir014 <span>// resir014.xyz</span>
-          </PrestreamTitle>
-        </PrestreamHeaderInner>
-        <PrestreamHeaderInner right>
-          <HeaderSub>twitch.tv/resir014</HeaderSub>
-        </PrestreamHeaderInner>
-      </Root>
-    )
-  }
+export default function PrestreamHeader() {
+  const { schedule } = useStreamSchedule()
 
   return (
-    <Root isFrame={isFrame}>
+    <Root>
       <PrestreamHeaderInner
         css={css`
           display: flex;
@@ -93,11 +64,11 @@ export default function PrestreamHeader({ isFrame, title, date, subtitle }: Pres
         >
           <PrestreamTitle>
             <strong>
-              {date && <>{format(Date.parse(date), 'yyyy.MM.dd')} — </>}
-              {title}
+              {schedule && <>{format(Date.parse(schedule.date), 'yyyy.MM.dd')} — </>}
+              {schedule ? schedule.streamName : 'Untitled Stream'}
             </strong>
           </PrestreamTitle>
-          {subtitle && <HeaderSub>{subtitle}</HeaderSub>}
+          <HeaderSub>{schedule ? schedule.description : 'No description given.'}</HeaderSub>
         </div>
       </PrestreamHeaderInner>
     </Root>
@@ -105,7 +76,6 @@ export default function PrestreamHeader({ isFrame, title, date, subtitle }: Pres
 }
 
 PrestreamHeader.defaultProps = {
-  isFrame: false,
   title: undefined,
   date: undefined,
   subtitle: undefined

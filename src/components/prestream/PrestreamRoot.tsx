@@ -4,16 +4,6 @@ import styled from '@emotion/styled'
 import { colors } from 'styles/variables'
 import topoPattern from 'styles/topoPattern'
 
-import PrestreamFooterBlock from './PrestreamFooterBlock'
-import PrestreamHeader from './PrestreamHeader'
-
-interface PrestreamRootProps {
-  title: string
-  subtitle: string
-  date?: string
-  splashes?: string[]
-}
-
 const Root = styled('section')`
   display: flex;
   flex-direction: row;
@@ -44,15 +34,11 @@ const Inner = styled('div')`
   flex: 1;
 `
 
-const PrestreamRoot: React.FC<PrestreamRootProps> = ({ children, title, date, subtitle }) => {
+const PrestreamRoot: React.FC = ({ children }) => {
   return (
     <Root>
       <GridWrapper>
-        <Inner>
-          <PrestreamHeader title={title} date={date} subtitle={subtitle} />
-          {children}
-          <PrestreamFooterBlock />
-        </Inner>
+        <Inner>{children}</Inner>
       </GridWrapper>
     </Root>
   )

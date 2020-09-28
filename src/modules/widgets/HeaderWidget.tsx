@@ -2,10 +2,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { colors } from 'styles/variables'
-
-interface BlockHeaderProps {
-  title?: string
-}
+import { useStreamSchedule } from 'utils/useCurrentStream'
 
 interface BlockHeaderInnerProps {
   right?: boolean
@@ -40,7 +37,9 @@ const HeaderTitle = styled('h1')`
 
 const HeaderSubtitle = HeaderTitle.withComponent('h2')
 
-export default function HeaderWidget({ title }: BlockHeaderProps) {
+export default function HeaderWidget() {
+  const { schedule } = useStreamSchedule()
+
   return (
     <Root>
       <BlockHeaderInner>
@@ -50,7 +49,7 @@ export default function HeaderWidget({ title }: BlockHeaderProps) {
       </BlockHeaderInner>
       <BlockHeaderInner right>
         <HeaderSubtitle>
-          <span>{title || 'Untitled Stream'}</span>
+          <span>{schedule ? schedule.streamName : 'Untitled Stream'}</span>
         </HeaderSubtitle>
       </BlockHeaderInner>
     </Root>
