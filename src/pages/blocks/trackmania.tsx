@@ -14,6 +14,8 @@ const TrackManiaControlBlockPage: NextPage = () => {
     <OverlayRoot isTransparent>
       <Box display="flex" flexDirection="column" flex="1 1 auto" my="xxs" mx="xs">
         <Box
+          py="xxs"
+          px="xs"
           backgroundColor={transparentize(0.5, colors.grey90)}
           borderTop="4px solid"
           borderTopColor="blue30"
