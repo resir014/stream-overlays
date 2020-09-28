@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { transparentize } from 'polished'
-import { colors, fonts } from '~/styles/variables'
+import { colors, fonts } from '../chungking-core'
 
 interface ContentBlockProps {
   className?: string

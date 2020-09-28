@@ -2,15 +2,15 @@ import * as React from 'react'
 import { parseToHsl, hsl } from 'polished'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
-import { colors } from '~/styles/variables'
 import { SteeringValues } from '~/interfaces/trackmania'
+import { Box, colors } from '~/components/chungking-core'
+import useGamepad from '~/utils/useGamepad'
 
 interface ThrottleIndicatorProps {
-  axisValue?: number
   steeringDeadzone?: number
 }
 
-const orangeHsl = parseToHsl(colors.orange)
+const orangeHsl = parseToHsl(colors.orange30)
 
 const SteeringLeft = css`
   justify-content: flex-end;
@@ -36,11 +36,12 @@ const SteeringInner = styled('div')`
   height: 100%;
 `
 
-const SteeringIndicator: React.FC<ThrottleIndicatorProps> = ({
-  axisValue,
-  steeringDeadzone = 0
-}) => {
+const SteeringIndicator: React.FC<ThrottleIndicatorProps> = ({ steeringDeadzone = 0 }) => {
+  const { controllerData } = useGamepad()
+
   const steerWidths = React.useMemo<SteeringValues>(() => {
+    const axisValue = controllerData?.steering
+
     if (axisValue) {
       return {
         left: axisValue <= steeringDeadzone ? Math.abs(axisValue * 100) : 0,
@@ -49,18 +50,10 @@ const SteeringIndicator: React.FC<ThrottleIndicatorProps> = ({
     }
 
     return { left: 0, right: 0 }
-  }, [axisValue])
+  }, [controllerData])
 
   return (
-    <div
-      css={css`
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 16px;
-        width: 100%;
-        max-width: 204px;
-      `}
-    >
+    <Box display="grid" gridTemplateColumns="1fr 1fr" gridGap="md" width="100%" maxWidth={204}>
       <Steering css={SteeringLeft}>
         <SteeringInner
           style={{
@@ -75,7 +68,7 @@ const SteeringIndicator: React.FC<ThrottleIndicatorProps> = ({
           }}
         />
       </Steering>
-    </div>
+    </Box>
   )
 }
 

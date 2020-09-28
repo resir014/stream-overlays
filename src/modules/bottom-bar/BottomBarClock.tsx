@@ -1,46 +1,43 @@
-import * as React from 'react'
 import { css } from '@emotion/core'
-import useClock from '~/utils/useClock'
-import { colors } from '~/styles/variables'
 import { format } from 'date-fns'
+import * as React from 'react'
+import useClock from '~/utils/useClock'
+import { Box, Text } from '~/components/chungking-core'
 
 const BottomBarClock: React.FC = () => {
   const time = useClock()
 
   return (
-    <div
-      css={css`
-        display: block;
-        padding: 0 16px;
-        text-align: right;
-        border-right: 4px solid ${colors.blue};
-      `}
+    <Box
+      display="block"
+      px="md"
+      textAlign="right"
+      borderRight="4px solid"
+      borderRightColor="blue30"
     >
-      <span
+      <Text
+        display="block"
+        color="white"
+        variant={500}
         css={css`
-          display: block;
-          color: ${colors.white};
-          font-size: 20px;
-          line-height: 24px;
           font-variant-numeric: tabular-nums;
         `}
       >
         <strong>{format(time, 'ccc')}</strong> {format(time, 'dd MMM yyyy')}
-      </span>
-      <span
+      </Text>
+      <Text
+        display="block"
+        color="white"
+        mt="xs"
+        variant={700}
+        fontWeight={600}
         css={css`
-          display: block;
-          color: ${colors.white};
-          margin-top: 8px;
-          font-size: 32px;
-          line-height: 36px;
-          font-weight: 600;
           font-variant-numeric: tabular-nums;
         `}
       >
         {format(time, 'HH:mm:ss')}
-      </span>
-    </div>
+      </Text>
+    </Box>
   )
 }
 

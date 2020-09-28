@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 import { rgba } from 'polished'
-import { colors } from '~/styles/variables'
+import { colors } from '../chungking-core'
 
 export const ItemCard = styled('section')`
   display: flex;
   flex-direction: row;
-  border-left: 4px solid ${colors.blue};
+  border-left: 4px solid ${colors.blue30};
   background-color: ${rgba(colors.black, 0.7)};
   color: ${colors.white};
   font-size: 16px;

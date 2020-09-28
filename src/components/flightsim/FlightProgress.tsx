@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from '~/styles/variables'
+import { colors } from '../chungking-core'
 
 const FlightProgress = styled('progress')`
   @supports (-webkit-appearance: none) {
@@ -16,7 +16,7 @@ const FlightProgress = styled('progress')`
       }
 
       ::-webkit-progress-value {
-        background-color: ${colors.blue};
+        background-color: ${colors.blue30};
       }
     }
   }

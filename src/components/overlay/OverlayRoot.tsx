@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-
-import { colors } from '~/styles/variables'
+import { colors } from '../chungking-core'
+import { extendedColors } from '~/styles/variables'
 
 interface OverlayRootProps {
   isGreenScreen?: boolean
@@ -10,7 +10,7 @@ interface OverlayRootProps {
 
 const backgroundColor = (isGreenScreen = false, isTransparent = false) => {
   if (isGreenScreen) {
-    return colors.greenscreen
+    return extendedColors.greenscreen
   }
 
   if (isTransparent) {

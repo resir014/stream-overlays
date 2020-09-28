@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 import * as React from 'react'
 import dynamic from 'next/dynamic'
-import { colors } from '~/styles/variables'
+import { colors } from '~/components/chungking-core'
 
 const BottomBarClock = dynamic(() => import('./BottomBarClock'), {
   ssr: false

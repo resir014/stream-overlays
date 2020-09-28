@@ -1,43 +1,34 @@
-import { css } from '@emotion/core'
 import * as React from 'react'
-import { colors } from '~/styles/variables'
+import { Box } from '~/components/chungking-core'
 import BottomBarClockWrapper from './BottomBarClockWrapper'
 import BottomBarEvents from './BottomBarEvents'
 
 const BottomBar: React.FC = () => {
   return (
-    <div
-      css={css`
-        display: grid;
-        grid-template-rows: 56px 40px 48px;
-        grid-template-columns: auto 320px;
-        grid-template-areas:
-          'caption clock'
-          'events clock'
-          'footer footer';
-        width: 100%;
-        height: 100%;
-        max-height: 144px;
+    <Box
+      display="grid"
+      gridTemplateRows="56px 40px 48px"
+      gridTemplateColumns="auto 320px"
+      gridTemplateAreas={`
+        "caption clock"
+        "events clock"
+        "footer footer"
       `}
+      width="100%"
+      height="100%"
+      maxHeight={144}
     >
-      <div
-        css={css`
-          display: block;
-          grid-area: caption;
-          background-color: #000;
-        `}
-      />
+      <Box display="block" gridArea="caption" backgroundColor="#000" />
       <BottomBarEvents />
       <BottomBarClockWrapper />
-      <div
-        css={css`
-          display: block;
-          grid-area: footer;
-          background-color: ${colors.black};
-          border-top: 1px solid ${colors.grey90};
-        `}
+      <Box
+        display="block"
+        gridArea="footer"
+        backgroundColor="black"
+        borderTop="1px solid"
+        borderTopColor="grey90"
       />
-    </div>
+    </Box>
   )
 }
 

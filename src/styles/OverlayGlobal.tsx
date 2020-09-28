@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { css } from '@emotion/core'
-import { colors } from './variables'
+import { colors } from '~/components/chungking-core'
 
 const OverlayGlobal = css`
   html,
