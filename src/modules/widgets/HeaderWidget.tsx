@@ -1,58 +1,44 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
-import styled from '@emotion/styled'
-import { colors } from '~/styles/variables'
+import { css } from '@emotion/core'
 import { useStreamSchedule } from '~/utils/useCurrentStream'
+import { Box, Text } from '~/components/chungking-core'
 
 interface BlockHeaderInnerProps {
   right?: boolean
 }
 
-const Root = styled('header')`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 36px;
-  padding: 0 48px;
-  letter-spacing: 0.05rem;
-  background-color: ${colors.black};
-  color: ${colors.white};
-`
-
-const BlockHeaderInner = styled('div')<BlockHeaderInnerProps>`
-  text-align: ${props => (props.right ? 'right' : 'left')};
-`
-
-const HeaderTitle = styled('h1')`
-  margin: 0;
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 600;
-
-  span {
-    font-weight: 400;
-  }
-`
-
-const HeaderSubtitle = HeaderTitle.withComponent('h2')
-
 export default function HeaderWidget() {
   const { schedule } = useStreamSchedule()
 
   return (
-    <Root>
-      <BlockHeaderInner>
-        <HeaderTitle>
-          @resir014 <span>// resir014.xyz</span>
-        </HeaderTitle>
-      </BlockHeaderInner>
-      <BlockHeaderInner right>
-        <HeaderSubtitle>
-          <span>{schedule ? schedule.streamName : 'Untitled Stream'}</span>
-        </HeaderSubtitle>
-      </BlockHeaderInner>
-    </Root>
+    <Box
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="space-between"
+      height={36}
+      px="xxl"
+      backgroundColor="black"
+      color="white"
+      css={css`
+        letter-spacing: 0.05rem;
+      `}
+    >
+      <Box>
+        <Text as="h1" variant={500} fontWeight={400}>
+          <Text as="strong" fontWeight={600}>
+            @resir014
+          </Text>{' '}
+          // resir014.xyz
+        </Text>
+      </Box>
+      <Box textAlign="right">
+        <Text as="h2" variant={500} fontWeight={400}>
+          {schedule ? schedule.streamName : 'Untitled Stream'}
+        </Text>
+      </Box>
+    </Box>
   )
 }
 
