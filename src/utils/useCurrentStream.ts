@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { NotionData, ParsedSchedule } from 'interfaces/types'
+import { NotionData, ParsedSchedule } from '~/interfaces/types'
 
 import fetch from './fetch'
 

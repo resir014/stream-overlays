@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import useSWR from 'swr'
-import OverlayRoot from 'components/overlay/OverlayRoot'
-import FlightProgress from 'components/flightsim/FlightProgress'
-import { STKPOverlayResponse } from 'interfaces/simToolkitPro'
-import { APIResponse } from 'interfaces/types'
-import FlightItinerary from 'components/flightsim/FlightItinerary'
-import FlightInfo from 'components/flightsim/FlightInfo'
-import fetch from 'utils/fetch'
-import OverlayWrapper from 'components/flightsim/OverlayWrapper'
+import OverlayRoot from '~/components/overlay/OverlayRoot'
+import FlightProgress from '~/components/flightsim/FlightProgress'
+import { STKPOverlayResponse } from '~/interfaces/simToolkitPro'
+import { APIResponse } from '~/interfaces/types'
+import FlightItinerary from '~/components/flightsim/FlightItinerary'
+import FlightInfo from '~/components/flightsim/FlightInfo'
+import fetch from '~/utils/fetch'
+import OverlayWrapper from '~/components/flightsim/OverlayWrapper'
 
 export const dummyData: STKPOverlayResponse = {
   opts: {

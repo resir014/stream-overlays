@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { css } from '@emotion/core'
-import useClock from 'utils/useClock'
-import { colors } from 'styles/variables'
+import useClock from '~/utils/useClock'
+import { colors } from '~/styles/variables'
 import { format } from 'date-fns'
 
 const BottomBarClock: React.FC = () => {

@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import OverlayRoot from 'components/overlay/OverlayRoot'
-import ContentBlock from 'components/stream-blocks/ContentBlock'
+import OverlayRoot from '~/components/overlay/OverlayRoot'
+import ContentBlock from '~/components/stream-blocks/ContentBlock'
 
-import { ControllerData } from 'interfaces/trackmania'
-import useInterval from 'utils/useInterval'
-import ControllerTelemetry from 'modules/trackmania/ControllerTelemetry'
+import { ControllerData } from '~/interfaces/trackmania'
+import useInterval from '~/utils/useInterval'
+import ControllerTelemetry from '~/modules/trackmania/ControllerTelemetry'
 import { css } from '@emotion/core'
 
 interface FooterPageProps {

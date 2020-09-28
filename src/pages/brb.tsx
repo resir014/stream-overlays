@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import OverlayRoot from 'components/overlay/OverlayRoot'
-import PrestreamBlock from 'modules/prestream/PrestreamBlock'
+import OverlayRoot from '~/components/overlay/OverlayRoot'
+import PrestreamBlock from '~/modules/prestream/PrestreamBlock'
 
-import { colors } from 'styles/variables'
+import { colors } from '~/styles/variables'
 
 const BeRightBackPage: NextPage = () => {
   return (

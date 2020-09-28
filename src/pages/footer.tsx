@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import OverlayRoot from 'components/overlay/OverlayRoot'
-import FooterWidget from 'modules/widgets/FooterWidget'
+import OverlayRoot from '~/components/overlay/OverlayRoot'
+import FooterWidget from '~/modules/widgets/FooterWidget'
 
 interface FooterPageProps {
   errors?: Error['message']

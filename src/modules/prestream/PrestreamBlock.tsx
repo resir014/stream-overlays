@@ -1,14 +1,13 @@
 import * as React from 'react'
 import dynamic from 'next/dynamic'
-import { css } from '@emotion/core'
 
-import PrestreamRoot from 'components/prestream/PrestreamRoot'
-import PrestreamHeader from 'components/prestream/PrestreamHeader'
-import PrestreamSection from 'components/prestream/PrestreamSection'
-import PrestreamFooterBlock from 'components/prestream/PrestreamFooterBlock'
-
-import PrestreamContentBlock from './components/PrestreamContentBlock'
-import PrestreamChatWidget from './components/PrestreamChatWidget'
+import {
+  PrestreamRoot,
+  PrestreamSection,
+  PrestreamFooterBlock,
+  PrestreamContentBlock,
+  PrestreamChatWidget
+} from './components'
 
 interface PrestreamBlockProps {
   heading?: React.ReactNode
@@ -17,7 +16,8 @@ interface PrestreamBlockProps {
   textColor?: string
 }
 
-const PrestreamDateTime = dynamic(() => import('components/prestream/PrestreamDateTime'), {
+const PrestreamHeader = dynamic(() => import('./PrestreamHeader'))
+const PrestreamDateTime = dynamic(() => import('./PrestreamDateTime'), {
   ssr: false
 })
 
@@ -32,43 +32,8 @@ export default function PrestreamBlock({
       <PrestreamHeader />
       <PrestreamContentBlock>
         <PrestreamSection>
-          <div
-            css={css`
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              height: 640px;
-            `}
-          >
-            <div
-              css={css`
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-gap: 24px;
-                flex: 1;
-              `}
-            >
-              <div
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  align-items: flex-start;
-                `}
-              >
-                <PrestreamChatWidget backgroundColor={backgroundColor} textColor={textColor} />
-              </div>
-              <div
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  align-items: flex-end;
-                  justify-content: center;
-                `}
-              >
-                <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
-              </div>
-            </div>
-          </div>
+          <PrestreamChatWidget backgroundColor={backgroundColor} textColor={textColor} />
+          <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
         </PrestreamSection>
       </PrestreamContentBlock>
       <PrestreamFooterBlock />

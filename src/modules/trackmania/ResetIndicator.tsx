@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { parseToHsl, hsl, darken } from 'polished'
 import styled from '@emotion/styled'
-import { colors } from 'styles/variables'
+import { colors } from '~/styles/variables'
 import { InnerText } from './TextStyles'
 
 interface ThrottleIndicatorProps {

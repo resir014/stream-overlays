@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { snakeCase } from 'text-case'
-import { colors, fonts } from 'styles/variables'
+import { colors, fonts } from '~/styles/variables'
 
 interface FooterBlockProps {
   title: string

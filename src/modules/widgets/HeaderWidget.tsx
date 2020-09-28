@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { colors } from 'styles/variables'
-import { useStreamSchedule } from 'utils/useCurrentStream'
+import { colors } from '~/styles/variables'
+import { useStreamSchedule } from '~/utils/useCurrentStream'
 
 interface BlockHeaderInnerProps {
   right?: boolean

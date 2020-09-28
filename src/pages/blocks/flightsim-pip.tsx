@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 
-import OverlayRoot from 'components/overlay/OverlayRoot'
-import ContentBlock from 'components/stream-blocks/ContentBlock'
+import OverlayRoot from '~/components/overlay/OverlayRoot'
+import ContentBlock from '~/components/stream-blocks/ContentBlock'
 
 interface FooterPageProps {
   errors?: Error['message']

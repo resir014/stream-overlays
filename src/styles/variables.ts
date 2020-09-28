@@ -1,4 +1,4 @@
-import { AlertKinds } from 'interfaces/types'
+import { AlertKinds } from '~/interfaces/types'
 
 export const alertColors: Record<AlertKinds, string> = {
   raid: '#ff369a',

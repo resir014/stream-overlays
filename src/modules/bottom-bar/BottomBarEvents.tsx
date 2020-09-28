@@ -1,9 +1,9 @@
 import { css } from '@emotion/core'
-import DollarSign from 'components/icons/DollarSign'
-import Star from 'components/icons/Star'
-import TrendingUp from 'components/icons/TrendingUp'
+import DollarSign from '~/components/icons/DollarSign'
+import Star from '~/components/icons/Star'
+import TrendingUp from '~/components/icons/TrendingUp'
 import * as React from 'react'
-import { colors } from 'styles/variables'
+import { colors } from '~/styles/variables'
 
 const BottomBarEvents: React.FC = () => {
   return (

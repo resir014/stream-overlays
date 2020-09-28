@@ -2,8 +2,8 @@ import * as React from 'react'
 import { parseToHsl, hsl } from 'polished'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
-import { colors } from 'styles/variables'
-import { SteeringValues } from 'interfaces/trackmania'
+import { colors } from '~/styles/variables'
+import { SteeringValues } from '~/interfaces/trackmania'
 
 interface ThrottleIndicatorProps {
   axisValue?: number

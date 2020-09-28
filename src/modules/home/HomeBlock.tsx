@@ -4,12 +4,11 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import Link from 'next/link'
 
-import { colors } from 'styles/variables'
+import { colors } from '~/styles/variables'
 
 const HomeWidget = styled('section')`
   display: block;
-  width: 100%;
-  max-width: 460px;
+  flex: 1 1 auto;
   padding: 24px;
   background-color: ${colors.grey90};
   color: white;

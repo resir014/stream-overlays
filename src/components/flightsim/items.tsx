@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { rgba } from 'polished'
-import { colors } from 'styles/variables'
+import { colors } from '~/styles/variables'
 
 export const ItemCard = styled('section')`
   display: flex;

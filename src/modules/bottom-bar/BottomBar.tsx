@@ -1,6 +1,6 @@
 import { css } from '@emotion/core'
 import * as React from 'react'
-import { colors } from 'styles/variables'
+import { colors } from '~/styles/variables'
 import BottomBarClockWrapper from './BottomBarClockWrapper'
 import BottomBarEvents from './BottomBarEvents'
 

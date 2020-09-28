@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { AirtableRecord, AirtableData } from 'interfaces/types'
+import { AirtableRecord, AirtableData } from '~/interfaces/types'
 import fetch from './fetch'
 
 const airtableAPIURL =

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { css } from '@emotion/core'
-import { ControllerData } from 'interfaces/trackmania'
+import { ControllerData } from '~/interfaces/trackmania'
 
 import ThrottleIndicator from './ThrottleIndicator'
 import BrakeIndicator from './BrakeIndicator'
