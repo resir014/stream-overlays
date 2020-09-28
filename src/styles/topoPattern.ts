@@ -1,6 +1,5 @@
 import { css } from '@emotion/core'
-
-import { colors } from './variables'
+import { colors } from '~/components/chungking-core'
 
 const topoPattern = css`
   background-color: ${colors.black};
