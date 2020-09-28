@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { NextPage } from 'next'
+import { css } from '@emotion/core'
 
 import OverlayRoot from '~/components/overlay/OverlayRoot'
 import ContentBlock from '~/components/stream-blocks/ContentBlock'
@@ -7,11 +8,6 @@ import ContentBlock from '~/components/stream-blocks/ContentBlock'
 import { ControllerData } from '~/interfaces/trackmania'
 import useInterval from '~/utils/useInterval'
 import ControllerTelemetry from '~/modules/trackmania/ControllerTelemetry'
-import { css } from '@emotion/core'
-
-interface FooterPageProps {
-  errors?: Error['message']
-}
 
 const MILLISECONDS_PER_FRAME = 1000 / 60
 const ACCELERATE_BUTTON = 0
@@ -19,7 +15,7 @@ const RESET_BUTTON = 1
 const BRAKE_BUTTON = 2
 const STEERING_DEADZONE = 0.01
 
-const TrackManiaControlBlockPage: NextPage<FooterPageProps> = () => {
+const TrackManiaControlBlockPage: NextPage = () => {
   const [, setIsControllerConnected] = React.useState(false)
   const [controllerData, setControllerData] = React.useState<ControllerData | undefined>(undefined)
 

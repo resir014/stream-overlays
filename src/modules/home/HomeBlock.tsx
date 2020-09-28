@@ -36,6 +36,11 @@ export default function HomeBlock() {
           <a>BottomBar&trade;</a>
         </Link>
       </HeaderParagraph>
+      <HeaderParagraph>
+        <Link href="/blocks/flightsim-pip">
+          <a>Picture-in-Picture Wrapper</a>
+        </Link>
+      </HeaderParagraph>
       <HeaderTitle>Widgets</HeaderTitle>
       <HeaderParagraph>
         <Link href="/alerts/saweria">
