@@ -38,7 +38,7 @@ const BottomBarClock: React.FC = () => {
           display="block"
           color="white"
           mt="xs"
-          variant={700}
+          variant={800}
           fontWeight={600}
           css={css`
             font-variant-numeric: tabular-nums;
