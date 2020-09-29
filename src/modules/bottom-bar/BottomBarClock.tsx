@@ -9,34 +9,44 @@ const BottomBarClock: React.FC = () => {
 
   return (
     <Box
-      display="block"
-      px="md"
-      textAlign="right"
-      borderRight="4px solid"
-      borderRightColor="blue30"
+      display="flex"
+      alignItems="center"
+      justifyContent="flex-end"
+      gridArea="clock"
+      py="xs"
+      px="xxl"
+      backgroundColor="black"
     >
-      <Text
+      <Box
         display="block"
-        color="white"
-        variant={500}
-        css={css`
-          font-variant-numeric: tabular-nums;
-        `}
+        px="md"
+        textAlign="right"
+        borderRight="4px solid"
+        borderRightColor="blue30"
       >
-        <strong>{format(time, 'ccc')}</strong> {format(time, 'dd MMM yyyy')}
-      </Text>
-      <Text
-        display="block"
-        color="white"
-        mt="xs"
-        variant={700}
-        fontWeight={600}
-        css={css`
-          font-variant-numeric: tabular-nums;
-        `}
-      >
-        {format(time, 'HH:mm:ss')}
-      </Text>
+        <Text
+          display="block"
+          color="white"
+          variant={500}
+          css={css`
+            font-variant-numeric: tabular-nums;
+          `}
+        >
+          <strong>{format(time, 'ccc')}</strong> {format(time, 'dd MMM yyyy')}
+        </Text>
+        <Text
+          display="block"
+          color="white"
+          mt="xs"
+          variant={700}
+          fontWeight={600}
+          css={css`
+            font-variant-numeric: tabular-nums;
+          `}
+        >
+          {format(time, 'HH:mm:ss')}
+        </Text>
+      </Box>
     </Box>
   )
 }

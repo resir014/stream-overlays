@@ -1,7 +1,11 @@
+import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { Box } from '~/components/chungking-core'
-import BottomBarClockWrapper from './BottomBarClockWrapper'
 import BottomBarEvents from './BottomBarEvents'
+
+const BottomBarClock = dynamic(() => import('./BottomBarClock'), {
+  ssr: false
+})
 
 const BottomBar: React.FC = () => {
   return (
@@ -16,11 +20,12 @@ const BottomBar: React.FC = () => {
       `}
       width="100%"
       height="100%"
+      backgroundColor="black"
       maxHeight={144}
     >
       <Box display="block" gridArea="caption" backgroundColor="#000" />
       <BottomBarEvents />
-      <BottomBarClockWrapper />
+      <BottomBarClock />
       <Box
         display="block"
         gridArea="footer"
