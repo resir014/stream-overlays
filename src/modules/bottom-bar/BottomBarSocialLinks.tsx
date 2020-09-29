@@ -6,15 +6,12 @@ import { TransitionStatus } from 'react-transition-group/Transition'
 
 import useInterval from '~/utils/useInterval'
 import sleep from '~/utils/sleep'
-import welcomeSplashes from '~/utils/welcomeSplashes'
-
-interface PrestreamLoopingTextProps {
-  splashes?: string[]
-}
+import { Box } from '~/components/chungking-core'
+import socialLinks from './socialLinks'
 
 export const TRANSITION_DURATION = 500
 
-interface TextProps {
+interface TransitionProps {
   state: TransitionStatus
 }
 
@@ -26,7 +23,7 @@ const Entered = css`
   opacity: 1;
 `
 
-const transitionStyles = ({ state }: TextProps) => {
+const transitionStyles = ({ state }: TransitionProps) => {
   switch (state) {
     case 'entering': {
       return Entered
@@ -46,20 +43,14 @@ const transitionStyles = ({ state }: TextProps) => {
   }
 }
 
-const Text = styled('p')<TextProps>`
-  margin: 0;
-  font-size: 24px;
-  line-height: 28px;
-  font-weight: 400;
+const Container = styled(Box)<TransitionProps>`
   transition: all ${TRANSITION_DURATION}ms ease;
   opacity: 0;
 
   ${transitionStyles}
 `
 
-const PrestreamLoopingText: React.FC<PrestreamLoopingTextProps> = ({
-  splashes = welcomeSplashes
-}) => {
+const BottomBarSocialLinks: React.FC = () => {
   const [currentIndex, setCurrentIndex] = React.useState(0)
   const [transitioning, setTransitioning] = React.useState(false)
 
@@ -70,7 +61,7 @@ const PrestreamLoopingText: React.FC<PrestreamLoopingTextProps> = ({
 
       await sleep(1000)
 
-      if (!splashes[next]) {
+      if (!socialLinks[next]) {
         setCurrentIndex(0)
       } else {
         setCurrentIndex(next)
@@ -83,10 +74,24 @@ const PrestreamLoopingText: React.FC<PrestreamLoopingTextProps> = ({
   }, 8000)
 
   return (
-    <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
-      {state => <Text state={state}>{splashes[currentIndex]}</Text>}
-    </Transition>
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="flex-end"
+      gridArea="clock"
+      py="xs"
+      px="xxl"
+      backgroundColor="black"
+    >
+      <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
+        {state => (
+          <Container px="sm" borderRight="2px solid" borderRightColor="blue30" state={state}>
+            {socialLinks[currentIndex]}
+          </Container>
+        )}
+      </Transition>
+    </Box>
   )
 }
 
-export default PrestreamLoopingText
+export default BottomBarSocialLinks

@@ -27,7 +27,7 @@ export interface ParsedSchedule {
 
 export type AlertKinds = 'raid' | 'cheer' | 'host' | 'donation' | 'follow' | 'sub'
 
-export type PrestreamVariants = 'prestream' | 'brb'
+export type PrestreamVariants = 'prestream' | 'brb' | 'end'
 
 export interface APIResponse<TResponse = any> {
   status: 'ok' | 'error'

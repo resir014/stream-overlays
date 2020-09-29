@@ -1,33 +1,51 @@
 import * as React from 'react'
-import { css } from '@emotion/core'
+import styled from '@emotion/styled'
+import { variant as styledSystemVariant } from 'styled-system'
+import { transparentize } from 'polished'
 
-import ContentBlock from '~/components/stream-blocks/ContentBlock'
-import { Box } from '~/components/chungking-core'
+import { Box, colors } from '~/components/chungking-core'
+import { PrestreamVariants } from '~/interfaces/types'
+
+const StyledBox = styled(Box)`
+  ${styledSystemVariant({
+    variants: {
+      prestream: {
+        borderLeftColor: 'ultramarine30'
+      },
+      brb: {
+        borderLeftColor: 'purple30'
+      },
+      end: {
+        borderLeftColor: 'orange30'
+      }
+    }
+  })}
+`
 
 interface PrestreamChatWidgetProps {
-  textColor?: string
-  backgroundColor?: string
+  variant?: PrestreamVariants
 }
 
-const PrestreamChatWidget: React.FC<PrestreamChatWidgetProps> = ({
-  textColor,
-  backgroundColor
-}) => {
+const PrestreamChatWidget: React.FC<PrestreamChatWidgetProps> = ({ variant }) => {
   return (
     <Box display="flex" alignItems="center">
-      <ContentBlock
-        hasShadow
-        backgroundColor={backgroundColor}
-        textColor={textColor}
-        css={css`
-          display: inline-block;
-          width: 100%;
-          max-width: 640px;
-          height: 600px;
-        `}
+      <StyledBox
+        display="block"
+        width="100%"
+        maxWidth={640}
+        height={600}
+        borderRadius={4}
+        boxShadow="double"
+        backgroundColor={transparentize(0.5, colors.grey90)}
+        borderLeft="8px solid"
+        variant={variant}
       />
     </Box>
   )
+}
+
+PrestreamChatWidget.defaultProps = {
+  variant: 'prestream'
 }
 
 export default PrestreamChatWidget

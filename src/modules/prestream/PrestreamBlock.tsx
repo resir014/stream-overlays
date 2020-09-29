@@ -1,19 +1,18 @@
 import * as React from 'react'
 import dynamic from 'next/dynamic'
+import { PrestreamVariants } from '~/interfaces/types'
 
 import {
   PrestreamRoot,
   PrestreamSection,
-  PrestreamFooterBlock,
   PrestreamContentBlock,
   PrestreamChatWidget
 } from './components'
+import BottomBar from '../bottom-bar/BottomBar'
 
 interface PrestreamBlockProps {
-  heading?: React.ReactNode
-  titleColor?: string
-  backgroundColor?: string
-  textColor?: string
+  text?: React.ReactNode
+  variant?: PrestreamVariants
 }
 
 const PrestreamHeader = dynamic(() => import('./PrestreamHeader'))
@@ -21,29 +20,22 @@ const PrestreamDateTime = dynamic(() => import('./PrestreamDateTime'), {
   ssr: false
 })
 
-export default function PrestreamBlock({
-  heading,
-  titleColor,
-  backgroundColor,
-  textColor
-}: PrestreamBlockProps) {
+export default function PrestreamBlock({ text, variant }: PrestreamBlockProps) {
   return (
     <PrestreamRoot>
       <PrestreamHeader />
       <PrestreamContentBlock>
         <PrestreamSection>
-          <PrestreamChatWidget backgroundColor={backgroundColor} textColor={textColor} />
-          <PrestreamDateTime titleColor={titleColor} text={heading || 'Untitled'} />
+          <PrestreamChatWidget variant={variant} />
+          <PrestreamDateTime text={text} />
         </PrestreamSection>
       </PrestreamContentBlock>
-      <PrestreamFooterBlock />
+      <BottomBar hideClock />
     </PrestreamRoot>
   )
 }
 
 PrestreamBlock.defaultProps = {
-  heading: undefined,
-  titleColor: undefined,
-  backgroundColor: undefined,
-  textColor: undefined
+  text: undefined,
+  variant: 'prestream'
 }

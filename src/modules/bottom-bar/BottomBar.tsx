@@ -1,13 +1,18 @@
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { Box } from '~/components/chungking-core'
+import BottomBarSocialLinks from './BottomBarSocialLinks'
 import BottomBarEvents from './BottomBarEvents'
 
 const BottomBarClock = dynamic(() => import('./BottomBarClock'), {
   ssr: false
 })
 
-const BottomBar: React.FC = () => {
+interface BottomBarProps {
+  hideClock?: boolean
+}
+
+const BottomBar: React.FC<BottomBarProps> = ({ hideClock }) => {
   return (
     <Box
       display="grid"
@@ -25,7 +30,7 @@ const BottomBar: React.FC = () => {
     >
       <Box display="block" gridArea="caption" backgroundColor="#000" />
       <BottomBarEvents />
-      <BottomBarClock />
+      {hideClock ? <BottomBarSocialLinks /> : <BottomBarClock />}
       <Box
         display="block"
         gridArea="footer"
