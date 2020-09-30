@@ -1,0 +1,23 @@
+<div id="content" class="stkp-overlay-wrapper" style="--accent-progress: {{ colour }};">
+{% for layout in parts %}
+  {% if layout == "progress" %}
+  <progress class="stkp-overlay-progress" value="{{progress}}" max="100" />
+  {% endif %}
+{% endfor %}
+{% for layout in parts %}
+  {% if layout == "elements" %}
+  <div id="elems" class="stkp-overlay">
+    {% for item in elements %}
+      {% if item.enabled %}
+      <div class="stkp-overlay-item">
+        {% if item.name %}
+          <span class="stkp-overlay-item__title">{{ item.name }}</span>
+        {% endif %}
+        <span class="stkp-overlay-item__content">{{ item.value }} {{ item.suffix }}</span>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+{% endfor %}
+</div>

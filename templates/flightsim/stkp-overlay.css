@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --accent-progress: #0076ff;
+  --color-overlay-background: rgba(22, 22, 29, 0.7);
+  --color-overlay-text: #fff;
+
+  --font-size-overlay-base: 14px;
+  --line-height-overlay-base: 1;
+  --height-overlay-base: 30px;
+
+  --font-feature-settings: 'kern' 1, 'ss01' 1, 'ss02' 1;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif;
+}
+
+html,
+body {
+  font-size: 16px;
+  line-height: 1.45;
+  height: 100% !important;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0;
+  overflow: hidden;
+}
+
+.element-value {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.stkp-overlay-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: transparent;
+}
+
+.stkp-overlay {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+}
+.stkp-overlay .stkp-overlay-item {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.stkp-overlay-progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  height: 4px;
+}
+.stkp-overlay-progress::-webkit-progress-bar {
+  background-color: #fff;
+}
+.stkp-overlay-progress::-webkit-progress-value {
+  background-color: var(--accent-progress);
+}
+
+.stkp-overlay-item {
+  display: inline-flex;
+  flex-direction: row;
+  border-left: 4px solid var(--accent-progress);
+  background-color: var(--color-overlay-background);
+  color: var(--color-overlay-text);
+  font-size: var(--font-size-overlay-base);
+  line-height: var(--line-height-overlay-base);
+  font-feature-settings: var(--font-feature-settings);
+}
+.stkp-overlay-item__title {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 8px;
+  padding-right: 8px;
+  height: var(--height-overlay-base);
+  font-weight: 700;
+}
+.stkp-overlay-item__content {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 8px;
+  height: var(--height-overlay-base);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.stkp-overlay-item__content:first-of-type {
+  padding-left: 8px;
+  font-weight: 700;
+}
