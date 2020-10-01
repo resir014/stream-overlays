@@ -31,10 +31,6 @@ body {
   overflow: hidden;
 }
 
-.element-value {
-  font-family: 'Fira Sans', sans-serif;
-}
-
 .stkp-overlay-wrapper {
   display: flex;
   flex-direction: column;
