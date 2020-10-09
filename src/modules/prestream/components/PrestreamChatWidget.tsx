@@ -34,7 +34,6 @@ const PrestreamChatWidget: React.FC<PrestreamChatWidgetProps> = ({ variant }) =>
         width="100%"
         maxWidth={640}
         height={600}
-        borderRadius={4}
         boxShadow="double"
         backgroundColor={transparentize(0.5, colors.grey90)}
         borderLeft="8px solid"

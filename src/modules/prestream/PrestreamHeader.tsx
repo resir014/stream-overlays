@@ -3,7 +3,6 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import format from 'date-fns/format'
 import { useStreamSchedule } from '~/utils/useCurrentStream'
-import PrestreamLogo from './components/PrestreamLogo'
 import { Box, Text } from '~/components/chungking-core'
 
 const Root = styled('header')`
@@ -20,9 +19,14 @@ export default function PrestreamHeader() {
 
   return (
     <Root>
-      <Box display="flex" flexDirection="row">
-        <PrestreamLogo />
-        <Box ml="lg">
+      <Box
+        display="flex"
+        flexDirection="row"
+        borderLeft="8px solid"
+        borderLeftColor="blue30"
+        px="lg"
+      >
+        <Box>
           <Text display="block" fontSize="24px" lineHeight="32px" fontWeight={700}>
             {schedule && <>{format(Date.parse(schedule.date), 'yyyy.MM.dd')} — </>}
             {schedule ? schedule.streamName : 'Untitled Stream'}
