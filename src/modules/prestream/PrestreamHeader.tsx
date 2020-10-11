@@ -25,6 +25,7 @@ export default function PrestreamHeader() {
         borderLeft="8px solid"
         borderLeftColor="blue30"
         px="lg"
+        textShadow="single"
       >
         <Box>
           <Text display="block" fontSize="24px" lineHeight="32px" fontWeight={700}>

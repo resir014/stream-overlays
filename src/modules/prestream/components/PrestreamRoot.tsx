@@ -1,8 +1,8 @@
+import { transparentize } from 'polished'
 import * as React from 'react'
-import { css } from '@emotion/core'
 
-import { Box } from '~/components/chungking-core'
-import topoPattern from '~/styles/topoPattern'
+import { Box, colors } from '~/components/chungking-core'
+import PrestreamVideo from './PrestreamVideo'
 
 const PrestreamRoot: React.FC = ({ children }) => {
   return (
@@ -15,19 +15,20 @@ const PrestreamRoot: React.FC = ({ children }) => {
       flex="1 1 auto"
       width="100%"
       minWidth={450}
+      position="relative"
       fontSize="24px"
+      backgroundColor="white"
       color="white"
-      zIndex={1}
-      css={css`
-        ${topoPattern}
-      `}
+      zIndex={0}
     >
+      <PrestreamVideo />
       <Box
         display="grid"
         gridTemplateColumns="1fr 1fr minmax(auto, 1920px) 1fr 1fr"
         gridTemplateRows="100vh"
         flex="1 1 auto"
         zIndex={2}
+        backgroundColor={transparentize(0.25, colors.black)}
       >
         <Box display="flex" flexDirection="column" gridColumn="3/4" flex="1 1 auto">
           {children}

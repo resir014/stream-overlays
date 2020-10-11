@@ -15,7 +15,7 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
 
   return (
     <Box display="flex" alignItems="center" justifyContent="flex-end">
-      <Box textAlign="right">
+      <Box textAlign="right" textShadow="single">
         <Text as="time" variant={900} fontWeight={300} dateTime={time.toISOString()}>
           <Text as="strong" fontWeight={600}>
             {format(time, 'EEEE')}

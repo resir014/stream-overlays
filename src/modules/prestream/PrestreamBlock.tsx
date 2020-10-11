@@ -30,7 +30,7 @@ export default function PrestreamBlock({ text, variant }: PrestreamBlockProps) {
           <PrestreamDateTime text={text} />
         </PrestreamSection>
       </PrestreamContentBlock>
-      <BottomBar hideClock />
+      <BottomBar variant="prestream" />
     </PrestreamRoot>
   )
 }

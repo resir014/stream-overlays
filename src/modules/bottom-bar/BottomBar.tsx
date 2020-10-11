@@ -9,26 +9,39 @@ const BottomBarClock = dynamic(() => import('./BottomBarClock'), {
 })
 
 interface BottomBarProps {
-  hideClock?: boolean
+  variant?: 'default' | 'prestream'
 }
 
-const BottomBar: React.FC<BottomBarProps> = ({ hideClock }) => {
+const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
+  const hideClock = React.useMemo(() => variant === 'prestream', [variant])
+  const renderGridTemplates = React.useMemo(() => {
+    if (hideClock) {
+      return `
+        "events clock"
+        "footer footer"
+      `
+    }
+
+    return `
+      "caption clock"
+      "events clock"
+      "footer footer"
+    `
+  }, [hideClock])
+
   return (
     <Box
       display="grid"
-      gridTemplateRows="56px 40px 48px"
+      gridTemplateRows={hideClock ? '40px 48px' : '56px 40px 48px'}
       gridTemplateColumns="auto 320px"
-      gridTemplateAreas={`
-        "caption clock"
-        "events clock"
-        "footer footer"
-      `}
+      gridTemplateAreas={renderGridTemplates}
       width="100%"
       height="100%"
       backgroundColor="black"
-      maxHeight={144}
+      color="white"
+      maxHeight={hideClock ? 88 : 144}
     >
-      <Box display="block" gridArea="caption" backgroundColor="#000" />
+      {hideClock ? null : <Box display="block" gridArea="caption" backgroundColor="#000" />}
       <BottomBarEvents />
       {hideClock ? <BottomBarSocialLinks /> : <BottomBarClock />}
       <Box
