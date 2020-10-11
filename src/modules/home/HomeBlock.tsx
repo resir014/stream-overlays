@@ -37,7 +37,7 @@ export default function HomeBlock() {
         </Link>
       </HeaderParagraph>
       <HeaderParagraph>
-        <Link href="/blocks/flightsim-pip">
+        <Link href="/blocks/trackmania">
           <a>TrackMania Gamepad</a>
         </Link>
       </HeaderParagraph>
