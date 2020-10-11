@@ -14,14 +14,8 @@ const ControllerTelemetry: React.FC<ControllerTelemetryProps> = ({
   showReset
 }) => {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      height={124}
-    >
-      <Box display="grid" gridTemplateColumns="204px auto" gridGap="lg" width="100%" maxWidth={768}>
+    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+      <Box display="grid" gridTemplateRows="1fr 1fr" gridGap="md" width="100%" maxWidth={320}>
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
           <SteeringIndicator steeringDeadzone={steeringDeadzone} />
         </Box>
