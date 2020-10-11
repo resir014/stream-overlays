@@ -38,13 +38,12 @@ export default function HomeBlock() {
       </HeaderParagraph>
       <HeaderParagraph>
         <Link href="/blocks/flightsim-pip">
-          <a>Picture-in-Picture Wrapper</a>
+          <a>TrackMania Gamepad</a>
         </Link>
       </HeaderParagraph>
-      <HeaderTitle>Widgets</HeaderTitle>
       <HeaderParagraph>
-        <Link href="/alerts/saweria">
-          <a>Saweria Alerts</a>
+        <Link href="/blocks/flightsim-pip">
+          <a>Picture-in-Picture Wrapper</a>
         </Link>
       </HeaderParagraph>
     </Box>
