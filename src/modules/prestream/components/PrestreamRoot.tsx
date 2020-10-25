@@ -25,7 +25,7 @@ const PrestreamRoot: React.FC = ({ children }) => {
         gridTemplateRows="100vh"
         flex="1 1 auto"
         zIndex={2}
-        backgroundColor={transparentize(0.25, colors.black)}
+        backgroundColor={transparentize(0.1, colors.black)}
       >
         <Box display="flex" flexDirection="column" gridColumn="3/4" flex="1 1 auto">
           {children}
