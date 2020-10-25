@@ -16,7 +16,6 @@ const PrestreamRoot: React.FC = ({ children }) => {
       minWidth={450}
       position="relative"
       fontSize="24px"
-      backgroundColor="white"
       color="white"
       zIndex={0}
     >
