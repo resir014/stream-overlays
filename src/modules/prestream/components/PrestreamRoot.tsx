@@ -2,7 +2,6 @@ import { transparentize } from 'polished'
 import * as React from 'react'
 
 import { Box, colors } from '~/components/chungking-core'
-import PrestreamVideo from './PrestreamVideo'
 
 const PrestreamRoot: React.FC = ({ children }) => {
   return (
@@ -21,7 +20,6 @@ const PrestreamRoot: React.FC = ({ children }) => {
       color="white"
       zIndex={0}
     >
-      <PrestreamVideo />
       <Box
         display="grid"
         gridTemplateColumns="1fr 1fr minmax(auto, 1920px) 1fr 1fr"
