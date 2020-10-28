@@ -12,8 +12,8 @@ export interface STKPOverlayData {
   AirSpeed?: string
   TrueSpeed?: string
   VSpeed?: string
-  Altitude?: number
-  Heading?: number
+  Altitude?: string
+  Heading?: string
   Callsign?: string
   Network?: string
   Reg?: string
