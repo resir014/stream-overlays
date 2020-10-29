@@ -41,18 +41,15 @@ const STKPOverlayPage: NextPage = () => {
 
     return (
       <OverlayRoot isTransparent>
-        <FlightProgress value={res.v.Progress || 0} max={100} />
+        {res.v.Progress && <FlightProgress value={res.v.Progress || 0} max={100} />}
         <OverlayWrapper>
           {res.v.Departure && res.v.Destination && (
             <FlightItinerary origin={res.v.Departure} destination={res.v.Destination} />
           )}
           {res.v.Callsign && <FlightInfo name="ATC" value={res.v.Callsign} />}
           {res.v.Reg && <FlightInfo name="REG" value={res.v.Reg} />}
-          {res.v.Airframe && <FlightInfo name="AC" value={res.v.Airframe} />}
           {res.v.Network && <FlightInfo name="NW" value={res.v.Network} />}
-          {res.v.Groundspeed && <FlightInfo name="GSPD" value={`${res.v.Groundspeed}kts`} />}
-          {res.v.AirSpeed && <FlightInfo name="IAS" value={`${res.v.AirSpeed}kts`} />}
-          {res.v.TrueSpeed && <FlightInfo name="TAS" value={`${res.v.TrueSpeed}kts`} />}
+          {res.v.AirSpeed && <FlightInfo name="GSPD" value={`${res.v.AirSpeed}kts`} />}
           {res.v.Heading && <FlightInfo name="HDG" value={`${res.v.Heading}°`} />}
           {res.v.VSpeed && <FlightInfo name="VSPD" value={`${res.v.VSpeed}ft/min`} />}
           {res.v.Altitude && <FlightInfo name="ALT" value={`${res.v.Altitude}ft`} />}
