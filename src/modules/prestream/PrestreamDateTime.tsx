@@ -19,7 +19,7 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
       <Box
         textAlign="right"
         boxShadow="single"
-        px="lg"
+        px="xxl"
         py="lg"
         borderRight="8px solid"
         borderRightColor="grey.700"
