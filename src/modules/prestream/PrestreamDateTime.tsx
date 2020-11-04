@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { transparentize } from 'polished'
 import { format } from 'date-fns'
 import { css } from '@emotion/core'
 
 import useClock from '~/utils/useClock'
-import { Box, Text } from '~/components/chungking-core'
+import { Box, colors, Text } from '~/components/chungking-core'
 
 interface PrestreamDateTimeProps {
   titleColor?: string
@@ -15,7 +16,15 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
 
   return (
     <Box display="flex" alignItems="center" justifyContent="flex-end">
-      <Box textAlign="right" textShadow="single">
+      <Box
+        textAlign="right"
+        boxShadow="single"
+        px="lg"
+        py="lg"
+        borderRight="8px solid"
+        borderRightColor="grey.700"
+        backgroundColor={transparentize(0.75, colors.grey[700])}
+      >
         <Text as="time" variant={900} fontWeight={300} dateTime={time.toISOString()}>
           <Text as="strong" fontWeight={600}>
             {format(time, 'EEEE')}
