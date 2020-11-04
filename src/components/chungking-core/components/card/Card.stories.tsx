@@ -32,12 +32,12 @@ export default {
   }
 } as Meta<CardProps>
 
-const Template: Story<CardProps> = args => <Card {...args} />
+const Template: Story<CardProps> = (args) => <Card {...args} />
 
 export const Example = Template.bind({})
 Example.args = {
   elevation: 'single',
   p: 'md',
-  backgroundColor: 'grey90',
+  backgroundColor: 'grey.900',
   children: 'This is an example card content.'
 }

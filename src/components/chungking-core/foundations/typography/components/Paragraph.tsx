@@ -15,7 +15,7 @@ export const Paragraph = styled<'p', ParagraphProps>('p', {
   shouldForwardProp
 })`
   a {
-    color: ${colors.green30};
+    color: ${colors.turquoise[400]};
   }
 
   ${variant({

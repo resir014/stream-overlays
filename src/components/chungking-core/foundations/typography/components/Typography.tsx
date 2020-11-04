@@ -14,11 +14,7 @@ import shouldForwardProp from '@styled-system/should-forward-prop'
 
 import { TypeScale, Color } from '../../../Theme'
 
-export interface TypographyProps
-  extends LayoutProps,
-    SpaceProps,
-    ColorProps,
-    StyledTypographyProps {
+export interface TypographyProps extends LayoutProps, SpaceProps, ColorProps, StyledTypographyProps {
   /** Additional CSS classes to add to the component. */
   className?: string
   /** Additional CSS properties to add to the component. */

@@ -1,15 +1,16 @@
 import { css } from '@emotion/core'
-import { darken, transparentize, rgba } from 'polished'
+import { darken, transparentize } from 'polished'
 import { colors, fonts } from '../../utils'
 import { ButtonProps } from './types'
 
 export const DisabledButtonStyles = css`
   &:disabled,
   &.disabled {
-    background-color: ${transparentize(0.5, colors.grey90)};
-    border-color: ${colors.grey70};
+    background-color: ${colors.grey[700]};
     color: ${colors.white};
     user-select: none;
+    opacity: 0.5;
+    cursor: not-allowed;
 
     &:hover,
     &:focus {
@@ -57,8 +58,7 @@ export const GhostedButtonStyles = css`
 
     &:focus,
     &:active {
-      border-color: ${colors.grey70};
-      box-shadow: ${rgba(colors.grey70, 0.25)} 0 0 4px 2px;
+      box-shadow: 0 0 0 3px ${transparentize(0.4, colors.turquoise[400])};
     }
   }
 
@@ -76,18 +76,17 @@ export const GhostedButtonStyles = css`
 
 export const PrimaryButtonStyles = css`
   &:not(:disabled):not(.disabled) {
-    border-color: ${colors.blue30};
-    background-color: ${colors.blue30};
+    background-color: ${colors.blue[500]};
     color: ${colors.white};
 
     &:hover,
     &:focus {
-      background-color: ${transparentize(0.75, colors.blue30)};
+      background-color: ${colors.blue[600]};
     }
 
     &:focus,
     &:active {
-      box-shadow: ${rgba(colors.blue30, 0.25)} 0 0 4px 2px;
+      box-shadow: 0 0 0 3px ${transparentize(0.4, colors.turquoise[400])};
     }
   }
 
@@ -96,18 +95,17 @@ export const PrimaryButtonStyles = css`
 
 export const SecondaryButtonStyles = css`
   &:not(:disabled):not(.disabled) {
-    border-color: ${colors.grey70};
-    background-color: ${colors.grey70};
+    background-color: ${colors.grey[700]};
     color: ${colors.white};
 
     &:hover,
     &:focus {
-      background-color: ${transparentize(0.75, colors.grey70)};
+      background-color: ${colors.grey[800]};
     }
 
     &:focus,
     &:active {
-      box-shadow: ${rgba(colors.grey70, 0.25)} 0 0 4px 2px;
+      box-shadow: 0 0 0 3px ${transparentize(0.4, colors.turquoise[400])};
     }
   }
 
@@ -116,18 +114,17 @@ export const SecondaryButtonStyles = css`
 
 export const DangerButtonStyles = css`
   &:not(:disabled):not(.disabled) {
-    border-color: ${colors.red30};
-    background-color: ${colors.red30};
+    background-color: ${colors.red[600]};
     color: ${colors.white};
 
     &:hover,
     &:focus {
-      background-color: ${transparentize(0.75, colors.red30)};
+      background-color: ${colors.red[700]};
     }
 
     &:focus,
     &:active {
-      box-shadow: ${rgba(colors.red30, 0.25)} 0 0 4px 2px;
+      box-shadow: 0 0 0 3px ${transparentize(0.4, colors.turquoise[400])};
     }
   }
 
@@ -141,11 +138,9 @@ export const ButtonBase = (props: ButtonProps) => css`
   margin: 0;
   padding: 0;
   border: none;
-  border: 2px solid transparent;
   background: none;
   font-family: ${fonts.sansSerif};
   text-align: center;
-  transition: all 0.3s ease;
 
   &:not(:disabled):not(.disabled) {
     cursor: pointer;
@@ -160,10 +155,7 @@ export const ButtonBase = (props: ButtonProps) => css`
 
   ${props.variant === 'primary' && !props.ghosted && PrimaryButtonStyles}
   ${props.variant === 'secondary' && !props.ghosted && SecondaryButtonStyles}
-  ${props.variant ===
-    'danger' &&
-  !props.ghosted &&
-  DangerButtonStyles}
+  ${props.variant === 'danger' && !props.ghosted && DangerButtonStyles}
   ${props.size === 'sm' && !props.ghosted && SmallButtonStyles};
   ${props.size === 'md' && !props.ghosted && MediumButtonStyles};
   ${props.size === 'lg' && !props.ghosted && LargeButtonStyles};

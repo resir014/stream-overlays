@@ -18,8 +18,8 @@ const WhiteColorStyles = css`
 `
 
 const GreyColorStyles = css`
-  color: ${colors.grey10};
-  background-color: ${colors.grey80};
+  color: ${colors.grey[50]};
+  background-color: ${colors.grey[800]};
 `
 
 const Root = styled(Box)`

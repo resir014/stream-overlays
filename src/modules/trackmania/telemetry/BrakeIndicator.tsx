@@ -18,7 +18,7 @@ const BrakeIndicator: React.FC = () => {
   const { controllerData } = useGamepad()
 
   return (
-    <Root css={telemetryStyles(controllerData?.brake, colors.red30)}>
+    <Root css={telemetryStyles(controllerData?.brake, colors.red[500])}>
       <InnerText>Brake</InnerText>
     </Root>
   )

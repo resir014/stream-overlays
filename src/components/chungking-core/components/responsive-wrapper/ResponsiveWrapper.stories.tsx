@@ -9,7 +9,7 @@ export default {
   component: ResponsiveWrapper
 } as Meta<ResponsiveWrapperProps>
 
-export const Example: Story<ResponsiveWrapperProps> = args => {
+export const Example: Story<ResponsiveWrapperProps> = (args) => {
   return (
     <ResponsiveWrapper {...args}>
       <Iframe

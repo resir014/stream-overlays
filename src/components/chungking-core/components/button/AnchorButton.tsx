@@ -12,15 +12,7 @@ const AnchorButton: React.ForwardRefRenderFunction<HTMLAnchorElement, AnchorButt
   ref
 ) => {
   return (
-    <Root
-      id={id}
-      className={classnames(className, disabled && 'disabled')}
-      style={style}
-      ref={ref}
-      variant={color}
-      size={size}
-      {...rest}
-    >
+    <Root id={id} className={classnames(className, disabled && 'disabled')} style={style} ref={ref} variant={color} size={size} {...rest}>
       {children}
     </Root>
   )

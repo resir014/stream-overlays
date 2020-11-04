@@ -9,7 +9,7 @@ export default {
   component: Iframe
 } as Meta<IframeProps>
 
-export const Example: Story<IframeProps> = args => {
+export const Example: Story<IframeProps> = (args) => {
   return (
     <ResponsiveWrapper width="100%" maxWidth={500}>
       <Iframe {...args} />

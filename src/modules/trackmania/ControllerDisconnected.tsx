@@ -9,7 +9,7 @@ const Root = styled('div')`
   justify-content: center;
   width: 100%;
   height: 160px;
-  background-color: ${colors.red30};
+  background-color: ${colors.red[500]};
   color: ${colors.white};
 `
 

@@ -23,7 +23,7 @@ export default {
   }
 } as Meta<AnchorButtonProps>
 
-const Template: Story<AnchorButtonProps> = args => <AnchorButton {...args} />
+const Template: Story<AnchorButtonProps> = (args) => <AnchorButton {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {

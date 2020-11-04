@@ -10,17 +10,34 @@ const StyledBox = styled(Box)`
   ${styledSystemVariant({
     variants: {
       prestream: {
-        borderLeftColor: 'ultramarine30'
+        borderLeftColor: 'ultramarine.500'
       },
       brb: {
-        borderLeftColor: 'purple30'
+        borderLeftColor: 'purple.500'
       },
       end: {
-        borderLeftColor: 'orange30'
+        borderLeftColor: 'orange.400'
       }
     }
   })}
 `
+
+const getColor = (variant?: PrestreamVariants) => {
+  switch (variant) {
+    case 'prestream': {
+      return colors.ultramarine[500]
+    }
+    case 'brb': {
+      return colors.purple[500]
+    }
+    case 'end': {
+      return colors.orange[400]
+    }
+    default: {
+      return colors.grey[900]
+    }
+  }
+}
 
 interface PrestreamChatWidgetProps {
   variant?: PrestreamVariants
@@ -34,8 +51,8 @@ const PrestreamChatWidget: React.FC<PrestreamChatWidgetProps> = ({ variant }) =>
         width="100%"
         maxWidth={640}
         height={600}
-        boxShadow="double"
-        backgroundColor={transparentize(0.5, colors.grey90)}
+        boxShadow="single"
+        backgroundColor={transparentize(0.75, getColor(variant))}
         borderLeft="8px solid"
         variant={variant}
       />

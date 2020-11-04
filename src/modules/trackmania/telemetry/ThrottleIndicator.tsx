@@ -18,7 +18,7 @@ const ThrottleIndicator: React.FC = () => {
   const { controllerData } = useGamepad()
 
   return (
-    <Root css={telemetryStyles(controllerData?.accelerate, colors.green30)}>
+    <Root css={telemetryStyles(controllerData?.accelerate, colors.green[500])}>
       <InnerText>Throttle</InnerText>
     </Root>
   )

@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 import { darken, hsl, parseToHsl } from 'polished'
 import { colors } from '~/components/chungking-core'
 
-export default function telemetryStyles(value?: number, color = colors.blue30) {
+export default function telemetryStyles(value?: number, color = colors.blue[500]) {
   const colorHsl = parseToHsl(color)
 
   if (value && value > 0) {

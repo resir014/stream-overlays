@@ -18,7 +18,7 @@ const ResetIndicator: React.FC = () => {
   const { controllerData } = useGamepad()
 
   return (
-    <Root css={telemetryStyles(controllerData?.reset, colors.blue30)}>
+    <Root css={telemetryStyles(controllerData?.reset, colors.blue[500])}>
       <InnerText>Reset</InnerText>
     </Root>
   )

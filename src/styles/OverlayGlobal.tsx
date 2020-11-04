@@ -5,7 +5,7 @@ import { colors } from '~/components/chungking-core'
 const OverlayGlobal = css`
   html,
   body {
-    color: ${colors.grey90};
+    color: ${colors.grey[900]};
     background-color: transparent;
   }
 
@@ -19,7 +19,7 @@ const OverlayGlobal = css`
   a:hover,
   a:focus {
     background-color: ${colors.white};
-    color: ${colors.grey90};
+    color: ${colors.grey[900]};
     border-top-color: ${colors.white};
   }
 `

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
 import { Text, TextProps } from './Text'
@@ -8,7 +7,7 @@ import { colors, mediaQueries } from '../../../utils'
 export type AnchorProps = TextProps & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const AnchorBase = css`
-  color: ${colors.green30};
+  color: ${colors.turquoise[400]};
   text-decoration: underline;
 
   strong {
@@ -25,17 +24,17 @@ const AnchorBase = css`
   }
 `
 
-const AnchorRoot: React.FC<AnchorProps> = ({ children, className, style, ...rest }) => {
+/**
+ * Anchor component provided as a styled component primitive.
+ */
+const Anchor: React.ForwardRefRenderFunction<HTMLAnchorElement, AnchorProps> = ({ children, className, style, ...rest }, ref) => {
   return (
-    <Text as="a" className={className} style={style} {...rest}>
+    <Text as="a" ref={ref} className={className} style={style} css={AnchorBase} {...rest}>
       {children}
     </Text>
   )
 }
 
-/**
- * Anchor component provided as a styled component primitive.
- */
-export const Anchor = styled(AnchorRoot)(AnchorBase)
-
 Anchor.displayName = 'Anchor'
+
+export default React.forwardRef(Anchor)

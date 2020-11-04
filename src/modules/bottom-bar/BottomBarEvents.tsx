@@ -18,8 +18,8 @@ const BottomBarEvents: React.FC = () => {
       color="white"
     >
       <BottomBarEventBox icon={DollarSign} />
-      <BottomBarEventBox icon={Star} borderColor="orange30" />
-      <BottomBarEventBox icon={TrendingUp} borderColor="green30" />
+      <BottomBarEventBox icon={Star} borderColor="orange.400" />
+      <BottomBarEventBox icon={TrendingUp} borderColor="turquoise.500" />
     </Box>
   )
 }

@@ -16,7 +16,7 @@ const FlightProgress = styled('progress')`
       }
 
       ::-webkit-progress-value {
-        background-color: ${colors.blue30};
+        background-color: ${colors.blue[500]};
       }
     }
   }

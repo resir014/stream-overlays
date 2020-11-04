@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
+import { transparentize } from 'polished'
 import styled from '@emotion/styled'
 import format from 'date-fns/format'
 import { useStreamSchedule } from '~/utils/useCurrentStream'
-import { Box, Text } from '~/components/chungking-core'
+import { Box, colors, Text } from '~/components/chungking-core'
 
 const Root = styled('header')`
   display: flex;
@@ -23,9 +24,11 @@ export default function PrestreamHeader() {
         display="flex"
         flexDirection="row"
         borderLeft="8px solid"
-        borderLeftColor="blue30"
+        borderLeftColor="blue.500"
+        backgroundColor={transparentize(0.75, colors.blue[500])}
+        py="xs"
         px="lg"
-        textShadow="single"
+        boxShadow="single"
       >
         <Box>
           <Text display="block" fontSize="24px" lineHeight="32px" fontWeight={700}>

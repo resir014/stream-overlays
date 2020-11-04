@@ -23,7 +23,7 @@ const flylive = async (_: NextApiRequest, res: NextApiResponse) => {
   try {
     const data: STKPOverlayResponse = {
       opts: {
-        color: '006e6',
+        color: '#006fe6',
         opacity: 1
       },
       v: {

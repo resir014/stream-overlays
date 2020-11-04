@@ -13,7 +13,7 @@ const FlightsimPIPPage: NextPage = () => {
         height="100%"
         maxHeight={376}
         borderTop="4px solid"
-        borderTopColor="blue30"
+        borderTopColor="blue.500"
       />
     </OverlayRoot>
   )

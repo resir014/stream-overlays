@@ -10,9 +10,9 @@ const PrestreamFooterBlock: React.FC = ({ children }) => {
       height={52}
       px={48}
       color="white"
-      backgroundColor={transparentize(0.6, colors.grey90)}
+      backgroundColor={transparentize(0.6, colors.grey[900])}
       borderTop="4px solid"
-      borderTopColor="grey90"
+      borderTopColor="grey.900"
     >
       {children}
     </Box>

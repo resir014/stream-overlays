@@ -22,7 +22,7 @@ const BottomBarClock: React.FC = () => {
         px="md"
         textAlign="right"
         borderRight="4px solid"
-        borderRightColor="blue30"
+        borderRightColor="blue.500"
       >
         <Text
           display="block"

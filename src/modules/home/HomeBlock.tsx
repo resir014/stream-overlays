@@ -8,7 +8,14 @@ import { HeaderParagraph, HeaderTitle } from './components'
 
 export default function HomeBlock() {
   return (
-    <Box as="section" display="block" flex="1 1 auto" p="lg" backgroundColor="grey90" color="white">
+    <Box
+      as="section"
+      display="block"
+      flex="1 1 auto"
+      p="lg"
+      backgroundColor="grey.900"
+      color="white"
+    >
       <HeaderTitle>Scenes</HeaderTitle>
       <HeaderParagraph>
         <Link href="/overlays/pre-stream">

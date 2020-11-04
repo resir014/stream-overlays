@@ -49,7 +49,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
         gridArea="footer"
         backgroundColor="black"
         borderTop="1px solid"
-        borderTopColor="grey90"
+        borderTopColor="grey.900"
       />
     </Box>
   )

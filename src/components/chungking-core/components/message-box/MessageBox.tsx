@@ -12,20 +12,20 @@ export interface MessageBoxProps extends BoxProps {
 }
 
 const DefaultStyles = css`
-  border-color: ${colors.blue30};
-  background-color: ${transparentize(0.75, colors.blue30)};
+  border-color: ${colors.blue[500]};
+  background-color: ${transparentize(0.75, colors.blue[500])};
 
   a {
-    color: ${colors.green30};
+    color: ${colors.turquoise[400]};
   }
 `
 
 const WarningStyles = css`
-  border-color: ${colors.red30};
-  background-color: ${transparentize(0.75, colors.red30)};
+  border-color: ${colors.red[500]};
+  background-color: ${transparentize(0.75, colors.red[500])};
 
   a {
-    color: ${colors.orange30};
+    color: ${colors.orange[400]};
   }
 `
 
@@ -35,7 +35,7 @@ const Root = styled(Box)<MessageBoxProps>`
   border-radius: 4px;
 
   a {
-    color: ${colors.green30};
+    color: ${colors.turquoise[400]};
   }
 
   ${(props) => props.variant === 'default' && DefaultStyles}

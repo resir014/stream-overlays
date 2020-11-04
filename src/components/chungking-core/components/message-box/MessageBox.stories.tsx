@@ -19,7 +19,7 @@ export default {
   }
 } as Meta<MessageBoxProps>
 
-const Template: Story<MessageBoxProps> = args => <MessageBox {...args} />
+const Template: Story<MessageBoxProps> = (args) => <MessageBox {...args} />
 
 export const Example = Template.bind({})
 Example.args = {

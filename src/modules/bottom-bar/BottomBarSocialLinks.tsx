@@ -85,7 +85,7 @@ const BottomBarSocialLinks: React.FC = () => {
     >
       <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
         {state => (
-          <Container px="sm" borderRight="2px solid" borderRightColor="blue30" state={state}>
+          <Container px="sm" borderRight="2px solid" borderRightColor="blue.500" state={state}>
             {socialLinks[currentIndex]}
           </Container>
         )}

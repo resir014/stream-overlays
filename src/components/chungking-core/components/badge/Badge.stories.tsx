@@ -16,7 +16,7 @@ export default {
   }
 } as Meta<BadgeProps>
 
-const Template: Story<BadgeProps> = args => <Badge {...args}>example</Badge>
+const Template: Story<BadgeProps> = (args) => <Badge {...args}>example</Badge>
 
 export const Example = Template.bind({})
 Example.args = {

@@ -10,7 +10,7 @@ interface ThrottleIndicatorProps {
   steeringDeadzone?: number
 }
 
-const orangeHsl = parseToHsl(colors.orange30)
+const orangeHsl = parseToHsl(colors.orange[400])
 
 const SteeringLeft = css`
   justify-content: flex-end;
