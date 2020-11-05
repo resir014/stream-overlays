@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { NextPage } from 'next'
+import { transparentize } from 'polished'
 
 import OverlayRoot from '~/components/overlay/OverlayRoot'
-import { Box } from '~/components/chungking-core'
+import { Box, colors } from '~/components/chungking-core'
 
 import ControllerTelemetry from '~/modules/trackmania/ControllerTelemetry'
 
@@ -15,7 +16,7 @@ const TrackManiaControlBlockPage: NextPage = () => {
         <Box
           py="md"
           px="lg"
-          backgroundColor="black"
+          backgroundColor={transparentize(0.75, colors.blue[500])}
           borderTop="4px solid"
           borderTopColor="blue.500"
         >
