@@ -1,18 +1,20 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+import { Box } from '../../foundations'
 
-export type IframeProps = React.IframeHTMLAttributes<HTMLIFrameElement>
-
-const StyledIframe = styled('iframe')`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`
+export type IframeProps = JSX.IntrinsicElements['iframe']
 
 const Iframe: React.FC<IframeProps> = ({ title, ...rest }) => {
-  return <StyledIframe title={title} {...rest} />
+  return (
+    <Box
+      as="iframe"
+      display="block"
+      verticalAlign="middle"
+      borderWidth={0}
+      borderStyle="solid"
+      title={title}
+      {...rest}
+    />
+  )
 }
 
 export default Iframe
