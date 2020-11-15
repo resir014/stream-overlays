@@ -14,12 +14,6 @@ export default function HeaderWidget() {
 
   return (
     <Box
-      display="flex"
-      flexDirection="row"
-      alignItems="center"
-      justifyContent="space-between"
-      height={64}
-      pt={28}
       px="xxl"
       backgroundColor={transparentize(0.25, colors.black)}
       color="white"
@@ -27,18 +21,26 @@ export default function HeaderWidget() {
         letter-spacing: 0.05rem;
       `}
     >
-      <Box borderLeft="2px solid" borderLeftColor="blue.500" px="md">
-        <Text as="h1" variant={500} fontWeight={400}>
-          <Text as="strong" fontWeight={600}>
-            @resir014
-          </Text>{' '}
-          // resir014.xyz
-        </Text>
-      </Box>
-      <Box textAlign="right" borderRight="2px solid" borderRightColor="blue.500" px="md">
-        <Text as="h2" variant={500} fontWeight={400}>
-          {schedule ? schedule.streamName : 'Untitled Stream'}
-        </Text>
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+        height={36}
+      >
+        <Box borderLeft="2px solid" borderLeftColor="blue.500" px="md">
+          <Text as="h1" variant={500} fontWeight={400}>
+            <Text as="strong" fontWeight={600}>
+              @resir014
+            </Text>{' '}
+            // resir014.xyz
+          </Text>
+        </Box>
+        <Box textAlign="right" borderRight="2px solid" borderRightColor="blue.500" px="md">
+          <Text as="h2" variant={500} fontWeight={400}>
+            {schedule ? schedule.streamName : 'Untitled Stream'}
+          </Text>
+        </Box>
       </Box>
     </Box>
   )
