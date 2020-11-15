@@ -18,8 +18,8 @@ export default function HeaderWidget() {
       flexDirection="row"
       alignItems="center"
       justifyContent="space-between"
-      height={60}
-      pt="lg"
+      height={64}
+      pt={28}
       px="xxl"
       backgroundColor={transparentize(0.25, colors.black)}
       color="white"
