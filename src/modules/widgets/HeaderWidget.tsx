@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
 import { css } from '@emotion/core'
+import { transparentize } from 'polished'
 import { useStreamSchedule } from '~/utils/useCurrentStream'
-import { Box, Text } from '~/components/chungking-core'
+import { Box, colors, Text } from '~/components/chungking-core'
 
 interface BlockHeaderInnerProps {
   right?: boolean
@@ -20,7 +21,7 @@ export default function HeaderWidget() {
       height={60}
       pt="lg"
       px="xxl"
-      backgroundColor="black"
+      backgroundColor={transparentize(0.25, colors.black)}
       color="white"
       css={css`
         letter-spacing: 0.05rem;

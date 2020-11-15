@@ -33,13 +33,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
     >
       <BottomBarEvents />
       {hideClock ? <BottomBarSocialLinks /> : <BottomBarClock />}
-      <Box
-        display="block"
-        gridArea="footer"
-        backgroundColor="black"
-        borderTop="1px solid"
-        borderTopColor="grey.900"
-      />
+      <Box display="block" gridArea="footer" borderTop="1px solid" borderTopColor="grey.900" />
     </Box>
   )
 }
