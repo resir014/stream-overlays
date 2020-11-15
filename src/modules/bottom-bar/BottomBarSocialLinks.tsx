@@ -81,7 +81,6 @@ const BottomBarSocialLinks: React.FC = () => {
       gridArea="clock"
       py="xs"
       px="xxl"
-      backgroundColor="black"
     >
       <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
         {state => (
