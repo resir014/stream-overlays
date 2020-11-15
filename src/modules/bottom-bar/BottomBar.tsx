@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
+import { transparentize } from 'polished'
 import * as React from 'react'
-import { Box } from '~/components/chungking-core'
+import { Box, colors } from '~/components/chungking-core'
 import BottomBarSocialLinks from './BottomBarSocialLinks'
 import BottomBarEvents from './BottomBarEvents'
 
@@ -14,34 +15,22 @@ interface BottomBarProps {
 
 const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
   const hideClock = React.useMemo(() => variant === 'prestream', [variant])
-  const renderGridTemplates = React.useMemo(() => {
-    if (hideClock) {
-      return `
-        "events clock"
-        "footer footer"
-      `
-    }
-
-    return `
-      "caption clock"
-      "events clock"
-      "footer footer"
-    `
-  }, [hideClock])
 
   return (
     <Box
       display="grid"
-      gridTemplateRows={hideClock ? '40px 48px' : '56px 40px 48px'}
+      gridTemplateRows="40px 48px"
       gridTemplateColumns="auto 320px"
-      gridTemplateAreas={renderGridTemplates}
+      gridTemplateAreas={`
+      "events clock"
+      "footer footer"
+    `}
       width="100%"
       height="100%"
-      backgroundColor="black"
+      backgroundColor={transparentize(0.25, colors.black)}
       color="white"
       maxHeight={hideClock ? 88 : 144}
     >
-      {hideClock ? null : <Box display="block" gridArea="caption" backgroundColor="#000" />}
       <BottomBarEvents />
       {hideClock ? <BottomBarSocialLinks /> : <BottomBarClock />}
       <Box

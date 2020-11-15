@@ -15,30 +15,19 @@ const BottomBarClock: React.FC = () => {
       gridArea="clock"
       py="xs"
       px="xxl"
-      backgroundColor="black"
     >
       <Box
         display="block"
         px="md"
         textAlign="right"
-        borderRight="4px solid"
+        borderRight="2px solid"
         borderRightColor="blue.500"
       >
         <Text
           display="block"
           color="white"
-          variant={500}
-          css={css`
-            font-variant-numeric: tabular-nums;
-          `}
-        >
-          <strong>{format(time, 'ccc')}</strong> {format(time, 'dd MMM yyyy')}
-        </Text>
-        <Text
-          display="block"
-          color="white"
-          mt="xs"
-          variant={800}
+          fontSize="24px"
+          lineHeight="24px"
           fontWeight={600}
           css={css`
             font-variant-numeric: tabular-nums;

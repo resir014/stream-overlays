@@ -17,7 +17,8 @@ export default function HeaderWidget() {
       flexDirection="row"
       alignItems="center"
       justifyContent="space-between"
-      height={36}
+      height={64}
+      pt="lg"
       px="xxl"
       backgroundColor="black"
       color="white"

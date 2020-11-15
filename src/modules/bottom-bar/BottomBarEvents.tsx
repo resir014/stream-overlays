@@ -14,7 +14,6 @@ const BottomBarEvents: React.FC = () => {
       gridArea="events"
       pl="xxl"
       pr="md"
-      backgroundColor="black"
       color="white"
     >
       <BottomBarEventBox icon={DollarSign} />
