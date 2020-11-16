@@ -27,7 +27,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
     `}
       width="100%"
       height="100%"
-      backgroundColor={transparentize(0.25, colors.black)}
+      backgroundColor={transparentize(0.1, colors.black)}
       color="white"
       maxHeight={hideClock ? 88 : 144}
     >

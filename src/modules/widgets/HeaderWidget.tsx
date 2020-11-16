@@ -15,7 +15,7 @@ export default function HeaderWidget() {
   return (
     <Box
       px="xxl"
-      backgroundColor={transparentize(0.25, colors.black)}
+      backgroundColor={transparentize(0.1, colors.black)}
       color="white"
       css={css`
         letter-spacing: 0.05rem;
