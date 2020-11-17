@@ -25,7 +25,7 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
         borderRightColor="grey.700"
         backgroundColor={transparentize(0.75, colors.grey[700])}
       >
-        <Text as="time" variant={900} fontWeight={300} dateTime={time.toISOString()}>
+        <Text variant={800} fontWeight={300}>
           <Text as="strong" fontWeight={600}>
             {format(time, 'EEEE')}
           </Text>{' '}
@@ -34,8 +34,9 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
         <Text
           display="block"
           margin={0}
-          fontSize="140px"
-          lineHeight="148px"
+          fontSize="116px"
+          lineHeight="124px"
+          fontFamily="monospace"
           fontWeight={600}
           color={titleColor || 'white'}
           css={css`
@@ -45,7 +46,7 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
           {format(time, 'HH:mm:ss')}
         </Text>
         {text && (
-          <Text variant={900} fontWeight={300}>
+          <Text variant={800} fontWeight={300}>
             {text}
           </Text>
         )}
