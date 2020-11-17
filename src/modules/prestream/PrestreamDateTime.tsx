@@ -14,6 +14,16 @@ interface PrestreamDateTimeProps {
 const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text }) => {
   const time = useClock()
 
+  const clockSeparator = React.useMemo(() => {
+    const ms = time.getMilliseconds()
+
+    if (ms < 500) {
+      return ':'
+    }
+
+    return ' '
+  }, [time])
+
   return (
     <Box display="flex" alignItems="center" justifyContent="flex-end">
       <Box
@@ -43,7 +53,11 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
             font-variant-numeric: tabular-nums;
           `}
         >
-          {format(time, 'HH:mm:ss')}
+          {format(time, 'HH')}
+          {clockSeparator}
+          {format(time, 'mm')}
+          {clockSeparator}
+          {format(time, 'ss')}
         </Text>
         {text && (
           <Text variant={800} fontWeight={300}>
