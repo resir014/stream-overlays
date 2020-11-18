@@ -19,7 +19,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
   return (
     <Box
       display="grid"
-      gridTemplateRows="40px 48px"
+      gridTemplateRows="40px 24px"
       gridTemplateColumns="auto 320px"
       gridTemplateAreas={`
       "events clock"
@@ -33,7 +33,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
     >
       <BottomBarEvents />
       {hideClock ? <BottomBarSocialLinks /> : <BottomBarClock />}
-      <Box display="block" gridArea="footer" borderTop="1px solid" borderTopColor="grey.900" />
+      <Box display="block" gridArea="footer" />
     </Box>
   )
 }

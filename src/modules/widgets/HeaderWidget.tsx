@@ -14,6 +14,7 @@ export default function HeaderWidget() {
 
   return (
     <Box
+      pt="lg"
       px="xxl"
       backgroundColor={transparentize(0.1, colors.black)}
       color="white"
