@@ -43,8 +43,6 @@ const BottomBarClock: React.FC = () => {
           {format(time, 'HH')}
           {clockSeparator}
           {format(time, 'mm')}
-          {clockSeparator}
-          {format(time, 'ss')}
         </Text>
       </Box>
     </Box>
