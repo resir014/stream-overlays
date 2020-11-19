@@ -42,7 +42,7 @@ const Overlay20Page: NextPage = () => {
             boxShadow="double"
           >
             <Text display="block" variant={900}>
-              Monday, 23 November, 2020
+              Monday, 23 November 2020
             </Text>
             <Text
               display="block"
