@@ -12,7 +12,7 @@ const StyledWrapper = styled(Box)<ResponsiveWrapperProps>`
   &:before {
     content: '';
     display: block;
-    padding-bottom: calc(100% / (${(props) => props.ratio}));
+    padding-bottom: calc(100% / (${props => props.ratio}));
   }
 `
 

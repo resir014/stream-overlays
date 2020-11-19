@@ -15,11 +15,11 @@ export interface InlineProps extends Omit<BoxProps, 'color'> {
 }
 
 const Root = styled(Box)<InlineProps>`
-  ${(props) => props.spacing && `margin-top: -${themeGet(`space.${props.spacing}`)(props)}px;`}
+  ${props => props.spacing && `margin-top: -${themeGet(`space.${props.spacing}`)(props)}px;`}
 `
 
 const Inner = styled(Box)<InlineProps>`
-  ${(props) => props.spacing && `margin-left: -${themeGet(`space.${props.spacing}`)(props)}px;`}
+  ${props => props.spacing && `margin-left: -${themeGet(`space.${props.spacing}`)(props)}px;`}
 `
 
 const Inline: React.FC<InlineProps> = ({ children, spacing, alignItems, ...rest }) => {

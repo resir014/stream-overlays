@@ -29,13 +29,20 @@ const Root = styled(Box)`
   border: 1px solid transparent;
   border-radius: 3px;
 
-  ${(props) => props.variant === 'white' && WhiteColorStyles}
-  ${(props) => props.variant === 'grey' && GreyColorStyles}
+  ${props => props.variant === 'white' && WhiteColorStyles}
+  ${props => props.variant === 'grey' && GreyColorStyles}
 `
 
 const Badge: React.FC<BadgeProps> = ({ children, className, style, ...rest }) => {
   return (
-    <Root as="span" display="inline-flex" alignItems="center" className={className} style={style} {...rest}>
+    <Root
+      as="span"
+      display="inline-flex"
+      alignItems="center"
+      className={className}
+      style={style}
+      {...rest}
+    >
       {children}
     </Root>
   )

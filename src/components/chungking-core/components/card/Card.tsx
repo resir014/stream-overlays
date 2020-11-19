@@ -30,7 +30,13 @@ const Root = styled(Box, { shouldForwardProp: shouldReallyForwardProp })<CardPro
   })}
 `
 
-const Card: React.FC<CardProps> = ({ className, style, children, elevation = 'single', ...rest }) => {
+const Card: React.FC<CardProps> = ({
+  className,
+  style,
+  children,
+  elevation = 'single',
+  ...rest
+}) => {
   return (
     <Root className={className} style={style} elevation={elevation} borderRadius={8} {...rest}>
       {children}

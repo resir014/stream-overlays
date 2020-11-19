@@ -27,7 +27,10 @@ const AnchorBase = css`
 /**
  * Anchor component provided as a styled component primitive.
  */
-const Anchor: React.ForwardRefRenderFunction<HTMLAnchorElement, AnchorProps> = ({ children, className, style, ...rest }, ref) => {
+const Anchor: React.ForwardRefRenderFunction<HTMLAnchorElement, AnchorProps> = (
+  { children, className, style, ...rest },
+  ref
+) => {
   return (
     <Text as="a" ref={ref} className={className} style={style} css={AnchorBase} {...rest}>
       {children}

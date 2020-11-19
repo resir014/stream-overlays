@@ -38,8 +38,8 @@ const Root = styled(Box)<MessageBoxProps>`
     color: ${colors.turquoise[400]};
   }
 
-  ${(props) => props.variant === 'default' && DefaultStyles}
-  ${(props) => props.variant === 'warning' && WarningStyles}
+  ${props => props.variant === 'default' && DefaultStyles}
+  ${props => props.variant === 'warning' && WarningStyles}
 `
 
 const MessageBox: React.FC<MessageBoxProps> = ({ className, children, ...rest }) => (

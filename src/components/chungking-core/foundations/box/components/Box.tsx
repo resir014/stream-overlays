@@ -49,7 +49,7 @@ export interface BoxProps
  * base component for all display elements.
  */
 export const Box = styled<'div', BoxProps>('div', {
-  shouldForwardProp: (propName) => shouldForwardProp(propName) && propName !== 'spacing'
+  shouldForwardProp: propName => shouldForwardProp(propName) && propName !== 'spacing'
 })`
   ${layout}
   ${flexbox}
