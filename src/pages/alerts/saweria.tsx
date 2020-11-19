@@ -10,7 +10,7 @@ const SaweriaWidgetBox = dynamic(() => import('~/modules/widgets/SaweriaWidget')
 
 const SaweriaAlerts: NextPage = () => {
   return (
-    <OverlayRoot isTransparent>
+    <OverlayRoot>
       <SaweriaWidgetBox />
     </OverlayRoot>
   )
