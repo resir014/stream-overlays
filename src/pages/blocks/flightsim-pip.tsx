@@ -7,7 +7,7 @@ import { Box, colors } from '~/components/chungking-core'
 
 const FlightsimPIPPage: NextPage = () => {
   return (
-    <OverlayRoot isTransparent>
+    <OverlayRoot>
       <Box
         flex="1 1 auto"
         backgroundColor={transparentize(0.75, colors.blue[500])}

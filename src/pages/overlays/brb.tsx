@@ -6,7 +6,7 @@ import PrestreamBlock from '~/modules/prestream/PrestreamBlock'
 
 const BeRightBackPage: NextPage = () => {
   return (
-    <OverlayRoot isTransparent>
+    <OverlayRoot>
       <PrestreamBlock text="Please stand by..." variant="brb" />
     </OverlayRoot>
   )

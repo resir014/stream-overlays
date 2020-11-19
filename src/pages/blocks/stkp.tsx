@@ -40,7 +40,7 @@ const STKPOverlayPage: NextPage = () => {
     const { data: res } = data
 
     return (
-      <OverlayRoot isTransparent>
+      <OverlayRoot>
         {res.v.Progress && <FlightProgress value={res.v.Progress || 0} max={100} />}
         <OverlayWrapper>
           {res.v.Departure && res.v.Destination && (

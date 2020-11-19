@@ -5,7 +5,7 @@ import HeaderWidget from '~/modules/widgets/HeaderWidget'
 
 const HeaderPage: NextPage = () => {
   return (
-    <OverlayRoot isTransparent>
+    <OverlayRoot>
       <HeaderWidget />
     </OverlayRoot>
   )

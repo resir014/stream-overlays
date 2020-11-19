@@ -7,7 +7,7 @@ import { Box, colors, Iframe } from '~/components/chungking-core'
 
 const TrackManiaControlBlockPage: NextPage = () => {
   return (
-    <OverlayRoot isTransparent>
+    <OverlayRoot>
       <Box display="flex" flexDirection="column" flex="1 1 auto">
         <Box
           display="flex"

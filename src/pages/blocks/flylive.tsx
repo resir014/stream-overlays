@@ -26,7 +26,7 @@ const FlyLiveOverlayPage: NextPage = () => {
     const { flightData } = data
 
     return (
-      <OverlayRoot isTransparent>
+      <OverlayRoot>
         <FlightProgress value={flightData.flightPercent || 0} max={100} />
         <OverlayWrapper>
           {flightData.dep && flightData.arr && (

@@ -6,7 +6,7 @@ import PrestreamBlock from '~/modules/prestream/PrestreamBlock'
 
 const PrestreamPage: NextPage = () => {
   return (
-    <OverlayRoot isTransparent>
+    <OverlayRoot>
       <PrestreamBlock text="Stream starting soon..." variant="prestream" />
     </OverlayRoot>
   )

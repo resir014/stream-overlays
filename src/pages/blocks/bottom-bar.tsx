@@ -5,7 +5,7 @@ import BottomBar from '~/modules/bottom-bar/BottomBar'
 
 const BottomBarPage: NextPage = () => {
   return (
-    <OverlayRoot isTransparent>
+    <OverlayRoot>
       <BottomBar />
     </OverlayRoot>
   )
