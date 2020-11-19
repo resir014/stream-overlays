@@ -18,7 +18,7 @@ const Overlay20Page: NextPage = () => {
           py="xs"
           borderLeft="8px solid"
           borderLeftColor="blue.500"
-          backgroundColor={transparentize(0.1, colors.blue[500])}
+          backgroundColor={transparentize(0.75, colors.blue[500])}
           boxShadow="single"
         >
           <Text variant={700}>
@@ -38,7 +38,7 @@ const Overlay20Page: NextPage = () => {
             borderTopColor="blue.500"
             textAlign="center"
             p={32}
-            backgroundColor={transparentize(0.5, colors.blue[500])}
+            backgroundColor={transparentize(0.75, colors.blue[500])}
             boxShadow="double"
           >
             <Text display="block" variant={900}>
