@@ -29,7 +29,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
       height="100%"
       backgroundColor={transparentize(0.1, colors.black)}
       color="white"
-      maxHeight={hideClock ? 88 : 144}
+      maxHeight={hideClock ? 88 : 64}
     >
       <BottomBarEvents />
       {hideClock ? <BottomBarSocialLinks /> : <BottomBarClock />}
