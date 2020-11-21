@@ -1,30 +1,67 @@
 import * as React from 'react'
-import { css } from '@emotion/core'
+import styled from '@emotion/styled'
+import { variant as styledSystemVariant } from 'styled-system'
+import { transparentize } from 'polished'
 
-import ContentBlock from 'components/stream-blocks/ContentBlock'
+import { Box, colors } from '~/components/chungking-core'
+import { PrestreamVariants } from '~/interfaces/types'
 
-interface PrestreamChatWidgetProps {
-  textColor?: string
-  backgroundColor?: string
+const StyledBox = styled(Box)`
+  ${styledSystemVariant({
+    variants: {
+      prestream: {
+        borderLeftColor: 'ultramarine.500'
+      },
+      brb: {
+        borderLeftColor: 'purple.500'
+      },
+      end: {
+        borderLeftColor: 'orange.400'
+      }
+    }
+  })}
+`
+
+const getColor = (variant?: PrestreamVariants) => {
+  switch (variant) {
+    case 'prestream': {
+      return colors.ultramarine[500]
+    }
+    case 'brb': {
+      return colors.purple[500]
+    }
+    case 'end': {
+      return colors.orange[400]
+    }
+    default: {
+      return colors.grey[900]
+    }
+  }
 }
 
-const PrestreamChatWidget: React.FC<PrestreamChatWidgetProps> = ({
-  textColor,
-  backgroundColor
-}) => {
+interface PrestreamChatWidgetProps {
+  variant?: PrestreamVariants
+}
+
+const PrestreamChatWidget: React.FC<PrestreamChatWidgetProps> = ({ variant }) => {
   return (
-    <ContentBlock
-      hasShadow
-      backgroundColor={backgroundColor}
-      textColor={textColor}
-      css={css`
-        display: inline-block;
-        width: 100%;
-        max-width: 640px;
-        height: 600px;
-      `}
-    />
+    <Box display="flex" alignItems="center">
+      <StyledBox
+        display="block"
+        width="100%"
+        maxWidth={640}
+        height={600}
+        boxShadow="single"
+        backgroundColor={transparentize(0.75, getColor(variant))}
+        borderLeft="8px solid"
+        variant={variant}
+      />
+    </Box>
   )
+}
+
+PrestreamChatWidget.defaultProps = {
+  variant: 'prestream'
 }
 
 export default PrestreamChatWidget

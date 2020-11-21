@@ -1,13 +1,20 @@
-import styled from '@emotion/styled'
+import * as React from 'react'
+import { Box } from '~/components/chungking-core'
 
-const PrestreamContentBlock = styled('section')`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex: 1;
-  width: 100%;
-  margin: 0;
-  padding: 0 48px;
-`
+const PrestreamContentBlock: React.FC = ({ children }) => {
+  return (
+    <Box
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      flex="1 1 auto"
+      width="100%"
+      m={0}
+      px={48}
+    >
+      {children}
+    </Box>
+  )
+}
 
 export default PrestreamContentBlock

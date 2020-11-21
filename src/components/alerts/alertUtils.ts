@@ -1,5 +1,5 @@
-import { AlertKinds } from 'interfaces/types'
-import { alertColors } from 'styles/variables'
+import { AlertKinds } from '~/interfaces/types'
+import { alertColors } from '~/styles/variables'
 
 export function getAlertHeader(kind: AlertKinds = 'donation') {
   switch (kind) {

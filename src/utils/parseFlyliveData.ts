@@ -1,4 +1,4 @@
-import { FlyLiveParsedData, FlyLiveFlightData } from 'interfaces/flylive'
+import { FlyLiveParsedData, FlyLiveFlightData } from '~/interfaces/flylive'
 
 export default function parseFlyliveData(data: string): FlyLiveParsedData {
   // This is the only way we can properly parse FlyLive Studio's text-only formats.

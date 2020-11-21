@@ -1,4 +1,4 @@
-import { AlertKinds } from 'interfaces/types'
+import { AlertKinds } from '~/interfaces/types'
 
 export const alertColors: Record<AlertKinds, string> = {
   raid: '#ff369a',
@@ -9,27 +9,9 @@ export const alertColors: Record<AlertKinds, string> = {
   sub: '#f5a623'
 }
 
-export const colors = {
-  red: '#e00',
-  orange: '#f5a623',
-  purple: '#9b45ff',
-  blue: '#0076ff',
+export const extendedColors = {
   cyan: '#79ffe1',
-  ultramarine: '#2234ce',
-  magenta: '#ff1493',
-  green: '#08ffc8',
   greenscreen: '#0f0',
-  grey10: '#e8e8e8',
-  grey20: '#d0d0d2',
-  grey30: '#b9b9bb',
-  grey40: '#a2a2a5',
-  grey50: '#8b8b8e',
-  grey60: '#737377',
-  grey70: '#5c5c61',
-  grey80: '#45454a',
-  grey90: '#2d2d34',
-  white: '#ffffff',
-  black: '#16161d',
   ...alertColors
 }
 

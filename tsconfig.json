@@ -6,12 +6,7 @@
     "lib": ["dom", "es2017"],
     "baseUrl": ".",
     "paths": {
-      "components/*": ["src/components/*"],
-      "interfaces/*": ["src/interfaces/*"],
-      "modules/*": ["src/modules/*"],
-      "pages/*": ["src/pages/*"],
-      "styles/*": ["src/styles/*"],
-      "utils/*": ["src/utils/*"]
+      "~/*": ["src/*"]
     },
     "moduleResolution": "node",
     "strict": true,
@@ -25,7 +20,8 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "typeRoots": ["./@types", "./node_modules/@types"]
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

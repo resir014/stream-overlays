@@ -1,15 +1,3 @@
-export interface AirtableRecord {
-  id: string
-  fields: {
-    [key: string]: any
-  }
-  createdTime: string
-}
-
-export interface AirtableData {
-  records: AirtableRecord[]
-}
-
 export interface NotionData {
   id: string
   Description: string
@@ -19,7 +7,15 @@ export interface NotionData {
   [key: string]: string | boolean
 }
 
+export interface ParsedSchedule {
+  streamName: string
+  description: string
+  date: string
+}
+
 export type AlertKinds = 'raid' | 'cheer' | 'host' | 'donation' | 'follow' | 'sub'
+
+export type PrestreamVariants = 'prestream' | 'brb' | 'end'
 
 export interface APIResponse<TResponse = any> {
   status: 'ok' | 'error'

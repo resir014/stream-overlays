@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 
-import { AlertKinds } from 'interfaces/types'
+import { AlertKinds } from '~/interfaces/types'
 
 import AlertHeader from './AlertHeader'
 import AlertText from './AlertText'

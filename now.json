@@ -3,7 +3,6 @@
   "regions": ["sin1"],
   "build": {
     "env": {
-      "NEXT_PUBLIC_AIRTABLE_API_KEY": "@airtable-api-key",
       "NEXT_PUBLIC_SAWERIA_STREAM_KEY": "@saweria-stream-key",
       "NEXT_PUBLIC_NOTION_STREAMS_TABLE_ID": "@notion-streams-table-id"
     }

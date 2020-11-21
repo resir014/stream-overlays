@@ -1,74 +1,52 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import * as React from 'react'
 import { css } from '@emotion/core'
-import styled from '@emotion/styled'
-import { colors } from 'styles/variables'
-
-interface BlockHeaderProps {
-  isFrame?: boolean
-  title?: string
-}
+import { transparentize } from 'polished'
+import { useStreamSchedule } from '~/utils/useCurrentStream'
+import { Box, colors, Text } from '~/components/chungking-core'
 
 interface BlockHeaderInnerProps {
   right?: boolean
 }
 
-const fullScreenStyles = css`
-  padding: 8px;
-`
+export default function HeaderWidget() {
+  const { schedule } = useStreamSchedule()
 
-const frameStyles = css`
-  height: 32px;
-  padding: 0 8px;
-`
-
-const Root = styled('header')<BlockHeaderProps>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  letter-spacing: 0.05rem;
-  background-color: ${colors.black};
-  color: ${colors.white};
-
-  ${props => (props.isFrame ? frameStyles : fullScreenStyles)};
-`
-
-const BlockHeaderInner = styled('div')<BlockHeaderInnerProps>`
-  text-align: ${props => (props.right ? 'right' : 'left')};
-`
-
-const HeaderTitle = styled('h1')`
-  margin: 0;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-
-  span {
-    font-weight: 400;
-  }
-`
-
-const HeaderSubtitle = HeaderTitle.withComponent('h2')
-
-export default function HeaderWidget({ isFrame, title }: BlockHeaderProps) {
   return (
-    <Root isFrame={isFrame}>
-      <BlockHeaderInner>
-        <HeaderTitle>
-          @resir014 <span>// resir014.xyz</span>
-        </HeaderTitle>
-      </BlockHeaderInner>
-      <BlockHeaderInner right>
-        <HeaderSubtitle>
-          <span>{title || 'Untitled Stream'}</span>
-        </HeaderSubtitle>
-      </BlockHeaderInner>
-    </Root>
+    <Box
+      pt="lg"
+      px="xxl"
+      backgroundColor={transparentize(0.1, colors.black)}
+      color="white"
+      css={css`
+        letter-spacing: 0.05rem;
+      `}
+    >
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+        height={36}
+      >
+        <Box borderLeft="2px solid" borderLeftColor="blue.500" px="md">
+          <Text as="h1" variant={500} fontWeight={400}>
+            <Text as="strong" fontWeight={600}>
+              @resir014
+            </Text>{' '}
+            // resir014.xyz
+          </Text>
+        </Box>
+        <Box textAlign="right" borderRight="2px solid" borderRightColor="blue.500" px="md">
+          <Text as="h2" variant={500} fontWeight={400}>
+            {schedule ? schedule.streamName : 'Untitled Stream'}
+          </Text>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 
 HeaderWidget.defaultProps = {
-  isFrame: false,
   title: undefined
 }
