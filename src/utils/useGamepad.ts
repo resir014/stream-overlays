@@ -28,8 +28,6 @@ export default function useGamepad() {
   const handleGamepadDisconnected = (e: GamepadEvent) => {
     // eslint-disable-next-line no-console
     console.log('Gamepad disconnected from index %d: %s', e.gamepad.index, e.gamepad.id)
-    // eslint-disable-next-line no-alert
-    alert('Gamepad disconnected! Replug it to initate detection.')
     setIsControllerConnected(false)
     setControllerData(undefined)
   }
