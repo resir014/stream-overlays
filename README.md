@@ -10,7 +10,7 @@
 
 ### Gaming
 
-![Game overlay preview](./public/static/game-overlay-preview.jpg)
+![Game overlay preview](./public/static/game-overlay-preview.png)
 
 ### Titlecards
 
