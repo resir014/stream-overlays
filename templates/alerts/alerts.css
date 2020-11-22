@@ -2,8 +2,8 @@
   --accent-streamlabs-prime: #caa368;
   --accent-raid: #ff369a;
   --accent-bits: #9b45ff;
-  --accent-host: #2234ce;
-  --accent-donation: #0076ff;
+  --accent-host: #0076ff;
+  --accent-donation: #00ffcd;
   --accent-follow: #00bf80;
   --accent-sub: #f5a623;
 
@@ -11,8 +11,8 @@
   --background-streamlabs-prime: #caa36840;
   --background-raid: #ff369a40;
   --background-bits: #9b45ff40;
-  --background-host: #2234ce40;
-  --background-donation: #0076ff40;
+  --background-host: #0076ff40;
+  --background-donation: #00ffcd40;
   --background-follow: #00bf8040;
   --background-sub: #f5a62340;
 }
