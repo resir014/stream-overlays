@@ -21,7 +21,7 @@ const TrackManiaControlBlockPage: NextPage = () => {
         >
           <Iframe
             title="overlay"
-            src="https://tmviz.vercel.app/overlay?accelerateButton=0&amp;accelerateColor=%231fc791&amp;brakeButton=2&amp;brakeColor=%23ee0000&amp;framerate=60&amp;steeringAxis=0&amp;steeringColor=%23cb891d&amp;steeringDeadzone=0.01"
+            src="https://tmviz.vercel.app/overlay?accelerateButton=0&amp;accelerateColor=%231fc791&amp;brakeButton=2&amp;brakeColor=%23ee0000&amp;framerate=60&amp;steeringAxis=0&amp;steeringColor=%23cb891d&amp;steeringDeadzone=0.1"
             width={256}
             height={140}
           />
