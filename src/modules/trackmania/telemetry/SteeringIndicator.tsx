@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { parseToHsl, hsl } from 'polished'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { Box, colors } from '@resir014/chungking-react'
 import { SteeringValues } from '~/interfaces/trackmania'
-import { Box, colors } from '~/components/chungking-core'
 import useGamepad from '~/utils/useGamepad'
 
 interface ThrottleIndicatorProps {

@@ -2,9 +2,9 @@
 import * as React from 'react'
 import { transparentize } from 'polished'
 import styled from '@emotion/styled'
+import { Box, colors, Text } from '@resir014/chungking-react'
 import format from 'date-fns/format'
 import { useStreamSchedule } from '~/utils/useCurrentStream'
-import { Box, colors, Text } from '~/components/chungking-core'
 
 const Root = styled('header')`
   display: flex;

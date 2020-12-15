@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import { transparentize } from 'polished'
+import { Box, colors } from '@resir014/chungking-react'
 
 import OverlayRoot from '~/components/overlay/OverlayRoot'
-import { Box, colors } from '~/components/chungking-core'
 
 const FlightsimPIPPage: NextPage = () => {
   return (

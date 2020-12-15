@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import * as React from 'react'
 
 function PrestreamVideo() {

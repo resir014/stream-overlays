@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '~/components/chungking-core'
+import { Box } from '@resir014/chungking-react'
 import DollarSign from '~/components/icons/DollarSign'
 import Star from '~/components/icons/Star'
 import TrendingUp from '~/components/icons/TrendingUp'

@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
+import { colors } from '@resir014/chungking-react'
 import useGamepad from '~/utils/useGamepad'
 import { InnerText } from '../components/TextStyles'
 import telemetryStyles from '../utils/telemetryStyles'
-import { colors } from '~/components/chungking-core'
 
 const Root = styled('div')`
   display: flex;

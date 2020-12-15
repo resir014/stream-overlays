@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from '../chungking-core'
+import { colors } from '@resir014/chungking-react'
 
 const BlockRoot = styled('div')`
   display: flex;

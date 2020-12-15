@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import * as React from 'react'
+import { Box, Text } from '@resir014/chungking-react'
 import useClock from '~/utils/useClock'
-import { Box, Text } from '~/components/chungking-core'
 
 const BottomBarClock: React.FC = () => {
   const time = useClock()

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '~/components/chungking-core'
+import { Box } from '@resir014/chungking-react'
 
 import { ThrottleIndicator, BrakeIndicator, SteeringIndicator, ResetIndicator } from './telemetry'
 import TelemetryGridItem from './components/TelemetryGridItem'

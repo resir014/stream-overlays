@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { InnerText } from '../components/TextStyles'
-import { colors } from '~/components/chungking-core'
+import { colors } from '@resir014/chungking-react'
 import useGamepad from '~/utils/useGamepad'
+import { InnerText } from '../components/TextStyles'
 import telemetryStyles from '../utils/telemetryStyles'
 
 const Root = styled('div')`

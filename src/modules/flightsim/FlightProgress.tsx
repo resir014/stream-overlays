@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from '../../components/chungking-core'
+import { colors } from '@resir014/chungking-react'
 
 const FlightProgress = styled('progress')`
   @supports (-webkit-appearance: none) {
