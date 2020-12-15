@@ -4,7 +4,7 @@ import { transparentize } from 'polished'
 
 import OverlayRoot from '~/components/overlay/OverlayRoot'
 import { PrestreamRoot } from '~/modules/prestream/components'
-import { Box, colors, Stack, Text } from '~/components/chungking-core'
+import { Box, colors, Stack, Text } from '@resir014/chungking-react'
 
 const Overlay20Page: NextPage = () => {
   return (

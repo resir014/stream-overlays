@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { variant as styledSystemVariant } from 'styled-system'
 import { transparentize } from 'polished'
 
-import { Box, colors } from '~/components/chungking-core'
+import { Box, colors } from '@resir014/chungking-react'
 import { PrestreamVariants } from '~/interfaces/types'
 
 const StyledBox = styled(Box)`

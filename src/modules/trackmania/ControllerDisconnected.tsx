@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
 import { BasicText } from './components/TextStyles'
-import { colors } from '~/components/chungking-core'
+import { colors } from '@resir014/chungking-react'
 
 const Root = styled('div')`
   display: flex;

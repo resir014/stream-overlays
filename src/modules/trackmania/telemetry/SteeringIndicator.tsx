@@ -3,7 +3,7 @@ import { parseToHsl, hsl } from 'polished'
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { SteeringValues } from '~/interfaces/trackmania'
-import { Box, colors } from '~/components/chungking-core'
+import { Box, colors } from '@resir014/chungking-react'
 import useGamepad from '~/utils/useGamepad'
 
 interface ThrottleIndicatorProps {

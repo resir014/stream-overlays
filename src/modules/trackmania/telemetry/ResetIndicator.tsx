@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import useGamepad from '~/utils/useGamepad'
 import { InnerText } from '../components/TextStyles'
 import telemetryStyles from '../utils/telemetryStyles'
-import { colors } from '~/components/chungking-core'
+import { colors } from '@resir014/chungking-react'
 
 const Root = styled('div')`
   display: flex;

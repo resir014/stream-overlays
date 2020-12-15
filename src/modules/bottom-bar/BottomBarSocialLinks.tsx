@@ -6,7 +6,7 @@ import { TransitionStatus } from 'react-transition-group/Transition'
 
 import useInterval from '~/utils/useInterval'
 import sleep from '~/utils/sleep'
-import { Box } from '~/components/chungking-core'
+import { Box } from '@resir014/chungking-react'
 import socialLinks from './socialLinks'
 
 export const TRANSITION_DURATION = 500

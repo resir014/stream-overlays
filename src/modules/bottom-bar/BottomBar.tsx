@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import { transparentize } from 'polished'
 import * as React from 'react'
-import { Box, colors } from '~/components/chungking-core'
+import { Box, colors } from '@resir014/chungking-react'
 import BottomBarSocialLinks from './BottomBarSocialLinks'
 import BottomBarEvents from './BottomBarEvents'
 

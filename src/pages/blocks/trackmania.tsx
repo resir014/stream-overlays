@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import { transparentize } from 'polished'
 
 import OverlayRoot from '~/components/overlay/OverlayRoot'
-import { Box, colors, Iframe } from '~/components/chungking-core'
+import { Box, colors, Iframe } from '@resir014/chungking-react'
 
 const TrackManiaControlBlockPage: NextPage = () => {
   return (

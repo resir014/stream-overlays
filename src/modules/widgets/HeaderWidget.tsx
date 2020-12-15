@@ -3,7 +3,7 @@ import * as React from 'react'
 import { css } from '@emotion/core'
 import { transparentize } from 'polished'
 import { useStreamSchedule } from '~/utils/useCurrentStream'
-import { Box, colors, Text } from '~/components/chungking-core'
+import { Box, colors, Text } from '@resir014/chungking-react'
 
 interface BlockHeaderInnerProps {
   right?: boolean

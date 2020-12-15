@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 import { css } from '@emotion/core'
 
 import useClock from '~/utils/useClock'
-import { Box, colors, Text } from '~/components/chungking-core'
+import { Box, colors, Text } from '@resir014/chungking-react'
 
 interface PrestreamDateTimeProps {
   titleColor?: string

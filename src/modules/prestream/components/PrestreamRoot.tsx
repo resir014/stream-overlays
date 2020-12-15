@@ -1,7 +1,7 @@
 import { transparentize } from 'polished'
 import * as React from 'react'
 
-import { Box, colors } from '~/components/chungking-core'
+import { Box, colors } from '@resir014/chungking-react'
 
 const PrestreamRoot: React.FC = ({ children }) => {
   return (

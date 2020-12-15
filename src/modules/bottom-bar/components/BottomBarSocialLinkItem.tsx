@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Text } from '~/components/chungking-core'
+import { Box, Text } from '@resir014/chungking-react'
 
 interface BottomBarSocialLinkItemProps {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>

@@ -1,6 +1,6 @@
 import { css } from '@emotion/core'
 import { darken, hsl, parseToHsl } from 'polished'
-import { colors } from '~/components/chungking-core'
+import { colors } from '@resir014/chungking-react'
 
 export default function telemetryStyles(value?: number, color = colors.blue[500]) {
   const colorHsl = parseToHsl(color)
