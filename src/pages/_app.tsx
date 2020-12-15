@@ -8,9 +8,6 @@ import OverlayGlobal from '~/styles/OverlayGlobal'
 import emotionCache from '~/utils/emotionCache'
 
 import 'typeface-inter'
-import 'typeface-crimson-text'
-import 'typeface-roboto-mono'
-import 'normalize.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (

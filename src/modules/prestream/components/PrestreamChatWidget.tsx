@@ -3,10 +3,14 @@ import styled from '@emotion/styled'
 import { variant as styledSystemVariant } from 'styled-system'
 import { transparentize } from 'polished'
 
-import { Box, colors } from '@resir014/chungking-react'
+import { Box, BoxProps, colors } from '@resir014/chungking-react'
 import { PrestreamVariants } from '~/interfaces/types'
 
-const StyledBox = styled(Box)`
+interface PrestreamChatWidgetProps {
+  variant?: PrestreamVariants
+}
+
+const PrestreamBox = styled(Box)<BoxProps & PrestreamChatWidgetProps>`
   ${styledSystemVariant({
     variants: {
       prestream: {
@@ -39,14 +43,10 @@ const getColor = (variant?: PrestreamVariants) => {
   }
 }
 
-interface PrestreamChatWidgetProps {
-  variant?: PrestreamVariants
-}
-
 const PrestreamChatWidget: React.FC<PrestreamChatWidgetProps> = ({ variant }) => {
   return (
     <Box display="flex" alignItems="center">
-      <StyledBox
+      <PrestreamBox
         display="block"
         width="100%"
         maxWidth={640}
