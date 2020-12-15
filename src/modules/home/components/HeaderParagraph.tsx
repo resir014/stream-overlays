@@ -1,6 +1,6 @@
-import { css } from '@emotion/core'
-import * as React from 'react'
+import { css } from '@emotion/react'
 import { Text } from '@resir014/chungking-react'
+import * as React from 'react'
 
 const HeaderParagraph: React.FC = ({ children }) => {
   return (

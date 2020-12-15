@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { AlertKinds } from '~/interfaces/types'
 import { colors } from '@resir014/chungking-react'
+import { AlertKinds } from '~/interfaces/types'
 import { getAlertColor } from './alertUtils'
 
 interface AlertMessageProps {

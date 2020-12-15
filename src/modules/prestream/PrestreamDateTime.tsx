@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { transparentize } from 'polished'
 import { format } from 'date-fns'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
+import { Box, colors, Text } from '@resir014/chungking-react'
 
 import useClock from '~/utils/useClock'
-import { Box, colors, Text } from '@resir014/chungking-react'
 
 interface PrestreamDateTimeProps {
   titleColor?: string

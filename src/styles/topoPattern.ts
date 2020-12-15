@@ -1,4 +1,4 @@
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { colors } from '@resir014/chungking-react'
 
 const topoPattern = css`

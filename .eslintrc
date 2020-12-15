@@ -22,5 +22,10 @@
     "import/no-unresolved": "off",
     "prettier/prettier": "error",
     "react/jsx-props-no-spreading": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
   }
 }

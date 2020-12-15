@@ -1,12 +1,12 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
+import { Box } from '@resir014/chungking-react'
 import { Transition } from 'react-transition-group'
 import { TransitionStatus } from 'react-transition-group/Transition'
 
 import useInterval from '~/utils/useInterval'
 import sleep from '~/utils/sleep'
-import { Box } from '@resir014/chungking-react'
 import socialLinks from './socialLinks'
 
 export const TRANSITION_DURATION = 500

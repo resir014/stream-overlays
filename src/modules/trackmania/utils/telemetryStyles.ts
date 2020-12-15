@@ -1,4 +1,4 @@
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { darken, hsl, parseToHsl } from 'polished'
 import { colors } from '@resir014/chungking-react'
 
