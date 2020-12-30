@@ -10,10 +10,14 @@ import OverlayRoot from '~/components/overlay/OverlayRoot'
 const TrackManiaControlBlockPage: NextPage = () => {
   const { query } = useRouter()
 
-  const overlayURL = stringifyUrl({
-    url: 'https://tmviz.vercel.app/overlay',
-    query
-  })
+  const overlayURL = React.useMemo(
+    () =>
+      stringifyUrl({
+        url: 'https://tmviz.vercel.app/overlay',
+        query
+      }),
+    [query]
+  )
 
   return (
     <OverlayRoot>
