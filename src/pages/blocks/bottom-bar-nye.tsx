@@ -6,7 +6,7 @@ import BottomBar from '~/modules/bottom-bar/BottomBar'
 const BottomBarNYEPage: NextPage = () => {
   return (
     <OverlayRoot>
-      <BottomBar variant="prestream" />
+      <BottomBar variant="nye" />
     </OverlayRoot>
   )
 }

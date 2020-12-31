@@ -10,11 +10,12 @@ const BottomBarClock = dynamic(() => import('./BottomBarClock'), {
 })
 
 interface BottomBarProps {
-  variant?: 'default' | 'prestream'
+  variant?: 'default' | 'prestream' | 'nye'
 }
 
 const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
   const hideClock = React.useMemo(() => variant === 'prestream', [variant])
+  const nyeVariant = React.useMemo(() => variant === 'nye', [variant])
 
   return (
     <Box
@@ -32,7 +33,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
       maxHeight={hideClock ? 88 : 64}
     >
       <BottomBarEvents />
-      {hideClock ? <BottomBarSocialLinks /> : <BottomBarClock />}
+      {hideClock || nyeVariant ? <BottomBarSocialLinks /> : <BottomBarClock />}
       <Box display="block" gridArea="footer" />
     </Box>
   )
