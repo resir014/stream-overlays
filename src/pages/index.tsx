@@ -1,12 +1,7 @@
 import * as React from 'react'
 
-import HomeBlock from '~/modules/home/HomeBlock'
-import OverlayRoot from '~/components/overlay/OverlayRoot'
+import OverlayDashboard from '~/modules/dashboard/OverlayDashboard'
 
-export default function IndexPage() {
-  return (
-    <OverlayRoot>
-      <HomeBlock />
-    </OverlayRoot>
-  )
+export default function IndexPage(): JSX.Element {
+  return <OverlayDashboard />
 }
