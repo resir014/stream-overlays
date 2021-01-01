@@ -3,6 +3,7 @@ import { Box } from '@resir014/chungking-react'
 
 const OverlayRoot: React.FC = ({ children }) => (
   <Box
+    as="main"
     display="flex"
     flexDirection="column"
     width="100%"
