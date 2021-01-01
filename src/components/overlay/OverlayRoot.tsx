@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { Box } from '@resir014/chungking-react'
+import { Global } from '@emotion/react'
+import overlayGlobalStyles from './utils/overlayGlobalStyles'
 
 const OverlayRoot: React.FC = ({ children }) => (
   <Box
@@ -10,6 +12,7 @@ const OverlayRoot: React.FC = ({ children }) => (
     backgroundColor="transparent"
     overflow="hidden"
   >
+    <Global styles={overlayGlobalStyles} />
     {children}
   </Box>
 )
