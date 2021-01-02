@@ -12,17 +12,15 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ ...rest }) => {
   return (
     <Box
       display="flex"
-      alignItems="center"
+      flexDirection="column"
       backgroundColor={transparentize(0.1, colors.white)}
       color="black"
       overflow="hidden"
-      px="md"
-      py="xs"
       {...rest}
     >
-      <Stack spacing="xs">
+      <Box px="md" pt="sm">
         <Text
-          variant={400}
+          variant={500}
           display="block"
           color="blue.500"
           fontFamily="monospace"
@@ -31,17 +29,21 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ ...rest }) => {
             text-transform: uppercase;
           `}
         >
-          Upcoming Stream
+          Today&apos;s Stream
         </Text>
-        <Stack spacing="xxs">
-          <Text display="block" fontWeight={700} variant={700}>
-            {schedule?.streamName || 'Untitled Stream'}
-          </Text>
-          <Text display="block" variant={500}>
-            {schedule?.description || 'No description available.'}
-          </Text>
+      </Box>
+      <Box display="flex" alignItems="center" flex="1 1 auto" px="md" pb="sm">
+        <Stack spacing="xs">
+          <Stack spacing="xxs">
+            <Text display="block" fontWeight={600} variant={800}>
+              {schedule?.streamName || 'Untitled Stream'}
+            </Text>
+            <Text display="block" variant={600}>
+              {schedule?.description || 'No description available.'}
+            </Text>
+          </Stack>
         </Stack>
-      </Stack>
+      </Box>
     </Box>
   )
 }

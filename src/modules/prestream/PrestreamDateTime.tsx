@@ -18,12 +18,12 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
     <Box display="flex" alignItems="center" justifyContent="flex-end">
       <Box
         textAlign="right"
-        boxShadow="single"
+        boxShadow="double"
         px="xxl"
         py="lg"
         borderRight="8px solid"
-        borderRightColor="grey.700"
-        backgroundColor={transparentize(0.75, colors.grey[700])}
+        borderRightColor="grey.500"
+        backgroundColor={transparentize(0.25, colors.grey[900])}
       >
         <Text variant={800} fontWeight={300}>
           <Text as="strong" fontWeight={600}>
