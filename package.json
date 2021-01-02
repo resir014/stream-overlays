@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.1.2",
+    "@emotion/babel-preset-css-prop": "^11.0.0",
     "@emotion/cache": "^11.1.3",
     "@emotion/react": "^11.1.4",
     "@emotion/server": "^11.0.0",
