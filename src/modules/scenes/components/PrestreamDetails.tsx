@@ -14,7 +14,7 @@ const getColor = (variant?: PrestreamVariants) => {
       return colors.purple[500]
     }
     case 'end': {
-      return colors.orange[400]
+      return colors.orange[600]
     }
     default: {
       return colors.grey[900]
