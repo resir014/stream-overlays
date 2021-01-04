@@ -1,9 +1,6 @@
 import { css } from '@emotion/react'
-import { colors } from '@resir014/chungking-react'
 
 const topoPattern = css`
-  background-color: ${colors.black};
-
   &::after {
     position: absolute;
     content: '';
