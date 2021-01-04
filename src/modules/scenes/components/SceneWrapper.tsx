@@ -23,7 +23,7 @@ const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...r
       minWidth={450}
       position="relative"
       fontSize="24px"
-      backgroundColor={transparentize(0.5, colors.grey[900])}
+      backgroundColor={transparentize(0.25, colors.black)}
       color="white"
       zIndex={0}
       {...rest}

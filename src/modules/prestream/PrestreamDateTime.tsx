@@ -5,13 +5,32 @@ import { css } from '@emotion/react'
 import { Box, colors, Text } from '@resir014/chungking-react'
 
 import useClock from '~/utils/useClock'
+import { PrestreamVariants } from '~/interfaces/types'
 
 interface PrestreamDateTimeProps {
   titleColor?: string
   text?: React.ReactNode
+  variant?: PrestreamVariants
 }
 
-const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text }) => {
+const getColor = (variant?: PrestreamVariants) => {
+  switch (variant) {
+    case 'prestream': {
+      return colors.blue[500]
+    }
+    case 'brb': {
+      return colors.purple[500]
+    }
+    case 'end': {
+      return colors.orange[400]
+    }
+    default: {
+      return colors.grey[900]
+    }
+  }
+}
+
+const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text, variant }) => {
   const time = useClock()
 
   return (
@@ -21,9 +40,7 @@ const PrestreamDateTime: React.FC<PrestreamDateTimeProps> = ({ titleColor, text 
         boxShadow="double"
         px="xxl"
         py="lg"
-        borderRight="8px solid"
-        borderRightColor="grey.500"
-        backgroundColor={transparentize(0.25, colors.grey[900])}
+        backgroundColor={transparentize(0.5, getColor(variant))}
       >
         <Text variant={800} fontWeight={300}>
           <Text as="strong" fontWeight={600}>
