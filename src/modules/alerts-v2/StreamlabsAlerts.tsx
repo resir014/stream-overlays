@@ -75,7 +75,7 @@ const StreamlabsAlerts: React.FC = () => {
             content: (
               <AlertToast
                 title="Bits"
-                recipient={`${eventData.message[0].name} (${eventData.message[0].formatted_amount})`}
+                recipient={`${eventData.message[0].name} (${eventData.message[0].amount})`}
                 content={eventData.message[0].message}
                 backgroundColor="#9b45ff"
                 color="white"

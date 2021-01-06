@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box } from '@resir014/chungking-react'
 
-const OverlayRoot: React.FC = ({ children }) => (
+const DashboardRoot: React.FC = ({ children }) => (
   <Box
     as="main"
     display="flex"
@@ -17,4 +17,4 @@ const OverlayRoot: React.FC = ({ children }) => (
   </Box>
 )
 
-export default OverlayRoot
+export default DashboardRoot
