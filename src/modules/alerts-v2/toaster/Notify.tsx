@@ -121,7 +121,7 @@ export default class Notify extends React.PureComponent<ToasterSettings, Toaster
         onExited={onRemove}
       >
         {state => (
-          <Root data-toaster-state={state} id={id} zIndex={index} onClick={() => this.close()}>
+          <Root data-toaster-state={state} id={id} zIndex={index} overflow="hidden">
             {content}
           </Root>
         )}

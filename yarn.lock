@@ -3153,11 +3153,6 @@ ally.js@1.4.1:
     css.escape "^1.5.0"
     platform "1.3.3"
 
-animejs@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/animejs/-/animejs-3.2.1.tgz#de9fe2e792f44a777a7fdf6ae160e26604b0cdda"
-  integrity sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==
-
 anser@1.4.9:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/anser/-/anser-1.4.9.tgz#1f85423a5dcf8da4631a341665ff675b96845760"
@@ -3917,11 +3912,6 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
-
-beano@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/beano/-/beano-0.2.2.tgz#4fc45c5b2f5d973d6902e30745a1fbe6be122932"
-  integrity sha512-aQQf8BnGnYAIdnPFq63J23z0MjutxC730zB07mnb1XyZwnDWO67xjrr273q34fiDvgx8ys1zNhSewN8vRbqMxw==
 
 better-opn@^2.0.0:
   version "2.1.1"
@@ -8595,15 +8585,6 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
 
-kinetic-components@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/kinetic-components/-/kinetic-components-0.4.1.tgz#f662f402cbae37a422f5a0ba6e7c48b4e003c44c"
-  integrity sha512-x2TeCSmKyZxPhVNnuvOD0XtGv6jXp8qBACbtj4DU47Pa3TVIRLfC3Wr6kVdqbflcH+IH3Ny7/N1YhNX1Wnt3kQ==
-  dependencies:
-    beano "^0.2.2"
-    react "^16.13.1"
-    react-id-generator "^3.0.0"
-
 klaw@^1.0.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/klaw/-/klaw-1.3.1.tgz#4088433b46b3b1ba259d78785d8e96f73ba02439"
@@ -10640,11 +10621,6 @@ react-hotkeys@2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-id-generator@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/react-id-generator/-/react-id-generator-3.0.1.tgz#30ec683954b3c0a5aa0732c4b98ed0f88fd85d00"
-  integrity sha512-YxorMaYxB8ItXA3Cuadcl/8ZaquU9Tzrrr5ogFL8tNqevF96cmCtx3LZLXYqBEj3BxoV9aBIK5yJjIuX/XHQ1A==
-
 react-inspector@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-5.1.0.tgz#45a325e15f33e595be5356ca2d3ceffb7d6b8c3a"
@@ -10737,15 +10713,6 @@ react-transition-group@^4.4.1:
     "@babel/runtime" "^7.5.5"
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
-    prop-types "^15.6.2"
-
-react@^16.13.1:
-  version "16.14.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
-  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
     prop-types "^15.6.2"
 
 react@^17.0.1:
