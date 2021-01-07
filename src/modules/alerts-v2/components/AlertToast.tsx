@@ -1,6 +1,8 @@
-import { css } from '@emotion/react'
+import { css, keyframes } from '@emotion/react'
+import styled from '@emotion/styled'
 import { Box, BoxProps, Text } from '@resir014/chungking-react'
 import * as React from 'react'
+import { Transition } from 'react-transition-group'
 
 interface AlertToastProps extends BoxProps {
   title: string
@@ -8,7 +10,48 @@ interface AlertToastProps extends BoxProps {
   content: string
 }
 
+const ANIMATION_DURATION = 300
+
+const ToastEnter = keyframes`
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`
+
+interface TransitionProps {
+  delay?: number
+}
+
+const TransitionText = styled(Text)<TransitionProps>`
+  transform: translateY(20px);
+  opacity: 0;
+
+  &.entering,
+  &.entered {
+    animation-fill-mode: both;
+    animation-name: ${ToastEnter};
+    animation-duration: ${ANIMATION_DURATION}ms;
+    animation-delay: ${props => props.delay || 0}ms;
+  }
+`
+
 const AlertToast: React.FC<AlertToastProps> = ({ title, recipient, content, ...rest }) => {
+  const [isMounted, setIsMounted] = React.useState(false)
+  React.useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsMounted(true)
+    }, 300)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [])
+
   return (
     <Box
       display="flex"
@@ -20,9 +63,13 @@ const AlertToast: React.FC<AlertToastProps> = ({ title, recipient, content, ...r
       {...rest}
     >
       <Box display="flex" alignItems="center" height={56} pl={48} pr={24}>
-        <Text variant={700} fontWeight={700}>
-          {title}
-        </Text>
+        <Transition in={isMounted} timeout={ANIMATION_DURATION}>
+          {state => (
+            <TransitionText variant={700} fontWeight={700} className={state}>
+              {title}
+            </TransitionText>
+          )}
+        </Transition>
       </Box>
       <Box
         display="flex"
@@ -41,8 +88,22 @@ const AlertToast: React.FC<AlertToastProps> = ({ title, recipient, content, ...r
           }
         `}
       >
-        {recipient && <Text variant={700}>{recipient}</Text>}
-        <Text variant={700}>{content}</Text>
+        {recipient && (
+          <Transition in={isMounted} timeout={ANIMATION_DURATION}>
+            {state => (
+              <TransitionText variant={700} className={state} delay={100}>
+                {recipient}
+              </TransitionText>
+            )}
+          </Transition>
+        )}
+        <Transition in={isMounted} timeout={ANIMATION_DURATION}>
+          {state => (
+            <TransitionText variant={700} className={state} delay={recipient ? 200 : 100}>
+              {content}
+            </TransitionText>
+          )}
+        </Transition>
       </Box>
     </Box>
   )

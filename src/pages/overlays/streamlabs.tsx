@@ -3,7 +3,7 @@ import * as React from 'react'
 import { OverlayRoot } from '~/components/overlay'
 import StreamlabsAlerts from '~/modules/alerts-v2/StreamlabsAlerts'
 
-const StreamlabsOverlay: NextPage = () => {
+const AlertsOverlayPage: NextPage = () => {
   return (
     <OverlayRoot>
       <StreamlabsAlerts />
@@ -11,4 +11,4 @@ const StreamlabsOverlay: NextPage = () => {
   )
 }
 
-export default StreamlabsOverlay
+export default AlertsOverlayPage

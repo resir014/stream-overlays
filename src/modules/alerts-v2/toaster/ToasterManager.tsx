@@ -35,7 +35,7 @@ export default class ToasterManager extends React.PureComponent<
 
     this.setState(previousState => {
       return {
-        toasts: [instance, ...previousState.toasts]
+        toasts: [...previousState.toasts, instance]
       }
     })
 
