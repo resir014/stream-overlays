@@ -49,7 +49,7 @@ const Root = styled(Box)`
   &[data-toaster-state='exiting'] {
     animation-fill-mode: both;
     animation-name: ${ToastExit};
-    animation-duration: ${ANIMATION_DURATION}ms;
+    animation-duration: ${ANIMATION_DURATION + 500}ms;
   }
   &[data-toaster-state='entered'] {
     right: 0;
@@ -114,8 +114,8 @@ export default class Notify extends React.PureComponent<ToasterSettings, Toaster
         appear
         in={isOpen}
         timeout={{
-          enter: ANIMATION_DURATION + 100,
-          exit: ANIMATION_DURATION + 400
+          enter: ANIMATION_DURATION,
+          exit: ANIMATION_DURATION + 500
         }}
         unmountOnExit
         onExited={onRemove}

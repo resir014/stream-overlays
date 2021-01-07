@@ -12,7 +12,7 @@ interface AlertToastProps extends BoxProps {
 
 const ANIMATION_DURATION = 300
 
-const ToastEnter = keyframes`
+const TextEnter = keyframes`
   0% {
     transform: translateY(20px);
     opacity: 0;
@@ -34,7 +34,7 @@ const TransitionText = styled(Text)<TransitionProps>`
   &.entering,
   &.entered {
     animation-fill-mode: both;
-    animation-name: ${ToastEnter};
+    animation-name: ${TextEnter};
     animation-duration: ${ANIMATION_DURATION}ms;
     animation-delay: ${props => props.delay || 0}ms;
   }
