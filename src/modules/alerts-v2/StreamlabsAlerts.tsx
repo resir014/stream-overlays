@@ -6,7 +6,7 @@ import io from 'socket.io-client'
 import { AlertToast } from './components'
 import { toaster } from './toaster'
 
-const dismissAfter = 5000
+const dismissAfter = 8000
 
 const StreamlabsAlerts: React.FC = () => {
   const handleSocketEvent = (eventData: any) => {
