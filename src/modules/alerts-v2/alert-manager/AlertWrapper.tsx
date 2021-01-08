@@ -4,8 +4,7 @@ import { keyframes } from '@emotion/react'
 import { Box } from '@resir014/chungking-react'
 import { Transition } from 'react-transition-group'
 import { AlertSettings } from './types'
-
-const ANIMATION_DURATION = 500
+import { ANIMATION_DURATION } from './constants'
 
 const ToastEnter = keyframes`
   0% {

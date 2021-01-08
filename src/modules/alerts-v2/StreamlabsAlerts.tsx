@@ -4,9 +4,9 @@ import { Box } from '@resir014/chungking-react'
 import * as React from 'react'
 import io from 'socket.io-client'
 import { AlertToast } from './components'
-import { alert } from './alert-manager'
+import { alert, DEFAULT_DISMISS_DURATION } from './alert-manager'
 
-const dismissAfter = 8000
+const dismissAfter = DEFAULT_DISMISS_DURATION
 
 const StreamlabsAlerts: React.FC = () => {
   const handleSocketEvent = (eventData: any) => {
