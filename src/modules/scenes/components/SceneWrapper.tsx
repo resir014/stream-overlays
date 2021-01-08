@@ -12,10 +12,11 @@ const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...r
     <Box
       as="section"
       display="grid"
-      gridTemplateRows="1fr auto"
+      gridTemplateRows="1fr 56px auto"
       gridTemplateColumns="1fr"
       gridTemplateAreas={`
       "content"
+      "alerts"
       "bottom-bar"
     `}
       flex="1 1 auto"
@@ -31,7 +32,8 @@ const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...r
       <Box display="flex" alignItems="center" gridArea="content" px="xxl" pt="lg" {..._innerProps}>
         {children}
       </Box>
-      <BottomBar variant="prestream" gridArea="bottom-bar" />
+      <Box gridArea="alerts" backgroundColor="black" />
+      <BottomBar gridArea="bottom-bar" />
     </Box>
   )
 }
