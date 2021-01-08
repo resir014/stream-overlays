@@ -33,7 +33,7 @@ const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...r
         {children}
       </Box>
       <Box gridArea="alerts" backgroundColor="black" />
-      <BottomBar gridArea="bottom-bar" />
+      <BottomBar variant="prestream" gridArea="bottom-bar" />
     </Box>
   )
 }

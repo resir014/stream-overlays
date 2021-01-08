@@ -20,7 +20,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant, ...rest }) => {
   return (
     <Box
       display="grid"
-      gridTemplateRows={hideClock || nyeVariant ? '40px 48px' : '40px 24px'}
+      gridTemplateRows="40px 24px"
       gridTemplateColumns="auto 320px"
       gridTemplateAreas={`
       "events clock"
