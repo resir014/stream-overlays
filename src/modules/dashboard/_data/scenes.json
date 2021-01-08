@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Pre-Stream Scene",
+    "url": "/scenes/pre-stream"
+  },
+  {
+    "title": "BRB Scene",
+    "url": "/scenes/brb"
+  },
+  {
+    "title": "End Scene",
+    "url": "/scenes/end"
+  }
+]

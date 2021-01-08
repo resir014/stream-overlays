@@ -1,11 +1,13 @@
-import { Box, colors } from '@resir014/chungking-react'
+import { Box, BoxProps, colors } from '@resir014/chungking-react'
 import { transparentize } from 'polished'
 import * as React from 'react'
 import { Home } from 'react-feather'
 
-const DashboardSidebar: React.FC = () => {
+export type DashboardSidebarProps = BoxProps
+
+const DashboardSidebar: React.FC = ({ ...rest }) => {
   return (
-    <Box as="aside" borderRight="1px solid" borderRightColor="grey.900" py="lg">
+    <Box as="aside" borderRight="1px solid" borderRightColor="grey.900" py="lg" {...rest}>
       <Box
         display="flex"
         flexDirection="column"
