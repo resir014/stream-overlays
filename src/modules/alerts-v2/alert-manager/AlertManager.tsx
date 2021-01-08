@@ -3,39 +3,39 @@
 import { Box, ChungkingProvider } from '@resir014/chungking-react'
 import * as React from 'react'
 import { TransitionGroup } from 'react-transition-group'
-import Notify from './Notify'
-import { ToasterHandler, ToasterSettings } from './types'
+import AlertWrapper from './AlertWrapper'
+import { AlertHandler, AlertSettings } from './types'
 
-interface ToasterManagerProps {
-  bindNotify: (handler: ToasterHandler) => void
+interface AlertManagerProps {
+  bindAlert: (handler: AlertHandler) => void
 }
 
-interface ToasterManagerState {
-  toasts: ToasterSettings[]
+interface AlertManagerState {
+  alertQueue: AlertSettings[]
 }
 
-export default class ToasterManager extends React.PureComponent<
-  ToasterManagerProps,
-  ToasterManagerState
+export default class AlertManager extends React.PureComponent<
+  AlertManagerProps,
+  AlertManagerState
 > {
   public static currentCount = 0
 
-  constructor(props: ToasterManagerProps) {
+  constructor(props: AlertManagerProps) {
     super(props)
 
-    props.bindNotify(this.toaster)
+    props.bindAlert(this.sendAlert)
 
     this.state = {
-      toasts: []
+      alertQueue: []
     }
   }
 
-  private toaster = (settings: ToasterSettings) => {
+  private sendAlert = (settings: AlertSettings) => {
     const instance = this.createToastInstance(settings)
 
     this.setState(previousState => {
       return {
-        toasts: [...previousState.toasts, instance]
+        alertQueue: [...previousState.alertQueue, instance]
       }
     })
 
@@ -43,13 +43,15 @@ export default class ToasterManager extends React.PureComponent<
   }
 
   public render(): JSX.Element {
-    const { toasts } = this.state
+    const { alertQueue: toasts } = this.state
     return (
       <ChungkingProvider>
         <Box position="fixed" bottom={0} left={0} right={0}>
           <TransitionGroup>
             {toasts.map(({ id, ...props }) => {
-              return <Notify key={id} id={id} onRemove={() => this.removeToaster(id)} {...props} />
+              return (
+                <AlertWrapper key={id} id={id} onRemove={() => this.removeToaster(id)} {...props} />
+              )
             })}
           </TransitionGroup>
         </Box>
@@ -57,11 +59,11 @@ export default class ToasterManager extends React.PureComponent<
     )
   }
 
-  private createToastInstance = (settings: ToasterSettings): ToasterSettings => {
+  private createToastInstance = (settings: AlertSettings): AlertSettings => {
     const { id, ...rest } = settings
 
     // eslint-disable-next-line no-plusplus
-    const uniqueId = ++ToasterManager.currentCount
+    const uniqueId = ++AlertManager.currentCount
     const generatedId = `${id || 'toaster'}-${uniqueId}`
 
     return {
@@ -74,7 +76,7 @@ export default class ToasterManager extends React.PureComponent<
   private removeToaster = (id?: string | number) => {
     this.setState(previousState => {
       return {
-        toasts: previousState.toasts.filter(toast => toast.id !== id)
+        alertQueue: previousState.alertQueue.filter(toast => toast.id !== id)
       }
     })
   }

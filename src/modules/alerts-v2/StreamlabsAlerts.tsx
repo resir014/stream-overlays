@@ -4,14 +4,14 @@ import { Box } from '@resir014/chungking-react'
 import * as React from 'react'
 import io from 'socket.io-client'
 import { AlertToast } from './components'
-import { toaster } from './toaster'
+import { alert } from './alert-manager'
 
 const dismissAfter = 8000
 
 const StreamlabsAlerts: React.FC = () => {
   const handleSocketEvent = (eventData: any) => {
     if (eventData.for !== 'twitch_account' && eventData.type === 'donation') {
-      toaster.notify({
+      alert.sendAlert({
         id: eventData.message[0]._id,
         content: (
           <AlertToast
@@ -29,7 +29,7 @@ const StreamlabsAlerts: React.FC = () => {
     if (eventData.for === 'twitch_account') {
       switch (eventData.type) {
         case 'follow': {
-          toaster.notify({
+          alert.sendAlert({
             id: eventData.message[0]._id,
             content: <AlertToast title="Follow" content={eventData.message[0].name} />,
             dismissAfter
@@ -37,7 +37,7 @@ const StreamlabsAlerts: React.FC = () => {
           break
         }
         case 'subscription': {
-          toaster.notify({
+          alert.sendAlert({
             id: eventData.message[0]._id,
             content: (
               <AlertToast
@@ -52,7 +52,7 @@ const StreamlabsAlerts: React.FC = () => {
           break
         }
         case 'resub': {
-          toaster.notify({
+          alert.sendAlert({
             id: eventData.message[0]._id,
             content: (
               <AlertToast
@@ -68,7 +68,7 @@ const StreamlabsAlerts: React.FC = () => {
           break
         }
         case 'host': {
-          toaster.notify({
+          alert.sendAlert({
             id: eventData.message[0]._id,
             content: (
               <AlertToast
@@ -84,7 +84,7 @@ const StreamlabsAlerts: React.FC = () => {
           break
         }
         case 'bits': {
-          toaster.notify({
+          alert.sendAlert({
             id: eventData.message[0]._id,
             content: (
               <AlertToast
@@ -100,7 +100,7 @@ const StreamlabsAlerts: React.FC = () => {
           break
         }
         case 'raid': {
-          toaster.notify({
+          alert.sendAlert({
             id: eventData.message[0]._id,
             content: (
               <AlertToast

@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { keyframes } from '@emotion/react'
 import { Box } from '@resir014/chungking-react'
 import { Transition } from 'react-transition-group'
-import { ToasterSettings } from './types'
+import { AlertSettings } from './types'
 
 const ANIMATION_DURATION = 500
 
@@ -61,14 +61,14 @@ interface ToasterState {
   isOpen?: boolean
 }
 
-export default class Notify extends React.PureComponent<ToasterSettings, ToasterState> {
+export default class AlertWrapper extends React.PureComponent<AlertSettings, ToasterState> {
   private closeTimer: number | null = null
 
-  static defaultProps: Partial<ToasterSettings> = {
+  static defaultProps: Partial<AlertSettings> = {
     dismissAfter: 5000
   }
 
-  constructor(props: ToasterSettings) {
+  constructor(props: AlertSettings) {
     super(props)
 
     this.state = {
