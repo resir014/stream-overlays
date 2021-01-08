@@ -43,12 +43,12 @@ export default class AlertManager extends React.PureComponent<
   }
 
   public render(): JSX.Element {
-    const { alertQueue: toasts } = this.state
+    const { alertQueue } = this.state
     return (
       <ChungkingProvider>
         <Box position="fixed" bottom={0} left={0} right={0}>
           <TransitionGroup>
-            {toasts.map(({ id, ...props }) => {
+            {alertQueue.map(({ id, ...props }) => {
               return (
                 <AlertWrapper key={id} id={id} onRemove={() => this.removeToaster(id)} {...props} />
               )
