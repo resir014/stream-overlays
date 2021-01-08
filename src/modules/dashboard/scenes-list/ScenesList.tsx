@@ -17,7 +17,7 @@ const ScenesList: React.FC<ScenesListProps> = ({ items, ...props }) => {
       {...props}
     >
       {items.map(scene => (
-        <ScenesListItem scene={scene} />
+        <ScenesListItem key={scene.url} scene={scene} />
       ))}
     </Box>
   )
