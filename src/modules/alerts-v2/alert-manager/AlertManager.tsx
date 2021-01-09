@@ -30,14 +30,25 @@ export default class AlertManager extends React.PureComponent<
     }
   }
 
-  private sendAlert = (settings: AlertSettings) => {
-    const instance = this.createToastInstance(settings)
-
+  private addAlerts = (instance: AlertSettings) => {
     this.setState(previousState => {
       return {
         alertQueue: [...previousState.alertQueue, instance]
       }
     })
+  }
+
+  private sendAlert = (settings: AlertSettings) => {
+    const { alertQueue } = this.state
+    const instance = this.createToastInstance(settings)
+
+    if (alertQueue.length !== 0) {
+      setTimeout(() => {
+        this.addAlerts(instance)
+      }, 500)
+    } else {
+      this.addAlerts(instance)
+    }
 
     return instance
   }
