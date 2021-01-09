@@ -56,11 +56,11 @@ const Root = styled(Box)`
   }
 `
 
-interface ToasterState {
+interface AlertWrapperState {
   isOpen?: boolean
 }
 
-export default class AlertWrapper extends React.PureComponent<AlertSettings, ToasterState> {
+export default class AlertWrapper extends React.PureComponent<AlertSettings, AlertWrapperState> {
   private closeTimer: number | null = null
 
   static defaultProps: Partial<AlertSettings> = {
