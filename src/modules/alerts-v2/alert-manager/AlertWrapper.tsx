@@ -56,75 +56,57 @@ const Root = styled(Box)`
   }
 `
 
-interface AlertWrapperState {
-  isOpen?: boolean
-}
+const AlertWrapper: React.FC<AlertSettings> = ({
+  id,
+  index,
+  onRemove,
+  content,
+  dismissAfter = 5000
+}) => {
+  const [isOpen, setIsOpen] = React.useState(false)
+  const closeTimerRef = React.useRef<NodeJS.Timeout | undefined>(undefined)
 
-export default class AlertWrapper extends React.PureComponent<AlertSettings, AlertWrapperState> {
-  private closeTimer: number | null = null
-
-  static defaultProps: Partial<AlertSettings> = {
-    dismissAfter: 5000
-  }
-
-  constructor(props: AlertSettings) {
-    super(props)
-
-    this.state = {
-      isOpen: true
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current)
+      closeTimerRef.current = undefined
     }
   }
 
-  public componentDidMount(): void {
-    this.startCloseTimer()
-  }
+  const startCloseTimer = () => {
+    setIsOpen(true)
 
-  public componentWillUnmount(): void {
-    this.clearCloseTimer()
-  }
-
-  private startCloseTimer = () => {
-    const { dismissAfter } = this.props
-    this.closeTimer = setTimeout(() => {
-      this.close()
+    closeTimerRef.current = setTimeout(() => {
+      setIsOpen(false)
     }, dismissAfter)
   }
 
-  private clearCloseTimer = () => {
-    if (this.closeTimer) {
-      clearTimeout(this.closeTimer)
-      this.closeTimer = null
+  React.useEffect(() => {
+    startCloseTimer()
+
+    return () => {
+      clearCloseTimer()
     }
-  }
+  }, [])
 
-  private close = () => {
-    this.clearCloseTimer()
-    this.setState({
-      isOpen: false
-    })
-  }
-
-  public render(): JSX.Element {
-    const { id, index, onRemove, content } = this.props
-    const { isOpen } = this.state
-
-    return (
-      <Transition
-        appear
-        in={isOpen}
-        timeout={{
-          enter: ANIMATION_DURATION,
-          exit: ANIMATION_DURATION + 500
-        }}
-        unmountOnExit
-        onExited={onRemove}
-      >
-        {state => (
-          <Root data-toaster-state={state} id={id} zIndex={index} overflow="hidden">
-            {content}
-          </Root>
-        )}
-      </Transition>
-    )
-  }
+  return (
+    <Transition
+      appear
+      in={isOpen}
+      timeout={{
+        enter: ANIMATION_DURATION,
+        exit: ANIMATION_DURATION + 500
+      }}
+      unmountOnExit
+      onExited={onRemove}
+    >
+      {state => (
+        <Root data-toaster-state={state} id={id} zIndex={index} overflow="hidden">
+          {content}
+        </Root>
+      )}
+    </Transition>
+  )
 }
+
+export default AlertWrapper
