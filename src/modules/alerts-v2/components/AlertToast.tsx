@@ -14,7 +14,7 @@ const ANIMATION_DURATION = 300
 
 const TextEnter = keyframes`
   0% {
-    transform: translateY(20px);
+    transform: translateY(8px);
     opacity: 0;
   }
   100% {
@@ -28,7 +28,7 @@ interface TransitionProps {
 }
 
 const TransitionText = styled(Text)<TransitionProps>`
-  transform: translateY(20px);
+  transform: translateY(8px);
   opacity: 0;
 
   &.entering,
@@ -38,10 +38,16 @@ const TransitionText = styled(Text)<TransitionProps>`
     animation-duration: ${ANIMATION_DURATION}ms;
     animation-delay: ${props => props.delay || 0}ms;
   }
+
+  &.entered {
+    transform: translateY(0);
+    opacity: 1;
+  }
 `
 
 const AlertToast: React.FC<AlertToastProps> = ({ title, recipient, content, ...rest }) => {
   const [isMounted, setIsMounted] = React.useState(false)
+
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       setIsMounted(true)
