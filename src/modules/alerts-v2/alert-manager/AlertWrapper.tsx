@@ -56,11 +56,17 @@ const Root = styled(Box)`
   }
 `
 
-const AlertWrapper: React.FC<AlertSettings> = ({
+interface AlertWrapperProps {
+  id?: string
+  settings: Omit<AlertSettings, 'id' | 'onRemove' | 'dismissAfter'>
+  onRemove?: () => void
+  dismissAfter?: number
+}
+
+const AlertWrapper: React.FC<AlertWrapperProps> = ({
   id,
-  index,
+  settings: { index, content },
   onRemove,
-  content,
   dismissAfter = 5000
 }) => {
   const [isOpen, setIsOpen] = React.useState(false)

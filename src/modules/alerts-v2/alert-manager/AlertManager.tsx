@@ -59,9 +59,20 @@ export default class AlertManager extends React.PureComponent<
       <ChungkingProvider>
         <Box position="fixed" bottom={0} left={0} right={0}>
           <TransitionGroup>
-            {alertQueue.map(({ id, ...props }) => {
+            {alertQueue.map(({ id, onRemove, dismissAfter: _dismissAfter, ...settings }) => {
               return (
-                <AlertWrapper key={id} id={id} onRemove={() => this.removeToaster(id)} {...props} />
+                <AlertWrapper
+                  key={id}
+                  id={id}
+                  settings={settings}
+                  onRemove={() => {
+                    this.removeToaster(id)
+
+                    if (onRemove) {
+                      onRemove()
+                    }
+                  }}
+                />
               )
             })}
           </TransitionGroup>
