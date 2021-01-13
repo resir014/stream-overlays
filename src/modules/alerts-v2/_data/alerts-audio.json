@@ -1,0 +1,23 @@
+{
+  "default": {
+    "src": "/static/audio/takeshi-jingle-5sec.ogg"
+  },
+  "follow": {
+    "src": "/static/audio/737NG_cabin_bell.ogg"
+  },
+  "subscription": {
+    "src": "/static/audio/takeshi-jingle-5sec.ogg"
+  },
+  "resub": {
+    "src": "/static/audio/takeshi-jingle-5sec.ogg"
+  },
+  "host": {
+    "src": "/static/audio/takeshi-jingle-5sec.ogg"
+  },
+  "bits": {
+    "src": "/static/audio/bits.ogg"
+  },
+  "raid": {
+    "src": "/static/audio/B777_MasterCautionSound_Typ_C.ogg"
+  }
+}

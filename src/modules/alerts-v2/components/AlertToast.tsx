@@ -3,11 +3,13 @@ import styled from '@emotion/styled'
 import { Box, BoxProps, Text } from '@resir014/chungking-react'
 import * as React from 'react'
 import { Transition } from 'react-transition-group'
+import alertsAudio from '../_data/alerts-audio.json'
 
 interface AlertToastProps extends BoxProps {
   title: string
   recipient?: string
   content: string
+  type?: keyof typeof alertsAudio
 }
 
 const ANIMATION_DURATION = 300
@@ -45,10 +47,19 @@ const TransitionText = styled(Text)<TransitionProps>`
   }
 `
 
-const AlertToast: React.FC<AlertToastProps> = ({ title, recipient, content, ...rest }) => {
+const AlertToast: React.FC<AlertToastProps> = ({
+  title,
+  recipient,
+  type = 'default',
+  content,
+  ...rest
+}) => {
   const [isMounted, setIsMounted] = React.useState(false)
+  const audio = new Audio(alertsAudio[type].src)
 
   React.useEffect(() => {
+    audio.play()
+
     const timeout = setTimeout(() => {
       setIsMounted(true)
     }, 300)

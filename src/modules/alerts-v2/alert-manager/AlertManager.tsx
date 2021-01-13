@@ -45,7 +45,7 @@ export default class AlertManager extends React.PureComponent<
     if (alertQueue.length !== 0) {
       setTimeout(() => {
         this.addAlerts(instance)
-      }, 500)
+      }, 5000 * alertQueue.length)
     } else {
       this.addAlerts(instance)
     }
