@@ -7,7 +7,7 @@ const saweriaAlertURL = `https://api.saweria.co/stream?channel=donation.${proces
 
 const SaweriaWidget: React.FC = () => {
   const [listening, setListening] = React.useState(false)
-  const audio = new Audio('/static/audio/91926__tim-kahn__ding-jVE.wav')
+  const audio = new Audio('/static/audio/737NG_cabin_bell.ogg')
   const eventSource = saweriaAlertURL ? new EventSource(saweriaAlertURL) : undefined
 
   const handleMessage = (e: MessageEvent) => {

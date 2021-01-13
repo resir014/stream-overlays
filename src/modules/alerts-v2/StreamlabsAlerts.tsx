@@ -31,7 +31,13 @@ const StreamlabsAlerts: React.FC = () => {
         case 'follow': {
           alert.sendAlert({
             id: eventData.message[0]._id,
-            content: <AlertToast title="Follow" content={eventData.message[0].name} />,
+            content: (
+              <AlertToast
+                title="Follow"
+                type={eventData.type}
+                content={eventData.message[0].name}
+              />
+            ),
             dismissAfter
           })
           break
@@ -42,6 +48,7 @@ const StreamlabsAlerts: React.FC = () => {
             content: (
               <AlertToast
                 title={eventData.message[0].sub_plan === 'Prime' ? 'Prime Sub' : 'Subscriber'}
+                type={eventData.type}
                 content={eventData.message[0].name}
                 backgroundColor="orange.400"
                 color="black"
@@ -58,6 +65,7 @@ const StreamlabsAlerts: React.FC = () => {
               <AlertToast
                 title="Resub"
                 recipient={`${eventData.message[0].name} (×${eventData.message[0].months})`}
+                type={eventData.type}
                 content={eventData.message[0].message}
                 backgroundColor="orange.400"
                 color="black"
@@ -74,6 +82,7 @@ const StreamlabsAlerts: React.FC = () => {
               <AlertToast
                 title="Host"
                 recipient={eventData.message[0].name}
+                type={eventData.type}
                 content={`${eventData.message[0].viewers} viewers`}
                 backgroundColor="blue.500"
                 color="white"
@@ -90,6 +99,7 @@ const StreamlabsAlerts: React.FC = () => {
               <AlertToast
                 title="Bits"
                 recipient={`${eventData.message[0].name} (${eventData.message[0].amount})`}
+                type={eventData.type}
                 content={eventData.message[0].message}
                 backgroundColor="#9b45ff"
                 color="white"
@@ -106,6 +116,7 @@ const StreamlabsAlerts: React.FC = () => {
               <AlertToast
                 title="Raid"
                 recipient={eventData.message[0].name}
+                type={eventData.type}
                 content={`${eventData.message[0].raiders} raiders`}
                 backgroundColor="magenta.500"
                 color="white"
