@@ -4,6 +4,7 @@ import { Box, ChungkingProvider } from '@resir014/chungking-react'
 import * as React from 'react'
 import { TransitionGroup } from 'react-transition-group'
 import AlertWrapper from './AlertWrapper'
+import { DEFAULT_DISMISS_DURATION } from './constants'
 import { AlertHandler, AlertSettings } from './types'
 
 interface AlertManagerProps {
@@ -45,7 +46,7 @@ export default class AlertManager extends React.PureComponent<
     if (alertQueue.length !== 0) {
       setTimeout(() => {
         this.addAlerts(instance)
-      }, 5000 * alertQueue.length)
+      }, DEFAULT_DISMISS_DURATION * alertQueue.length)
     } else {
       this.addAlerts(instance)
     }
@@ -59,12 +60,13 @@ export default class AlertManager extends React.PureComponent<
       <ChungkingProvider>
         <Box position="fixed" bottom={0} left={0} right={0}>
           <TransitionGroup>
-            {alertQueue.map(({ id, onRemove, dismissAfter: _dismissAfter, ...settings }) => {
+            {alertQueue.map(({ id, onRemove, dismissAfter: _, ...settings }) => {
               return (
                 <AlertWrapper
                   key={id}
                   id={id}
                   settings={settings}
+                  dismissAfter={DEFAULT_DISMISS_DURATION}
                   onRemove={() => {
                     this.removeToaster(id)
 
