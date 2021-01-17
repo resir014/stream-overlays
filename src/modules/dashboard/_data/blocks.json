@@ -10,5 +10,9 @@
   {
     "title": "TrackMania Gamepad",
     "url": "/blocks/trackmania"
+  },
+  {
+    "title": "Time Signal",
+    "url": "/blocks/time-signal"
   }
 ]
