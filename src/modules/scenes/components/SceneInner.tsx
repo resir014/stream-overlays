@@ -5,24 +5,26 @@ import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
 import PrestreamDetails from './PrestreamDetails'
 import PrestreamEventsBlock from './PrestreamEventsBlock'
+import PrestreamIcon from './PrestreamIcon'
 
-const PrestreamDateTime = dynamic(() => import('../../prestream/PrestreamDateTime'), { ssr: false })
+const PrestreamClock = dynamic(() => import('./PrestreamClock'), { ssr: false })
 
 interface SceneInnerProps {
   variant?: PrestreamVariants
   text: string
 }
 
-const SceneInner: React.FC<SceneInnerProps> = ({ text, variant }) => {
+const SceneInner: React.FC<SceneInnerProps> = ({ variant }) => {
   return (
     <>
       <Box
         display="grid"
-        gridTemplateColumns="256px 1fr"
-        gridTemplateRows="128px 1fr"
+        gridTemplateColumns="256px 1fr 128px"
+        gridTemplateRows="128px 128px 1fr"
         gridTemplateAreas={`
-          "details details"
-          "events chat"
+          "clock clock logo"
+          "details details details"
+          "events chat chat"
         `}
         width="100%"
         maxWidth={896}
@@ -30,11 +32,12 @@ const SceneInner: React.FC<SceneInnerProps> = ({ text, variant }) => {
         maxHeight={728}
         boxShadow="double"
       >
+        <PrestreamClock gridArea="clock" variant={variant} />
+        <PrestreamIcon gridArea="logo" variant={variant} />
         <PrestreamDetails gridArea="details" variant={variant} />
         <PrestreamEventsBlock gridArea="events" />
         <Box backgroundColor={transparentize(0.1, colors.grey[900])} gridArea="chat" />
       </Box>
-      <PrestreamDateTime text={text} variant={variant} />
     </>
   )
 }

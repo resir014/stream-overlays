@@ -1722,6 +1722,11 @@
     polished "^4.0.5"
     styled-system "^5.1.5"
 
+"@resir014/lerp@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@resir014/lerp/-/lerp-0.1.1.tgz#ab204c96e551b3ce8d7c4e796c7f816470f083c2"
+  integrity sha512-KE8t0epP0jDvBgwiHNzOxBLBrG/XvP0mfVN/osnnpUr5I+pjfFuAnE3okXmwn6HwwesS9WUPDyXY6NG0rDy1gA==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.1.tgz#e7df00f98a203324f6dc7cc606cad9d4a8ab2217"
