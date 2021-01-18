@@ -14,7 +14,9 @@ export default function useStreamlabsEvents(): ReturnType {
   }
 
   const handleSocketEvent = (eventData: any) => {
-    addEvents(eventData)
+    if (eventData.for === 'twitch_account' || eventData.type === 'donation') {
+      addEvents(eventData)
+    }
   }
 
   React.useEffect(() => {
