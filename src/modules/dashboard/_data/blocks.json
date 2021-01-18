@@ -14,5 +14,9 @@
   {
     "title": "Time Signal",
     "url": "/blocks/time-signal"
+  },
+  {
+    "title": "CaptureGuard™",
+    "url": "/blocks/capture-guard"
   }
 ]
