@@ -3,7 +3,7 @@ export interface AlertSettings {
   index?: number
   content: React.ReactNode
   dismissAfter?: number
-  onRemove?: () => void
+  onRemove?: (id?: string) => void
 }
 
 export type AlertHandler = (settings: AlertSettings) => AlertSettings
