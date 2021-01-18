@@ -71,7 +71,7 @@ export default class AlertManager extends React.PureComponent<
                     this.removeToaster(id)
 
                     if (onRemove) {
-                      onRemove()
+                      onRemove(id)
                     }
                   }}
                 />
@@ -88,7 +88,7 @@ export default class AlertManager extends React.PureComponent<
 
     // eslint-disable-next-line no-plusplus
     const uniqueId = ++AlertManager.currentCount
-    const generatedId = `${id || 'toaster'}-${uniqueId}`
+    const generatedId = `${id || `toaster-${uniqueId}`}`
 
     return {
       id: generatedId,
