@@ -1,20 +1,17 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react'
 import io from 'socket.io-client'
+import { StreamlabsEvent } from '../types/streamlabs'
 
-interface ReturnType {
-  events: any[]
-  setEvents: React.Dispatch<React.SetStateAction<any[]>>
-}
+export default function useStreamlabsEvents() {
+  const [events, setEvents] = React.useState<StreamlabsEvent[]>([])
 
-export default function useStreamlabsEvents(): ReturnType {
-  const [events, setEvents] = React.useState<any[]>([])
-
-  const addEvents = (eventData: any) => {
+  const addEvents = (eventData: StreamlabsEvent) => {
     setEvents(prev => [eventData, ...prev])
   }
 
-  const handleSocketEvent = (eventData: any) => {
+  const handleSocketEvent = (eventData: StreamlabsEvent) => {
     if (eventData.for === 'twitch_account' || eventData.type === 'donation') {
       addEvents({ id: eventData.message[0]._id, ...eventData })
     }

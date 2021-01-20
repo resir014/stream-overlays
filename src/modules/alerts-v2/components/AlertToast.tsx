@@ -3,13 +3,15 @@ import styled from '@emotion/styled'
 import { Box, BoxProps, Text } from '@resir014/chungking-react'
 import * as React from 'react'
 import { Transition } from 'react-transition-group'
+import { variant as styledSystemVariant } from 'styled-system'
+import { StreamlabsEventTypes } from '../types/streamlabs'
 import alertsAudio from '../_data/alerts-audio.json'
 
 interface AlertToastProps extends BoxProps {
   title: string
   recipient?: string
   content: string
-  type?: keyof typeof alertsAudio
+  variant?: StreamlabsEventTypes
 }
 
 const ANIMATION_DURATION = 300
@@ -47,15 +49,50 @@ const TransitionText = styled(Text)<TransitionProps>`
   }
 `
 
+const Wrapper = styled(Box)<Pick<AlertToastProps, 'variant'>>`
+  ${styledSystemVariant({
+    variants: {
+      donation: {
+        backgroundColor: 'green.300',
+        color: 'black'
+      },
+      follow: {
+        backgroundColor: 'white',
+        color: 'black'
+      },
+      subscription: {
+        backgroundColor: 'orange.400',
+        color: 'black'
+      },
+      resub: {
+        backgroundColor: 'orange.400',
+        color: 'black'
+      },
+      host: {
+        backgroundColor: 'blue.500',
+        color: 'white'
+      },
+      bits: {
+        backgroundColor: '#9b45ff',
+        color: 'white'
+      },
+      raid: {
+        backgroundColor: 'magenta.500',
+        color: 'white'
+      }
+    }
+  })}
+`
+
 const AlertToast: React.FC<AlertToastProps> = ({
   title,
   recipient,
-  type = 'default',
+  variant = 'follow',
   content,
   ...rest
 }) => {
   const [isMounted, setIsMounted] = React.useState(false)
-  const audio = new Audio(alertsAudio[type].src)
+  const audio = new Audio(alertsAudio[variant].src)
 
   React.useEffect(() => {
     audio.play()
@@ -70,13 +107,12 @@ const AlertToast: React.FC<AlertToastProps> = ({
   }, [])
 
   return (
-    <Box
+    <Wrapper
       display="flex"
       alignItems="center"
       width="100%"
       height={56}
-      backgroundColor="white"
-      color="black"
+      variant={variant}
       {...rest}
     >
       <Box display="flex" alignItems="center" height={56} pl={48} pr={24}>
@@ -122,7 +158,7 @@ const AlertToast: React.FC<AlertToastProps> = ({
           )}
         </Transition>
       </Box>
-    </Box>
+    </Wrapper>
   )
 }
 
