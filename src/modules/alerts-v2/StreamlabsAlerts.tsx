@@ -21,13 +21,13 @@ const StreamlabsAlerts: React.FC = () => {
   const onRemove = (id?: string) => {
     setStale(true)
     setCurrent(undefined)
-    setEvents(prev => prev.filter(event => event.event_id !== id))
+    setEvents(prev => prev.filter(event => event.id !== id))
   }
 
   const handleToaster = (eventData: any) => {
     if (eventData.for !== 'twitch_account' && eventData.type === 'donation') {
       alert.sendAlert({
-        id: eventData.event_id,
+        id: eventData.id,
         content: (
           <AlertToast
             title="Donation"
@@ -46,7 +46,7 @@ const StreamlabsAlerts: React.FC = () => {
       switch (eventData.type) {
         case 'follow': {
           alert.sendAlert({
-            id: eventData.event_id,
+            id: eventData.id,
             content: (
               <AlertToast
                 title="Follow"
@@ -61,7 +61,7 @@ const StreamlabsAlerts: React.FC = () => {
         }
         case 'subscription': {
           alert.sendAlert({
-            id: eventData.event_id,
+            id: eventData.id,
             content: (
               <AlertToast
                 title={eventData.message[0].sub_plan === 'Prime' ? 'Prime Sub' : 'Subscriber'}
@@ -78,7 +78,7 @@ const StreamlabsAlerts: React.FC = () => {
         }
         case 'resub': {
           alert.sendAlert({
-            id: eventData.event_id,
+            id: eventData.id,
             content: (
               <AlertToast
                 title="Resub"
@@ -96,7 +96,7 @@ const StreamlabsAlerts: React.FC = () => {
         }
         case 'host': {
           alert.sendAlert({
-            id: eventData.event_id,
+            id: eventData.id,
             content: (
               <AlertToast
                 title="Host"
@@ -114,7 +114,7 @@ const StreamlabsAlerts: React.FC = () => {
         }
         case 'bits': {
           alert.sendAlert({
-            id: eventData.event_id,
+            id: eventData.id,
             content: (
               <AlertToast
                 title="Bits"
@@ -132,7 +132,7 @@ const StreamlabsAlerts: React.FC = () => {
         }
         case 'raid': {
           alert.sendAlert({
-            id: eventData.event_id,
+            id: eventData.id,
             content: (
               <AlertToast
                 title="Raid"
@@ -158,6 +158,7 @@ const StreamlabsAlerts: React.FC = () => {
   }
 
   React.useEffect(() => {
+    console.log('current, stale', current, stale)
     if (!stale && current) {
       handleToaster(current)
     }
@@ -165,6 +166,7 @@ const StreamlabsAlerts: React.FC = () => {
 
   React.useEffect(() => {
     const [recent] = events
+    console.log('events.length, events', events.length, events)
 
     if (events.length !== 0) {
       setTimeout(() => {

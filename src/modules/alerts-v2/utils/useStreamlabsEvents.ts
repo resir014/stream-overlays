@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import * as React from 'react'
 import io from 'socket.io-client'
 
@@ -15,7 +16,7 @@ export default function useStreamlabsEvents(): ReturnType {
 
   const handleSocketEvent = (eventData: any) => {
     if (eventData.for === 'twitch_account' || eventData.type === 'donation') {
-      addEvents(eventData)
+      addEvents({ id: eventData.message[0]._id, ...eventData })
     }
   }
 
