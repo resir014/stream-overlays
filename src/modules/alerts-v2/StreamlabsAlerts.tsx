@@ -1,19 +1,19 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 import { Box } from '@resir014/chungking-react'
 import * as React from 'react'
 import { AlertToast } from './components'
 import { alert, DEFAULT_DISMISS_DURATION } from './alert-manager'
 import useStreamlabsEvents from './utils/useStreamlabsEvents'
+import { StreamlabsEvent } from './types/streamlabs'
 
 const dismissAfter = DEFAULT_DISMISS_DURATION
 
 const StreamlabsAlerts: React.FC = () => {
   const { events, setEvents } = useStreamlabsEvents()
   const [stale, setStale] = React.useState(false)
-  const [current, setCurrent] = React.useState<any | undefined>(undefined)
+  const [current, setCurrent] = React.useState<StreamlabsEvent | undefined>(undefined)
 
-  const addEventToQueue = (eventData: any) => {
+  const addEventToQueue = (eventData: StreamlabsEvent) => {
     setCurrent(eventData)
     setStale(false)
   }
@@ -24,17 +24,16 @@ const StreamlabsAlerts: React.FC = () => {
     setEvents(prev => prev.filter(event => event.id !== id))
   }
 
-  const handleToaster = (eventData: any) => {
+  const handleToaster = (eventData: StreamlabsEvent) => {
     if (eventData.for !== 'twitch_account' && eventData.type === 'donation') {
       alert.sendAlert({
         id: eventData.id,
         content: (
           <AlertToast
             title="Donation"
+            variant={eventData.type}
             recipient={`${eventData.message[0].name} (${eventData.message[0].formatted_amount})`}
             content={eventData.message[0].message}
-            backgroundColor="green.300"
-            color="black"
           />
         ),
         dismissAfter,
@@ -50,7 +49,7 @@ const StreamlabsAlerts: React.FC = () => {
             content: (
               <AlertToast
                 title="Follow"
-                type={eventData.type}
+                variant={eventData.type}
                 content={eventData.message[0].name}
               />
             ),
@@ -65,10 +64,8 @@ const StreamlabsAlerts: React.FC = () => {
             content: (
               <AlertToast
                 title={eventData.message[0].sub_plan === 'Prime' ? 'Prime Sub' : 'Subscriber'}
-                type={eventData.type}
+                variant={eventData.type}
                 content={eventData.message[0].name}
-                backgroundColor="orange.400"
-                color="black"
               />
             ),
             dismissAfter,
@@ -83,10 +80,8 @@ const StreamlabsAlerts: React.FC = () => {
               <AlertToast
                 title="Resub"
                 recipient={`${eventData.message[0].name} (×${eventData.message[0].months})`}
-                type={eventData.type}
+                variant={eventData.type}
                 content={eventData.message[0].message}
-                backgroundColor="orange.400"
-                color="black"
               />
             ),
             dismissAfter,
@@ -101,10 +96,8 @@ const StreamlabsAlerts: React.FC = () => {
               <AlertToast
                 title="Host"
                 recipient={eventData.message[0].name}
-                type={eventData.type}
+                variant={eventData.type}
                 content={`${eventData.message[0].viewers} viewers`}
-                backgroundColor="blue.500"
-                color="white"
               />
             ),
             dismissAfter,
@@ -119,10 +112,8 @@ const StreamlabsAlerts: React.FC = () => {
               <AlertToast
                 title="Bits"
                 recipient={`${eventData.message[0].name} (${eventData.message[0].amount})`}
-                type={eventData.type}
+                variant={eventData.type}
                 content={eventData.message[0].message}
-                backgroundColor="#9b45ff"
-                color="white"
               />
             ),
             dismissAfter,
@@ -137,10 +128,8 @@ const StreamlabsAlerts: React.FC = () => {
               <AlertToast
                 title="Raid"
                 recipient={eventData.message[0].name}
-                type={eventData.type}
+                variant={eventData.type}
                 content={`${eventData.message[0].raiders} raiders`}
-                backgroundColor="magenta.500"
-                color="white"
               />
             ),
             dismissAfter,
@@ -150,7 +139,6 @@ const StreamlabsAlerts: React.FC = () => {
         }
         default: {
           // default case
-          console.log(eventData)
           break
         }
       }
