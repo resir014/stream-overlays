@@ -140,7 +140,6 @@ const StreamlabsAlerts: React.FC = () => {
         }
         default: {
           // default case
-          console.log(eventData)
           break
         }
       }

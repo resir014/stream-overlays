@@ -14,6 +14,9 @@ export default function useStreamlabsEvents() {
   const handleSocketEvent = (eventData: StreamlabsEvent) => {
     if (eventData.for === 'twitch_account' || eventData.type === 'donation') {
       addEvents({ id: eventData.message[0]._id, ...eventData })
+    } else {
+      // default case
+      console.log(eventData)
     }
   }
 
