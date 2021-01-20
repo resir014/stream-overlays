@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable no-console */
 import { Box } from '@resir014/chungking-react'
 import * as React from 'react'
 import { AlertToast } from './components'
