@@ -79,7 +79,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, ...rest }) => {
           top={0}
           bottom={0}
           left={0}
-          style={{ width: `${Math.floor(percentage * 100 + 1)}%` }}
+          style={{ width: `${Math.ceil(percentage * 100)}%` }}
           css={css`
             transition: all 6s linear;
           `}
