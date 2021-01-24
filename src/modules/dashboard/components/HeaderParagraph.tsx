@@ -11,7 +11,7 @@ const HeaderParagraph: React.FC = ({ children }) => {
       fontSize="24px"
       lineHeight="32px"
       css={css`
-        &:last-child {
+        &:last-of-type {
           margin-bottom: 0;
         }
       `}
