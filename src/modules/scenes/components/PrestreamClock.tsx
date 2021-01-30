@@ -1,4 +1,3 @@
-import { css } from '@emotion/react'
 import { Box, BoxProps, colors, Stack, Text } from '@resir014/chungking-react'
 import { format } from 'date-fns'
 import { transparentize } from 'polished'
@@ -79,7 +78,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, ...rest }) => {
           top={0}
           bottom={0}
           left={0}
-          style={{ width: `${Math.floor(percentage * 100)}%` }}
+          style={{ width: `${(percentage * 100).toFixed(1)}%` }}
         />
       </Box>
     </Box>

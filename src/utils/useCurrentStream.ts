@@ -27,7 +27,7 @@ export function filterLatestStream(schedule: NotionData[] | null | undefined) {
   return schedule?.find(isCurrentStream)
 }
 
-export function useStreamSchedule(refreshInterval = 10000) {
+export function useStreamSchedule(refreshInterval = 5000) {
   const { data, error } = useSWR<NotionData[] | null>(notionAPIURL, fetch, {
     refreshInterval
   })
