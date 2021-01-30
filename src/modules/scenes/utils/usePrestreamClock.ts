@@ -9,31 +9,38 @@ interface UsePrestreamClockResponse {
   percentage: number
 }
 
-export default function usePrestreamClock(): UsePrestreamClockResponse {
+function toTimeString(time: string | number) {
+  return time.toString().padStart(2, '0')
+}
+
+const TEN_MINUTES_IN_MILLISECONDS = 60 * 10 * 1000
+
+export default function usePrestreamClock(startH = 21, startM = 0): UsePrestreamClockResponse {
   const time = useClock()
   const { schedule } = useStreamSchedule()
 
-  const scheduledDate = React.useMemo(() => {
+  const topOfTheHour = React.useMemo(() => {
     if (schedule) {
-      return new Date(schedule.date)
+      const [date, h, m, s] = [
+        format(new Date(schedule.date), 'yyyy-MM-dd'),
+        toTimeString(startH),
+        toTimeString(startM),
+        toTimeString(0)
+      ]
+
+      return new Date(`${date}T${h}:${m}:${s}+07:00`).getTime()
     }
 
     return undefined
   }, [schedule])
 
-  console.log(time)
+  const percentage = React.useMemo(() => {
+    const timeStamp = time.getTime()
+    const topFormatted = topOfTheHour || 0
+    const startFormatted = topOfTheHour ? topOfTheHour - TEN_MINUTES_IN_MILLISECONDS : 0
 
-  const beginTime = scheduledDate
-    ? new Date(`${format(scheduledDate, 'yyyy-MM-dd')}T20:50:00+07:00`)
-    : undefined
-  const streamStartTime = scheduledDate
-    ? new Date(`${format(scheduledDate, 'yyyy-MM-dd')}T21:00:00+07:00`)
-    : undefined
-
-  const percentage = React.useMemo(
-    () => clamp(lerpInverse(+time, +(beginTime || 0), +(streamStartTime || 0)), 0, 1),
-    [time, beginTime, streamStartTime]
-  )
+    return clamp(lerpInverse(timeStamp, startFormatted, topFormatted), 0, 1)
+  }, [time, topOfTheHour])
 
   return { time, percentage }
 }
