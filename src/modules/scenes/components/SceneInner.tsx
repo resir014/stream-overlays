@@ -7,7 +7,10 @@ import PrestreamDetails from './PrestreamDetails'
 import PrestreamEventsBlock from './PrestreamEventsBlock'
 import PrestreamIcon from './PrestreamIcon'
 
-const PrestreamClock = dynamic(() => import('./PrestreamClock'), { ssr: false })
+const PrestreamClock = dynamic(() => import('./PrestreamClock'), {
+  ssr: false,
+  loading: () => <Box gridArea="clock" backgroundColor={transparentize(0.25, colors.black)} />
+})
 
 interface SceneInnerProps {
   variant?: PrestreamVariants
