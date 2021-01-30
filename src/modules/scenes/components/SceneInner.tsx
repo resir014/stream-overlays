@@ -1,8 +1,10 @@
 import { Box, colors } from '@resir014/chungking-react'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import { transparentize } from 'polished'
 import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
+import parseStreamTimeQuery from '../utils/parseStreamTimeQuery'
 import PrestreamDetails from './PrestreamDetails'
 import PrestreamEventsBlock from './PrestreamEventsBlock'
 import PrestreamIcon from './PrestreamIcon'
@@ -18,6 +20,9 @@ interface SceneInnerProps {
 }
 
 const SceneInner: React.FC<SceneInnerProps> = ({ variant }) => {
+  const router = useRouter()
+  const { startH, startM } = React.useMemo(() => parseStreamTimeQuery(router.query), [router.query])
+
   return (
     <>
       <Box
@@ -35,7 +40,7 @@ const SceneInner: React.FC<SceneInnerProps> = ({ variant }) => {
         maxHeight={728}
         boxShadow="double"
       >
-        <PrestreamClock gridArea="clock" variant={variant} />
+        <PrestreamClock gridArea="clock" variant={variant} startH={startH} startM={startM} />
         <PrestreamIcon gridArea="logo" variant={variant} />
         <PrestreamDetails gridArea="details" variant={variant} />
         <PrestreamEventsBlock gridArea="events" />

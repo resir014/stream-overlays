@@ -1,14 +1,14 @@
 import { Box, BoxProps, colors, Stack, Text } from '@resir014/chungking-react'
 import { format } from 'date-fns'
-import { useRouter } from 'next/router'
 import { transparentize } from 'polished'
 import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
 import usePrestreamClock from '../utils/usePrestreamClock'
-import parseStreamTimeQuery from '../utils/parseStreamTimeQuery'
 
 interface PrestreamIconProps extends BoxProps {
   variant?: PrestreamVariants
+  startH?: number
+  startM?: number
 }
 
 const getTextColor = (variant?: PrestreamVariants) => {
@@ -45,9 +45,7 @@ const getBarColor = (variant?: PrestreamVariants) => {
   }
 }
 
-const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, ...rest }) => {
-  const router = useRouter()
-  const { startH, startM } = React.useMemo(() => parseStreamTimeQuery(router.query), [router.query])
+const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM, ...rest }) => {
   const { time, percentage } = usePrestreamClock(startH, startM)
 
   return (
