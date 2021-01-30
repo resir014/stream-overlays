@@ -21,6 +21,8 @@ export default function usePrestreamClock(): UsePrestreamClockResponse {
     return undefined
   }, [schedule])
 
+  console.log(time)
+
   const beginTime = scheduledDate
     ? new Date(`${format(scheduledDate, 'yyyy-MM-dd')}T20:50:00+07:00`)
     : undefined
