@@ -6,6 +6,16 @@ import useClock from '~/utils/useClock'
 const BottomBarClock: React.FC = () => {
   const time = useClock()
 
+  const clockSeparator = React.useMemo(() => {
+    const ms = time.getMilliseconds()
+
+    if (ms < 500) {
+      return ':'
+    }
+
+    return ' '
+  }, [time])
+
   return (
     <Box
       display="flex"
@@ -30,7 +40,9 @@ const BottomBarClock: React.FC = () => {
           fontWeight={600}
           fontFamily="monospace"
         >
-          {format(time, 'HH')}:{format(time, 'mm')}
+          {format(time, 'HH')}
+          {clockSeparator}
+          {format(time, 'mm')}
         </Text>
       </Box>
     </Box>
