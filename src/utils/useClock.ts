@@ -1,22 +1,21 @@
 import * as React from 'react'
-import { TaskTimer } from 'tasktimer'
 
 export default function useClock() {
-  const timer = new TaskTimer(500)
+  const raf = React.useRef<number>()
   const [time, setTime] = React.useState<Date>(new Date())
 
-  const tick = {
-    tickInterval: 1,
-    callback: () => {
-      setTime(new Date())
-    }
+  const tick = () => {
+    setTime(new Date())
+    raf.current = requestAnimationFrame(tick)
   }
 
   React.useEffect(() => {
-    timer.add(tick).start()
+    raf.current = requestAnimationFrame(tick)
 
     return () => {
-      timer.stop()
+      if (raf.current) {
+        cancelAnimationFrame(raf.current)
+      }
     }
   }, [])
 
