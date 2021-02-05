@@ -11,11 +11,12 @@ const MatchmakingBlock: React.FC = () => {
 
   return (
     <>
-      <Box display="block" width="100%" height="4px" backgroundColor="blue.500" />
       <Box
         display="flex"
         flexDirection="row"
         p="xs"
+        borderTop="4px solid"
+        borderTopColor="blue.500"
         css={css`
           > :not(style) ~ :not(style) {
             margin-inline-start: 8px;
