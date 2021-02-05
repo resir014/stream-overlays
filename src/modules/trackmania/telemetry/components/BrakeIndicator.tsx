@@ -2,8 +2,8 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import { colors } from '@resir014/chungking-react'
 import useGamepad from '~/utils/useGamepad'
-import { InnerText } from '../components/TextStyles'
 import telemetryStyles from '../utils/telemetryStyles'
+import { InnerText } from './TextStyles'
 
 const Root = styled('div')`
   display: flex;
@@ -14,14 +14,14 @@ const Root = styled('div')`
   text-align: center;
 `
 
-const ThrottleIndicator: React.FC = () => {
+const BrakeIndicator: React.FC = () => {
   const { controllerData } = useGamepad()
 
   return (
-    <Root css={telemetryStyles(controllerData?.accelerate, colors.green[500])}>
-      <InnerText>Throttle</InnerText>
+    <Root css={telemetryStyles(controllerData?.brake, colors.red[500])}>
+      <InnerText>Brake</InnerText>
     </Root>
   )
 }
 
-export default ThrottleIndicator
+export default BrakeIndicator

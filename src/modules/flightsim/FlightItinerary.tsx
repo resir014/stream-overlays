@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ItemCard, ItemTitle } from './items'
+import { ItemCard, ItemTitle } from '../../components/overlay'
 
 export interface FlightItineraryProps {
   origin: string
