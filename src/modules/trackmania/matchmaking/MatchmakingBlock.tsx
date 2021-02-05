@@ -23,7 +23,6 @@ const MatchmakingBlock: React.FC = () => {
           }
         `}
       >
-        <MatchmakingDataItem name="MATCHMAKING STATS" />
         <MatchmakingDataItem name="MMR" value={results?.[0].score || '???'} />
         <MatchmakingDataItem name="RANK" value={results?.[0].rank || '???'} />
       </Box>
