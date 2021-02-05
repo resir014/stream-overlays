@@ -12,6 +12,10 @@
     "url": "/blocks/trackmania"
   },
   {
+    "title": "TrackMania MMR",
+    "url": "/blocks/trackmania-mmr"
+  },
+  {
     "title": "Time Signal",
     "url": "/blocks/time-signal"
   },
