@@ -11,7 +11,7 @@ interface PrestreamIconProps extends BoxProps {
   startM?: number
 }
 
-const getTextColor = (variant?: PrestreamVariants) => {
+const getColor = (variant?: PrestreamVariants) => {
   switch (variant) {
     case 'prestream': {
       return colors.blue[300]
@@ -24,23 +24,6 @@ const getTextColor = (variant?: PrestreamVariants) => {
     }
     default: {
       return colors.grey[300]
-    }
-  }
-}
-
-const getBarColor = (variant?: PrestreamVariants) => {
-  switch (variant) {
-    case 'prestream': {
-      return colors.blue[500]
-    }
-    case 'brb': {
-      return colors.purple[500]
-    }
-    case 'end': {
-      return colors.orange[500]
-    }
-    default: {
-      return colors.grey[500]
     }
   }
 }
@@ -66,7 +49,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
             <Text fontWeight={600} mr="sm">
               {format(time, 'EEEE')}
             </Text>
-            <Text color={getTextColor(variant)}>{format(time, 'dd MMMM yyyy')}</Text>
+            <Text color={getColor(variant)}>{format(time, 'dd MMMM yyyy')}</Text>
           </Text>
           <Text display="block" fontFamily="monospace" variant={900} fontWeight={700}>
             {format(time, 'HH:mm:ss')}
@@ -76,7 +59,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
       <Box gridArea="bar" position="relative">
         <Box
           position="absolute"
-          backgroundColor={getBarColor(variant)}
+          backgroundColor={getColor(variant)}
           top={0}
           bottom={0}
           left={0}
