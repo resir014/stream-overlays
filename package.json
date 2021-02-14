@@ -53,9 +53,7 @@
     "swr": "^0.3.11",
     "text-case": "^1.0.9",
     "toasted-notes": "^3.2.0",
-    "typeface-crimson-text": "^0.0.72",
-    "typeface-inter": "^3.15.1",
-    "typeface-roboto-mono": "^0.0.75"
+    "typeface-inter": "^3.15.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
