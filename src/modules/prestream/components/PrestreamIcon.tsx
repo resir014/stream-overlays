@@ -7,19 +7,19 @@ interface PrestreamIconProps extends BoxProps {
   variant?: PrestreamVariants
 }
 
-const getBarColor = (variant?: PrestreamVariants) => {
+const getColor = (variant?: PrestreamVariants) => {
   switch (variant) {
     case 'prestream': {
-      return colors.blue[500]
+      return colors.blue[300]
     }
     case 'brb': {
-      return colors.purple[500]
+      return colors.purple[300]
     }
     case 'end': {
-      return colors.orange[500]
+      return colors.orange[300]
     }
     default: {
-      return colors.grey[500]
+      return colors.grey[300]
     }
   }
 }
@@ -39,7 +39,7 @@ const PrestreamIcon: React.FC<PrestreamIconProps> = ({ variant, ...rest }) => {
           `}
         />
       </Box>
-      <Box backgroundColor={getBarColor(variant)} />
+      <Box backgroundColor={getColor(variant)} />
     </Box>
   )
 }
