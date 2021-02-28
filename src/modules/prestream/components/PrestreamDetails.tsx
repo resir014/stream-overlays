@@ -23,10 +23,11 @@ const getColor = (variant?: PrestreamVariants) => {
 }
 
 interface PrestreamDetailsProps extends BoxProps {
+  text?: string
   variant?: PrestreamVariants
 }
 
-const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ variant, ...rest }) => {
+const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ text, variant, ...rest }) => {
   const { schedule } = useStreamSchedule()
 
   return (
@@ -49,7 +50,7 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ variant, ...rest })
             text-transform: uppercase;
           `}
         >
-          Today&apos;s Stream
+          {text || "Today's Stream"}
         </Text>
       </Box>
       <Box display="flex" alignItems="center" flex="1 1 auto" px="md" pb="sm">

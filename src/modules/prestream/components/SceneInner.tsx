@@ -19,7 +19,7 @@ interface SceneInnerProps {
   text: string
 }
 
-const SceneInner: React.FC<SceneInnerProps> = ({ variant }) => {
+const SceneInner: React.FC<SceneInnerProps> = ({ variant, text }) => {
   const router = useRouter()
   const { startH, startM } = React.useMemo(() => parseStreamTimeQuery(router.query), [router.query])
 
@@ -42,7 +42,7 @@ const SceneInner: React.FC<SceneInnerProps> = ({ variant }) => {
       >
         <PrestreamClock gridArea="clock" variant={variant} startH={startH} startM={startM} />
         <PrestreamIcon gridArea="logo" variant={variant} />
-        <PrestreamDetails gridArea="details" variant={variant} />
+        <PrestreamDetails text={text} gridArea="details" variant={variant} />
         <PrestreamEventsBlock gridArea="events" />
         <Box backgroundColor={transparentize(0.1, colors.grey[900])} gridArea="chat" />
       </Box>

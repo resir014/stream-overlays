@@ -4,7 +4,7 @@ import { SceneInner, SceneWrapper } from './components'
 const PrestreamScene: React.FC = () => {
   return (
     <SceneWrapper _innerProps={{ justifyContent: 'space-between' }}>
-      <SceneInner text="Stream starting soon..." variant="prestream" />
+      <SceneInner text="Coming Up..." variant="prestream" />
     </SceneWrapper>
   )
 }
