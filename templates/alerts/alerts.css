@@ -127,10 +127,13 @@ body {
   flex-direction: row;
   align-items: center;
   height: 56px;
-  flex: 1 1 auto;
   padding-left: 24px;
-  padding-right: 48px;
+  padding-right: 24px;
   text-align: left;
+}
+.ck-alert-text:last-child {
+  flex: 1 1 auto;
+  padding-right: 48px;
 }
 
 .ck-alert-text__inner {
@@ -140,6 +143,9 @@ body {
   font-weight: 400;
   font-size: 24px;
   line-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #alert-message,
