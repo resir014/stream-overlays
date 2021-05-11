@@ -5,18 +5,14 @@ import { Box, colors, Text } from '@resir014/chungking-react'
 import { transparentize } from 'polished'
 import { useStreamSchedule } from '~/utils/useCurrentStream'
 
-interface BlockHeaderInnerProps {
-  right?: boolean
-}
-
-export default function HeaderWidget() {
+function HeaderWidget() {
   const { schedule } = useStreamSchedule()
 
   return (
     <Box
       pt="lg"
       px="xxl"
-      backgroundColor={transparentize(0.1, colors.black)}
+      backgroundColor={transparentize(0.1, colors.grey[900])}
       color="white"
       css={css`
         letter-spacing: 0.05rem;
@@ -47,6 +43,4 @@ export default function HeaderWidget() {
   )
 }
 
-HeaderWidget.defaultProps = {
-  title: undefined
-}
+export default HeaderWidget
