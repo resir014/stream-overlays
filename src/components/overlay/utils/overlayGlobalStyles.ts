@@ -5,8 +5,8 @@ import { colors } from '@resir014/chungking-react'
 const overlayGlobalStyles = css`
   html,
   body {
-    color: ${colors.grey[900]};
-    background-color: transparent;
+    color: ${colors.grey[900]} !important;
+    background-color: transparent !important;
   }
 `
 
