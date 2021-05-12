@@ -12,7 +12,7 @@ function HeaderWidget() {
     <Box
       pt="lg"
       px="xxl"
-      backgroundColor={transparentize(0.1, colors.grey[900])}
+      backgroundColor={transparentize(0.1, colors.black)}
       color="white"
       css={css`
         letter-spacing: 0.05rem;
