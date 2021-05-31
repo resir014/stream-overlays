@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import { transparentize } from 'polished'
 import * as React from 'react'
-import { Box, BoxProps, colors } from '@resir014/chungking-react'
+import { Box, BoxProps, theme } from '@resir014/chungking-react'
 import BottomBarSocialLinks from './BottomBarSocialLinks'
 import BottomBarEvents from './BottomBarEvents'
 
@@ -28,7 +28,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant, ...rest }) => {
     `}
       width="100%"
       height="100%"
-      backgroundColor={transparentize(0.1, colors.black)}
+      backgroundColor={transparentize(0.1, theme.colors.black)}
       color="white"
       maxHeight={hideClock ? 88 : 64}
       {...rest}

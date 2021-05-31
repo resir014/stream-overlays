@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Box, BoxProps, colors } from '@resir014/chungking-react'
+import { Box, BoxProps, theme } from '@resir014/chungking-react'
 import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
 
@@ -10,16 +10,16 @@ interface PrestreamIconProps extends BoxProps {
 const getColor = (variant?: PrestreamVariants) => {
   switch (variant) {
     case 'prestream': {
-      return colors.blue[300]
+      return theme.colors.blue[300]
     }
     case 'brb': {
-      return colors.purple[300]
+      return theme.colors.purple[300]
     }
     case 'end': {
-      return colors.orange[300]
+      return theme.colors.orange[300]
     }
     default: {
-      return colors.grey[300]
+      return theme.colors.grey[300]
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Box, BoxProps, colors, Stack, Text } from '@resir014/chungking-react'
+import { Box, BoxProps, Stack, Text, theme } from '@resir014/chungking-react'
 import { format } from 'date-fns'
 import { transparentize } from 'polished'
 import * as React from 'react'
@@ -14,16 +14,16 @@ interface PrestreamIconProps extends BoxProps {
 const getColor = (variant?: PrestreamVariants) => {
   switch (variant) {
     case 'prestream': {
-      return colors.blue[300]
+      return theme.colors.blue[300]
     }
     case 'brb': {
-      return colors.purple[300]
+      return theme.colors.purple[300]
     }
     case 'end': {
-      return colors.orange[300]
+      return theme.colors.orange[300]
     }
     default: {
-      return colors.grey[300]
+      return theme.colors.grey[300]
     }
   }
 }
@@ -40,7 +40,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
         "clock-inner"
         "bar"
       `}
-      backgroundColor={transparentize(0.25, colors.black)}
+      backgroundColor={transparentize(0.25, theme.colors.black)}
       {...rest}
     >
       <Box display="flex" alignItems="center" gridArea="clock-inner" px="md">

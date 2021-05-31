@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { colors } from '@resir014/chungking-react'
+import { theme } from '@resir014/chungking-react'
 import useGamepad from '~/utils/useGamepad'
 import telemetryStyles from '../utils/telemetryStyles'
 import { InnerText } from './TextStyles'
@@ -18,7 +18,7 @@ const BrakeIndicator: React.FC = () => {
   const { controllerData } = useGamepad()
 
   return (
-    <Root css={telemetryStyles(controllerData?.brake, colors.red[500])}>
+    <Root css={telemetryStyles(controllerData?.brake, theme.colors.red[500])}>
       <InnerText>Brake</InnerText>
     </Root>
   )
