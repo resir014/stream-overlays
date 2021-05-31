@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Box, BoxProps, colors } from '@resir014/chungking-react'
+import { Box, BoxProps, theme } from '@resir014/chungking-react'
 import { transparentize } from 'polished'
 import * as React from 'react'
 
@@ -9,7 +9,7 @@ const PrestreamEventsBlock: React.FC<PrestreamEventsBlockProps> = ({ ...rest }) 
   return (
     <Box
       position="relative"
-      backgroundColor={transparentize(0.1, colors.black)}
+      backgroundColor={transparentize(0.1, theme.colors.black)}
       overflow="hidden"
       {...rest}
       css={css`

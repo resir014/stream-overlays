@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { colors } from '@resir014/chungking-react'
+import { theme } from '@resir014/chungking-react'
 import { BasicText } from './components'
 
 const Root = styled('div')`
@@ -9,8 +9,8 @@ const Root = styled('div')`
   justify-content: center;
   width: 100%;
   height: 160px;
-  background-color: ${colors.red[500]};
-  color: ${colors.white};
+  background-color: ${theme.colors.red[500]};
+  color: ${theme.colors.white};
 `
 
 const ControllerDisconnected: React.FC = () => {

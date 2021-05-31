@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Box, BoxProps, colors, Stack, Text } from '@resir014/chungking-react'
+import { Box, BoxProps, Stack, Text, theme } from '@resir014/chungking-react'
 import { transparentize } from 'polished'
 import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
@@ -8,16 +8,16 @@ import { useStreamSchedule } from '~/utils/useCurrentStream'
 const getColor = (variant?: PrestreamVariants) => {
   switch (variant) {
     case 'prestream': {
-      return colors.blue[500]
+      return theme.colors.blue[500]
     }
     case 'brb': {
-      return colors.purple[500]
+      return theme.colors.purple[500]
     }
     case 'end': {
-      return colors.orange[600]
+      return theme.colors.orange[600]
     }
     default: {
-      return colors.grey[900]
+      return theme.colors.grey[900]
     }
   }
 }
@@ -34,7 +34,7 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ text, variant, ...r
     <Box
       display="flex"
       flexDirection="column"
-      backgroundColor={transparentize(0.1, colors.white)}
+      backgroundColor={transparentize(0.1, theme.colors.white)}
       color="black"
       overflow="hidden"
       {...rest}

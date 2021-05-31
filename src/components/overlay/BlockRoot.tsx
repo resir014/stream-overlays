@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from '@resir014/chungking-react'
+import { theme } from '@resir014/chungking-react'
 
 const BlockRoot = styled('div')`
   display: flex;
@@ -8,8 +8,8 @@ const BlockRoot = styled('div')`
   width: 100%;
   min-width: 450px;
   font-size: 24px;
-  color: ${colors.white};
-  background-color: ${colors.black};
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.black};
 `
 
 export default BlockRoot

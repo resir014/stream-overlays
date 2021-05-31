@@ -1,4 +1,4 @@
-import { Box, colors } from '@resir014/chungking-react'
+import { Box, theme } from '@resir014/chungking-react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { transparentize } from 'polished'
@@ -11,7 +11,7 @@ import PrestreamIcon from './PrestreamIcon'
 
 const PrestreamClock = dynamic(() => import('./PrestreamClock'), {
   ssr: false,
-  loading: () => <Box gridArea="clock" backgroundColor={transparentize(0.25, colors.black)} />
+  loading: () => <Box gridArea="clock" backgroundColor={transparentize(0.25, theme.colors.black)} />
 })
 
 interface SceneInnerProps {
@@ -44,7 +44,7 @@ const SceneInner: React.FC<SceneInnerProps> = ({ variant, text }) => {
         <PrestreamIcon gridArea="logo" variant={variant} />
         <PrestreamDetails text={text} gridArea="details" variant={variant} />
         <PrestreamEventsBlock gridArea="events" />
-        <Box backgroundColor={transparentize(0.1, colors.grey[900])} gridArea="chat" />
+        <Box backgroundColor={transparentize(0.1, theme.colors.grey[900])} gridArea="chat" />
       </Box>
     </>
   )

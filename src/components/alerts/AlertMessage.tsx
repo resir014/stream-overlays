@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { colors } from '@resir014/chungking-react'
+import { theme } from '@resir014/chungking-react'
 import { AlertKinds } from '~/interfaces/types'
 import { getAlertColor } from './alertUtils'
 
@@ -13,7 +13,7 @@ interface AlertMessageProps {
 
 const Root = styled('div')<AlertMessageProps>`
   text-align: center;
-  color: ${colors.white};
+  color: ${theme.colors.white};
   font-size: ${props => (props.isUserMessage ? '24px' : '32px')};
 
   span {

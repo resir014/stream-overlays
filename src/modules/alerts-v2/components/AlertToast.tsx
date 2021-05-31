@@ -1,9 +1,8 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { Box, BoxProps, Text } from '@resir014/chungking-react'
+import { Box, BoxProps, Text, variant as styledSystemVariant } from '@resir014/chungking-react'
 import * as React from 'react'
 import { Transition } from 'react-transition-group'
-import { variant as styledSystemVariant } from 'styled-system'
 import { StreamlabsEventTypes } from '../types/streamlabs'
 import alertsAudio from '../_data/alerts-audio.json'
 

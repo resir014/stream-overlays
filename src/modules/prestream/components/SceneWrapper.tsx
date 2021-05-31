@@ -1,4 +1,4 @@
-import { Box, BoxProps, colors } from '@resir014/chungking-react'
+import { Box, BoxProps, theme } from '@resir014/chungking-react'
 import { transparentize } from 'polished'
 import * as React from 'react'
 import BottomBar from '~/modules/bottom-bar/BottomBar'
@@ -24,7 +24,7 @@ const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...r
       minWidth={450}
       position="relative"
       fontSize="24px"
-      backgroundColor={transparentize(0.25, colors.black)}
+      backgroundColor={transparentize(0.25, theme.colors.black)}
       color="white"
       zIndex={0}
       {...rest}

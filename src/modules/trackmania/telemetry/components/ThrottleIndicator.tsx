@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from '@emotion/styled'
-import { colors } from '@resir014/chungking-react'
+import { theme } from '@resir014/chungking-react'
 import useGamepad from '~/utils/useGamepad'
 import { InnerText } from './TextStyles'
 import telemetryStyles from '../utils/telemetryStyles'
@@ -18,7 +18,7 @@ const ThrottleIndicator: React.FC = () => {
   const { controllerData } = useGamepad()
 
   return (
-    <Root css={telemetryStyles(controllerData?.accelerate, colors.green[500])}>
+    <Root css={telemetryStyles(controllerData?.accelerate, theme.colors.green[500])}>
       <InnerText>Throttle</InnerText>
     </Root>
   )

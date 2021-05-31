@@ -1,4 +1,4 @@
-import { Box, BoxProps, Heading, Paragraph, widths } from '@resir014/chungking-react'
+import { Box, BoxProps, Heading, Paragraph } from '@resir014/chungking-react'
 import * as React from 'react'
 
 interface DashboardPageHeaderProps extends BoxProps {
@@ -17,7 +17,7 @@ const DashboardPageHeader: React.FC<DashboardPageHeaderProps> = ({ title, subtit
       borderBottomColor="grey.900"
       {...rest}
     >
-      <Box mx="auto" width="100%" maxWidth={widths.lg}>
+      <Box mx="auto" width="100%" maxWidth={970}>
         <Heading as="h1" variant={900}>
           {title}
         </Heading>

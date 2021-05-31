@@ -1,13 +1,13 @@
 import styled from '@emotion/styled'
 import { rgba } from 'polished'
-import { colors } from '@resir014/chungking-react'
+import { theme } from '@resir014/chungking-react'
 
 export const ItemCard = styled('section')`
   display: flex;
   flex-direction: row;
-  border-left: 4px solid ${colors.blue[500]};
-  background-color: ${rgba(colors.black, 0.7)};
-  color: ${colors.white};
+  border-left: 4px solid ${theme.colors.blue[500]};
+  background-color: ${rgba(theme.colors.black, 0.7)};
+  color: ${theme.colors.white};
   font-size: 16px;
   line-height: 1;
   font-feature-settings: 'kern' 1, 'ss01' 1, 'ss02' 1;

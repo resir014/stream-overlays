@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { NextPage } from 'next'
 import { transparentize } from 'polished'
-import { Box, colors, Iframe } from '@resir014/chungking-react'
+import { Box, Iframe, theme } from '@resir014/chungking-react'
 
 import OverlayRoot from '~/components/overlay/OverlayRoot'
 
@@ -15,7 +15,7 @@ const TrackManiaControlBlockPage: NextPage = () => {
           justifyContent="center"
           py="md"
           px="lg"
-          backgroundColor={transparentize(0.75, colors.blue[500])}
+          backgroundColor={transparentize(0.75, theme.colors.blue[500])}
           borderTop="4px solid"
           borderTopColor="blue.500"
         >
