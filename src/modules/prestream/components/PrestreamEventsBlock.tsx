@@ -9,7 +9,7 @@ const PrestreamEventsBlock: React.FC<PrestreamEventsBlockProps> = ({ ...rest }) 
   return (
     <Box
       position="relative"
-      backgroundColor={transparentize(0.1, theme.colors.black)}
+      backgroundColor={transparentize(0.5, theme.colors.black)}
       overflow="hidden"
       {...rest}
       css={css`

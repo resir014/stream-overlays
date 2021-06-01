@@ -35,31 +35,36 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
     <Box
       display="grid"
       gridTemplateColumns="1fr"
-      gridTemplateRows="1fr 8px"
+      gridTemplateRows="8px 1fr"
       gridTemplateAreas={`
-        "clock-inner"
         "bar"
+        "clock-inner"
       `}
-      backgroundColor={transparentize(0.25, theme.colors.black)}
       {...rest}
     >
-      <Box display="flex" alignItems="center" gridArea="clock-inner" px="md">
+      <Box display="flex" alignItems="center" gridArea="clock-inner">
         <Stack spacing="xxs">
           <Text display="block" variant={700}>
-            <Text fontWeight={600} mr="sm">
+            <Text display="inline-block" fontWeight={600} mr="sm">
               {format(time, 'EEEE')}
             </Text>
-            <Text color={getColor(variant)}>{format(time, 'dd MMMM yyyy')}</Text>
+            <Text display="inline-block" color={getColor(variant)}>
+              {format(time, 'dd MMMM yyyy')}
+            </Text>
           </Text>
           <Text display="block" fontFamily="monospace" variant={900} fontWeight={700}>
             {format(time, 'HH:mm:ss')}
           </Text>
         </Stack>
       </Box>
-      <Box gridArea="bar" position="relative">
+      <Box
+        gridArea="bar"
+        position="relative"
+        backgroundColor={transparentize(0.25, theme.colors.black)}
+      >
         <Box
           position="absolute"
-          backgroundColor={getColor(variant)}
+          backgroundColor={percentage >= 1 ? 'green.500' : 'white'}
           top={0}
           bottom={0}
           left={0}

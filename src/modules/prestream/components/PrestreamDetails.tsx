@@ -8,16 +8,16 @@ import { useStreamSchedule } from '~/utils/useCurrentStream'
 const getColor = (variant?: PrestreamVariants) => {
   switch (variant) {
     case 'prestream': {
-      return theme.colors.blue[500]
+      return theme.colors.blue[300]
     }
     case 'brb': {
-      return theme.colors.purple[500]
+      return theme.colors.purple[300]
     }
     case 'end': {
-      return theme.colors.orange[600]
+      return theme.colors.orange[300]
     }
     default: {
-      return theme.colors.grey[900]
+      return theme.colors.grey[300]
     }
   }
 }
@@ -34,17 +34,18 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ text, variant, ...r
     <Box
       display="flex"
       flexDirection="column"
-      backgroundColor={transparentize(0.1, theme.colors.white)}
-      color="black"
+      borderTop="1px solid"
+      borderTopColor={transparentize(0.1, getColor(variant))}
+      color="white"
       overflow="hidden"
       {...rest}
     >
-      <Box px="md" pt="sm">
+      <Box pt="xs">
         <Text
           variant={500}
           display="block"
-          color={getColor(variant)}
           fontFamily="monospace"
+          color={getColor(variant)}
           fontWeight={700}
           css={css`
             text-transform: uppercase;
@@ -53,16 +54,14 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ text, variant, ...r
           {text || "Today's Stream"}
         </Text>
       </Box>
-      <Box display="flex" alignItems="center" flex="1 1 auto" px="md" pb="sm">
-        <Stack spacing="xs">
-          <Stack spacing="xxs">
-            <Text display="block" fontWeight={600} variant={800}>
-              {schedule?.streamName || 'Untitled Stream'}
-            </Text>
-            <Text display="block" variant={600}>
-              {schedule?.description || 'No description available.'}
-            </Text>
-          </Stack>
+      <Box display="flex" alignItems="center" flex="1 1 auto" pb="sm">
+        <Stack spacing="xxs">
+          <Text display="block" fontWeight={600} variant={800}>
+            {schedule?.streamName || 'Untitled Stream'}
+          </Text>
+          <Text display="block" variant={600}>
+            {schedule?.description || 'No description available.'}
+          </Text>
         </Stack>
       </Box>
     </Box>
