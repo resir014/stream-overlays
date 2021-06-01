@@ -60,7 +60,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
       <Box
         gridArea="bar"
         position="relative"
-        backgroundColor={transparentize(0.25, theme.colors.black)}
+        boxShadow={`inset 0 -1px ${transparentize(0.1, getColor(variant))}`}
       >
         <Box
           position="absolute"
