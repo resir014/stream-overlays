@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import { Box, BoxProps, Stack, Text, theme } from '@resir014/chungking-react'
-import { transparentize } from 'polished'
 import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
 import { useStreamSchedule } from '~/utils/useCurrentStream'

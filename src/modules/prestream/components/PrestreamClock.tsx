@@ -1,6 +1,5 @@
 import { Box, BoxProps, Stack, Text, theme } from '@resir014/chungking-react'
 import { format } from 'date-fns'
-import { transparentize } from 'polished'
 import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
 import usePrestreamClock from '../utils/usePrestreamClock'
