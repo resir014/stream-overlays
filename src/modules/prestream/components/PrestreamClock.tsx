@@ -57,14 +57,10 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
           </Text>
         </Stack>
       </Box>
-      <Box
-        gridArea="bar"
-        position="relative"
-        boxShadow={`inset 0 -1px ${transparentize(0.1, getColor(variant))}`}
-      >
+      <Box gridArea="bar" position="relative" boxShadow={`inset 0 -1px ${getColor(variant)}`}>
         <Box
           position="absolute"
-          backgroundColor={percentage >= 1 ? 'green.500' : 'white'}
+          backgroundColor={percentage >= 1 ? 'green.500' : getColor(variant)}
           top={0}
           bottom={0}
           left={0}

@@ -34,8 +34,7 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ text, variant, ...r
     <Box
       display="flex"
       flexDirection="column"
-      borderTop="1px solid"
-      borderTopColor={transparentize(0.1, getColor(variant))}
+      boxShadow={`inset 0 1px ${getColor(variant)}`}
       color="white"
       overflow="hidden"
       {...rest}
