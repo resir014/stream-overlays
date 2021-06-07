@@ -1,5 +1,6 @@
 import { Box, BoxProps, Stack, Text, theme } from '@resir014/chungking-react'
 import { format } from 'date-fns'
+import { transparentize } from 'polished'
 import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
 import usePrestreamClock from '../utils/usePrestreamClock'
@@ -39,9 +40,10 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
         "bar"
         "clock-inner"
       `}
+      backgroundColor={transparentize(0.25, theme.colors.black)}
       {...rest}
     >
-      <Box display="flex" alignItems="center" gridArea="clock-inner">
+      <Box display="flex" alignItems="center" gridArea="clock-inner" px="md">
         <Stack spacing="xxs">
           <Text display="block" variant={700}>
             <Text display="inline-block" fontWeight={600} mr="sm">
@@ -56,7 +58,11 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
           </Text>
         </Stack>
       </Box>
-      <Box gridArea="bar" position="relative" boxShadow={`inset 0 -1px ${getColor(variant)}`}>
+      <Box
+        gridArea="bar"
+        position="relative"
+        backgroundColor={transparentize(0.5, theme.colors.black)}
+      >
         <Box
           position="absolute"
           backgroundColor={percentage >= 1 ? 'green.500' : getColor(variant)}

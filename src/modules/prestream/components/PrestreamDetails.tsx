@@ -7,16 +7,16 @@ import { useStreamSchedule } from '~/utils/useCurrentStream'
 const getColor = (variant?: PrestreamVariants) => {
   switch (variant) {
     case 'prestream': {
-      return theme.colors.blue[300]
+      return theme.colors.blue[500]
     }
     case 'brb': {
-      return theme.colors.purple[300]
+      return theme.colors.purple[500]
     }
     case 'end': {
-      return theme.colors.orange[300]
+      return theme.colors.orange[500]
     }
     default: {
-      return theme.colors.grey[300]
+      return theme.colors.grey[500]
     }
   }
 }
@@ -33,26 +33,28 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ text, variant, ...r
     <Box
       display="flex"
       flexDirection="column"
-      boxShadow={`inset 0 1px ${getColor(variant)}`}
-      color="white"
       overflow="hidden"
+      backgroundColor="black"
+      color="white"
       {...rest}
     >
-      <Box pt="xs">
-        <Text
-          variant={500}
-          display="block"
-          fontFamily="monospace"
-          color={getColor(variant)}
-          fontWeight={700}
-          css={css`
-            text-transform: uppercase;
-          `}
-        >
-          {text || "Today's Stream"}
-        </Text>
+      <Box>
+        <Box display="inline-block" backgroundColor={getColor(variant)} px="md" py="xxs">
+          <Text
+            variant={500}
+            display="block"
+            fontFamily="monospace"
+            color="white"
+            fontWeight={700}
+            css={css`
+              text-transform: uppercase;
+            `}
+          >
+            {text || "Today's Stream"}
+          </Text>
+        </Box>
       </Box>
-      <Box display="flex" alignItems="center" flex="1 1 auto" pb="sm">
+      <Box display="flex" alignItems="center" flex="1 1 auto" px="md">
         <Stack spacing="xxs">
           <Text display="block" fontWeight={600} variant={800}>
             {schedule?.streamName || 'Untitled Stream'}

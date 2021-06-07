@@ -6,7 +6,6 @@ import * as React from 'react'
 import { PrestreamVariants } from '~/interfaces/types'
 import parseStreamTimeQuery from '../utils/parseStreamTimeQuery'
 import PrestreamDetails from './PrestreamDetails'
-import PrestreamEventsBlock from './PrestreamEventsBlock'
 
 const PrestreamClock = dynamic(() => import('./PrestreamClock'), {
   ssr: false,
@@ -40,8 +39,8 @@ const SceneInner: React.FC<SceneInnerProps> = ({ variant, text }) => {
       >
         <PrestreamClock gridArea="clock" variant={variant} startH={startH} startM={startM} />
         <PrestreamDetails text={text} gridArea="details" variant={variant} />
-        <PrestreamEventsBlock gridArea="events" />
-        <Box gridArea="chat" />
+        <Box gridArea="events" backgroundColor={transparentize(0.25, theme.colors.black)} />
+        <Box gridArea="chat" backgroundColor={transparentize(0.25, theme.colors.black)} />
       </Box>
     </>
   )
