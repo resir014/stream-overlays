@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
 
 :root {
   --background-color: rgba(45, 45, 52, 0.4);
@@ -6,9 +6,10 @@
 
   --color-black: #16161d;
   --color-white: #fff;
-  --color-bar: #ff1493;
+  --color-bar-bg: #393940;
+  --color-bar: #0070f3;
 
-  --font-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+  --font-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
     Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
   --font-monospace: 'Roboto Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace, monospace;
@@ -39,53 +40,75 @@ body {
 
 .ck-subgoal {
   display: flex;
-  flex-direction: column;
-  background-color: var(--background-color);
-  border: 4px solid var(--border-color);
-  border-radius: 8px;
+  flex-direction: row-reverse;
+  align-items: center;
+  height: 60px;
+  padding-left: 48px;
+  padding-right: 24px;
   overflow: hidden;
 }
 
-.ck-subgoal__header {
-  display: inline-block;
-  padding: 8px 16px;
-  font-size: 16px;
-  line-height: 20px;
-  color: var(--color-white);
-  font-family: var(--font-monospace);
-  text-shadow: var(--text-shadow);
-  text-transform: uppercase;
-}
-
 .ck-subgoal__content {
-  flex: 1 1 auto;
   padding: 0 16px 8px;
 }
 
-.ck-subgoal__title {
-  margin-bottom: 8px;
+.ck-subgoal-details {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin-left: 16px;
+}
+
+.ck-subgoal-details__title {
   font-size: 24px;
-  line-height: 28px;
+  line-height: 32px;
   color: var(--color-white);
-  font-weight: 700;
+  font-weight: 600;
   font-family: var(--font-sans-serif);
   text-shadow: var(--text-shadow);
 }
 
-.ck-subgoal-text {
+.ck-subgoal-bar {
+  flex: 1 0 480px;
+  position: relative;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ck-subgoal-bar__text-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.ck-subgoal-bar__text {
   font-size: 20px;
   line-height: 24px;
   color: var(--color-white);
   font-family: var(--font-sans-serif);
+  font-weight: 600;
   text-transform: uppercase;
   text-shadow: var(--text-shadow);
   text-align: center;
 }
 
-.ck-subgoal-bar {
-  position: relative;
-  height: 16px;
-  background-color: var(--color-white);
+.ck-subgoal-bar__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:var(--color-bar-bg);
+  z-index: 0;
 }
 
 .ck-subgoal-bar__progress {

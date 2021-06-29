@@ -1,15 +1,16 @@
 <!-- All html objects will be wrapped in the #wrap div -->
 <div class="ck-subgoal">
-  <div class="ck-subgoal__header">
-    <span>Sub Goal</span>
-  </div>
-  <div class="ck-subgoal__content">
-    <div id="title" class="ck-subgoal__title"></div>
-    <div class="ck-subgoal-text">
-      <span id="goal-current">0</span>/<span id="goal-total">0</span>
-    </div>
+  <div class="ck-subgoal-details">
+    <div id="title" class="ck-subgoal-details__title"></div>
   </div>
   <div class="ck-subgoal-bar">
-    <div id="goal-bar" class="ck-subgoal-bar__progress"></div>
+    <div class="ck-subgoal-bar__text-wrapper">
+      <div class="ck-subgoal-bar__text">
+        <span id="goal-current">0</span>/<span id="goal-total">0</span>
+      </div>
+    </div>
+    <div class="ck-subgoal-bar__bar">
+      <div id="goal-bar" class="ck-subgoal-bar__progress"></div>
+    </div>
   </div>
 </div>
