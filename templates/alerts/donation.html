@@ -1,25 +1,19 @@
 <div class="ck-alert-wrapper">
-  <div class="ck-alert-wrapper__inner">
-    <!-- alert image -->
-    <div class="ck-alert-image">
-      <div id="alert-image" class="ck-alert-image__inner">{img}</div>
+  <div class="ck-alert ck-alert--donation">
+    <div class="ck-alert__header">
+      <h2>Donation</h2>
     </div>
 
-    <div class="ck-alert ck-alert--donation">
-      <div class="ck-alert__header">
-        <h2>Donation!</h2>
+    <div class="ck-alert-text">
+      <div id="alert-text" class="ck-alert-text__inner">
+        <!-- messageTemplate will be replaced with your message template -->
+        <!-- for example : {name} is now following! or {name} donated {amount} -->
+        <div id="alert-message">{messageTemplate}</div>
       </div>
-
-      <!-- main alert box window -->
-      <div class="ck-alert-text">
-        <!-- alert text -->
-        <div id="alert-text" class="ck-alert-text__inner">
-          <!-- alert message -->
-          <!-- messageTemplate will be replaced with your message template -->
-          <!-- for example : {name} is now following! or {name} donated {amount} -->
-          <div id="alert-message">{messageTemplate}</div>
-          <div id="alert-user-message">{userMessage}</div>
-        </div>
+    </div>
+    <div class="ck-alert-text">
+      <div class="ck-alert-text__inner">
+        <div id="alert-user-message" class="ck-alert-text__inner">{userMessage}</div>
       </div>
     </div>
   </div>
