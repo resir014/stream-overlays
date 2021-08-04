@@ -5,7 +5,7 @@ import { TimeSignalConfig } from './types'
 
 const TimeSignalWrapper: React.FC<TimeSignalConfig> = ({ h, m }) => {
   const time = useClock()
-  const audio = new Audio('/static/audio/timesignal.ogg')
+  const audio = React.useMemo(() => new Audio('/static/audio/timesignal.ogg'), [])
 
   const [hours, minutes, seconds] = [time.getHours(), time.getMinutes(), time.getSeconds()]
 
