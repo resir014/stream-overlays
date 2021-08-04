@@ -5,7 +5,7 @@
 @layer base {
   html,
   body {
-    @apply bg-transparent;
+    @apply bg-transparent !important;
   }
 }
 
