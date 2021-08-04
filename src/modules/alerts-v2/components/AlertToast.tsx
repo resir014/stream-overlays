@@ -30,7 +30,7 @@ function alertToastVariants(variant?: StreamlabsEventTypes) {
       return 'bg-chungking-blue-500 text-chungking-white'
     }
     case 'bits': {
-      return 'bg-chungking-[#9b45ff] text-chungking-white'
+      return 'bg-[#9b45ff] text-chungking-white'
     }
     case 'raid': {
       return 'bg-chungking-magenta-500 text-chungking-white'
