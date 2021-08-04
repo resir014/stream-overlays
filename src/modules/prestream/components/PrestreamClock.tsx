@@ -45,7 +45,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
     >
       <Box display="flex" alignItems="center" gridArea="clock-inner" px="md">
         <Stack spacing="xxs">
-          <Text display="block" variant={700}>
+          <Text display="block" variant="2xl">
             <Text display="inline-block" fontWeight={600} mr="sm">
               {format(time, 'EEEE')}
             </Text>
@@ -53,7 +53,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
               {format(time, 'dd MMMM yyyy')}
             </Text>
           </Text>
-          <Text display="block" fontFamily="monospace" variant={900} fontWeight={700}>
+          <Text display="block" fontFamily="monospace" variant="5xl" fontWeight={700}>
             {format(time, 'HH:mm:ss')}
           </Text>
         </Stack>
