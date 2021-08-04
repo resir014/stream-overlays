@@ -117,6 +117,7 @@ body {
 }
 
 .ck-alert__header h2 {
+  margin: 0;
   font-size: 24px;
   line-height: 28px;
   font-weight: 700;
@@ -135,6 +136,15 @@ body {
   flex: 1 1 auto;
   padding-right: 48px;
 }
+.ck-alert-text:last-child,
+.ck-alert-text:last-child > * {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ck-alert-text:not(:last-child) {
+  flex: none;
+}
 
 .ck-alert-text__inner {
   display: flex !important;
@@ -143,9 +153,6 @@ body {
   font-weight: 400;
   font-size: 24px;
   line-height: 28px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 #alert-message,
