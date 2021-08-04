@@ -1,7 +1,7 @@
 const { SAWERIA_API_URL } = process.env
 
+/** @type {import("next/dist/next-server/server/config-shared").NextConfig} */
 const nextConfig = {
-  target: 'server',
   async headers() {
     return [
       {
