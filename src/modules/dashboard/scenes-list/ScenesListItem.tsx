@@ -1,42 +1,20 @@
-import { css } from '@emotion/react'
-import { Anchor, Box, BoxProps } from '@resir014/chungking-react'
 import Link from 'next/link'
 import * as React from 'react'
 import { ListItem } from '../types'
 
-interface ScenesListItemProps extends BoxProps {
+interface ScenesListItemProps {
   scene: ListItem
 }
 
-const ScenesListItem: React.FC<ScenesListItemProps> = ({ scene, ...rest }) => {
+const ScenesListItem: React.FC<ScenesListItemProps> = ({ scene }) => {
   return (
-    <Box
-      position="relative"
-      p="md"
-      border="1px solid"
-      borderColor="grey.900"
-      borderRadius={6}
-      _hover={{ backgroundColor: 'grey.900', boxShadow: 'single' }}
-      _focusWithin={{ backgroundColor: 'grey.900', boxShadow: 'single' }}
-      {...rest}
-    >
-      <Link href={scene.url} passHref>
-        <Anchor
-          css={css`
-            &::after {
-              content: '';
-              position: absolute;
-              left: 0;
-              top: 0;
-              right: 0;
-              bottom: 0;
-            }
-          `}
-        >
+    <div className="group relative p-4 border rounded-lg hover:shadow-md border-chungking-grey-100 hover:bg-chungking-grey-100 dark:border-chungking-grey-900 dark:hover:bg-chungking-grey-900">
+      <Link href={scene.url}>
+        <a className="helper-link-cover group-hover:underline text-chungking-blue-500 dark:text-chungking-turquoise-500">
           {scene.title}
-        </Anchor>
+        </a>
       </Link>
-    </Box>
+    </div>
   )
 }
 

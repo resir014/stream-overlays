@@ -1,14 +1,7 @@
-import { Stack, StackProps } from '@resir014/chungking-react'
 import * as React from 'react'
 
-export type DashboardSectionProps = StackProps
-
-const DashboardSection: React.FC<DashboardSectionProps> = ({ children, ...rest }) => {
-  return (
-    <Stack spacing="lg" {...rest}>
-      {children}
-    </Stack>
-  )
+const DashboardSection: React.FC = ({ children }) => {
+  return <div className="space-y-6">{children}</div>
 }
 
 export default DashboardSection

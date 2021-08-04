@@ -4,7 +4,7 @@
 module.exports = {
   mode: 'jit',
   purge: ['./src/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // or 'media' or 'class'
   presets: [require('@resir014/tailwind-preset-chungking')],
   theme: {
     extend: {}

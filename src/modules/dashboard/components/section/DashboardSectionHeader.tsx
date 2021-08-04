@@ -1,14 +1,7 @@
-import { Heading, HeadingProps } from '@resir014/chungking-react'
 import * as React from 'react'
 
-type DashboardSectionHeaderProps = HeadingProps
-
-const DashboardSectionHeader: React.FC<DashboardSectionHeaderProps> = ({ children, ...rest }) => {
-  return (
-    <Heading variant="3xl" {...rest}>
-      {children}
-    </Heading>
-  )
+const DashboardSectionHeader: React.FC = ({ children }) => {
+  return <h2 className="text-3xl font-semibold">{children}</h2>
 }
 
 export default DashboardSectionHeader
