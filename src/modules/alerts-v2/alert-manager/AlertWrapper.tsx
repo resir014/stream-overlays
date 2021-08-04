@@ -58,7 +58,7 @@ const AlertWrapper: React.FC<AlertWrapperProps> = ({
     >
       {state => (
         <div
-          className={clsx('overflow-hidden', styles.root)}
+          className={clsx('block relative w-full h-full overflow-hidden', styles.root)}
           style={{ zIndex: index }}
           data-toaster-state={state}
           id={id}
