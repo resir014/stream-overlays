@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import * as React from 'react'
-import { Box, Stack } from '@resir014/chungking-react'
 
 import { DashboardHeader, DashboardRoot } from '~/components/dashboard'
 import { DashboardPageContent, DashboardPageHeader } from './components/page'
@@ -17,12 +16,12 @@ export default function OverlayDashboard(): JSX.Element {
   return (
     <DashboardRoot>
       <DashboardHeader />
-      <Box as="section" display="grid" gridTemplateColumns="64px auto" height="calc(100vh - 60px)">
+      <section className="flex h-[calc(100vh-60px)]">
         <DashboardSidebar />
-        <Box display="flex" flexDirection="column">
+        <div className="flex flex-col flex-auto">
           <DashboardPageHeader title="Home" />
           <DashboardPageContent>
-            <Stack spacing="xl">
+            <div className="space-y-8">
               <DashboardSection>
                 <DashboardSectionHeader>Scenes</DashboardSectionHeader>
                 <ScenesList items={scenes} />
@@ -35,10 +34,10 @@ export default function OverlayDashboard(): JSX.Element {
                 <DashboardSectionHeader>Blocks</DashboardSectionHeader>
                 <ScenesList items={blocks} />
               </DashboardSection>
-            </Stack>
+            </div>
           </DashboardPageContent>
-        </Box>
-      </Box>
+        </div>
+      </section>
     </DashboardRoot>
   )
 }

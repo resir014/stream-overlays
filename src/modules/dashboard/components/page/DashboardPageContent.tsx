@@ -1,15 +1,10 @@
-import { Box, BoxProps } from '@resir014/chungking-react'
 import * as React from 'react'
 
-type DashboardPageContentProps = BoxProps
-
-const DashboardPageContent: React.FC<DashboardPageContentProps> = ({ children, ...rest }) => {
+const DashboardPageContent: React.FC = ({ children }) => {
   return (
-    <Box as="section" flex="1 1 auto" pt="lg" px="lg" pb="xl" {...rest}>
-      <Box mx="auto" width="100%" maxWidth={970}>
-        {children}
-      </Box>
-    </Box>
+    <section className="flex-auto pt-6 px-6 pb-8">
+      <div className="mx-auto w-full max-w-5xl">{children}</div>
+    </section>
   )
 }
 
