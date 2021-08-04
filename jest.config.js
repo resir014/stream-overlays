@@ -18,11 +18,6 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   moduleNameMapper: {
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-    '^interfaces/(.*)$': '<rootDir>/src/interfaces/$1',
-    '^modules/(.*)$': '<rootDir>/src/modules/$1',
-    '^pages/(.*)$': '<rootDir>/src/pages/$1',
-    '^styles/(.*)$': '<rootDir>/src/styles/$1',
-    '^utils/(.*)$': '<rootDir>/src/utils/$1',
     '^~/(.*)$': '<rootDir>/src/$1'
   }
 }

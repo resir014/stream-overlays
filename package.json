@@ -20,9 +20,7 @@
     "test": "jest --env=jsdom --watch",
     "test:ci": "jest --env=jsdom --ci",
     "type-check": "tsc --noEmit",
-    "validate": "npm run type-check && npm run lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "validate": "npm run type-check && npm run lint"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
@@ -57,10 +55,6 @@
     "typeface-inter": "^3.18.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/react": "^6.2.9",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@types/node": "^14.14.17",
@@ -69,6 +63,7 @@
     "@types/react-transition-group": "^4.4.1",
     "@types/socket.io-client": "^1.4.34",
     "@types/styled-jsx": "^2.2.8",
+    "autoprefixer": "^10.3.1",
     "babel-jest": "^27.0.2",
     "eslint": "^7.27.0",
     "eslint-config-blvd": "^1.1.1",
@@ -76,8 +71,10 @@
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^27.0.3",
+    "postcss": "^8.3.6",
     "prettier": "^2.3.0",
     "react-is": "^17.0.2",
+    "tailwindcss": "^2.2.7",
     "typescript": "^4.3.2"
   }
 }
