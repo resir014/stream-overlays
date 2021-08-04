@@ -1,8 +1,7 @@
-import { css, keyframes } from '@emotion/react'
-import styled from '@emotion/styled'
-import { Box, BoxProps, Text, variant as styledSystemVariant } from '@resir014/chungking-react'
+import { Transition } from '@headlessui/react'
+import { BoxProps } from '@resir014/chungking-react'
+import clsx from 'clsx'
 import * as React from 'react'
-import { Transition } from 'react-transition-group'
 import { StreamlabsEventTypes } from '../types/streamlabs'
 import alertsAudio from '../_data/alerts-audio.json'
 
@@ -13,75 +12,34 @@ interface AlertToastProps extends BoxProps {
   variant?: StreamlabsEventTypes
 }
 
-const ANIMATION_DURATION = 300
-
-const TextEnter = keyframes`
-  0% {
-    transform: translateY(8px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`
-
-interface TransitionProps {
-  delay?: number
-}
-
-const TransitionText = styled(Text)<TransitionProps>`
-  transform: translateY(8px);
-  opacity: 0;
-
-  &.entering,
-  &.entered {
-    animation-fill-mode: both;
-    animation-name: ${TextEnter};
-    animation-duration: ${ANIMATION_DURATION}ms;
-    animation-delay: ${props => props.delay || 0}ms;
-  }
-
-  &.entered {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`
-
-const Wrapper = styled(Box)<Pick<AlertToastProps, 'variant'>>`
-  ${styledSystemVariant({
-    variants: {
-      donation: {
-        backgroundColor: 'green.300',
-        color: 'black'
-      },
-      follow: {
-        backgroundColor: 'white',
-        color: 'black'
-      },
-      subscription: {
-        backgroundColor: 'orange.400',
-        color: 'black'
-      },
-      resub: {
-        backgroundColor: 'orange.400',
-        color: 'black'
-      },
-      host: {
-        backgroundColor: 'blue.500',
-        color: 'white'
-      },
-      bits: {
-        backgroundColor: '#9b45ff',
-        color: 'white'
-      },
-      raid: {
-        backgroundColor: 'magenta.500',
-        color: 'white'
-      }
+function alertToastVariants(variant?: StreamlabsEventTypes) {
+  switch (variant) {
+    case 'donation': {
+      return 'bg-chungking-green-300 text-chungking-black'
     }
-  })}
-`
+    case 'follow': {
+      return 'bg-chungking-white text-chungking-black'
+    }
+    case 'subscription': {
+      return 'bg-chungking-orange-400 text-chungking-black'
+    }
+    case 'resub': {
+      return 'bg-chungking-orange-400 text-chungking-black'
+    }
+    case 'host': {
+      return 'bg-chungking-blue-500 text-chungking-white'
+    }
+    case 'bits': {
+      return 'bg-chungking-[#9b45ff] text-chungking-white'
+    }
+    case 'raid': {
+      return 'bg-chungking-magenta-500 text-chungking-white'
+    }
+    default: {
+      return 'bg-chungking-white text-chungking-black'
+    }
+  }
+}
 
 const AlertToast: React.FC<AlertToastProps> = ({
   title,
@@ -106,58 +64,53 @@ const AlertToast: React.FC<AlertToastProps> = ({
   }, [])
 
   return (
-    <Wrapper
-      display="flex"
-      alignItems="center"
-      width="100%"
-      height={56}
-      variant={variant}
-      {...rest}
-    >
-      <Box display="flex" alignItems="center" height={56} pl={48} pr={24}>
-        <Transition in={isMounted} timeout={ANIMATION_DURATION}>
-          {state => (
-            <TransitionText variant="2xl" fontWeight={700} className={state}>
-              {title}
-            </TransitionText>
-          )}
+    <div className={clsx('flex items-center w-full h-14', alertToastVariants(variant))} {...rest}>
+      <div className="flex items-center h-14 pl-12 pr-6">
+        <Transition
+          as="span"
+          show={isMounted}
+          className="text-2xl font-bold"
+          enter="transition-opacity duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-300"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          {title}
         </Transition>
-      </Box>
-      <Box
-        display="flex"
-        alignItems="center"
-        height={56}
-        flex="1 1 auto"
-        pl={24}
-        pr={48}
-        css={css`
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-
-          > *:not(:first-of-type) {
-            margin-left: 48px;
-          }
-        `}
-      >
+      </div>
+      <div className="flex items-center flex-auto h-14 pl-6 pr-12 truncate">
         {recipient && (
-          <Transition in={isMounted} timeout={ANIMATION_DURATION}>
-            {state => (
-              <TransitionText variant="2xl" className={state} delay={100}>
-                {recipient}
-              </TransitionText>
-            )}
+          <Transition
+            as="span"
+            show={isMounted}
+            className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal')}
+            enter="transition-opacity duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            {recipient}
           </Transition>
         )}
-        <Transition in={isMounted} timeout={ANIMATION_DURATION}>
-          {state => (
-            <TransitionText variant="2xl" className={state} delay={recipient ? 200 : 100}>
-              {content}
-            </TransitionText>
-          )}
+        <Transition
+          as="span"
+          show={isMounted}
+          className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal')}
+          enter="transition-opacity duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-300"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          {content}
         </Transition>
-      </Box>
-    </Wrapper>
+      </div>
+    </div>
   )
 }
 

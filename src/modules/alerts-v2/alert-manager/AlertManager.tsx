@@ -1,6 +1,5 @@
 /* eslint-disable react/sort-comp */
 
-import { Box, ChungkingProvider } from '@resir014/chungking-react'
 import * as React from 'react'
 import { TransitionGroup } from 'react-transition-group'
 import AlertWrapper from './AlertWrapper'
@@ -57,29 +56,27 @@ export default class AlertManager extends React.PureComponent<
   public render(): JSX.Element {
     const { alertQueue } = this.state
     return (
-      <ChungkingProvider>
-        <Box position="fixed" bottom={0} left={0} right={0}>
-          <TransitionGroup>
-            {alertQueue.map(({ id, onRemove, dismissAfter: _, ...settings }) => {
-              return (
-                <AlertWrapper
-                  key={id}
-                  id={id}
-                  settings={settings}
-                  dismissAfter={DEFAULT_DISMISS_DURATION}
-                  onRemove={() => {
-                    this.removeToaster(id)
+      <div className="fixed bottom-0 left-0 right-0">
+        <TransitionGroup>
+          {alertQueue.map(({ id, onRemove, dismissAfter: _, ...settings }) => {
+            return (
+              <AlertWrapper
+                key={id}
+                id={id}
+                settings={settings}
+                dismissAfter={DEFAULT_DISMISS_DURATION}
+                onRemove={() => {
+                  this.removeToaster(id)
 
-                    if (onRemove) {
-                      onRemove(id)
-                    }
-                  }}
-                />
-              )
-            })}
-          </TransitionGroup>
-        </Box>
-      </ChungkingProvider>
+                  if (onRemove) {
+                    onRemove(id)
+                  }
+                }}
+              />
+            )
+          })}
+        </TransitionGroup>
+      </div>
     )
   }
 
