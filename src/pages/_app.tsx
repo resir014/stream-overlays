@@ -6,7 +6,7 @@ import { CacheProvider } from '@emotion/react'
 import { ChungkingProvider } from '@resir014/chungking-react'
 import emotionCache from '~/utils/emotionCache'
 
-import 'typeface-inter'
+import '~/styles/globals.css'
 import '~/styles/fonts'
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
