@@ -117,7 +117,7 @@ const AlertToast: React.FC<AlertToastProps> = ({
       <Box display="flex" alignItems="center" height={56} pl={48} pr={24}>
         <Transition in={isMounted} timeout={ANIMATION_DURATION}>
           {state => (
-            <TransitionText variant={600} fontWeight={700} className={state}>
+            <TransitionText variant="2xl" fontWeight={700} className={state}>
               {title}
             </TransitionText>
           )}
@@ -143,7 +143,7 @@ const AlertToast: React.FC<AlertToastProps> = ({
         {recipient && (
           <Transition in={isMounted} timeout={ANIMATION_DURATION}>
             {state => (
-              <TransitionText variant={600} className={state} delay={100}>
+              <TransitionText variant="2xl" className={state} delay={100}>
                 {recipient}
               </TransitionText>
             )}
@@ -151,7 +151,7 @@ const AlertToast: React.FC<AlertToastProps> = ({
         )}
         <Transition in={isMounted} timeout={ANIMATION_DURATION}>
           {state => (
-            <TransitionText variant={600} className={state} delay={recipient ? 200 : 100}>
+            <TransitionText variant="2xl" className={state} delay={recipient ? 200 : 100}>
               {content}
             </TransitionText>
           )}

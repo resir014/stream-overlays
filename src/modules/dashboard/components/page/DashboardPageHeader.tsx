@@ -18,10 +18,10 @@ const DashboardPageHeader: React.FC<DashboardPageHeaderProps> = ({ title, subtit
       {...rest}
     >
       <Box mx="auto" width="100%" maxWidth={970}>
-        <Heading as="h1" variant={900}>
+        <Heading as="h1" variant="4xl">
           {title}
         </Heading>
-        {subtitle && <Paragraph variant={500}>{subtitle}</Paragraph>}
+        {subtitle && <Paragraph variant="larger">{subtitle}</Paragraph>}
       </Box>
     </Box>
   )

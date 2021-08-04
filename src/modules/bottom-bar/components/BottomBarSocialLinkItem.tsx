@@ -10,7 +10,7 @@ const BottomBarSocialLinkItem: React.FC<BottomBarSocialLinkItemProps> = ({ icon,
   return (
     <Box display="flex" alignItems="center">
       {React.createElement(icon)}
-      <Text display="block" ml="xs" variant={500}>
+      <Text display="block" ml="xs" variant="lg">
         {text}
       </Text>
     </Box>

@@ -41,7 +41,7 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ text, variant, ...r
       <Box>
         <Box display="inline-block" backgroundColor={getColor(variant)} px="md" py="xxs">
           <Text
-            variant={500}
+            variant="xl"
             display="block"
             fontFamily="monospace"
             color="white"
@@ -56,10 +56,10 @@ const PrestreamDetails: React.FC<PrestreamDetailsProps> = ({ text, variant, ...r
       </Box>
       <Box display="flex" alignItems="center" flex="1 1 auto" px="md">
         <Stack spacing="xxs">
-          <Text display="block" fontWeight={600} variant={800}>
+          <Text display="block" fontWeight={600} variant="3xl">
             {schedule?.streamName || 'Untitled Stream'}
           </Text>
-          <Text display="block" variant={600}>
+          <Text display="block" variant="2xl">
             {schedule?.description || 'No description available.'}
           </Text>
         </Stack>

@@ -9,7 +9,7 @@ const HeaderTitle: React.FC = ({ children }) => {
       m={0}
       fontSize="36px"
       lineHeight="42px"
-      variant={700}
+      variant="2xl"
       fontWeight={600}
       css={css`
         &:not(:first-child) {
