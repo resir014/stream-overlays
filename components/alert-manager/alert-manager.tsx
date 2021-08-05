@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { TransitionGroup } from 'react-transition-group';
-import AlertWrapper from './AlertWrapper';
+import AlertWrapper from './alert-wrapper';
 import { DEFAULT_DISMISS_DURATION } from './constants';
 import { AlertHandler, AlertSettings } from './types';
 

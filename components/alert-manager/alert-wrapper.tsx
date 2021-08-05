@@ -4,7 +4,7 @@ import { Transition } from 'react-transition-group';
 import { AlertSettings } from './types';
 import { ANIMATION_DURATION } from './constants';
 
-import styles from './AlertWrapper.module.css';
+import styles from './alert-wrapper.module.css';
 
 interface AlertWrapperProps {
   id?: string;
@@ -22,28 +22,20 @@ const AlertWrapper: React.FC<AlertWrapperProps> = ({
   const [isOpen, setIsOpen] = React.useState(false);
   const closeTimerRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
 
-  const clearCloseTimer = () => {
-    if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current);
-      closeTimerRef.current = undefined;
-    }
-  };
-
-  const startCloseTimer = () => {
+  React.useEffect(() => {
     setIsOpen(true);
 
     closeTimerRef.current = setTimeout(() => {
       setIsOpen(false);
     }, dismissAfter);
-  };
-
-  React.useEffect(() => {
-    startCloseTimer();
 
     return () => {
-      clearCloseTimer();
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = undefined;
+      }
     };
-  }, []);
+  }, [dismissAfter]);
 
   return (
     <Transition

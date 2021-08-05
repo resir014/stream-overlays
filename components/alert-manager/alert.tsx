@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import AlertManager from './AlertManager';
+import AlertManager from './alert-manager';
 import { AlertHandler, AlertSettings } from './types';
 
 const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
@@ -10,7 +10,7 @@ const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'u
 /**
  * Base class for interacting with the notifications system.
  */
-export default class Alert {
+class Alert {
   private alertHandler?: AlertHandler = undefined;
 
   constructor() {
@@ -35,3 +35,5 @@ export default class Alert {
     this.alertHandler = handler;
   };
 }
+
+export const alert = new Alert();
