@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-import { Box } from '@resir014/chungking-react'
 import * as React from 'react'
 import { AlertToast } from './components'
 import { alert, DEFAULT_DISMISS_DURATION } from './alert-manager'
@@ -165,16 +164,7 @@ const StreamlabsAlerts: React.FC = () => {
     }
   }, [events])
 
-  return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      justifyContent="flex-end"
-      width="100%"
-      height="100%"
-      minHeight="100vh"
-    />
-  )
+  return <div className="flex flex-col justify-end w-full h-full min-h-screen" />
 }
 
 export default StreamlabsAlerts

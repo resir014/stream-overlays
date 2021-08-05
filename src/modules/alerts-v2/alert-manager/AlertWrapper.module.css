@@ -1,0 +1,46 @@
+@keyframes toast-enter {
+  0% {
+    transform: translateY(56px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toast-exit {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+    max-height: 56px;
+  }
+
+  100% {
+    transform: translateY(56px);
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+.root {
+  opacity: 0;
+}
+.root[data-toaster-state='entering'],
+.root[data-toaster-state='entered'] {
+  animation-fill-mode: both;
+  animation-name: toast-enter;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-duration: 0.3s;
+}
+
+.root[data-toaster-state='exiting'] {
+  animation-fill-mode: both;
+  animation-name: toast-exit;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-duration: 0.8s;
+}
+.root[data-toaster-state='entered'] {
+  right: 0;
+  opacity: 1;
+}
