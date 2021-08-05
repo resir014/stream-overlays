@@ -43,4 +43,4 @@ jobs:
         with:
           path: '.'
           key: ${{ github.sha }}
-      - run: yarn test:ci
+      - run: yarn test

@@ -3,6 +3,7 @@ module.exports = {
   extends: ['blvd/react', 'plugin:prettier/recommended'],
   rules: {
     camelcase: 'off',
+    'global-require': 'off',
     'no-console': 'off',
     'no-undef': 'off',
     'import/no-extraneous-dependencies': 'off',

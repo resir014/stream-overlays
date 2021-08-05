@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import OverlayWrapper from './OverlayWrapper'
+import OverlayWrapper from '../OverlayWrapper'
 
 describe('components/flightsim', () => {
   describe('OverlayWrapper', () => {
