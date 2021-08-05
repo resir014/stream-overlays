@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 
-import fetch from './fetch';
+import { fetch } from '../lib/fetch';
 import { NotionData, ParsedSchedule } from '~/interfaces/types';
 
 // https://github.com/splitbee/notion-api-worker

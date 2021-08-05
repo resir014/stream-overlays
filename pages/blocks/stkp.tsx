@@ -5,7 +5,7 @@ import OverlayRoot from '~/components/overlay/OverlayRoot';
 import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim';
 import { STKPOverlayResponse } from '~/interfaces/simToolkitPro';
 import { APIResponse } from '~/interfaces/types';
-import fetch from '~/utils/fetch';
+import { fetch } from '~/lib/fetch';
 
 export const dummyData: STKPOverlayResponse = {
   opts: {

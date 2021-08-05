@@ -2,8 +2,8 @@ import { Transition } from '@headlessui/react';
 import { BoxProps } from '@resir014/chungking-react';
 import clsx from 'clsx';
 import * as React from 'react';
-import { StreamlabsEventTypes } from '../types/streamlabs';
 import alertsAudio from '../_data/alerts-audio.json';
+import { StreamlabsEventTypes } from '~/lib/types/streamlabs';
 
 interface AlertToastProps extends BoxProps {
   title: string;

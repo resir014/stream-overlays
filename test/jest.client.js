@@ -7,8 +7,7 @@ module.exports = {
     'react-intersection-observer/test-utils',
   ],
   testMatch: [
-    '**/components/**/__tests__/*.test.(ts|tsx|js|jsx)',
-    '**/modules/**/__tests__/*.test.(ts|tsx|js|jsx)',
+    '**/(components|modules)/**/__tests__/*.test.(ts|tsx|js|jsx)',
     '**/__tests__/pages/**/*.test.(ts|tsx|js|jsx)',
   ],
 };

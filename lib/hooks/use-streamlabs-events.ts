@@ -4,7 +4,7 @@ import * as React from 'react';
 import io from 'socket.io-client';
 import { StreamlabsEvent } from '../types/streamlabs';
 
-export default function useStreamlabsEvents() {
+export function useStreamlabsEvents() {
   const [events, setEvents] = React.useState<StreamlabsEvent[]>([]);
 
   const addEvents = (eventData: StreamlabsEvent) => {

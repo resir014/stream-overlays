@@ -11,7 +11,7 @@ interface ErrorBuilder extends Error {
  * @param input URL path or a `Request` object.
  * @param init Additional `fetch()` options
  */
-export default async function fetch<TResponse = any>(
+export async function fetch<TResponse = any>(
   input: RequestInfo,
   init?: RequestInit,
 ): Promise<TResponse> {

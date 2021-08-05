@@ -6,7 +6,7 @@ type SimpleCallback = () => void;
  * `useInterval()` hook stolen from Dan's blog:
  * https://overreacted.io/making-setinterval-declarative-with-react-hooks/
  */
-export default function useInterval(callback: SimpleCallback, delay = 1000) {
+export function useInterval(callback: SimpleCallback, delay = 1000) {
   const savedCallback = React.useRef<SimpleCallback>();
 
   // Remember the latest callback.
