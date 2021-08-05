@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Box, Text } from '@resir014/chungking-react'
+import * as React from 'react';
+import { Box, Text } from '@resir014/chungking-react';
 
 interface BottomBarSocialLinkItemProps {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-  text: string
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  text: string;
 }
 
 const BottomBarSocialLinkItem: React.FC<BottomBarSocialLinkItemProps> = ({ icon, text }) => {
@@ -14,7 +14,7 @@ const BottomBarSocialLinkItem: React.FC<BottomBarSocialLinkItemProps> = ({ icon,
         {text}
       </Text>
     </Box>
-  )
-}
+  );
+};
 
-export default BottomBarSocialLinkItem
+export default BottomBarSocialLinkItem;

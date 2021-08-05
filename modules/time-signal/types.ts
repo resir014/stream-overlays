@@ -1,4 +1,4 @@
 export interface TimeSignalConfig {
-  h: number
-  m: number
+  h: number;
+  m: number;
 }

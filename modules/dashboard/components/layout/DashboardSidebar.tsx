@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Home } from 'react-feather'
+import * as React from 'react';
+import { Home } from 'react-feather';
 
 const DashboardSidebar: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const DashboardSidebar: React.FC = () => {
         <Home />
       </div>
     </aside>
-  )
-}
+  );
+};
 
-export default DashboardSidebar
+export default DashboardSidebar;

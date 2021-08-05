@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { ItemCard, ItemTitle } from '../../components/overlay'
+import * as React from 'react';
+import { ItemCard, ItemTitle } from '../../components/overlay';
 
 export interface FlightItineraryProps {
-  origin: string
-  destination: string
+  origin: string;
+  destination: string;
 }
 
 const FlightItinerary: React.FC<FlightItineraryProps> = ({ origin, destination }) => {
@@ -13,7 +13,7 @@ const FlightItinerary: React.FC<FlightItineraryProps> = ({ origin, destination }
         {origin} -&gt; {destination}
       </ItemTitle>
     </ItemCard>
-  )
-}
+  );
+};
 
-export default FlightItinerary
+export default FlightItinerary;

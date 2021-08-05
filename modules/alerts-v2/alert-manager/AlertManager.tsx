@@ -1,60 +1,60 @@
 /* eslint-disable react/sort-comp */
 
-import * as React from 'react'
-import { TransitionGroup } from 'react-transition-group'
-import AlertWrapper from './AlertWrapper'
-import { DEFAULT_DISMISS_DURATION } from './constants'
-import { AlertHandler, AlertSettings } from './types'
+import * as React from 'react';
+import { TransitionGroup } from 'react-transition-group';
+import AlertWrapper from './AlertWrapper';
+import { DEFAULT_DISMISS_DURATION } from './constants';
+import { AlertHandler, AlertSettings } from './types';
 
 interface AlertManagerProps {
-  bindAlert: (handler: AlertHandler) => void
+  bindAlert: (handler: AlertHandler) => void;
 }
 
 interface AlertManagerState {
-  alertQueue: AlertSettings[]
+  alertQueue: AlertSettings[];
 }
 
 export default class AlertManager extends React.PureComponent<
   AlertManagerProps,
   AlertManagerState
 > {
-  public static currentCount = 0
+  public static currentCount = 0;
 
   constructor(props: AlertManagerProps) {
-    super(props)
+    super(props);
 
-    props.bindAlert(this.sendAlert)
+    props.bindAlert(this.sendAlert);
 
     this.state = {
-      alertQueue: []
-    }
+      alertQueue: [],
+    };
   }
 
   private addAlerts = (instance: AlertSettings) => {
     this.setState(previousState => {
       return {
-        alertQueue: [...previousState.alertQueue, instance]
-      }
-    })
-  }
+        alertQueue: [...previousState.alertQueue, instance],
+      };
+    });
+  };
 
   private sendAlert = (settings: AlertSettings) => {
-    const { alertQueue } = this.state
-    const instance = this.createToastInstance(settings)
+    const { alertQueue } = this.state;
+    const instance = this.createToastInstance(settings);
 
-    if (alertQueue.length !== 0) {
+    if (alertQueue.length > 0) {
       setTimeout(() => {
-        this.addAlerts(instance)
-      }, DEFAULT_DISMISS_DURATION * alertQueue.length)
+        this.addAlerts(instance);
+      }, DEFAULT_DISMISS_DURATION * alertQueue.length);
     } else {
-      this.addAlerts(instance)
+      this.addAlerts(instance);
     }
 
-    return instance
-  }
+    return instance;
+  };
 
   public render(): JSX.Element {
-    const { alertQueue } = this.state
+    const { alertQueue } = this.state;
     return (
       <div className="fixed bottom-0 left-0 right-0">
         <TransitionGroup>
@@ -66,39 +66,39 @@ export default class AlertManager extends React.PureComponent<
                 settings={settings}
                 dismissAfter={DEFAULT_DISMISS_DURATION}
                 onRemove={() => {
-                  this.removeToaster(id)
+                  this.removeToaster(id);
 
                   if (onRemove) {
-                    onRemove(id)
+                    onRemove(id);
                   }
                 }}
               />
-            )
+            );
           })}
         </TransitionGroup>
       </div>
-    )
+    );
   }
 
   private createToastInstance = (settings: AlertSettings): AlertSettings => {
-    const { id, ...rest } = settings
+    const { id, ...rest } = settings;
 
     // eslint-disable-next-line no-plusplus
-    const uniqueId = ++AlertManager.currentCount
-    const generatedId = `${id || `toaster-${uniqueId}`}`
+    const uniqueId = ++AlertManager.currentCount;
+    const generatedId = `${id ?? `toaster-${uniqueId}`}`;
 
     return {
       id: generatedId,
       index: uniqueId,
-      ...rest
-    }
-  }
+      ...rest,
+    };
+  };
 
   private removeToaster = (id?: string | number) => {
     this.setState(previousState => {
       return {
-        alertQueue: previousState.alertQueue.filter(toast => toast.id !== id)
-      }
-    })
-  }
+        alertQueue: previousState.alertQueue.filter(toast => toast.id !== id),
+      };
+    });
+  };
 }

@@ -5,17 +5,17 @@ export type StreamlabsEventTypes =
   | 'resub'
   | 'host'
   | 'bits'
-  | 'raid'
+  | 'raid';
 
 export interface BaseMessage {
-  _id: string
-  name: string
-  [key: string]: any
+  _id: string;
+  name: string;
+  [key: string]: any;
 }
 
 export interface StreamlabsEvent {
-  id?: string
-  for?: string
-  type: StreamlabsEventTypes // this type
-  message: BaseMessage[] // affects this type
+  id?: string;
+  for?: string;
+  type: StreamlabsEventTypes; // this type
+  message: BaseMessage[]; // affects this type
 }

@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { theme } from '@resir014/chungking-react'
+import styled from '@emotion/styled';
+import { theme } from '@resir014/chungking-react';
 
 const BlockRoot = styled('div')`
   display: flex;
@@ -10,6 +10,6 @@ const BlockRoot = styled('div')`
   font-size: 24px;
   color: ${theme.colors.white};
   background-color: ${theme.colors.black};
-`
+`;
 
-export default BlockRoot
+export default BlockRoot;

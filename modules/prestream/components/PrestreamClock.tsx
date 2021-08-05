@@ -1,35 +1,35 @@
-import { Box, BoxProps, Stack, Text, theme } from '@resir014/chungking-react'
-import { format } from 'date-fns'
-import { transparentize } from 'polished'
-import * as React from 'react'
-import { PrestreamVariants } from '~/interfaces/types'
-import usePrestreamClock from '../utils/usePrestreamClock'
+import { Box, BoxProps, Stack, Text, theme } from '@resir014/chungking-react';
+import { format } from 'date-fns';
+import { transparentize } from 'polished';
+import * as React from 'react';
+import usePrestreamClock from '../utils/usePrestreamClock';
+import { PrestreamVariants } from '~/interfaces/types';
 
 interface PrestreamIconProps extends BoxProps {
-  variant?: PrestreamVariants
-  startH?: number
-  startM?: number
+  variant?: PrestreamVariants;
+  startH?: number;
+  startM?: number;
 }
 
 const getColor = (variant?: PrestreamVariants) => {
   switch (variant) {
     case 'prestream': {
-      return theme.colors.blue[300]
+      return theme.colors.blue[300];
     }
     case 'brb': {
-      return theme.colors.purple[300]
+      return theme.colors.purple[300];
     }
     case 'end': {
-      return theme.colors.orange[300]
+      return theme.colors.orange[300];
     }
     default: {
-      return theme.colors.grey[300]
+      return theme.colors.grey[300];
     }
   }
-}
+};
 
 const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM, ...rest }) => {
-  const { time, percentage } = usePrestreamClock(startH, startM)
+  const { time, percentage } = usePrestreamClock(startH, startM);
 
   return (
     <Box
@@ -73,7 +73,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
         />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default PrestreamClock
+export default PrestreamClock;

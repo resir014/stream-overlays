@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import * as React from 'react'
-import { css } from '@emotion/react'
-import { Box, Text, theme } from '@resir014/chungking-react'
-import { transparentize } from 'polished'
-import { useStreamSchedule } from '~/utils/useCurrentStream'
+import * as React from 'react';
+import { css } from '@emotion/react';
+import { Box, Text, theme } from '@resir014/chungking-react';
+import { transparentize } from 'polished';
+import { useStreamSchedule } from '~/utils/useCurrentStream';
 
 function HeaderWidget() {
-  const { schedule } = useStreamSchedule()
+  const { schedule } = useStreamSchedule();
 
   return (
     <Box
@@ -40,7 +40,7 @@ function HeaderWidget() {
         </Box>
       </Box>
     </Box>
-  )
+  );
 }
 
-export default HeaderWidget
+export default HeaderWidget;

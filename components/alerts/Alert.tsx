@@ -1,20 +1,19 @@
-import * as React from 'react'
-import styled from '@emotion/styled'
+import * as React from 'react';
+import styled from '@emotion/styled';
 
-import { AlertKinds } from '~/interfaces/types'
-
-import AlertHeader from './AlertHeader'
-import AlertText from './AlertText'
-import AlertMessage from './AlertMessage'
-import { getAlertHeader } from './alertUtils'
+import AlertHeader from './AlertHeader';
+import AlertText from './AlertText';
+import AlertMessage from './AlertMessage';
+import { getAlertHeader } from './alertUtils';
+import { AlertKinds } from '~/interfaces/types';
 
 interface AlertProps {
-  className?: string
-  style?: React.CSSProperties
-  kind?: AlertKinds
-  donatee: string
-  amount: number
-  message: string
+  className?: string;
+  style?: React.CSSProperties;
+  kind?: AlertKinds;
+  donatee: string;
+  amount: number;
+  message: string;
 }
 
 const Root = styled('div')`
@@ -26,12 +25,12 @@ const Root = styled('div')`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px 0px;
   text-align: center;
   overflow: hidden;
-`
+`;
 
 const Alert: React.FC<AlertProps> = ({ className, style, kind, donatee, amount, message }) => {
   const formatCurrency = (raw: number) => {
-    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(raw)
-  }
+    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(raw);
+  };
 
   return (
     <Root className={className} style={style}>
@@ -43,11 +42,11 @@ const Alert: React.FC<AlertProps> = ({ className, style, kind, donatee, amount, 
         <AlertMessage isUserMessage>{message}</AlertMessage>
       </AlertText>
     </Root>
-  )
-}
+  );
+};
 
 Alert.defaultProps = {
-  kind: 'donation'
-}
+  kind: 'donation',
+};
 
-export default Alert
+export default Alert;

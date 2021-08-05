@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import * as React from 'react'
+import * as React from 'react';
 
-import { DashboardHeader, DashboardRoot } from '~/components/dashboard'
-import { DashboardPageContent, DashboardPageHeader } from './components/page'
-import { DashboardSection, DashboardSectionHeader } from './components/section'
-import { DashboardSidebar } from './components/layout'
-import { ScenesList } from './scenes-list'
+import { DashboardPageContent, DashboardPageHeader } from './components/page';
+import { DashboardSection, DashboardSectionHeader } from './components/section';
+import { DashboardSidebar } from './components/layout';
+import { ScenesList } from './scenes-list';
 
-import scenes from './_data/scenes.json'
-import overlays from './_data/overlays.json'
-import blocks from './_data/blocks.json'
+import scenes from './_data/scenes.json';
+import overlays from './_data/overlays.json';
+import blocks from './_data/blocks.json';
+import { DashboardHeader, DashboardRoot } from '~/components/dashboard';
 
 export default function OverlayDashboard(): JSX.Element {
   return (
@@ -39,5 +39,5 @@ export default function OverlayDashboard(): JSX.Element {
         </div>
       </section>
     </DashboardRoot>
-  )
+  );
 }

@@ -1,20 +1,20 @@
-import { format } from 'date-fns'
-import * as React from 'react'
-import { Box, Text } from '@resir014/chungking-react'
-import useClock from '~/utils/useClock'
+import { format } from 'date-fns';
+import * as React from 'react';
+import { Box, Text } from '@resir014/chungking-react';
+import useClock from '~/utils/useClock';
 
 const BottomBarClock: React.FC = () => {
-  const time = useClock()
+  const time = useClock();
 
   const clockSeparator = React.useMemo(() => {
-    const ms = time.getMilliseconds()
+    const ms = time.getMilliseconds();
 
     if (ms < 500) {
-      return ':'
+      return ':';
     }
 
-    return ' '
-  }, [time])
+    return ' ';
+  }, [time]);
 
   return (
     <Box
@@ -46,7 +46,7 @@ const BottomBarClock: React.FC = () => {
         </Text>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default BottomBarClock
+export default BottomBarClock;

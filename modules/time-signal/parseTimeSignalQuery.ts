@@ -1,12 +1,12 @@
-import { ParsedUrlQuery } from 'querystring'
-import numberify from '~/utils/numberify'
-import { TimeSignalConfig } from './types'
+import { ParsedUrlQuery } from 'querystring';
+import { TimeSignalConfig } from './types';
+import numberify from '~/utils/numberify';
 
 export default function parseTimeSignalQuery(query: ParsedUrlQuery): TimeSignalConfig {
-  const { h, m } = query
+  const { h, m } = query;
 
   return {
-    h: numberify(h) || 21,
-    m: numberify(m) || 0
-  }
+    h: numberify(h) ?? 21,
+    m: numberify(m) ?? 0,
+  };
 }

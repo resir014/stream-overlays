@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { AppProps } from 'next/app'
-import Head from 'next/head'
-import { CacheProvider } from '@emotion/react'
+import * as React from 'react';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { CacheProvider } from '@emotion/react';
 
-import { ChungkingProvider } from '@resir014/chungking-react'
-import emotionCache from '~/utils/emotionCache'
+import { ChungkingProvider } from '@resir014/chungking-react';
+import emotionCache from '~/utils/emotionCache';
 
-import '~/styles/fonts'
-import '~/styles/globals.css'
+import '~/styles/fonts';
+import '~/styles/globals.css';
 
 export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -19,5 +19,5 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         <Component {...pageProps} />
       </ChungkingProvider>
     </CacheProvider>
-  )
+  );
 }

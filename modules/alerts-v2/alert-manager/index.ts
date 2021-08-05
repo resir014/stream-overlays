@@ -1,7 +1,7 @@
-import Alert from './Alert'
+import Alert from './Alert';
 
-const alert = new Alert()
+const alert = new Alert();
 
-export { alert }
-export * from './constants'
-export * from './types'
+export { alert };
+export * from './constants';
+export * from './types';

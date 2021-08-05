@@ -1,10 +1,10 @@
-import { Box, BoxProps, theme } from '@resir014/chungking-react'
-import { transparentize } from 'polished'
-import * as React from 'react'
-import BottomBar from '~/modules/bottom-bar/BottomBar'
+import { Box, BoxProps, theme } from '@resir014/chungking-react';
+import { transparentize } from 'polished';
+import * as React from 'react';
+import BottomBar from '~/modules/bottom-bar/BottomBar';
 
 interface SceneWrapperProps extends BoxProps {
-  _innerProps?: BoxProps
+  _innerProps?: BoxProps;
 }
 
 const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...rest }) => {
@@ -35,7 +35,7 @@ const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...r
       <Box gridArea="alerts" backgroundColor="black" />
       <BottomBar variant="prestream" gridArea="bottom-bar" />
     </Box>
-  )
-}
+  );
+};
 
-export default SceneWrapper
+export default SceneWrapper;

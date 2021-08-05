@@ -1,5 +1,5 @@
-import { css } from '@emotion/react'
-import { theme } from '@resir014/chungking-react'
+import { css } from '@emotion/react';
+import { theme } from '@resir014/chungking-react';
 
 const dashboardGlobalStyles = css`
   a {
@@ -15,6 +15,6 @@ const dashboardGlobalStyles = css`
     color: ${theme.colors.grey[900]};
     border-top-color: ${theme.colors.white};
   }
-`
+`;
 
-export default dashboardGlobalStyles
+export default dashboardGlobalStyles;

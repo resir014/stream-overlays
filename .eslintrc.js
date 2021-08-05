@@ -1,42 +1,33 @@
 module.exports = {
   root: true,
-  extends: ['blvd/react', 'plugin:prettier/recommended'],
+  extends: [
+    'kentcdodds',
+    'kentcdodds/react',
+    'kentcdodds/jsx-a11y',
+    'prettier',
+    'plugin:prettier/recommended',
+    'plugin:@next/next/recommended',
+  ],
+  plugins: ['prettier'],
   rules: {
-    camelcase: 'off',
-    'global-require': 'off',
-    'no-console': 'off',
-    'no-undef': 'off',
-    'import/no-extraneous-dependencies': 'off',
-    'import/no-unresolved': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
     'jsx-a11y/anchor-is-valid': 'off',
-    'react/jsx-props-no-spreading': 'off',
-    'prettier/prettier': 'error'
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json',
+      },
+    },
   },
   overrides: [
     {
-      files: ['**/*.ts', '**/*.tsx'],
+      files: ['**/*.(d.)?ts(x)?'],
+      parser: '@typescript-eslint/parser',
       parserOptions: {
-        ecmaVersion: 2018,
-        sourceType: 'module',
-
-        // typescript-eslint specific options
-        warnOnUnsupportedTypeScriptVersion: true
+        project: './tsconfig.json',
       },
-      rules: {
-        '@typescript-eslint/camelcase': 'off',
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-        '@typescript-eslint/no-explicit-any': 'off'
-      }
+      rules: {},
     },
-    {
-      files: ['.eslintrc.js', '*.config.js'],
-      parserOptions: { sourceType: 'script' },
-      env: { node: true }
-    }
   ],
-  settings: {
-    'import/resolver': {
-      typescript: {} // this loads <rootdir>/tsconfig.json to eslint
-    }
-  }
-}
+};

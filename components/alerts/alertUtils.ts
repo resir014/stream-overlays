@@ -1,32 +1,32 @@
-import { AlertKinds } from '~/interfaces/types'
-import { alertColors } from '~/styles/variables'
+import { AlertKinds } from '~/interfaces/types';
+import { alertColors } from '~/styles/variables';
 
 export function getAlertHeader(kind: AlertKinds = 'donation') {
   switch (kind) {
     case 'raid': {
-      return 'OH HECK WE GOT RAIDED???'
+      return 'OH HECK WE GOT RAIDED???';
     }
     case 'host': {
-      return 'Host!'
+      return 'Host!';
     }
     case 'sub': {
-      return 'New Subscriber!'
+      return 'New Subscriber!';
     }
     case 'follow': {
-      return 'Follow!'
+      return 'Follow!';
     }
     case 'cheer': {
-      return 'Bits!'
+      return 'Bits!';
     }
     case 'donation': {
-      return 'Donation!'
+      return 'Donation!';
     }
     default: {
-      return 'Donation!'
+      return 'Donation!';
     }
   }
 }
 
 export function getAlertColor(kind: AlertKinds = 'donation') {
-  return alertColors[kind]
+  return alertColors[kind];
 }

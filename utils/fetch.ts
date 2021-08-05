@@ -1,8 +1,8 @@
-import unfetch from 'isomorphic-unfetch'
+import unfetch from 'isomorphic-unfetch';
 
 interface ErrorBuilder extends Error {
-  info?: any
-  status?: number
+  info?: any;
+  status?: number;
 }
 
 /**
@@ -13,20 +13,20 @@ interface ErrorBuilder extends Error {
  */
 export default async function fetch<TResponse = any>(
   input: RequestInfo,
-  init?: RequestInit
+  init?: RequestInit,
 ): Promise<TResponse> {
-  const res = await unfetch(input, init)
+  const res = await unfetch(input, init);
 
   // If the status code is not in the range 200-299,
   // we still try to parse and throw it.
   if (!res.ok) {
-    const error: ErrorBuilder = new Error('An error occurred while fetching the data.')
+    const error: ErrorBuilder = new Error('An error occurred while fetching the data.');
     // Attach extra info to the error object.
-    error.info = await res.json()
-    error.status = res.status
-    throw error
+    error.info = await res.json();
+    error.status = res.status;
+    throw error;
   }
 
-  const data: TResponse = await res.json()
-  return data
+  const data: TResponse = await res.json();
+  return data;
 }

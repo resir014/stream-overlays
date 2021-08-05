@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
-import { rgba } from 'polished'
-import { theme } from '@resir014/chungking-react'
+import styled from '@emotion/styled';
+import { rgba } from 'polished';
+import { theme } from '@resir014/chungking-react';
 
 export const ItemCard = styled('section')`
   display: flex;
@@ -11,7 +11,7 @@ export const ItemCard = styled('section')`
   font-size: 16px;
   line-height: 1;
   font-feature-settings: 'kern' 1, 'ss01' 1, 'ss02' 1;
-`
+`;
 
 export const ItemTitle = styled('span')`
   display: inline-flex;
@@ -19,7 +19,7 @@ export const ItemTitle = styled('span')`
   padding: 0 8px;
   height: 30px;
   font-weight: 700;
-`
+`;
 
 export const ItemContent = styled('span')`
   display: inline-flex;
@@ -28,4 +28,4 @@ export const ItemContent = styled('span')`
   height: 30px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-`
+`;

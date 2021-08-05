@@ -1,4 +1,4 @@
-const { SAWERIA_API_URL } = process.env
+const { SAWERIA_API_URL } = process.env;
 
 /** @type {import("next/dist/next-server/server/config-shared").NextConfig} */
 const nextConfig = {
@@ -9,50 +9,50 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
       {
         source: '/static/(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
       },
       {
         source: '/(.*)',
         headers: [
           {
             key: 'X-Frame-Options',
-            value: 'DENY'
+            value: 'DENY',
           },
           {
             key: 'X-XSS-Protection',
-            value: '1; mode=block'
+            value: '1; mode=block',
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          }
-        ]
-      }
-    ]
+            value: 'nosniff',
+          },
+        ],
+      },
+    ];
   },
   async rewrites() {
     return [
       {
         source: '/api/:path*',
-        destination: '/api/:path*'
+        destination: '/api/:path*',
       },
       {
         source: '/api/saweria/:path*',
-        destination: `${SAWERIA_API_URL}/:path*`
-      }
-    ]
-  }
-}
+        destination: `${SAWERIA_API_URL}/:path*`,
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -1,16 +1,16 @@
-import * as React from 'react'
-import { NextPage } from 'next'
-import useSWR from 'swr'
-import OverlayRoot from '~/components/overlay/OverlayRoot'
-import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim'
-import { STKPOverlayResponse } from '~/interfaces/simToolkitPro'
-import { APIResponse } from '~/interfaces/types'
-import fetch from '~/utils/fetch'
+import * as React from 'react';
+import { NextPage } from 'next';
+import useSWR from 'swr';
+import OverlayRoot from '~/components/overlay/OverlayRoot';
+import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim';
+import { STKPOverlayResponse } from '~/interfaces/simToolkitPro';
+import { APIResponse } from '~/interfaces/types';
+import fetch from '~/utils/fetch';
 
 export const dummyData: STKPOverlayResponse = {
   opts: {
     color: '#0081FF',
-    opacity: 1
+    opacity: 1,
   },
   v: {
     Departure: 'WADD',
@@ -26,18 +26,18 @@ export const dummyData: STKPOverlayResponse = {
     Network: 'OFFLINE',
     Reg: 'PK-GNV',
     Airframe: 'B738',
-    currentphase: 'Climb'
-  }
-}
+    currentphase: 'Climb',
+  },
+};
 
 const STKPOverlayPage: NextPage = () => {
   // Calls the local STKP overlay endpoint and refetches every second
   const { data } = useSWR<APIResponse<STKPOverlayResponse>>('/api/stkp', fetch, {
-    refreshInterval: 1000
-  })
+    refreshInterval: 1000,
+  });
 
   if (data?.status === 'ok') {
-    const { data: res } = data
+    const { data: res } = data;
 
     return (
       <OverlayRoot>
@@ -57,10 +57,10 @@ const STKPOverlayPage: NextPage = () => {
           {res.v.currentphase && <FlightInfo name="Phase" value={res.v.currentphase} />}
         </OverlayWrapper>
       </OverlayRoot>
-    )
+    );
   }
 
-  return null
-}
+  return null;
+};
 
-export default STKPOverlayPage
+export default STKPOverlayPage;

@@ -1,42 +1,42 @@
-import { Transition } from '@headlessui/react'
-import { BoxProps } from '@resir014/chungking-react'
-import clsx from 'clsx'
-import * as React from 'react'
-import { StreamlabsEventTypes } from '../types/streamlabs'
-import alertsAudio from '../_data/alerts-audio.json'
+import { Transition } from '@headlessui/react';
+import { BoxProps } from '@resir014/chungking-react';
+import clsx from 'clsx';
+import * as React from 'react';
+import { StreamlabsEventTypes } from '../types/streamlabs';
+import alertsAudio from '../_data/alerts-audio.json';
 
 interface AlertToastProps extends BoxProps {
-  title: string
-  recipient?: string
-  content: string
-  variant?: StreamlabsEventTypes
+  title: string;
+  recipient?: string;
+  content: string;
+  variant?: StreamlabsEventTypes;
 }
 
 function alertToastVariants(variant?: StreamlabsEventTypes) {
   switch (variant) {
     case 'donation': {
-      return 'bg-chungking-green-300 text-chungking-black'
+      return 'bg-chungking-green-300 text-chungking-black';
     }
     case 'follow': {
-      return 'bg-chungking-white text-chungking-black'
+      return 'bg-chungking-white text-chungking-black';
     }
     case 'subscription': {
-      return 'bg-chungking-orange-400 text-chungking-black'
+      return 'bg-chungking-orange-400 text-chungking-black';
     }
     case 'resub': {
-      return 'bg-chungking-orange-400 text-chungking-black'
+      return 'bg-chungking-orange-400 text-chungking-black';
     }
     case 'host': {
-      return 'bg-chungking-blue-500 text-chungking-white'
+      return 'bg-chungking-blue-500 text-chungking-white';
     }
     case 'bits': {
-      return 'bg-[#9b45ff] text-chungking-white'
+      return 'bg-[#9b45ff] text-chungking-white';
     }
     case 'raid': {
-      return 'bg-chungking-magenta-500 text-chungking-white'
+      return 'bg-chungking-magenta-500 text-chungking-white';
     }
     default: {
-      return 'bg-chungking-white text-chungking-black'
+      return 'bg-chungking-white text-chungking-black';
     }
   }
 }
@@ -48,20 +48,20 @@ const AlertToast: React.FC<AlertToastProps> = ({
   content,
   ...rest
 }) => {
-  const [isMounted, setIsMounted] = React.useState(false)
-  const audio = new Audio(alertsAudio[variant].src)
+  const [isMounted, setIsMounted] = React.useState(false);
+  const audio = new Audio(alertsAudio[variant].src);
 
   React.useEffect(() => {
-    audio.play()
+    audio.play();
 
     const timeout = setTimeout(() => {
-      setIsMounted(true)
-    }, 300)
+      setIsMounted(true);
+    }, 300);
 
     return () => {
-      clearTimeout(timeout)
-    }
-  }, [])
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
     <div className={clsx('flex items-center w-full h-14', alertToastVariants(variant))} {...rest}>
@@ -111,7 +111,7 @@ const AlertToast: React.FC<AlertToastProps> = ({
         </Transition>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AlertToast
+export default AlertToast;

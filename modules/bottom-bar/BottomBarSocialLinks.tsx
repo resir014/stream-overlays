@@ -1,77 +1,73 @@
-import * as React from 'react'
-import styled from '@emotion/styled'
-import { css } from '@emotion/react'
-import { Box } from '@resir014/chungking-react'
-import { Transition } from 'react-transition-group'
-import { TransitionStatus } from 'react-transition-group/Transition'
+import * as React from 'react';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { Box } from '@resir014/chungking-react';
+import { Transition } from 'react-transition-group';
+import { TransitionStatus } from 'react-transition-group/Transition';
 
-import useInterval from '~/utils/useInterval'
-import sleep from '~/utils/sleep'
-import socialLinks from './socialLinks'
+import socialLinks from './socialLinks';
+import useInterval from '~/utils/useInterval';
+import sleep from '~/utils/sleep';
 
-export const TRANSITION_DURATION = 500
+export const TRANSITION_DURATION = 500;
 
 interface TransitionProps {
-  state: TransitionStatus
+  state: TransitionStatus;
 }
 
 const Exited = css`
   opacity: 0;
-`
+`;
 
 const Entered = css`
   opacity: 1;
-`
+`;
 
 const transitionStyles = ({ state }: TransitionProps) => {
   switch (state) {
     case 'entering': {
-      return Entered
+      return Entered;
     }
     case 'entered': {
-      return Entered
+      return Entered;
     }
     case 'exiting': {
-      return Exited
+      return Exited;
     }
     case 'exited': {
-      return Exited
+      return Exited;
     }
     default: {
-      return undefined
+      return undefined;
     }
   }
-}
+};
 
 const Container = styled(Box)<TransitionProps>`
   transition: all ${TRANSITION_DURATION}ms ease;
   opacity: 0;
 
   ${transitionStyles}
-`
+`;
 
 const BottomBarSocialLinks: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = React.useState(0)
-  const [transitioning, setTransitioning] = React.useState(false)
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [transitioning, setTransitioning] = React.useState(false);
 
-  useInterval(() => {
-    const getSplashIndex = async () => {
-      const next = currentIndex + 1
-      setTransitioning(true)
+  useInterval(async () => {
+    const next = currentIndex + 1;
+    setTransitioning(true);
 
-      await sleep(1000)
+    await sleep(1000);
 
-      if (!socialLinks[next]) {
-        setCurrentIndex(0)
-      } else {
-        setCurrentIndex(next)
-      }
-
-      setTransitioning(false)
+    if (socialLinks[next]) {
+      setCurrentIndex(next);
+    } else {
+      setCurrentIndex(0);
     }
 
-    getSplashIndex()
-  }, 8000)
+    setTransitioning(false);
+  }, 8000);
 
   return (
     <Box
@@ -90,7 +86,7 @@ const BottomBarSocialLinks: React.FC = () => {
         )}
       </Transition>
     </Box>
-  )
-}
+  );
+};
 
-export default BottomBarSocialLinks
+export default BottomBarSocialLinks;

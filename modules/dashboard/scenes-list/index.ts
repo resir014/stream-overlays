@@ -1,2 +1,2 @@
-export { default as ScenesList } from './ScenesList'
-export * from './ScenesList'
+export { default as ScenesList } from './ScenesList';
+export * from './ScenesList';

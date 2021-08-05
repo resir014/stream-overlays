@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 
 const TrendingUp: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
   width = 24,
@@ -22,7 +22,7 @@ const TrendingUp: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
         d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default TrendingUp
+export default TrendingUp;

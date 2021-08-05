@@ -1,15 +1,16 @@
 /* eslint-disable react/no-danger */
-import * as React from 'react'
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import createEmotionServer from '@emotion/server/create-instance'
-import emotionCache from '~/utils/emotionCache'
+import * as React from 'react';
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import createEmotionServer from '@emotion/server/create-instance';
+import emotionCache from '~/utils/emotionCache';
 
-const { extractCritical } = createEmotionServer(emotionCache)
+// eslint-disable-next-line @typescript-eslint/unbound-method
+const { extractCritical } = createEmotionServer(emotionCache);
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    const { css, ids } = extractCritical(initialProps.html)
+    const initialProps = await Document.getInitialProps(ctx);
+    const { css, ids } = extractCritical(initialProps.html);
     return {
       ...initialProps,
       styles: [
@@ -18,9 +19,9 @@ export default class MyDocument extends Document {
           key="emotion-css"
           data-emotion-css={ids.join(' ')}
           dangerouslySetInnerHTML={{ __html: css }}
-        />
-      ]
-    }
+        />,
+      ],
+    };
   }
 
   render() {
@@ -32,6 +33,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }

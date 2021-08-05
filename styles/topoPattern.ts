@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css } from '@emotion/react';
 
 const topoPattern = css`
   &::after {
@@ -11,6 +11,6 @@ const topoPattern = css`
     opacity: 0.2;
     background-image: url('/static/topography.svg');
   }
-`
+`;
 
-export default topoPattern
+export default topoPattern;

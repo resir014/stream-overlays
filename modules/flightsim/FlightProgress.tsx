@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import { theme } from '@resir014/chungking-react'
+import styled from '@emotion/styled';
+import { theme } from '@resir014/chungking-react';
 
 const FlightProgress = styled('progress')`
   @supports (-webkit-appearance: none) {
@@ -20,6 +20,6 @@ const FlightProgress = styled('progress')`
       }
     }
   }
-`
+`;
 
-export default FlightProgress
+export default FlightProgress;

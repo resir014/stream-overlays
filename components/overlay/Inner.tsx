@@ -1,15 +1,15 @@
-import * as React from 'react'
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
+import * as React from 'react';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 interface InnerProps {
-  isCentered?: boolean
+  isCentered?: boolean;
 }
 
 const FlexCentered = css`
   align-items: center;
   justify-content: center;
-`
+`;
 
 const Base = styled('main')<InnerProps>`
   display: flex;
@@ -17,14 +17,14 @@ const Base = styled('main')<InnerProps>`
   flex: 1;
 
   ${props => props.isCentered && FlexCentered}
-`
+`;
 
 const Inner: React.FC<InnerProps> = ({ children, isCentered }) => (
   <Base isCentered={isCentered}>{children}</Base>
-)
+);
 
 Inner.defaultProps = {
-  isCentered: false
-}
+  isCentered: false,
+};
 
-export default Inner
+export default Inner;

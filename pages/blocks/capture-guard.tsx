@@ -1,7 +1,7 @@
-import { Box, Text } from '@resir014/chungking-react'
-import * as React from 'react'
-import { NextPage } from 'next'
-import OverlayRoot from '~/components/overlay/OverlayRoot'
+import { Box, Text } from '@resir014/chungking-react';
+import * as React from 'react';
+import { NextPage } from 'next';
+import OverlayRoot from '~/components/overlay/OverlayRoot';
 
 const CaptureGuardBlock: NextPage = () => {
   return (
@@ -20,7 +20,7 @@ const CaptureGuardBlock: NextPage = () => {
         </Text>
       </Box>
     </OverlayRoot>
-  )
-}
+  );
+};
 
-export default CaptureGuardBlock
+export default CaptureGuardBlock;

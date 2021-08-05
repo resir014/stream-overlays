@@ -1,21 +1,21 @@
-import dynamic from 'next/dynamic'
-import { transparentize } from 'polished'
-import * as React from 'react'
-import { Box, BoxProps, theme } from '@resir014/chungking-react'
-import BottomBarSocialLinks from './BottomBarSocialLinks'
-import BottomBarEvents from './BottomBarEvents'
+import dynamic from 'next/dynamic';
+import { transparentize } from 'polished';
+import * as React from 'react';
+import { Box, BoxProps, theme } from '@resir014/chungking-react';
+import BottomBarSocialLinks from './BottomBarSocialLinks';
+import BottomBarEvents from './BottomBarEvents';
 
 const BottomBarClock = dynamic(() => import('./BottomBarClock'), {
-  ssr: false
-})
+  ssr: false,
+});
 
 interface BottomBarProps extends BoxProps {
-  variant?: 'default' | 'prestream' | 'nye'
+  variant?: 'default' | 'prestream' | 'nye';
 }
 
 const BottomBar: React.FC<BottomBarProps> = ({ variant, ...rest }) => {
-  const hideClock = React.useMemo(() => variant === 'prestream', [variant])
-  const nyeVariant = React.useMemo(() => variant === 'nye', [variant])
+  const hideClock = React.useMemo(() => variant === 'prestream', [variant]);
+  const nyeVariant = React.useMemo(() => variant === 'nye', [variant]);
 
   return (
     <Box
@@ -37,7 +37,7 @@ const BottomBar: React.FC<BottomBarProps> = ({ variant, ...rest }) => {
       {hideClock || nyeVariant ? <BottomBarSocialLinks /> : <BottomBarClock />}
       <Box display="block" gridArea="footer" />
     </Box>
-  )
-}
+  );
+};
 
-export default BottomBar
+export default BottomBar;

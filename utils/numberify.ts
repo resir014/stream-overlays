@@ -6,12 +6,12 @@
 export default function numberify(maybeString?: string | string[]) {
   if (maybeString) {
     if (Array.isArray(maybeString)) {
-      const [num] = maybeString
-      return Number(num)
+      const [num] = maybeString;
+      return Number(num);
     }
 
-    return Number(maybeString)
+    return Number(maybeString);
   }
 
-  return undefined
+  return undefined;
 }

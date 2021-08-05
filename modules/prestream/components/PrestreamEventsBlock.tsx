@@ -1,9 +1,9 @@
-import { css } from '@emotion/react'
-import { Box, BoxProps, theme } from '@resir014/chungking-react'
-import { transparentize } from 'polished'
-import * as React from 'react'
+import { css } from '@emotion/react';
+import { Box, BoxProps, theme } from '@resir014/chungking-react';
+import { transparentize } from 'polished';
+import * as React from 'react';
 
-type PrestreamEventsBlockProps = BoxProps
+type PrestreamEventsBlockProps = BoxProps;
 
 const PrestreamEventsBlock: React.FC<PrestreamEventsBlockProps> = ({ ...rest }) => {
   return (
@@ -27,7 +27,7 @@ const PrestreamEventsBlock: React.FC<PrestreamEventsBlockProps> = ({ ...rest }) 
         }
       `}
     />
-  )
-}
+  );
+};
 
-export default PrestreamEventsBlock
+export default PrestreamEventsBlock;

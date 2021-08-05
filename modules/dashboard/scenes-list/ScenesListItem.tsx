@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import * as React from 'react'
-import { ListItem } from '../types'
+import Link from 'next/link';
+import * as React from 'react';
+import { ListItem } from '../types';
 
 interface ScenesListItemProps {
-  scene: ListItem
+  scene: ListItem;
 }
 
 const ScenesListItem: React.FC<ScenesListItemProps> = ({ scene }) => {
@@ -15,7 +15,7 @@ const ScenesListItem: React.FC<ScenesListItemProps> = ({ scene }) => {
         </a>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default ScenesListItem
+export default ScenesListItem;

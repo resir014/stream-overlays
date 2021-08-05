@@ -1,33 +1,33 @@
-import * as React from 'react'
-import { NextPage } from 'next'
-import { useRouter } from 'next/router'
-import OverlayRoot from '~/components/overlay/OverlayRoot'
-import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim'
-import useFlyLiveData from '~/modules/flightsim/useFlyLiveData'
+import * as React from 'react';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import OverlayRoot from '~/components/overlay/OverlayRoot';
+import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim';
+import useFlyLiveData from '~/modules/flightsim/useFlyLiveData';
 
 const FlyLiveOverlayPage: NextPage = () => {
   // Calls the local FlyLive telemetry API endpoint and refetches every second
-  const { data, isLoading } = useFlyLiveData()
-  const router = useRouter()
+  const { data, isLoading } = useFlyLiveData();
+  const router = useRouter();
 
   const network = React.useMemo(() => {
     if (router.query.network) {
       if (Array.isArray(router.query.network)) {
-        return router.query.network[0]
+        return router.query.network[0];
       }
 
-      return router.query.network
+      return router.query.network;
     }
 
-    return undefined
-  }, [router.query])
+    return undefined;
+  }, [router.query]);
 
   if (!isLoading && data) {
-    const { flightData } = data
+    const { flightData } = data;
 
     return (
       <OverlayRoot>
-        <FlightProgress value={flightData.flightPercent || 0} max={100} />
+        <FlightProgress value={flightData.flightPercent ?? 0} max={100} />
         <OverlayWrapper>
           {flightData.dep && flightData.arr && (
             <FlightItinerary origin={flightData.dep} destination={flightData.arr} />
@@ -43,10 +43,10 @@ const FlyLiveOverlayPage: NextPage = () => {
           {flightData.eta && <FlightInfo name="ETA" value={flightData.eta} />}
         </OverlayWrapper>
       </OverlayRoot>
-    )
+    );
   }
 
-  return null
-}
+  return null;
+};
 
-export default FlyLiveOverlayPage
+export default FlyLiveOverlayPage;

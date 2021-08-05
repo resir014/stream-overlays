@@ -1,14 +1,14 @@
-import * as React from 'react'
-import styled from '@emotion/styled'
-import { theme } from '@resir014/chungking-react'
-import { AlertKinds } from '~/interfaces/types'
-import { getAlertColor } from './alertUtils'
+import * as React from 'react';
+import styled from '@emotion/styled';
+import { theme } from '@resir014/chungking-react';
+import { getAlertColor } from './alertUtils';
+import { AlertKinds } from '~/interfaces/types';
 
 interface AlertMessageProps {
-  className?: string
-  style?: React.CSSProperties
-  kind?: AlertKinds
-  isUserMessage?: boolean
+  className?: string;
+  style?: React.CSSProperties;
+  kind?: AlertKinds;
+  isUserMessage?: boolean;
 }
 
 const Root = styled('div')<AlertMessageProps>`
@@ -19,25 +19,25 @@ const Root = styled('div')<AlertMessageProps>`
   span {
     color: ${props => getAlertColor(props.kind)};
   }
-`
+`;
 
 const AlertMessage: React.FC<AlertMessageProps> = ({
   className,
   style,
   kind,
   isUserMessage,
-  children
+  children,
 }) => {
   return (
     <Root className={className} style={style} kind={kind} isUserMessage={isUserMessage}>
       {children}
     </Root>
-  )
-}
+  );
+};
 
 AlertMessage.defaultProps = {
   kind: 'donation',
-  isUserMessage: false
-}
+  isUserMessage: false,
+};
 
-export default AlertMessage
+export default AlertMessage;

@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { ListItem } from '../types'
+import * as React from 'react';
+import { ListItem } from '../types';
 
-import ScenesListItem from './ScenesListItem'
+import ScenesListItem from './ScenesListItem';
 
 export interface ScenesListProps {
-  items: ListItem[]
+  items: ListItem[];
 }
 
 const ScenesList: React.FC<ScenesListProps> = ({ items }) => {
@@ -14,7 +14,7 @@ const ScenesList: React.FC<ScenesListProps> = ({ items }) => {
         <ScenesListItem key={scene.url} scene={scene} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ScenesList
+export default ScenesList;

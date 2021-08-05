@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 const OverlayWrapper = styled('div')`
   display: flex;
@@ -12,6 +12,6 @@ const OverlayWrapper = styled('div')`
       margin-right: 0;
     }
   }
-`
+`;
 
-export default OverlayWrapper
+export default OverlayWrapper;

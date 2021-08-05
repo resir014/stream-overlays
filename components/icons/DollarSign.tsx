@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 
 const DollarSign: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
   width = 24,
@@ -21,7 +21,7 @@ const DollarSign: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
         clipRule="evenodd"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default DollarSign
+export default DollarSign;

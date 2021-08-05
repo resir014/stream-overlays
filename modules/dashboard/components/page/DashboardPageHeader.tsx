@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
 interface DashboardPageHeaderProps {
-  title: string
-  subtitle?: string
+  title: string;
+  subtitle?: string;
 }
 
 const DashboardPageHeader: React.FC<DashboardPageHeaderProps> = ({ title, subtitle }) => {
@@ -13,7 +13,7 @@ const DashboardPageHeader: React.FC<DashboardPageHeaderProps> = ({ title, subtit
         {subtitle && <p className="text-2xl">{subtitle}</p>}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default DashboardPageHeader
+export default DashboardPageHeader;

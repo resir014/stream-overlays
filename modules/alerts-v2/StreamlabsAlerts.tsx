@@ -1,27 +1,27 @@
 /* eslint-disable no-underscore-dangle */
-import * as React from 'react'
-import { AlertToast } from './components'
-import { alert, DEFAULT_DISMISS_DURATION } from './alert-manager'
-import useStreamlabsEvents from './utils/useStreamlabsEvents'
-import { StreamlabsEvent } from './types/streamlabs'
+import * as React from 'react';
+import { AlertToast } from './components';
+import { alert, DEFAULT_DISMISS_DURATION } from './alert-manager';
+import useStreamlabsEvents from './utils/useStreamlabsEvents';
+import { StreamlabsEvent } from './types/streamlabs';
 
-const dismissAfter = DEFAULT_DISMISS_DURATION
+const dismissAfter = DEFAULT_DISMISS_DURATION;
 
 const StreamlabsAlerts: React.FC = () => {
-  const { events, setEvents } = useStreamlabsEvents()
-  const [stale, setStale] = React.useState(false)
-  const [current, setCurrent] = React.useState<StreamlabsEvent | undefined>(undefined)
+  const { events, setEvents } = useStreamlabsEvents();
+  const [stale, setStale] = React.useState(false);
+  const [current, setCurrent] = React.useState<StreamlabsEvent | undefined>(undefined);
 
   const addEventToQueue = (eventData: StreamlabsEvent) => {
-    setCurrent(eventData)
-    setStale(false)
-  }
+    setCurrent(eventData);
+    setStale(false);
+  };
 
   const onRemove = (id?: string) => {
-    setStale(true)
-    setCurrent(undefined)
-    setEvents(prev => prev.filter(event => event.id !== id))
-  }
+    setStale(true);
+    setCurrent(undefined);
+    setEvents(prev => prev.filter(event => event.id !== id));
+  };
 
   const handleToaster = (eventData: StreamlabsEvent) => {
     if (eventData.for !== 'twitch_account' && eventData.type === 'donation') {
@@ -36,8 +36,8 @@ const StreamlabsAlerts: React.FC = () => {
           />
         ),
         dismissAfter,
-        onRemove
-      })
+        onRemove,
+      });
     }
 
     if (eventData.for === 'twitch_account') {
@@ -53,9 +53,9 @@ const StreamlabsAlerts: React.FC = () => {
               />
             ),
             dismissAfter,
-            onRemove
-          })
-          break
+            onRemove,
+          });
+          break;
         }
         case 'subscription': {
           alert.sendAlert({
@@ -68,9 +68,9 @@ const StreamlabsAlerts: React.FC = () => {
               />
             ),
             dismissAfter,
-            onRemove
-          })
-          break
+            onRemove,
+          });
+          break;
         }
         case 'resub': {
           alert.sendAlert({
@@ -84,9 +84,9 @@ const StreamlabsAlerts: React.FC = () => {
               />
             ),
             dismissAfter,
-            onRemove
-          })
-          break
+            onRemove,
+          });
+          break;
         }
         case 'host': {
           alert.sendAlert({
@@ -100,9 +100,9 @@ const StreamlabsAlerts: React.FC = () => {
               />
             ),
             dismissAfter,
-            onRemove
-          })
-          break
+            onRemove,
+          });
+          break;
         }
         case 'bits': {
           alert.sendAlert({
@@ -116,9 +116,9 @@ const StreamlabsAlerts: React.FC = () => {
               />
             ),
             dismissAfter,
-            onRemove
-          })
-          break
+            onRemove,
+          });
+          break;
         }
         case 'raid': {
           alert.sendAlert({
@@ -132,39 +132,39 @@ const StreamlabsAlerts: React.FC = () => {
               />
             ),
             dismissAfter,
-            onRemove
-          })
-          break
+            onRemove,
+          });
+          break;
         }
         default: {
           // default case
-          break
+          break;
         }
       }
     }
-  }
+  };
 
   React.useEffect(() => {
-    console.log('current, stale', current, stale)
+    console.log('current, stale', current, stale);
     if (!stale && current) {
-      handleToaster(current)
+      handleToaster(current);
     }
-  }, [current, stale])
+  }, [current, stale]);
 
   React.useEffect(() => {
-    const [recent] = events
-    console.log('events.length, events', events.length, events)
+    const [recent] = events;
+    console.log('events.length, events', events.length, events);
 
-    if (events.length !== 0) {
+    if (events.length > 0) {
       setTimeout(() => {
-        addEventToQueue(recent)
-      }, (dismissAfter + 500) * (events.length - 1))
+        addEventToQueue(recent);
+      }, (dismissAfter + 500) * (events.length - 1));
     } else {
-      addEventToQueue(recent)
+      addEventToQueue(recent);
     }
-  }, [events])
+  }, [events]);
 
-  return <div className="flex flex-col justify-end w-full h-full min-h-screen" />
-}
+  return <div className="flex flex-col justify-end w-full h-full min-h-screen" />;
+};
 
-export default StreamlabsAlerts
+export default StreamlabsAlerts;

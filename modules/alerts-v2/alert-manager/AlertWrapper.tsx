@@ -1,49 +1,49 @@
-import * as React from 'react'
-import clsx from 'clsx'
-import { Transition } from 'react-transition-group'
-import { AlertSettings } from './types'
-import { ANIMATION_DURATION } from './constants'
+import * as React from 'react';
+import clsx from 'clsx';
+import { Transition } from 'react-transition-group';
+import { AlertSettings } from './types';
+import { ANIMATION_DURATION } from './constants';
 
-import styles from './AlertWrapper.module.css'
+import styles from './AlertWrapper.module.css';
 
 interface AlertWrapperProps {
-  id?: string
-  settings: Omit<AlertSettings, 'id' | 'onRemove' | 'dismissAfter'>
-  onRemove?: () => void
-  dismissAfter?: number
+  id?: string;
+  settings: Omit<AlertSettings, 'id' | 'onRemove' | 'dismissAfter'>;
+  onRemove?: () => void;
+  dismissAfter?: number;
 }
 
 const AlertWrapper: React.FC<AlertWrapperProps> = ({
   id,
   settings: { index, content },
   onRemove,
-  dismissAfter = 5000
+  dismissAfter = 5000,
 }) => {
-  const [isOpen, setIsOpen] = React.useState(false)
-  const closeTimerRef = React.useRef<NodeJS.Timeout | undefined>(undefined)
+  const [isOpen, setIsOpen] = React.useState(false);
+  const closeTimerRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
 
   const clearCloseTimer = () => {
     if (closeTimerRef.current) {
-      clearTimeout(closeTimerRef.current)
-      closeTimerRef.current = undefined
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = undefined;
     }
-  }
+  };
 
   const startCloseTimer = () => {
-    setIsOpen(true)
+    setIsOpen(true);
 
     closeTimerRef.current = setTimeout(() => {
-      setIsOpen(false)
-    }, dismissAfter)
-  }
+      setIsOpen(false);
+    }, dismissAfter);
+  };
 
   React.useEffect(() => {
-    startCloseTimer()
+    startCloseTimer();
 
     return () => {
-      clearCloseTimer()
-    }
-  }, [])
+      clearCloseTimer();
+    };
+  }, []);
 
   return (
     <Transition
@@ -51,7 +51,7 @@ const AlertWrapper: React.FC<AlertWrapperProps> = ({
       in={isOpen}
       timeout={{
         enter: ANIMATION_DURATION,
-        exit: ANIMATION_DURATION + 500
+        exit: ANIMATION_DURATION + 500,
       }}
       unmountOnExit
       onExited={onRemove}
@@ -67,7 +67,7 @@ const AlertWrapper: React.FC<AlertWrapperProps> = ({
         </div>
       )}
     </Transition>
-  )
-}
+  );
+};
 
-export default AlertWrapper
+export default AlertWrapper;
