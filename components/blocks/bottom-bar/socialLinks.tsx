@@ -1,5 +1,5 @@
 import * as React from 'react';
-import BottomBarSocialLinkItem from './components/BottomBarSocialLinkItem';
+import { BottomBarSocialLinkItem } from './bottom-bar-social-link-item';
 import ChatAlternate from '~/components/icons/ChatAlternate';
 import GitHub from '~/components/icons/GitHub';
 import Globe from '~/components/icons/Globe';

@@ -46,8 +46,8 @@ const SceneInner: React.FC<SceneInnerProps> = ({ variant, text }) => {
     >
       <PrestreamClock gridArea="clock" variant={variant} startH={startH} startM={startM} />
       <PrestreamDetails text={text} gridArea="details" variant={variant} />
-      <Box gridArea="events" backgroundColor={transparentize(0.25, theme.colors.black)} />
       <Box gridArea="chat" backgroundColor={transparentize(0.25, theme.colors.black)} />
+      <Box gridArea="events" backgroundColor={transparentize(0.25, theme.colors.black)} />
     </Box>
   );
 };

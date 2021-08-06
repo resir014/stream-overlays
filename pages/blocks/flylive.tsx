@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import OverlayRoot from '~/components/overlay/OverlayRoot';
+import { OverlayRoot } from '~/components/overlay';
 import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim';
 import useFlyLiveData from '~/modules/flightsim/useFlyLiveData';
 

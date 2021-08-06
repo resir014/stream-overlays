@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NextPage } from 'next';
 
-import OverlayRoot from '~/components/overlay/OverlayRoot';
+import { OverlayRoot } from '~/components/overlay';
 import EndScene from '~/modules/prestream/EndScene';
 
 const BeRightBackScenePage: NextPage = () => {

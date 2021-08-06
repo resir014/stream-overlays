@@ -1,13 +1,9 @@
-import { Box, BoxProps, theme } from '@resir014/chungking-react';
+import { Box, theme } from '@resir014/chungking-react';
 import { transparentize } from 'polished';
 import * as React from 'react';
-import BottomBar from '~/modules/bottom-bar/BottomBar';
+import { BottomBar } from '~/components/blocks/bottom-bar';
 
-interface SceneWrapperProps extends BoxProps {
-  _innerProps?: BoxProps;
-}
-
-const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...rest }) => {
+const SceneWrapper: React.FC = ({ children }) => {
   return (
     <Box
       as="section"
@@ -27,13 +23,10 @@ const SceneWrapper: React.FC<SceneWrapperProps> = ({ children, _innerProps, ...r
       backgroundColor={transparentize(0.25, theme.colors.black)}
       color="white"
       zIndex={0}
-      {...rest}
     >
-      <Box display="flex" alignItems="center" gridArea="content" px="xxl" pt="lg" {..._innerProps}>
-        {children}
-      </Box>
-      <Box gridArea="alerts" backgroundColor="black" />
-      <BottomBar variant="prestream" gridArea="bottom-bar" />
+      <div className="flex items-center justify-between px-12 pt-6">{children}</div>
+      <div className="bg-chungking-black" />
+      <BottomBar variant="prestream" />
     </Box>
   );
 };

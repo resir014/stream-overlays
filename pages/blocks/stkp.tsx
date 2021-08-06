@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NextPage } from 'next';
 import useSWR from 'swr';
-import OverlayRoot from '~/components/overlay/OverlayRoot';
+import { OverlayRoot } from '~/components/overlay';
 import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim';
 import { STKPOverlayResponse } from '~/interfaces/simToolkitPro';
 import { APIResponse } from '~/interfaces/types';

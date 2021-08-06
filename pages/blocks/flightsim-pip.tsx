@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { transparentize } from 'polished';
 import { Box, theme } from '@resir014/chungking-react';
 
-import OverlayRoot from '~/components/overlay/OverlayRoot';
+import { OverlayRoot } from '~/components/overlay';
 
 const FlightsimPIPPage: NextPage = () => {
   return (
