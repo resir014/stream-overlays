@@ -1,5 +1,3 @@
-const { SAWERIA_API_URL } = process.env;
-
 /** @type {import("next/dist/next-server/server/config-shared").NextConfig} */
 const nextConfig = {
   async headers() {
@@ -38,18 +36,6 @@ const nextConfig = {
             value: 'nosniff',
           },
         ],
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: '/api/:path*',
-      },
-      {
-        source: '/api/saweria/:path*',
-        destination: `${SAWERIA_API_URL}/:path*`,
       },
     ];
   },
