@@ -3,14 +3,18 @@
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
   mode: 'jit',
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
+  purge: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './modules/**/*.{js,ts,jsx,tsx}',
+  ],
   darkMode: 'media', // or 'media' or 'class'
   presets: [require('@resir014/tailwind-preset-chungking')],
   theme: {
-    extend: {}
+    extend: {},
   },
   variants: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
-}
+  plugins: [],
+};

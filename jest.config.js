@@ -1,23 +1,12 @@
-const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|js?|tsx?|ts?)$'
-
 module.exports = {
+  ...require('./test/jest-common'),
   collectCoverageFrom: [
-    '**/*.{js,jsx,ts,tsx}',
-    '!**/*.d.ts',
-    '!**/node_modules/**',
-    '!**/.next/**'
+    './(components|lib|pages)/**/*.(ts|tsx|js|jsx)',
+    '!./(components|lib|pages)/**/__tests__/**/*.test.(ts|tsx|js|jsx)',
+    '!./(components|lib|pages)/**/__mocks__/**/*.(ts|tsx|js|jsx)',
   ],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
-  testRegex: TEST_REGEX,
   transform: {
-    '^.+\\.(jsx?|js?|tsx?|ts?)?$': 'babel-jest',
-    '^.+\\.css$': '<rootDir>/config/jest/cssTransform.js'
+    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
   },
-  transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  moduleNameMapper: {
-    '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-    '^~/(.*)$': '<rootDir>/src/$1'
-  }
-}
+  projects: ['./test/jest.client.js', './test/jest.server.js'],
+};

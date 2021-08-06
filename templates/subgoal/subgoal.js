@@ -2,11 +2,11 @@
  * @typedef {*} GoalEvent
  */
 
-const $title = document.getElementById('title')
-const $goalCurrent = document.getElementById('goal-current')
-const $goalTotal = document.getElementById('goal-total')
-const $goalEndDate = document.getElementById('goal-end-date')
-const $goalBar = document.getElementById('goal-bar')
+const $title = document.getElementById('title');
+const $goalCurrent = document.getElementById('goal-current');
+const $goalTotal = document.getElementById('goal-total');
+const $goalEndDate = document.getElementById('goal-end-date');
+const $goalBar = document.getElementById('goal-bar');
 
 /**
  * @param {HTMLElement | null} [element]
@@ -15,7 +15,7 @@ const $goalBar = document.getElementById('goal-bar')
 function appendHTML(element, text) {
   if (element) {
     // eslint-disable-next-line no-param-reassign
-    element.innerHTML = text
+    element.innerHTML = text;
   }
 }
 
@@ -26,7 +26,7 @@ function appendHTML(element, text) {
 function appendText(element, text) {
   if (element) {
     // eslint-disable-next-line no-param-reassign
-    element.innerText = text
+    element.innerText = text;
   }
 }
 
@@ -37,7 +37,7 @@ function appendText(element, text) {
 function manipulateProgressBar(element, width) {
   if (element) {
     // eslint-disable-next-line no-param-reassign
-    element.style.width = width
+    element.style.width = width;
   }
 }
 
@@ -48,15 +48,15 @@ function manipulateProgressBar(element, width) {
 function goalLoad(obj) {
   // obj.detail will contain information about the current goal
   // this will fire only once when the widget loads
-  console.log(obj.detail)
-  appendHTML($title, obj.detail.title)
-  appendText($goalCurrent, obj.detail.amount.current)
+  console.log(obj.detail);
+  appendHTML($title, obj.detail.title);
+  appendText($goalCurrent, obj.detail.amount.current);
   manipulateProgressBar(
     $goalBar,
-    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
-  )
-  appendText($goalTotal, obj.detail.amount.target)
-  appendText($goalEndDate, obj.detail.to_go.ends_at)
+    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`,
+  );
+  appendText($goalTotal, obj.detail.amount.target);
+  appendText($goalEndDate, obj.detail.to_go.ends_at);
 }
 
 /**
@@ -64,13 +64,13 @@ function goalLoad(obj) {
  */
 function goalEvent(obj) {
   // obj.detail will contain information about the goal
-  console.log(obj.detail)
-  appendText($goalCurrent, obj.detail.amount.current)
+  console.log(obj.detail);
+  appendText($goalCurrent, obj.detail.amount.current);
   manipulateProgressBar(
     $goalBar,
-    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
-  )
+    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`,
+  );
 }
 
-document.addEventListener('goalLoad', goalLoad)
-document.addEventListener('goalEvent', goalEvent)
+document.addEventListener('goalLoad', goalLoad);
+document.addEventListener('goalEvent', goalEvent);

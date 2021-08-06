@@ -1,2 +1,0 @@
-export const ANIMATION_DURATION = 500
-export const DEFAULT_DISMISS_DURATION = 8000
