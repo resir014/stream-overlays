@@ -3,7 +3,7 @@ import { SceneInner, SceneWrapper } from './components';
 
 const BeRightBackScene: React.FC = () => {
   return (
-    <SceneWrapper _innerProps={{ justifyContent: 'space-between' }}>
+    <SceneWrapper>
       <SceneInner text="Please stand by..." variant="brb" />
     </SceneWrapper>
   );

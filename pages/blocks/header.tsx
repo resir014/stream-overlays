@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NextPage } from 'next';
-import OverlayRoot from '~/components/overlay/OverlayRoot';
+import { OverlayRoot } from '~/components/overlay';
 import HeaderWidget from '~/modules/widgets/HeaderWidget';
 
 const HeaderPage: NextPage = () => {

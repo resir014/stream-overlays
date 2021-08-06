@@ -70,22 +70,18 @@ const BottomBarSocialLinks: React.FC = () => {
   }, 8000);
 
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="flex-end"
-      gridArea="clock"
-      py="xs"
-      px="xxl"
-    >
-      <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
-        {state => (
-          <Container px="sm" borderRight="2px solid" borderRightColor="blue.500" state={state}>
-            {socialLinks[currentIndex]}
-          </Container>
-        )}
-      </Transition>
-    </Box>
+    <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
+      {state => (
+        <Container
+          className="px-3"
+          borderRight="2px solid"
+          borderRightColor="blue.500"
+          state={state}
+        >
+          {socialLinks[currentIndex]}
+        </Container>
+      )}
+    </Transition>
   );
 };
 
