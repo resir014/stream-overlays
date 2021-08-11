@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { TimeSignalConfig } from './types';
 import useClock from '~/utils/useClock';
 
-const TimeSignalWrapper: React.FC<TimeSignalConfig> = ({ h, m }) => {
+export interface TimeSignalWrapperProps {
+  h: number;
+  m: number;
+}
+
+const TimeSignalWrapper: React.FC<TimeSignalWrapperProps> = ({ h, m }) => {
   const time = useClock();
   const playButtonRef = React.useRef<HTMLButtonElement>(null);
   const audio = React.useMemo(() => new Audio('/static/audio/timesignal.ogg'), []);

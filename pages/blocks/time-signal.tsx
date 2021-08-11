@@ -3,9 +3,9 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 import { OverlayRoot } from '~/components/overlay';
-import parseTimeSignalQuery from '~/modules/time-signal/parseTimeSignalQuery';
+import { parseTimeSignalQuery } from '~/lib/query-parser';
 
-const TimeSignalWrapper = dynamic(() => import('~/modules/time-signal/TimeSignalWrapper'), {
+const TimeSignalWrapper = dynamic(() => import('~/components/time-signal/time-signal-wrapper'), {
   ssr: false,
 });
 
