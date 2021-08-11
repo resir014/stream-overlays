@@ -11,14 +11,14 @@ export function useStreamlabsEvents() {
     setEvents(prev => [eventData, ...prev]);
   };
 
-  const handleSocketEvent = (eventData: StreamlabsEvent) => {
+  const handleSocketEvent = React.useCallback((eventData: StreamlabsEvent) => {
     if (eventData.for === 'twitch_account' || eventData.type === 'donation') {
       addEvents({ id: eventData.message[0]._id, ...eventData });
     } else {
       // default case
       console.log(eventData);
     }
-  };
+  }, []);
 
   React.useEffect(() => {
     const client = io(
@@ -33,7 +33,7 @@ export function useStreamlabsEvents() {
     return () => {
       client.off('event', handleSocketEvent);
     };
-  }, []);
+  }, [handleSocketEvent]);
 
   return { events, setEvents };
 }
