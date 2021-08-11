@@ -3,7 +3,7 @@
  *
  * @param maybeString A string or an array of string
  */
-export default function numberify(maybeString?: string | string[]) {
+export function numberify(maybeString?: string | string[]) {
   if (maybeString) {
     if (Array.isArray(maybeString)) {
       const [num] = maybeString;

@@ -3,9 +3,9 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { transparentize } from 'polished';
 import * as React from 'react';
-import parseStreamTimeQuery from '../utils/parseStreamTimeQuery';
 import PrestreamDetails from './PrestreamDetails';
 import { PrestreamVariants } from '~/interfaces/types';
+import { parseStreamTimeQuery } from '~/lib/query-parser';
 
 const LoadingComponent = () => (
   <Box gridArea="clock" backgroundColor={transparentize(0.25, theme.colors.black)} />
