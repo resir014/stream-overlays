@@ -2,8 +2,8 @@ import { Transition } from '@headlessui/react';
 import { BoxProps } from '@resir014/chungking-react';
 import clsx from 'clsx';
 import * as React from 'react';
-import alertsAudio from '../_data/alerts-audio.json';
-import { StreamlabsEventTypes } from '~/lib/types/streamlabs';
+import alertsAudio from '~/lib/alerts-audio';
+import { StreamlabsEventTypes } from '~/lib/streamlabs';
 
 interface AlertToastProps extends BoxProps {
   title: string;
@@ -41,7 +41,7 @@ function alertToastVariants(variant?: StreamlabsEventTypes) {
   }
 }
 
-const AlertToast: React.FC<AlertToastProps> = ({
+export const AlertToast: React.FC<AlertToastProps> = ({
   title,
   recipient,
   variant = 'follow',
@@ -49,10 +49,13 @@ const AlertToast: React.FC<AlertToastProps> = ({
   ...rest
 }) => {
   const [isMounted, setIsMounted] = React.useState(false);
-  const audio = new Audio(alertsAudio[variant].src);
+  const audio = React.useMemo(
+    () => (alertsAudio[variant]?.src ? new Audio(alertsAudio[variant]?.src) : undefined),
+    [variant],
+  );
 
   React.useEffect(() => {
-    audio.play();
+    void audio?.play();
 
     const timeout = setTimeout(() => {
       setIsMounted(true);
@@ -61,7 +64,7 @@ const AlertToast: React.FC<AlertToastProps> = ({
     return () => {
       clearTimeout(timeout);
     };
-  }, []);
+  }, [audio]);
 
   return (
     <div className={clsx('flex items-center w-full h-14', alertToastVariants(variant))} {...rest}>
@@ -70,7 +73,7 @@ const AlertToast: React.FC<AlertToastProps> = ({
           as="span"
           show={isMounted}
           className="text-2xl font-bold"
-          enter="transition duration-300"
+          enter="transition duration-300 ease-in-out-alerts"
           enterFrom="opacity-0 translate-y-0.5"
           enterTo="opacity-100 translate-y-0"
           leave="transition-opacity duration-300"
@@ -86,7 +89,7 @@ const AlertToast: React.FC<AlertToastProps> = ({
             as="span"
             show={isMounted}
             className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal')}
-            enter="transition duration-300 delay-100"
+            enter="transition duration-300 ease-in-out-alerts delay-100"
             enterFrom="opacity-0 translate-y-0.5"
             enterTo="opacity-100 translate-y-0"
             leave="transition-opacity duration-300"
@@ -100,7 +103,10 @@ const AlertToast: React.FC<AlertToastProps> = ({
           as="span"
           show={isMounted}
           className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal')}
-          enter={clsx('transition duration-300', recipient ? 'delay-200' : 'delay-100')}
+          enter={clsx(
+            'transition duration-300 ease-in-out-alerts',
+            recipient ? 'delay-200' : 'delay-100',
+          )}
           enterFrom="opacity-0 translate-y-0.5"
           enterTo="opacity-100 translate-y-0"
           leave="transition-opacity duration-300"
@@ -113,5 +119,3 @@ const AlertToast: React.FC<AlertToastProps> = ({
     </div>
   );
 };
-
-export default AlertToast;

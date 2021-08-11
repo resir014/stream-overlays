@@ -1,7 +1,6 @@
 /* eslint-disable react/sort-comp */
 
 import * as React from 'react';
-import { TransitionGroup } from 'react-transition-group';
 import AlertWrapper from './alert-wrapper';
 import { DEFAULT_DISMISS_DURATION } from './constants';
 import { AlertHandler, AlertSettings } from './types';
@@ -57,25 +56,23 @@ export default class AlertManager extends React.PureComponent<
     const { alertQueue } = this.state;
     return (
       <div className="fixed bottom-0 left-0 right-0">
-        <TransitionGroup>
-          {alertQueue.map(({ id, onRemove, dismissAfter: _, ...settings }) => {
-            return (
-              <AlertWrapper
-                key={id}
-                id={id}
-                settings={settings}
-                dismissAfter={DEFAULT_DISMISS_DURATION}
-                onRemove={() => {
-                  this.removeToaster(id);
+        {alertQueue.map(({ id, onRemove, dismissAfter: _, ...settings }) => {
+          return (
+            <AlertWrapper
+              key={id}
+              id={id}
+              settings={settings}
+              dismissAfter={DEFAULT_DISMISS_DURATION}
+              onRemove={() => {
+                this.removeToaster(id);
 
-                  if (onRemove) {
-                    onRemove(id);
-                  }
-                }}
-              />
-            );
-          })}
-        </TransitionGroup>
+                if (onRemove) {
+                  onRemove(id);
+                }
+              }}
+            />
+          );
+        })}
       </div>
     );
   }

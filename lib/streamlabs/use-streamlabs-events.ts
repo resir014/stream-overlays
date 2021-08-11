@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import io from 'socket.io-client';
-import { StreamlabsEvent } from '../types/streamlabs';
+import { StreamlabsEvent } from './types';
 
 export function useStreamlabsEvents() {
   const [events, setEvents] = React.useState<StreamlabsEvent[]>([]);
