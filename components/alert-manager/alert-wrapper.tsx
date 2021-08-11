@@ -1,10 +1,6 @@
 import * as React from 'react';
-import clsx from 'clsx';
-import { Transition } from 'react-transition-group';
+import { Transition } from '@headlessui/react';
 import { AlertSettings } from './types';
-import { ANIMATION_DURATION } from './constants';
-
-import styles from './alert-wrapper.module.css';
 
 interface AlertWrapperProps {
   id?: string;
@@ -39,25 +35,20 @@ const AlertWrapper: React.FC<AlertWrapperProps> = ({
 
   return (
     <Transition
-      appear
-      in={isOpen}
-      timeout={{
-        enter: ANIMATION_DURATION,
-        exit: ANIMATION_DURATION + 500,
-      }}
-      unmountOnExit
-      onExited={onRemove}
+      id={id}
+      show={isOpen}
+      className="block relative w-full h-full overflow-hidden"
+      enter="transition transform duration-300 ease-in-out-alerts"
+      enterFrom="translate-y-[56px] opacity-0"
+      enterTo="translate-y-0 opacity-100"
+      leave="transition transform duration-800 ease-in-out-alerts"
+      leaveFrom="translate-y-0 opacity-100"
+      leaveTo="translate-y-[56px] opacity-0"
+      afterLeave={onRemove}
+      unmount
+      style={{ zIndex: index }}
     >
-      {state => (
-        <div
-          className={clsx('block relative w-full h-full overflow-hidden', styles.root)}
-          style={{ zIndex: index }}
-          data-toaster-state={state}
-          id={id}
-        >
-          {content}
-        </div>
-      )}
+      {content}
     </Transition>
   );
 };
