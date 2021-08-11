@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
-import emotionCache from '~/utils/emotionCache';
+import emotionCache from '~/lib/emotion-cache';
 
 // eslint-disable-next-line @typescript-eslint/unbound-method
 const { extractCritical } = createEmotionServer(emotionCache);

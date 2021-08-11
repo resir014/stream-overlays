@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import * as React from 'react';
-import useClock from '~/utils/useClock';
-import useOnMount from '~/lib/hooks/use-on-mount';
+import { useClock } from '~/lib/hooks/use-clock';
+import { useOnMount } from '~/lib/hooks/use-on-mount';
 
 export function BottomBarClock() {
   const time = useClock();

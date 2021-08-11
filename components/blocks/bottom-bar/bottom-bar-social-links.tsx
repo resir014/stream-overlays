@@ -7,7 +7,7 @@ import { TransitionStatus } from 'react-transition-group/Transition';
 
 import socialLinks from './socialLinks';
 import { useInterval } from '~/lib/hooks/use-interval';
-import sleep from '~/utils/sleep';
+import sleep from '~/lib/sleep';
 
 export const TRANSITION_DURATION = 500;
 

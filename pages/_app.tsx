@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
 
 import { ChungkingProvider } from '@resir014/chungking-react';
-import emotionCache from '~/utils/emotionCache';
+import emotionCache from '~/lib/emotion-cache';
 
 import '~/styles/fonts';
 import '~/styles/globals.css';

@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-export default function useClock() {
+export function useClock() {
   const raf = React.useRef<number>();
   const [time, setTime] = React.useState<Date>(new Date());
 
-  const tick = () => {
-    setTime(new Date());
-    raf.current = requestAnimationFrame(tick);
-  };
-
   React.useEffect(() => {
+    const tick = () => {
+      setTime(new Date());
+      raf.current = requestAnimationFrame(tick);
+    };
+
     raf.current = requestAnimationFrame(tick);
 
     return () => {

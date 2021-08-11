@@ -1,5 +1,5 @@
 import * as React from 'react';
-import useClock from '~/utils/useClock';
+import { useClock } from '~/lib/hooks/use-clock';
 
 export interface TimeSignalWrapperProps {
   h: number;
