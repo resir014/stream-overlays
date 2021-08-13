@@ -9,7 +9,7 @@
   }
 }
 
-@layer components {
+@layer utilities {
   .helper-link-cover::after {
     content: ' ';
     position: absolute;
