@@ -18,4 +18,8 @@
     left: 0;
     right: 0;
   }
+
+  .helper-alternate-digits {
+    font-feature-settings: 'ss01' 1;
+  }
 }
