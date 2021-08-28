@@ -33,6 +33,7 @@ const PrestreamClock: React.FC<PrestreamIconProps> = ({ variant, startH, startM,
 
   return (
     <Box
+      className="text-white"
       display="grid"
       gridTemplateColumns="1fr"
       gridTemplateRows="8px 1fr"
