@@ -14,7 +14,7 @@ export function PreStreamHeader() {
   const { percentage } = usePrestreamClock(startH, startM);
 
   const progressBarColor = React.useMemo(
-    () => (percentage >= 1 ? 'bg-chungking-green-500' : 'bg-chungking-blue-400'),
+    () => (percentage >= 1 ? 'bg-chungking-green-500' : 'bg-chungking-blue-300'),
     [percentage],
   );
 
