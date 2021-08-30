@@ -10,5 +10,6 @@
   "files.insertFinalNewline": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "css.validate": false,
-  "stylelint.enable": true
+  "stylelint.enable": true,
+  "deno.enable": false
 }
