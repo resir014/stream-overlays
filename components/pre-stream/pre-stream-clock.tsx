@@ -45,8 +45,12 @@ export const PrestreamClock = React.forwardRef<HTMLDivElement, PrestreamClockPro
             {format(time, 'dd MMMM yyyy')}
           </span>
         </div>
-        <span className="text-3xl text-chungking-white font-bold tabular-nums helper-alternate-digits">
-          {format(time, 'HH:mm:ss')}
+        <span className="flex items-center space-x-1 text-3xl text-chungking-white font-bold tabular-nums helper-alternate-digits">
+          <span className="inline-flex justify-center">{format(time, 'HH')}</span>
+          <span className="inline-flex justify-center w-2">:</span>
+          <span className="inline-flex justify-center">{format(time, 'mm')}</span>
+          <span className="inline-flex justify-center w-2">:</span>
+          <span className="inline-flex justify-center">{format(time, 'ss')}</span>
         </span>
       </div>
     );
