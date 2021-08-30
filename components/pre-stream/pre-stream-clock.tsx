@@ -1,14 +1,34 @@
 import * as React from 'react';
 import { format } from 'date-fns';
-import usePrestreamClock from '~/lib/pre-stream/use-prestream-clock';
+import clsx from 'clsx';
+import { usePrestreamClock } from '~/lib/pre-stream/use-prestream-clock';
+import { PreStreamVariants } from '~/lib/pre-stream/types';
 
 export interface PrestreamClockProps extends React.ComponentPropsWithoutRef<'div'> {
   startH?: number;
   startM?: number;
+  variant?: PreStreamVariants;
+}
+
+function getProgressColor(variant: PreStreamVariants) {
+  switch (variant) {
+    case 'pre-stream': {
+      return 'text-chungking-blue-300';
+    }
+    case 'brb': {
+      return 'text-chungking-purple-300';
+    }
+    case 'end': {
+      return 'text-chungking-orange-300';
+    }
+    default: {
+      return 'text-chungking-blue-300';
+    }
+  }
 }
 
 export const PrestreamClock = React.forwardRef<HTMLDivElement, PrestreamClockProps>(
-  ({ startH, startM, ...rest }, ref) => {
+  ({ startH, startM, variant = 'pre-stream', ...rest }, ref) => {
     const { time } = usePrestreamClock(startH, startM);
 
     return (
@@ -21,7 +41,7 @@ export const PrestreamClock = React.forwardRef<HTMLDivElement, PrestreamClockPro
           <span className="inline-block text-3xl text-chungking-white font-medium">
             {format(time, 'EEEE')}
           </span>
-          <span className="inline-block text-3xl text-chungking-blue-300">
+          <span className={clsx('inline-block text-3xl', getProgressColor(variant))}>
             {format(time, 'dd MMMM yyyy')}
           </span>
         </div>

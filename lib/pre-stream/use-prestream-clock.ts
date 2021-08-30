@@ -15,7 +15,7 @@ function toTimeString(time: string | number) {
 
 const TEN_MINUTES_IN_MILLISECONDS = 60 * 10 * 1000;
 
-export default function usePrestreamClock(startH = 21, startM = 0): UsePrestreamClockResponse {
+export function usePrestreamClock(startH = 21, startM = 0): UsePrestreamClockResponse {
   const time = useClock();
   const { schedule } = useStreamSchedule();
 

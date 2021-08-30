@@ -24,9 +24,9 @@ export function BottomBarClock() {
   const renderClock = () => {
     if (mounted) {
       return (
-        <span className="block text-chungking-white text-2xl leading-none font-semibold font-mono">
+        <span className="block text-chungking-white text-2xl leading-none font-semibold tabular-nums helper-alternate-digits">
           {format(time, 'HH')}
-          {clockSeparator}
+          <span className="inline-flex justify-center w-2">{clockSeparator}</span>
           {format(time, 'mm')}
         </span>
       );
