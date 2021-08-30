@@ -16,7 +16,7 @@ function getProgressBackgroundColor(variant: PreStreamVariants) {
       return 'bg-chungking-blue-300';
     }
     case 'brb': {
-      return 'bg-chungking-purple-300';
+      return 'bg-chungking-green-300';
     }
     case 'end': {
       return 'bg-chungking-orange-300';
@@ -41,10 +41,10 @@ export function PreStreamHeader({ variant = 'pre-stream' }: PreStreamHeaderProps
   );
 
   return (
-    <div className="flex flex-col space-y-2">
-      <div className={clsx('h-[4px] bg-opacity-25 rounded-full overflow-hidden', progressBarColor)}>
+    <div className="flex flex-col overflow-hidden">
+      <div className={clsx('h-2 bg-opacity-25 rounded-full overflow-hidden', progressBarColor)}>
         <div
-          className={clsx('block h-[4px]', progressBarColor)}
+          className={clsx('block h-2', progressBarColor)}
           style={{ width: `${(percentage * 100).toFixed(1)}%` }}
         />
       </div>
