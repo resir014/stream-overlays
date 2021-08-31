@@ -1,11 +1,10 @@
 import { Transition } from '@headlessui/react';
-import { BoxProps } from '@resir014/chungking-react';
 import clsx from 'clsx';
 import * as React from 'react';
 import alertsAudio from '~/lib/alerts-audio';
 import { StreamlabsEventTypes } from '~/lib/streamlabs';
 
-interface AlertToastProps extends BoxProps {
+interface AlertToastProps extends React.ComponentPropsWithoutRef<'div'> {
   title: string;
   recipient?: string;
   content: string;
@@ -41,81 +40,83 @@ function alertToastVariants(variant?: StreamlabsEventTypes) {
   }
 }
 
-export const AlertToast: React.FC<AlertToastProps> = ({
-  title,
-  recipient,
-  variant = 'follow',
-  content,
-  ...rest
-}) => {
-  const [isMounted, setIsMounted] = React.useState(false);
-  const audio = React.useMemo(
-    () => (alertsAudio[variant]?.src ? new Audio(alertsAudio[variant]?.src) : undefined),
-    [variant],
-  );
+export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
+  ({ title, recipient, variant = 'follow', content, ...rest }, ref) => {
+    const [isMounted, setIsMounted] = React.useState(false);
+    const audio = React.useMemo(
+      () => (alertsAudio[variant]?.src ? new Audio(alertsAudio[variant]?.src) : undefined),
+      [variant],
+    );
 
-  React.useEffect(() => {
-    void audio?.play();
+    React.useEffect(() => {
+      void audio?.play();
 
-    const timeout = setTimeout(() => {
-      setIsMounted(true);
-    }, 300);
+      const timeout = setTimeout(() => {
+        setIsMounted(true);
+      }, 300);
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [audio]);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }, [audio]);
 
-  return (
-    <div className={clsx('flex items-center w-full h-14', alertToastVariants(variant))} {...rest}>
-      <div className="flex items-center h-14 pl-12 pr-6">
-        <Transition
-          as="span"
-          show={isMounted}
-          className="text-2xl font-bold"
-          enter="transition duration-300 ease-in-out-alerts"
-          enterFrom="opacity-0 translate-y-0.5"
-          enterTo="opacity-100 translate-y-0"
-          leave="transition-opacity duration-300"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          {title}
-        </Transition>
-      </div>
-      <div className="flex items-center flex-auto h-14 pl-6 pr-12 truncate">
-        {recipient && (
+    return (
+      <div
+        className={clsx('flex items-center w-full h-14', alertToastVariants(variant))}
+        ref={ref}
+        {...rest}
+      >
+        <div className="flex items-center h-14 pl-12 pr-6">
           <Transition
             as="span"
             show={isMounted}
-            className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal')}
-            enter="transition duration-300 ease-in-out-alerts delay-100"
+            className="text-2xl font-bold"
+            enter="transition duration-300 ease-in-out-alerts"
             enterFrom="opacity-0 translate-y-0.5"
             enterTo="opacity-100 translate-y-0"
             leave="transition-opacity duration-300"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            {recipient}
+            {title}
           </Transition>
-        )}
-        <Transition
-          as="span"
-          show={isMounted}
-          className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal')}
-          enter={clsx(
-            'transition duration-300 ease-in-out-alerts',
-            recipient ? 'delay-200' : 'delay-100',
+        </div>
+        <div className="flex items-center flex-auto h-14 pl-6 pr-12 truncate">
+          {recipient && (
+            <Transition
+              as="span"
+              show={isMounted}
+              className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal')}
+              enter="transition duration-300 ease-in-out-alerts delay-100"
+              enterFrom="opacity-0 translate-y-0.5"
+              enterTo="opacity-100 translate-y-0"
+              leave="transition-opacity duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              {recipient}
+            </Transition>
           )}
-          enterFrom="opacity-0 translate-y-0.5"
-          enterTo="opacity-100 translate-y-0"
-          leave="transition-opacity duration-300"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          {content}
-        </Transition>
+          <Transition
+            as="span"
+            show={isMounted}
+            className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal')}
+            enter={clsx(
+              'transition duration-300 ease-in-out-alerts',
+              recipient ? 'delay-200' : 'delay-100',
+            )}
+            enterFrom="opacity-0 translate-y-0.5"
+            enterTo="opacity-100 translate-y-0"
+            leave="transition-opacity duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            {content}
+          </Transition>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  },
+);
+
+AlertToast.displayName = 'AlertToast';
