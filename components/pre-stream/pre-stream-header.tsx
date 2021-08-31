@@ -41,7 +41,7 @@ export function PreStreamHeader({ variant = 'pre-stream' }: PreStreamHeaderProps
   );
 
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-hidden space-y-2">
       <div className={clsx('h-2 bg-opacity-25 rounded-full overflow-hidden', progressBarColor)}>
         <div
           className={clsx('block h-2', progressBarColor)}
