@@ -40,7 +40,7 @@ export const PrestreamClock = React.forwardRef<HTMLDivElement, PrestreamClockPro
         <div className="flex items-center space-x-4">
           <span className="inline-block text-3xl text-chungking-white font-bold">resir014</span>
           <div className="flex items-center">
-            <Image src="/static/resir014-logo-light.svg" width={23} height={40} />
+            <Image src="/static/resir014-logo-mono-white.svg" width={23} height={40} />
           </div>
         </div>
       </div>
