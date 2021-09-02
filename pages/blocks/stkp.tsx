@@ -4,8 +4,7 @@ import useSWR from 'swr';
 import { OverlayRoot } from '~/components/overlay';
 import { FlightProgress, FlightItinerary, FlightInfo, OverlayWrapper } from '~/modules/flightsim';
 import { STKPOverlayResponse } from '~/interfaces/simToolkitPro';
-import { APIResponse } from '~/interfaces/types';
-import { fetch } from '~/lib/fetch';
+import { APIResponse, fetch } from '~/lib/fetch';
 
 export const dummyData: STKPOverlayResponse = {
   opts: {

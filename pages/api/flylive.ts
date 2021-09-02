@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'isomorphic-unfetch';
-import parseFlyliveData from '~/utils/parseFlyliveData';
+import parseFlyliveData from '~/lib/flightsim/parse-flylive-data';
 
 const flylive = async (_: NextApiRequest, res: NextApiResponse) => {
   try {
