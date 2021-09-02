@@ -1,8 +1,13 @@
 import unfetch from 'isomorphic-unfetch';
 
-interface ErrorBuilder extends Error {
+export interface ErrorBuilder extends Error {
   info?: any;
   status?: number;
+}
+
+export interface APIResponse<TResponse = any> {
+  status: 'ok' | 'error';
+  data: TResponse;
 }
 
 /**

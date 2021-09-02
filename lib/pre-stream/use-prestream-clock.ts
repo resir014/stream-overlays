@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { clamp, lerpInverse } from '@resir014/lerp';
 import { format } from 'date-fns';
+import { useStreamSchedule } from './stream-schedule';
 import { useClock } from '~/lib/hooks/use-clock';
-import { useStreamSchedule } from '~/utils/useCurrentStream';
 
 interface UsePrestreamClockResponse {
   time: Date;
