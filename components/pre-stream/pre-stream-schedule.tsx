@@ -14,7 +14,7 @@ export function PreStreamSchedule({ header, variant = 'pre-stream' }: PreStreamS
   const renderGradientColor = (type: PreStreamVariants) => {
     switch (type) {
       case 'pre-stream': {
-        return 'from-[rgba(63,22,112,0.75)] to-[rgba(0,112,243,0.75)]';
+        return 'from-[rgba(26,36,156,0.75)] to-[rgba(36,136,245,0.75)]';
       }
       case 'brb': {
         return 'from-[rgba(0,57,134,0.75)] to-[rgba(31,199,145,0.75)]';
@@ -23,7 +23,7 @@ export function PreStreamSchedule({ header, variant = 'pre-stream' }: PreStreamS
         return 'from-[rgba(134,0,0,0.75)] to-[rgba(203,137,29,0.75)]';
       }
       default: {
-        return 'from-[rgba(63,22,112,0.75)] to-[rgba(0,112,243,0.75)]';
+        return 'from-[rgba(26,36,156,0.75)] to-[rgba(36,136,245,0.75)]';
       }
     }
   };
