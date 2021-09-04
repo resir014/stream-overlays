@@ -2,15 +2,12 @@
 
 import * as React from 'react';
 
-import { DashboardPageContent, DashboardPageHeader } from './components/page';
-import { DashboardSection, DashboardSectionHeader } from './components/section';
-import { DashboardSidebar } from './components/layout';
-import { ScenesList } from './scenes-list';
+import { LinkList } from '../../components/link-list';
 
-import scenes from './_data/scenes.json';
-import overlays from './_data/overlays.json';
-import blocks from './_data/blocks.json';
-import { DashboardHeader, DashboardRoot } from '~/components/dashboard';
+import { DashboardHeader, DashboardRoot, DashboardSidebar } from '~/components/dashboard';
+import { DashboardPageContent, DashboardPageHeader } from '~/components/dashboard/page';
+import { DashboardSection, DashboardSectionHeader } from '~/components/dashboard/section';
+import { blocks, overlays, scenes } from '~/lib/data/dashboard';
 
 export default function OverlayDashboard(): JSX.Element {
   return (
@@ -24,15 +21,15 @@ export default function OverlayDashboard(): JSX.Element {
             <div className="space-y-8">
               <DashboardSection>
                 <DashboardSectionHeader>Scenes</DashboardSectionHeader>
-                <ScenesList items={scenes} />
+                <LinkList items={scenes} />
               </DashboardSection>
               <DashboardSection>
                 <DashboardSectionHeader>Overlays</DashboardSectionHeader>
-                <ScenesList items={overlays} />
+                <LinkList items={overlays} />
               </DashboardSection>
               <DashboardSection>
                 <DashboardSectionHeader>Blocks</DashboardSectionHeader>
-                <ScenesList items={blocks} />
+                <LinkList items={blocks} />
               </DashboardSection>
             </div>
           </DashboardPageContent>
