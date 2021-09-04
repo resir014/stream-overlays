@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BottomBar } from '~/components/blocks/bottom-bar';
+import { BottomBar } from '../bottom-bar';
 
 export interface SceneWrapperProps {
   showClock?: boolean;

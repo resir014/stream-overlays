@@ -5,7 +5,7 @@ import { Box } from '@resir014/chungking-react';
 import { Transition } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
 
-import socialLinks from './socialLinks';
+import { socialLinks } from './social-links';
 import { useInterval } from '~/lib/hooks/use-interval';
 import sleep from '~/lib/sleep';
 
@@ -50,7 +50,7 @@ const Container = styled(Box)<TransitionProps>`
   ${transitionStyles}
 `;
 
-const BottomBarSocialLinks: React.FC = () => {
+export const BottomBarSocialLinks: React.FC = () => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [transitioning, setTransitioning] = React.useState(false);
 
@@ -84,5 +84,3 @@ const BottomBarSocialLinks: React.FC = () => {
     </Transition>
   );
 };
-
-export default BottomBarSocialLinks;
