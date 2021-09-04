@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import * as React from 'react';
 import { OverlayRoot } from '~/components/overlay';
-import { BottomBar } from '~/components/blocks/bottom-bar';
+import { BottomBar } from '~/modules/bottom-bar';
 
 const BottomBarNYEPage: NextPage = () => {
   return (

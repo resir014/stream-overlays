@@ -5,7 +5,7 @@ import * as React from 'react';
 import { OverlayRoot } from '~/components/overlay';
 import { parseTimeSignalQuery } from '~/lib/query-parser';
 
-const TimeSignalWrapper = dynamic(() => import('~/components/time-signal/time-signal-wrapper'), {
+const TimeSignalWrapper = dynamic(() => import('~/modules/time-signal/time-signal-wrapper'), {
   ssr: false,
 });
 

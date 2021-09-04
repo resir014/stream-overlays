@@ -1,6 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import BottomBarSocialLinks from './bottom-bar-social-links';
+import { BottomBarSocialLinks } from './social-links';
 import { BottomBarEvents } from './bottom-bar-events';
 import { BottomBarClock } from './bottom-bar-clock';
 
