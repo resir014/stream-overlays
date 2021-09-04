@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Box } from '@resir014/chungking-react';
 import { Transition } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
 
@@ -43,7 +42,7 @@ const transitionStyles = ({ state }: TransitionProps) => {
   }
 };
 
-const Container = styled(Box)<TransitionProps>`
+const Container = styled('div')<TransitionProps>`
   transition: all ${TRANSITION_DURATION}ms ease;
   opacity: 0;
 
@@ -72,12 +71,7 @@ export const BottomBarSocialLinks: React.FC = () => {
   return (
     <Transition in={!transitioning} timeout={TRANSITION_DURATION}>
       {state => (
-        <Container
-          className="px-3"
-          borderRight="2px solid"
-          borderRightColor="blue.500"
-          state={state}
-        >
+        <Container className="px-3 border-r-2 border-chungking-blue-500" state={state}>
           {socialLinks[currentIndex]}
         </Container>
       )}
