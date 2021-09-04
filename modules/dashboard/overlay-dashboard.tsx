@@ -2,11 +2,10 @@
 
 import * as React from 'react';
 
-import { LinkList } from '../../components/link-list';
-
 import { DashboardHeader, DashboardRoot, DashboardSidebar } from '~/components/dashboard';
 import { DashboardPageContent, DashboardPageHeader } from '~/components/dashboard/page';
 import { DashboardSection, DashboardSectionHeader } from '~/components/dashboard/section';
+import { LinkList } from '~/components/link-list';
 import { blocks, overlays, scenes } from '~/lib/data/dashboard';
 
 export default function OverlayDashboard(): JSX.Element {

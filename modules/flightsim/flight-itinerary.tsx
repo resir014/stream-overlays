@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ItemCard, ItemTitle } from '../../components/overlay';
+import { InfoItemCard } from '~/components/info-item-card';
 
 export interface FlightItineraryProps {
   origin: string;
@@ -7,13 +7,7 @@ export interface FlightItineraryProps {
 }
 
 const FlightItinerary: React.FC<FlightItineraryProps> = ({ origin, destination }) => {
-  return (
-    <ItemCard>
-      <ItemTitle>
-        {origin} -&gt; {destination}
-      </ItemTitle>
-    </ItemCard>
-  );
+  return <InfoItemCard content={`${origin} -> ${destination}`} />;
 };
 
 export default FlightItinerary;
