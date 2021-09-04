@@ -1,7 +1,7 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import * as React from 'react';
-import alertsAudio from '~/lib/alerts-audio';
+import alertsAudio from '~/lib/data/alerts-audio';
 import { StreamlabsEventTypes } from '~/lib/streamlabs';
 
 interface AlertToastProps extends React.ComponentPropsWithoutRef<'div'> {

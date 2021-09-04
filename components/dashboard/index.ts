@@ -1,2 +1,3 @@
-export { default as DashboardHeader } from './DashboardHeader';
-export { default as DashboardRoot } from './DashboardRoot';
+export * from './dashboard-header';
+export * from './dashboard-root';
+export * from './dashboard-sidebar';
