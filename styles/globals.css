@@ -19,7 +19,15 @@
     right: 0;
   }
 
+  .helper-kern {
+    font-feature-settings: 'kern' 1;
+  }
+
   .helper-alternate-digits {
     font-feature-settings: 'ss01' 1;
+  }
+
+  .helper-disambiguation {
+    font-feature-settings: 'ss02' 1;
   }
 }

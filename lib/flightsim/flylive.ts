@@ -1,8 +1,8 @@
 import useSWR from 'swr';
-import { FlyLiveParsedData } from '~/interfaces/flylive';
+import { FlyLiveParsedData } from './types';
 import { APIResponse, fetch } from '~/lib/fetch';
 
-export default function useFlyLiveData(refreshInterval = 1000 / 24) {
+export function useFlyLiveData(refreshInterval = 1000 / 24) {
   const { data, error } = useSWR<APIResponse<FlyLiveParsedData>>('/api/flylive', fetch, {
     refreshInterval,
   });

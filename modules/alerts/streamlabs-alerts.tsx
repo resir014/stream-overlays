@@ -1,8 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
-import { AlertToast } from './alert-toast';
 import { useStreamlabsEvents, StreamlabsEvent } from '~/lib/streamlabs';
-import { alert, DEFAULT_DISMISS_DURATION } from '~/components/alert-manager';
+import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '~/components/alerts';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
