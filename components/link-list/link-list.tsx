@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { ListItem } from '../../modules/dashboard/types';
 
-import LinkListItem from './link-list-item';
+import LinkListItem, { LinkListItemProps } from './link-list-item';
 
 export interface LinkListProps {
-  items: ListItem[];
+  items: LinkListItemProps[];
 }
 
 export const LinkList: React.FC<LinkListProps> = ({ items }) => {
