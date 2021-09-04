@@ -2,10 +2,10 @@ import * as React from 'react';
 import { NextPage } from 'next';
 
 import { OverlayRoot } from '~/components/overlay';
-import { PreStreamHeader } from '~/components/pre-stream/pre-stream-header';
+import { PreStreamHeader } from '~/modules/pre-stream/pre-stream-header';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
-import { PreStreamSchedule } from '~/components/pre-stream/pre-stream-schedule';
-import { PreStreamChatbox } from '~/components/pre-stream/pre-stream-chat-box';
+import { PreStreamSchedule } from '~/modules/pre-stream/pre-stream-schedule';
+import { PreStreamChatbox } from '~/modules/pre-stream/pre-stream-chat-box';
 import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
 
 const EndScenePage: NextPage = () => {
