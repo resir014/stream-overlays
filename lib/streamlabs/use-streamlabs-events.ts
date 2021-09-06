@@ -2,6 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import io from 'socket.io-client';
+import { logger } from '../logger';
 import { StreamlabsEvent } from './types';
 
 export function useStreamlabsEvents() {
@@ -16,7 +17,7 @@ export function useStreamlabsEvents() {
       addEvents({ id: eventData.message[0]._id, ...eventData });
     } else {
       // default case
-      console.log(eventData);
+      logger.debug('unhandled event', eventData);
     }
   }, []);
 

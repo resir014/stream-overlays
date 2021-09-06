@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '../alert-manager';
 import { useStreamlabsEvents, StreamlabsEvent } from '~/lib/streamlabs';
+import { logger } from '~/lib/logger';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
@@ -16,8 +17,8 @@ export const StreamlabsAlerts: React.FC = () => {
   };
 
   React.useEffect(() => {
-    console.log('[DEBUG] current event', current);
-    console.log('[DEBUG] stale?', stale);
+    logger.debug('current event', current);
+    logger.debug('stale?', stale);
 
     const onRemove = (id?: string) => {
       setStale(true);
@@ -27,6 +28,7 @@ export const StreamlabsAlerts: React.FC = () => {
 
     const handleToaster = (eventData: StreamlabsEvent) => {
       if (eventData.for !== 'twitch_account' && eventData.type === 'donation') {
+        logger.info('donation event', eventData);
         alert.sendAlert({
           id: eventData.id,
           content: (
@@ -45,6 +47,7 @@ export const StreamlabsAlerts: React.FC = () => {
       if (eventData.for === 'twitch_account') {
         switch (eventData.type) {
           case 'follow': {
+            logger.info('follow event', eventData);
             alert.sendAlert({
               id: eventData.id,
               content: (
@@ -60,6 +63,7 @@ export const StreamlabsAlerts: React.FC = () => {
             break;
           }
           case 'subscription': {
+            logger.info('sub event', eventData);
             alert.sendAlert({
               id: eventData.id,
               content: (
@@ -75,6 +79,7 @@ export const StreamlabsAlerts: React.FC = () => {
             break;
           }
           case 'resub': {
+            logger.info('resub event', eventData);
             alert.sendAlert({
               id: eventData.id,
               content: (
@@ -91,6 +96,7 @@ export const StreamlabsAlerts: React.FC = () => {
             break;
           }
           case 'host': {
+            logger.info('host event', eventData);
             alert.sendAlert({
               id: eventData.id,
               content: (
@@ -107,6 +113,7 @@ export const StreamlabsAlerts: React.FC = () => {
             break;
           }
           case 'bits': {
+            logger.info('bits event', eventData);
             alert.sendAlert({
               id: eventData.id,
               content: (
@@ -123,6 +130,7 @@ export const StreamlabsAlerts: React.FC = () => {
             break;
           }
           case 'raid': {
+            logger.info('raid event', eventData);
             alert.sendAlert({
               id: eventData.id,
               content: (
@@ -140,7 +148,7 @@ export const StreamlabsAlerts: React.FC = () => {
           }
           default: {
             // default case
-            console.log('[DEBUG] unprocessed event:', eventData);
+            logger.info('unprocessed event', eventData);
             break;
           }
         }
@@ -154,8 +162,8 @@ export const StreamlabsAlerts: React.FC = () => {
 
   React.useEffect(() => {
     const [recent] = events;
-    console.log('[DEBUG] events.length', events.length);
-    console.log('[DEBUG] events', events);
+    logger.debug('events.length', events.length);
+    logger.debug('events', events);
 
     if (events.length > 0) {
       setTimeout(() => {
