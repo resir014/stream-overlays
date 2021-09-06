@@ -55,7 +55,6 @@
     "styled-system": "^5.1.5",
     "swr": "^1.0.0",
     "text-case": "^1.0.9",
-    "toasted-notes": "^3.2.0",
     "typeface-inter": "^3.18.1"
   },
   "devDependencies": {
