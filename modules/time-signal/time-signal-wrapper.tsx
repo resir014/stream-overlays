@@ -2,11 +2,11 @@ import * as React from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 
 export interface TimeSignalWrapperProps {
-  h: number;
-  m: number;
+  startH: number;
+  startM: number;
 }
 
-const TimeSignalWrapper: React.FC<TimeSignalWrapperProps> = ({ h, m }) => {
+const TimeSignalWrapper: React.FC<TimeSignalWrapperProps> = ({ startH, startM }) => {
   const time = useClock();
   const playButtonRef = React.useRef<HTMLButtonElement>(null);
   const audio = React.useMemo(() => new Audio('/static/audio/timesignal.ogg'), []);
@@ -17,11 +17,15 @@ const TimeSignalWrapper: React.FC<TimeSignalWrapperProps> = ({ h, m }) => {
     // If top of the hour (m === 0):
     // - use previous hour, else keep current hour
     // - use minute 59, else m - 1
-    if (hours === (m === 0 ? h - 1 : h) && minutes === (m === 0 ? 59 : m - 1) && seconds === 55) {
+    if (
+      hours === (startM === 0 ? startH - 1 : startH) &&
+      minutes === (startM === 0 ? 59 : startM - 1) &&
+      seconds === 55
+    ) {
       // Fake a click event on a hidden button which plays the audio file.
       playButtonRef.current?.click();
     }
-  }, [hours, minutes, seconds, h, m]);
+  }, [hours, minutes, seconds, startH, startM]);
 
   return (
     <div className="flex flex-col justify-end w-full h-full min-h-screen">
