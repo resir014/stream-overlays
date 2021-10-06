@@ -12,11 +12,11 @@ const TimeSignalWrapper = dynamic(() => import('~/modules/time-signal/time-signa
 const TimeSignalPage: NextPage = () => {
   const router = useRouter();
 
-  const timeSignalConfig = React.useMemo(() => parseTimeSignalQuery(router.query), [router.query]);
+  const { h, m } = React.useMemo(() => parseTimeSignalQuery(router.query), [router.query]);
 
   return (
     <OverlayRoot>
-      <TimeSignalWrapper {...timeSignalConfig} />
+      <TimeSignalWrapper startH={h} startM={m} />
     </OverlayRoot>
   );
 };
