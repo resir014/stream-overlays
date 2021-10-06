@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
+import { PrestreamCountdown } from './pre-stream-countdown';
+import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { useStreamSchedule } from '~/lib/pre-stream/stream-schedule';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
 
@@ -8,8 +10,13 @@ export interface PreStreamScheduleProps {
   variant?: PreStreamVariants;
 }
 
-export function PreStreamSchedule({ header, variant = 'pre-stream' }: PreStreamScheduleProps) {
+export function PreStreamSchedule({ variant = 'pre-stream' }: PreStreamScheduleProps) {
+  const [clockRendered, setClockRendered] = React.useState(false);
   const { schedule } = useStreamSchedule();
+
+  useOnMount(() => {
+    setClockRendered(true);
+  });
 
   const renderGradientColor = (type: PreStreamVariants) => {
     switch (type) {
@@ -28,25 +35,44 @@ export function PreStreamSchedule({ header, variant = 'pre-stream' }: PreStreamS
     }
   };
 
+  const renderCountdown = () => {
+    if (clockRendered && variant === 'pre-stream') {
+      return <PrestreamCountdown />;
+    }
+
+    if (variant === 'brb') {
+      return 'BRB';
+    }
+
+    if (variant === 'end') {
+      return 'ENDED';
+    }
+
+    return null;
+  };
+
   return (
-    <div
-      className={clsx(
-        'flex flex-col items-start justify-between flex-1 h-full max-h-[720px] p-6 rounded-2xl shadow-xl bg-gradient-to-br',
-        renderGradientColor(variant),
-      )}
-    >
-      <div className="w-full">
-        <p className="text-chungking-white text-2xl uppercase tracking-wider">
-          {header ?? 'Stream starting soon...'}
-        </p>
+    <div className="flex flex-row items-end justify-between px-12 pt-6 pb-16 bg-gradient-to-t from-chungking-black">
+      <div className="space-y-4 flex-1">
+        <div
+          className={clsx(
+            'h-2 w-[128px] rounded-full bg-gradient-to-r',
+            renderGradientColor(variant),
+          )}
+        />
+        <div className="space-y-2">
+          <h1 className="text-chungking-white text-6xl max-w-[75%] font-bold">
+            {schedule?.streamName ?? 'Untitled Stream'}
+          </h1>
+          <p className="text-chungking-white text-3xl">
+            {schedule?.description ?? 'No description available.'}
+          </p>
+        </div>
       </div>
-      <div className="space-y-2 w-full">
-        <h1 className="text-chungking-white text-6xl max-w-[75%] font-semibold">
-          {schedule?.streamName ?? 'Untitled Stream'}
-        </h1>
-        <p className="text-chungking-white text-3xl">
-          {schedule?.description ?? 'No description available.'}
-        </p>
+      <div className="ml-6 space-y-4 text-right">
+        <span className="flex items-center space-x-1 text-8xl leading-none text-chungking-white font-bold tabular-nums helper-alternate-digits">
+          {renderCountdown()}
+        </span>
       </div>
     </div>
   );

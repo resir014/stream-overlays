@@ -3,25 +3,20 @@ import { NextPage } from 'next';
 
 import { OverlayRoot } from '~/components/overlay';
 import { PreStreamHeader } from '~/modules/pre-stream/pre-stream-header';
-import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { PreStreamSchedule } from '~/modules/pre-stream/pre-stream-schedule';
-import { PreStreamChatbox } from '~/modules/pre-stream/pre-stream-chat-box';
+import { PreStreamRightPanel } from '~/modules/pre-stream/pre-stream-right-panel';
 import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
 
 const EndScenePage: NextPage = () => {
-  const [isHeaderRendered, setIsHeaderRendered] = React.useState(false);
-
-  useOnMount(() => {
-    setIsHeaderRendered(true);
-  });
-
   return (
     <OverlayRoot>
       <SceneWrapper>
-        {isHeaderRendered ? <PreStreamHeader variant="end" /> : <div className="h-[48px]" />}
-        <div className="flex flex-row items-end justify-between flex-1 pt-6 pb-12 w-full">
-          <PreStreamSchedule header="Stream ended. Thanks for watching!" variant="end" />
-          <PreStreamChatbox />
+        <div className="flex flex-row items-end justify-between flex-1 w-full">
+          <div className="flex flex-col flex-1 h-full justify-between">
+            <PreStreamHeader />
+            <PreStreamSchedule variant="end" />
+          </div>
+          <PreStreamRightPanel />
         </div>
       </SceneWrapper>
     </OverlayRoot>

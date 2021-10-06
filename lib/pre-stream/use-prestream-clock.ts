@@ -6,6 +6,7 @@ import { useClock } from '~/lib/hooks/use-clock';
 
 interface UsePrestreamClockResponse {
   time: Date;
+  topOfTheHour?: Date;
   percentage: number;
 }
 
@@ -28,7 +29,7 @@ export function usePrestreamClock(startH = 21, startM = 0): UsePrestreamClockRes
         toTimeString(0),
       ];
 
-      return new Date(`${date}T${h}:${m}:${s}+07:00`).getTime();
+      return new Date(`${date}T${h}:${m}:${s}+07:00`);
     }
 
     return undefined;
@@ -36,11 +37,11 @@ export function usePrestreamClock(startH = 21, startM = 0): UsePrestreamClockRes
 
   const percentage = React.useMemo(() => {
     const timeStamp = time.getTime();
-    const topFormatted = topOfTheHour ?? 0;
-    const startFormatted = topOfTheHour ? topOfTheHour - TEN_MINUTES_IN_MILLISECONDS : 0;
+    const topFormatted = topOfTheHour?.getTime() ?? 0;
+    const startFormatted = topOfTheHour ? topOfTheHour.getTime() - TEN_MINUTES_IN_MILLISECONDS : 0;
 
     return clamp(lerpInverse(timeStamp, startFormatted, topFormatted), 0, 1);
   }, [time, topOfTheHour]);
 
-  return { time, percentage };
+  return { time, topOfTheHour, percentage };
 }
