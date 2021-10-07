@@ -13,7 +13,7 @@ const BeRightBackScenePage: NextPage = () => {
       <SceneWrapper>
         <div className="flex flex-row items-end justify-between flex-1 w-full">
           <div className="flex flex-col flex-1 h-full justify-between">
-            <PreStreamHeader />
+            <PreStreamHeader variant="brb" />
             <PreStreamChatPanel />
             <PreStreamSchedule variant="brb" />
           </div>
