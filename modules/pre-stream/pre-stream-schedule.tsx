@@ -45,21 +45,21 @@ export function PreStreamSchedule({ variant = 'pre-stream' }: PreStreamScheduleP
     }
 
     if (variant === 'end') {
-      return 'ENDED';
+      return 'ENDING';
     }
 
     return null;
   };
 
   return (
-    <div className="flex flex-row items-end justify-between px-12 pt-6 pb-16 bg-gradient-to-t from-chungking-black">
+    <div className="flex flex-row items-center justify-between px-12 pt-10 pb-12 space-x-4">
+      <div
+        className={clsx(
+          'block w-2 h-full rounded-full bg-gradient-to-b',
+          renderGradientColor(variant),
+        )}
+      />
       <div className="space-y-4 flex-1">
-        <div
-          className={clsx(
-            'h-2 w-[128px] rounded-full bg-gradient-to-r',
-            renderGradientColor(variant),
-          )}
-        />
         <div className="space-y-2">
           <h1 className="text-chungking-white text-6xl max-w-[75%] font-bold">
             {schedule?.streamName ?? 'Untitled Stream'}

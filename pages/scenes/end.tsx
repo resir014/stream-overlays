@@ -14,6 +14,7 @@ const EndScenePage: NextPage = () => {
         <div className="flex flex-row items-end justify-between flex-1 w-full">
           <div className="flex flex-col flex-1 h-full justify-between">
             <PreStreamHeader />
+            <div className="flex-1" />
             <PreStreamSchedule variant="end" />
           </div>
           <PreStreamRightPanel />
