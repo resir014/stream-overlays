@@ -24,10 +24,10 @@ export function BottomBarClock() {
   const renderClock = () => {
     if (mounted) {
       return (
-        <span className="flex items-center space-x-1 text-chungking-white text-2xl leading-none font-semibold tabular-nums helper-alternate-digits">
-          <span className="inline-flex justify-center">{format(time, 'HH')}</span>
-          <span className="inline-flex justify-center w-2">{clockSeparator}</span>
-          <span className="inline-flex justify-center">{format(time, 'mm')}</span>
+        <span className="flex items-center text-chungking-white text-2xl leading-none font-mono font-bold">
+          {format(time, 'HH')}
+          {clockSeparator}
+          {format(time, 'mm')}
         </span>
       );
     }

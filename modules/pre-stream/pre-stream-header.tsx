@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import * as React from 'react';
+import { format } from 'date-fns';
 import clsx from 'clsx';
-import { PrestreamClock } from './pre-stream-clock';
 import { parseStreamTimeQuery } from '~/lib/query-parser';
 import { usePrestreamClock } from '~/lib/pre-stream/use-prestream-clock';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
@@ -13,16 +13,16 @@ export interface PreStreamHeaderProps {
 function getProgressBackgroundColor(variant: PreStreamVariants) {
   switch (variant) {
     case 'pre-stream': {
-      return 'bg-chungking-blue-300';
+      return 'bg-chungking-blue-500';
     }
     case 'brb': {
-      return 'bg-chungking-green-300';
+      return 'bg-chungking-green-500';
     }
     case 'end': {
-      return 'bg-chungking-orange-300';
+      return 'bg-chungking-orange-500';
     }
     default: {
-      return 'bg-chungking-blue-300';
+      return 'bg-chungking-blue-500';
     }
   }
 }
@@ -33,22 +33,19 @@ export function PreStreamHeader({ variant = 'pre-stream' }: PreStreamHeaderProps
     () => parseStreamTimeQuery(router.query),
     [router.query],
   );
-  const { percentage } = usePrestreamClock(startH, startM);
-
-  const progressBarColor = React.useMemo(
-    () => (percentage >= 1 ? 'bg-chungking-green-500' : getProgressBackgroundColor(variant)),
-    [percentage, variant],
-  );
+  const { time } = usePrestreamClock(startH, startM);
 
   return (
-    <div className="flex flex-col overflow-hidden space-y-2">
-      <div className={clsx('h-2 bg-opacity-25 rounded-full overflow-hidden', progressBarColor)}>
+    <div className="flex flex-col overflow-hidden">
+      <div className="flex flex-row flex-1 px-12 pt-12 pb-10 space-x-4">
         <div
-          className={clsx('block h-2', progressBarColor)}
-          style={{ width: `${(percentage * 100).toFixed(1)}%` }}
+          className={clsx('block w-1 h-full rounded-full', getProgressBackgroundColor(variant))}
         />
+        <div className="flex flex-row space-x-4 text-3xl leading-none text-chungking-white">
+          <span className="inline-block font-semibold">{format(time, 'EEEE')}</span>
+          <span className="inline-block">{format(time, 'dd MMMM yyyy')}</span>
+        </div>
       </div>
-      <PrestreamClock variant={variant} startH={startH} startM={startM} />
     </div>
   );
 }
