@@ -1,14 +1,16 @@
 import unfetch from 'isomorphic-unfetch';
 
-export interface ErrorBuilder extends Error {
-  info?: any;
+export interface ErrorBuilder<T = unknown> extends Error {
+  info?: T;
   status?: number;
 }
 
-export interface APIResponse<TResponse = any> {
-  status: 'ok' | 'error';
-  data: TResponse;
-}
+export type APIResponse<T = {}> =
+  | {
+      status: 'ok';
+      data: T;
+    }
+  | { status: 'error'; data: { message: string } };
 
 /**
  * Helper for fetch which automatically returns the JSON and works both on server and client-side.
