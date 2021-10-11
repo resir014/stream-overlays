@@ -16,3 +16,20 @@ export function getPrestreamAccentGradient(variant: PreStreamVariants) {
     }
   }
 }
+
+export function getPrestreamAccentColor(variant: PreStreamVariants) {
+  switch (variant) {
+    case 'pre-stream': {
+      return 'bg-chungking-blue-500';
+    }
+    case 'brb': {
+      return 'bg-chungking-green-500';
+    }
+    case 'end': {
+      return 'bg-chungking-orange-500';
+    }
+    default: {
+      return 'bg-chungking-blue-500';
+    }
+  }
+}
