@@ -3,8 +3,8 @@ import { NextPage } from 'next';
 
 import { OverlayRoot } from '~/components/overlay';
 import { PreStreamHeader } from '~/modules/pre-stream/pre-stream-header';
-import { PreStreamSchedule } from '~/modules/pre-stream/pre-stream-schedule';
-import { PreStreamChatPanel } from '~/modules/pre-stream/pre-stream-chat-panel';
+import { PreStreamSchedule } from '~/modules/pre-stream/current-stream-block';
+import { PreStreamChatPanel } from '~/modules/pre-stream/chat-panel';
 import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
 
 const BeRightBackScenePage: NextPage = () => {

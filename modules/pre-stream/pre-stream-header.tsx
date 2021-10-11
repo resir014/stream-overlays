@@ -10,19 +10,19 @@ export interface PreStreamHeaderProps {
   variant?: PreStreamVariants;
 }
 
-function getProgressBackgroundColor(variant: PreStreamVariants) {
+function getPrestreamAccentColor(variant: PreStreamVariants) {
   switch (variant) {
     case 'pre-stream': {
-      return 'bg-chungking-blue-500';
+      return 'from-[rgba(26,36,156,0.75)] to-[rgba(36,136,245,0.75)]';
     }
     case 'brb': {
-      return 'bg-chungking-green-500';
+      return 'from-[rgba(0,57,134,0.75)] to-[rgba(31,199,145,0.75)]';
     }
     case 'end': {
-      return 'bg-chungking-orange-500';
+      return 'from-[rgba(134,0,0,0.75)] to-[rgba(203,137,29,0.75)]';
     }
     default: {
-      return 'bg-chungking-blue-500';
+      return 'from-[rgba(26,36,156,0.75)] to-[rgba(36,136,245,0.75)]';
     }
   }
 }
@@ -37,9 +37,12 @@ export function PreStreamHeader({ variant = 'pre-stream' }: PreStreamHeaderProps
 
   return (
     <div className="flex flex-col overflow-hidden">
-      <div className="flex flex-row flex-1 px-12 pt-12 pb-10 space-x-4">
+      <div className="flex flex-row items-center flex-1 px-12 pt-12 pb-10 space-x-4">
         <div
-          className={clsx('block w-1 h-full rounded-full', getProgressBackgroundColor(variant))}
+          className={clsx(
+            'block w-4 h-4 rounded-full bg-gradient-to-b',
+            getPrestreamAccentColor(variant),
+          )}
         />
         <div className="flex flex-row space-x-4 text-3xl leading-none text-chungking-white">
           <span className="inline-block font-semibold">{format(time, 'EEEE')}</span>
