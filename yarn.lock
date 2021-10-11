@@ -1527,10 +1527,10 @@
     "@react-spring/shared" "~9.2.0"
     "@react-spring/types" "~9.2.0"
 
-"@resir014/chungking-core@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@resir014/chungking-core/-/chungking-core-0.1.1.tgz#42ed7bcdd8f31f800326ecdbdec51c2e09baaf4e"
-  integrity sha512-6EClXGcZAYna8k+PHMwHawmzXjO/KWtjFaVD5kLQTOBMcn+lolV8cnjC81EBNgpdAA05h5vTl1vzGFAF6zoBRg==
+"@resir014/chungking-core@^0.1.2-canary.1":
+  version "0.1.2-canary.1"
+  resolved "https://registry.yarnpkg.com/@resir014/chungking-core/-/chungking-core-0.1.2-canary.1.tgz#aba2db5bb8813c09f8251a1d8c4260ef43b98713"
+  integrity sha512-VyKfugsUpx170GUHls72JhWI6eBS4nPBjOf7K7XkIOZ0UdsrjmXaJ84IDO7i0L4RGuoBAc3KUP3oy0PCOv9hLA==
 
 "@resir014/chungking-react@^0.3.1":
   version "0.3.1"
@@ -1550,12 +1550,12 @@
   resolved "https://registry.yarnpkg.com/@resir014/lerp/-/lerp-0.1.1.tgz#ab204c96e551b3ce8d7c4e796c7f816470f083c2"
   integrity sha512-KE8t0epP0jDvBgwiHNzOxBLBrG/XvP0mfVN/osnnpUr5I+pjfFuAnE3okXmwn6HwwesS9WUPDyXY6NG0rDy1gA==
 
-"@resir014/tailwind-preset-chungking@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@resir014/tailwind-preset-chungking/-/tailwind-preset-chungking-0.1.3.tgz#f82f37ad5eaf693949049e81ee7c60a9d1007316"
-  integrity sha512-pCl881cjTsa3Ca61yswNv41/ATGXmVtE2+5XDmps/hoj7hQwefbI4vsPBFiSXuqXf2IgZ3YFZ0EJmyT4CpvBDg==
+"@resir014/tailwind-preset-chungking@^0.1.4-canary.1":
+  version "0.1.4-canary.1"
+  resolved "https://registry.yarnpkg.com/@resir014/tailwind-preset-chungking/-/tailwind-preset-chungking-0.1.4-canary.1.tgz#0c9d64040590b621acc6a577570d58d3f274e99c"
+  integrity sha512-hg2ynxqpPe8tP76JHu62zHEn/rrV7JX0AZ1jAaPYKYpVoHiFvVLfeZKJOgTpLLMqpZ7x8Eoor9ifXzXAZm6OIw==
   dependencies:
-    "@resir014/chungking-core" "^0.1.1"
+    "@resir014/chungking-core" "^0.1.2-canary.1"
 
 "@rushstack/eslint-patch@^1.0.6":
   version "1.0.6"
