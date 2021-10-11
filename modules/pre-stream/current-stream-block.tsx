@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { PrestreamCountdown } from './pre-stream-countdown';
+import { getPrestreamAccentGradient } from './utils';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { useCurrentStream } from '~/lib/pre-stream/stream-schedule';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
@@ -17,23 +18,6 @@ export function CurrentStreamBlock({ variant = 'pre-stream' }: PreStreamSchedule
   useOnMount(() => {
     setClockRendered(true);
   });
-
-  const renderGradientColor = (type: PreStreamVariants) => {
-    switch (type) {
-      case 'pre-stream': {
-        return 'from-[rgba(26,36,156,0.75)] to-[rgba(36,136,245,0.75)]';
-      }
-      case 'brb': {
-        return 'from-[rgba(0,57,134,0.75)] to-[rgba(31,199,145,0.75)]';
-      }
-      case 'end': {
-        return 'from-[rgba(134,0,0,0.75)] to-[rgba(203,137,29,0.75)]';
-      }
-      default: {
-        return 'from-[rgba(26,36,156,0.75)] to-[rgba(36,136,245,0.75)]';
-      }
-    }
-  };
 
   const renderCountdown = () => {
     if (clockRendered && variant === 'pre-stream') {
@@ -57,7 +41,7 @@ export function CurrentStreamBlock({ variant = 'pre-stream' }: PreStreamSchedule
         <div
           className={clsx(
             'block w-8 h-8 rounded-full bg-gradient-to-b',
-            renderGradientColor(variant),
+            getPrestreamAccentGradient(variant),
           )}
         />
       </div>

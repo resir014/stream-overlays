@@ -2,10 +2,11 @@ import * as React from 'react';
 import { NextPage } from 'next';
 
 import { OverlayRoot } from '~/components/overlay';
+import { PreStreamContent } from '~/modules/pre-stream/pre-stream-content';
+import { PreStreamHeader } from '~/modules/pre-stream/pre-stream-header';
 import { CurrentStreamBlock } from '~/modules/pre-stream/current-stream-block';
 import { ChatPanel } from '~/modules/pre-stream/chat-panel';
 import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
-import { PreStreamHeader } from '~/modules/pre-stream/pre-stream-header';
 
 const PrestreamScenePage: NextPage = () => {
   return (
@@ -14,7 +15,9 @@ const PrestreamScenePage: NextPage = () => {
         <div className="flex flex-row items-end justify-between flex-1 w-full">
           <div className="flex flex-col flex-1 h-full justify-between">
             <PreStreamHeader variant="pre-stream" />
-            <ChatPanel />
+            <PreStreamContent>
+              <ChatPanel />
+            </PreStreamContent>
             <CurrentStreamBlock variant="pre-stream" />
           </div>
         </div>
