@@ -10,7 +10,7 @@ export interface PreStreamScheduleProps {
   variant?: PreStreamVariants;
 }
 
-export function PreStreamSchedule({ variant = 'pre-stream' }: PreStreamScheduleProps) {
+export function CurrentStreamBlock({ variant = 'pre-stream' }: PreStreamScheduleProps) {
   const [clockRendered, setClockRendered] = React.useState(false);
   const { currentStream } = useCurrentStream();
 

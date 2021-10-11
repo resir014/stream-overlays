@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-export type PreStreamChatPanelProps = React.ComponentPropsWithoutRef<'div'>;
+export type ChatPanelProps = React.ComponentPropsWithoutRef<'div'>;
 
-export const PreStreamChatPanel = React.forwardRef<HTMLDivElement, PreStreamChatPanelProps>(
+export const ChatPanel = React.forwardRef<HTMLDivElement, ChatPanelProps>(
   ({ className, ...rest }, ref) => {
     return (
       <div ref={ref} className={clsx('px-12 flex-1', className)} {...rest}>
@@ -13,4 +13,4 @@ export const PreStreamChatPanel = React.forwardRef<HTMLDivElement, PreStreamChat
   },
 );
 
-PreStreamChatPanel.displayName = 'PreStreamChatPanel';
+ChatPanel.displayName = 'ChatPanel';
