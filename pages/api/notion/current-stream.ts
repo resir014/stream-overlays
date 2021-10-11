@@ -1,6 +1,10 @@
 import { NextApiHandler } from 'next';
 import { notion } from '~/lib/notion';
 
+// Gets the currently active stream (where the Current Stream checkbox is set to true).
+//
+// GET `/api/notion/current-stream`
+
 const handler: NextApiHandler = async (req, res) => {
   try {
     if (req.method === 'GET') {
