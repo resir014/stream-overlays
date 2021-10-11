@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 import { PrestreamCountdown } from './pre-stream-countdown';
-import { getPrestreamAccentGradient } from './utils';
+import { getPrestreamAccentColor } from './utils';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { useCurrentStream } from '~/lib/pre-stream/stream-schedule';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
@@ -38,12 +38,7 @@ export function CurrentStreamBlock({ variant = 'pre-stream' }: PreStreamSchedule
   return (
     <div className="flex flex-row items-start px-12 pt-10 pb-12 space-x-4">
       <div className="flex flex-none items-center h-[60px]">
-        <div
-          className={clsx(
-            'block w-8 h-8 rounded-full bg-gradient-to-b',
-            getPrestreamAccentGradient(variant),
-          )}
-        />
+        <div className={clsx('block w-8 h-8 rounded-full', getPrestreamAccentColor(variant))} />
       </div>
       <div className="flex flex-row items-center justify-between flex-1 space-x-6">
         <div className="space-y-4 flex-1">
