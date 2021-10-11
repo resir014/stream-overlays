@@ -5,12 +5,12 @@ import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { useCurrentStream } from '~/lib/pre-stream/stream-schedule';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
 
-export interface PreStreamScheduleProps {
+export interface CurrentStreamBlockProps {
   header?: string;
   variant?: PreStreamVariants;
 }
 
-export function PreStreamSchedule({ variant = 'pre-stream' }: PreStreamScheduleProps) {
+export function CurrentStreamBlock({ variant = 'pre-stream' }: CurrentStreamBlockProps) {
   const [clockRendered, setClockRendered] = React.useState(false);
   const { currentStream } = useCurrentStream();
 
