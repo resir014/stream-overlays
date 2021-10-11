@@ -16,15 +16,15 @@ const handler: NextApiHandler = async (req, res) => {
     if (req.method === 'GET') {
       if (process.env.NOTION_DATABASE_ID) {
         const { reference_date, page_size } = req.query;
+        const parsedDate = parseString(reference_date);
+        const parsedPageSize = parseNumber(page_size);
 
         const { results } = await notion.databases.query({
           database_id: process.env.NOTION_DATABASE_ID,
           filter: {
             property: 'Date',
             date: {
-              after: reference_date
-                ? new Date(parseString(reference_date)).toISOString()
-                : new Date().toISOString(),
+              after: parsedDate ? new Date(parsedDate).toISOString() : new Date().toISOString(),
             },
           },
           sorts: [
@@ -33,7 +33,7 @@ const handler: NextApiHandler = async (req, res) => {
               direction: 'ascending',
             },
           ],
-          page_size: page_size ? parseNumber(page_size) : 3,
+          page_size: parsedPageSize ?? 3,
         });
 
         const data = results.map(({ id, properties }) => ({

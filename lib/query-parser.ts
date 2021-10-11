@@ -5,7 +5,7 @@ import { ParsedUrlQuery } from 'querystring';
  *
  * @param maybeString A string or an array of string
  */
-export function parseNumber(maybeString: string | string[]) {
+export function parseNumber(maybeString?: string | string[]) {
   if (maybeString) {
     if (Array.isArray(maybeString)) {
       const [num] = maybeString;
@@ -23,21 +23,25 @@ export function parseNumber(maybeString: string | string[]) {
  *
  * @param maybeString A string or an array of string
  */
-export function parseString(maybeString: string | string[]) {
-  if (Array.isArray(maybeString)) {
-    const [string] = maybeString;
-    return string;
+export function parseString(maybeString?: string | string[]) {
+  if (maybeString) {
+    if (Array.isArray(maybeString)) {
+      const [string] = maybeString;
+      return string;
+    }
+
+    return maybeString;
   }
 
-  return maybeString;
+  return undefined;
 }
 
 export function parseStreamTimeQuery(query: ParsedUrlQuery) {
   const { startH, startM } = query;
 
   return {
-    startH: startH ? parseNumber(startH) : 21,
-    startM: startM ? parseNumber(startM) : 0,
+    startH: parseNumber(startH) ?? 21,
+    startM: parseNumber(startM) ?? 0,
   };
 }
 
@@ -45,7 +49,7 @@ export function parseTimeSignalQuery(query: ParsedUrlQuery) {
   const { h, m } = query;
 
   return {
-    h: h ? parseNumber(h) : 21,
-    m: m ? parseNumber(m) : 0,
+    h: parseNumber(h) ?? 21,
+    m: parseNumber(m) ?? 0,
   };
 }
