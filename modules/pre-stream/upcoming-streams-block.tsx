@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { format } from 'date-fns';
 import * as React from 'react';
+import { getPrestreamAccentGradient } from './utils';
 import {
   ParsedCurrentStream,
   useCurrentStream,
@@ -15,23 +16,6 @@ export interface UpcomingStreamsBlockProps extends React.ComponentPropsWithoutRe
 interface UpcomingStreamsItemProps extends ParsedCurrentStream {
   variant?: PreStreamVariants;
 }
-
-const renderGradientColor = (type: PreStreamVariants) => {
-  switch (type) {
-    case 'pre-stream': {
-      return 'from-[rgba(26,36,156,0.75)] to-[rgba(36,136,245,0.75)]';
-    }
-    case 'brb': {
-      return 'from-[rgba(0,57,134,0.75)] to-[rgba(31,199,145,0.75)]';
-    }
-    case 'end': {
-      return 'from-[rgba(134,0,0,0.75)] to-[rgba(203,137,29,0.75)]';
-    }
-    default: {
-      return 'from-[rgba(26,36,156,0.75)] to-[rgba(36,136,245,0.75)]';
-    }
-  }
-};
 
 const UpcomingStreamsItem: React.FC<UpcomingStreamsItemProps> = ({
   id,
@@ -52,7 +36,7 @@ const UpcomingStreamsItem: React.FC<UpcomingStreamsItemProps> = ({
       key={id}
       className={clsx(
         'flex flex-col bg-opacity-25 rounded-lg bg-gradient-to-br',
-        renderGradientColor(variant),
+        getPrestreamAccentGradient(variant),
       )}
     >
       {parsedDate && (
