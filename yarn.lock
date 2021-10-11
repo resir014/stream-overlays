@@ -1063,11 +1063,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/montserrat@^4.4.2":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.4.2.tgz#e754ea89d74f9c5fd8fac662e0aa8f31f8996080"
-  integrity sha512-Eg9qi9H/QzHPfBQ9qvivDSdJ00YFgrmr1W/30IaEc6mHqiYI4R+s2J9Gf2GRs4gWVxUfLd9n9icsr0hke7rVgA==
-
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"

@@ -32,7 +32,6 @@
     "@emotion/react": "^11.4.1",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@fontsource/montserrat": "^4.4.2",
     "@headlessui/react": "^1.4.1",
     "@notionhq/client": "^0.4.2",
     "@resir014/chungking-react": "^0.3.1",
