@@ -24,14 +24,6 @@ export function CurrentStreamBlock({ variant = 'pre-stream' }: CurrentStreamBloc
       return <PrestreamCountdown />;
     }
 
-    if (variant === 'brb') {
-      return 'BRB';
-    }
-
-    if (variant === 'end') {
-      return 'ENDING';
-    }
-
     return null;
   };
 
