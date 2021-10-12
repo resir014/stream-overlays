@@ -26,7 +26,7 @@ export const PrestreamCountdown = React.forwardRef<HTMLSpanElement, PrestreamCou
         clamp(
           Math.ceil(topOfTheHour ? (topOfTheHour.getTime() - time.getTime()) / 1000 : 0),
           0,
-          600,
+          1800,
         ),
       [time, topOfTheHour],
     );
