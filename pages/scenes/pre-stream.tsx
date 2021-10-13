@@ -5,6 +5,7 @@ import { OverlayRoot } from '~/components/overlay';
 import { PreStreamContent } from '~/modules/pre-stream/pre-stream-content';
 import { PreStreamHeader } from '~/modules/pre-stream/pre-stream-header';
 import { CurrentStreamBlock } from '~/modules/pre-stream/current-stream-block';
+import { UpcomingStreamsBlock } from '~/modules/pre-stream/upcoming-streams-block';
 import { ChatPanel } from '~/modules/pre-stream/chat-panel';
 import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
 
@@ -17,6 +18,7 @@ const PrestreamScenePage: NextPage = () => {
             <PreStreamHeader headerText="Stream starting soon." variant="pre-stream" />
             <PreStreamContent>
               <ChatPanel />
+              <UpcomingStreamsBlock />
             </PreStreamContent>
             <CurrentStreamBlock variant="pre-stream" />
           </div>
