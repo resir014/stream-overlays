@@ -115,19 +115,21 @@ export const UpcomingStreamsBlock = React.forwardRef<HTMLDivElement, UpcomingStr
     return (
       <div
         ref={ref}
-        className={clsx('flex flex-col justify-end flex-1 h-full space-y-8', className)}
+        className={clsx('flex flex-col justify-end flex-1 h-full space-y-10', className)}
         {...rest}
       >
-        <div className="flex flex-row items-start space-x-4">
+        <div className="flex flex-row items-start space-x-4 text-chungking-white">
+          <h1 className="text-4xl leading-none font-bold">Upcoming Streams</h1>
           <div className="flex items-center h-9">
             <div className={clsx('block w-4 h-4 rounded-full', getPrestreamAccentColor(variant))} />
           </div>
-          <div className="space-y-2 text-chungking-white">
-            <h1 className="text-4xl leading-none font-bold">Upcoming Streams</h1>
-            <p className="text-xl leading-none">(schedules subject to change)</p>
-          </div>
         </div>
-        <div className="space-y-6">{renderUpcomingStreams()}</div>
+        <div className="space-y-6 flex-1">{renderUpcomingStreams()}</div>
+        <div className="flex flex-row items-center text-chungking-white space-x-4">
+          <p className="text-3xl leading-none font-bold">INFO</p>
+          <div className={clsx('block w-4 h-4 rounded-full', getPrestreamAccentColor(variant))} />
+          <p className="text-3xl leading-none">Schedules are subject to change.</p>
+        </div>
       </div>
     );
   },
