@@ -32,10 +32,10 @@ export function PreStreamHeader({ headerText, variant = 'pre-stream' }: PreStrea
         </div>
         {headerText && (
           <div className="flex flex-row items-center space-x-4">
-            <div className={clsx('block w-4 h-4 rounded-full', getPrestreamAccentColor(variant))} />
             <div className="flex flex-row space-x-4 text-3xl leading-none text-chungking-white">
               <span className="inline-block">{headerText}</span>
             </div>
+            <div className={clsx('block w-4 h-4 rounded-full', getPrestreamAccentColor(variant))} />
           </div>
         )}
       </div>
