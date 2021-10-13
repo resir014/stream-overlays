@@ -30,7 +30,7 @@ export function CurrentStreamBlock({ variant = 'pre-stream' }: CurrentStreamBloc
   return (
     <div className="flex flex-row items-start px-12 pt-10 pb-12 space-x-4">
       <div className="flex flex-row items-center justify-between flex-1 space-x-6">
-        <div className="space-y-2">
+        <div className="space-y-2 flex-1">
           <div className="flex flex-row items-end space-x-6">
             <h1 className="text-chungking-white text-6xl leading-none max-w-[75%] font-bold">
               {currentStream?.stream_name ?? 'Untitled Stream'}
