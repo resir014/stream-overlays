@@ -29,13 +29,13 @@ const UpcomingStreamsSkeleton: React.FC<Pick<UpcomingStreamsItemProps, 'variant'
         )}
       >
         <div className="space-y-2">
-          <div className="h-[30px] w-12 rounded-md bg-chungking-grey-500 bg-opacity-75" />
-          <div className="h-[18px] w-12 rounded-md bg-chungking-grey-500 bg-opacity-75" />
+          <div className="h-9 w-12 rounded-md bg-chungking-grey-500 bg-opacity-75" />
+          <div className="h-5 w-12 rounded-md bg-chungking-grey-500 bg-opacity-75" />
         </div>
       </div>
       <div className="flex flex-col flex-1 text-chungking-white space-y-2">
-        <div className="h-[30px] w-32 rounded-md bg-chungking-grey-500 bg-opacity-75" />
-        <div className="h-[18px] w-96 rounded-md bg-chungking-grey-500 bg-opacity-75" />
+        <div className="h-9 w-32 rounded-md bg-chungking-grey-500 bg-opacity-75" />
+        <div className="h-5 w-96 rounded-md bg-chungking-grey-500 bg-opacity-75" />
       </div>
     </div>
   );
@@ -65,8 +65,8 @@ const UpcomingStreamsItem: React.FC<UpcomingStreamsItemProps> = ({
           )}
         >
           <div className="space-y-2">
-            <p className="text-3xl leading-none font-semibold">{format(parsedDate, 'dd')}</p>
-            <p className="text-lg leading-none">{format(parsedDate, 'MMM')}</p>
+            <p className="text-4xl leading-none font-semibold">{format(parsedDate, 'dd')}</p>
+            <p className="text-xl leading-none">{format(parsedDate, 'MMM')}</p>
           </div>
         </div>
       ) : (
@@ -77,14 +77,14 @@ const UpcomingStreamsItem: React.FC<UpcomingStreamsItemProps> = ({
           )}
         >
           <div className="space-y-2">
-            <div className="h-[30px] w-12 rounded-md bg-chungking-grey-500 bg-opacity-75" />
-            <div className="h-[18px] w-12 rounded-md bg-chungking-grey-500 bg-opacity-75" />
+            <div className="h-9 w-12 rounded-md bg-chungking-grey-500 bg-opacity-75" />
+            <div className="h-5 w-12 rounded-md bg-chungking-grey-500 bg-opacity-75" />
           </div>
         </div>
       )}
       <div className="flex flex-col flex-1 text-chungking-white space-y-2">
-        <h2 className="font-semibold text-3xl leading-none">{stream_name}</h2>
-        <p className="text-lg leading-none">{description}</p>
+        <h2 className="font-semibold text-4xl leading-none">{stream_name}</h2>
+        <p className="text-xl leading-none">{description}</p>
       </div>
     </div>
   );
@@ -118,7 +118,7 @@ export const UpcomingStreamsBlock = React.forwardRef<HTMLDivElement, UpcomingStr
         className={clsx('flex flex-col justify-end flex-1 h-full space-y-10', className)}
         {...rest}
       >
-        <div className="flex flex-row items-start space-x-4 text-chungking-white">
+        <div className="flex flex-row items-center space-x-4 text-chungking-white">
           <h1 className="text-4xl leading-none font-bold">Upcoming Streams</h1>
           <div className="flex items-center h-9">
             <div className={clsx('block w-4 h-4 rounded-full', getPrestreamAccentColor(variant))} />

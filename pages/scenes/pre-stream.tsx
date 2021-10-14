@@ -18,7 +18,7 @@ const PrestreamScenePage: NextPage = () => {
             <PreStreamHeader headerText="Stream starting soon." variant="pre-stream" />
             <PreStreamContent>
               <ChatPanel />
-              <UpcomingStreamsBlock />
+              <UpcomingStreamsBlock variant="pre-stream" />
             </PreStreamContent>
             <CurrentStreamBlock variant="pre-stream" />
           </div>

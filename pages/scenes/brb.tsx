@@ -5,6 +5,7 @@ import { OverlayRoot } from '~/components/overlay';
 import { PreStreamHeader } from '~/modules/pre-stream/pre-stream-header';
 import { PreStreamContent } from '~/modules/pre-stream/pre-stream-content';
 import { CurrentStreamBlock } from '~/modules/pre-stream/current-stream-block';
+import { UpcomingStreamsBlock } from '~/modules/pre-stream/upcoming-streams-block';
 import { ChatPanel } from '~/modules/pre-stream/chat-panel';
 import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
 
@@ -17,6 +18,7 @@ const BeRightBackScenePage: NextPage = () => {
             <PreStreamHeader headerText="Please stand by..." variant="brb" />
             <PreStreamContent>
               <ChatPanel />
+              <UpcomingStreamsBlock variant="brb" />
             </PreStreamContent>
             <CurrentStreamBlock variant="brb" />
           </div>
