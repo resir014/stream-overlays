@@ -39,7 +39,8 @@ const handler: NextApiHandler = async (req, res) => {
         const data = results.map(({ id, properties }) => ({
           id,
           date: properties.Date.type === 'date' ? properties.Date.date.start : undefined,
-          series: properties.Series.type === 'select' ? properties.Series.select.name : undefined,
+          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+          series: properties.Series.type === 'select' ? properties.Series.select?.name : undefined,
           category:
             properties.Category.type === 'multi_select'
               ? properties.Category.multi_select.map(select => select.name)
