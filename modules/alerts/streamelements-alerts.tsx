@@ -1,19 +1,27 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import { nanoid } from 'nanoid';
+import { useRouter } from 'next/router';
 import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '../alert-manager';
 import {
   allowedEventListeners,
   StreamElementsEvent,
   useStreamElementsSocket,
 } from '~/lib/streamelements';
+import { parseString } from '~/lib/query-parser';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
 export const StreamElementsAlerts: React.FC = () => {
+  const router = useRouter();
   const [events, setEvents] = React.useState<StreamElementsEvent[]>([]);
   const [stale, setStale] = React.useState(false);
   const [current, setCurrent] = React.useState<StreamElementsEvent | undefined>(undefined);
+
+  const isTest = React.useMemo(
+    () => !!parseString(router.query.isTest) || undefined,
+    [router.query.isTest],
+  );
 
   const addEvents = (eventData: StreamElementsEvent) => {
     setEvents(prev => [eventData, ...prev]);
@@ -25,8 +33,8 @@ export const StreamElementsAlerts: React.FC = () => {
   };
 
   useStreamElementsSocket({
+    isTest,
     token: process.env.NEXT_PUBLIC_STREAMELEMENTS_ACCESS_TOKEN,
-    isTest: true,
     handler: eventData => {
       console.log('[StreamElementsAlerts] Event:', eventData);
 
