@@ -36,5 +36,5 @@ function IndexPage(): JSX.Element {
 }
 
 export default createNextPage(IndexPage, {
-  layout: page => <DashboardLayout>{page}</DashboardLayout>,
+  layout: DashboardLayout,
 });

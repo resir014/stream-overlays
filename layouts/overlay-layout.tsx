@@ -1,11 +1,6 @@
 import * as React from 'react';
+import { LayoutType } from '.';
 
-export const OverlayLayout = React.forwardRef<HTMLDivElement, React.HTMLProps<'div'>>(
-  ({ children }, ref) => (
-    <div ref={ref} className="flex flex-col w-full h-screen bg-transparent overflow-hidden">
-      {children}
-    </div>
-  ),
-);
-
-OverlayLayout.displayName = 'OverlayLayout';
+export const OverlayLayout: LayoutType = page => {
+  return <div className="flex flex-col w-full h-screen bg-transparent overflow-hidden">{page}</div>;
+};

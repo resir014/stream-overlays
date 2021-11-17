@@ -2,15 +2,14 @@
 
 import * as React from 'react';
 
+import { LayoutType } from '.';
 import { DashboardHeader, DashboardRoot } from '~/components/dashboard';
 
-export const DashboardLayout: React.FC = ({ children }) => {
+export const DashboardLayout: LayoutType = page => {
   return (
     <DashboardRoot>
       <DashboardHeader />
-      {children}
+      {page}
     </DashboardRoot>
   );
 };
-
-DashboardLayout.displayName = 'DashboardLayout';
