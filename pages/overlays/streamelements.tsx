@@ -1,14 +1,12 @@
-import { NextPage } from 'next';
 import * as React from 'react';
-import { OverlayRoot } from '~/components/overlay';
+import { OverlayLayout } from '~/layouts/overlay-layout';
+import { createNextPage } from '~/lib/create-next-page';
 import { StreamElementsAlerts } from '~/modules/alerts/streamelements-alerts';
 
-const AlertsOverlayPage: NextPage = () => {
-  return (
-    <OverlayRoot>
-      <StreamElementsAlerts />
-    </OverlayRoot>
-  );
-};
+function StreamElementsOverlayPage() {
+  return <StreamElementsAlerts />;
+}
 
-export default AlertsOverlayPage;
+export default createNextPage(StreamElementsOverlayPage, {
+  layout: OverlayLayout,
+});

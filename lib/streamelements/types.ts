@@ -1,18 +1,3 @@
-export type StreamEventTypes =
-  | 'donation'
-  | 'follow'
-  | 'subscription'
-  | 'resub'
-  | 'host'
-  | 'bits'
-  | 'raid';
-
-export interface BaseMessage {
-  _id: string;
-  name: string;
-  [key: string]: any;
-}
-
 export type StreamElementsEvent =
   | {
       listener: 'tip-latest';
