@@ -1,14 +1,13 @@
 import { NextPage } from 'next';
 import * as React from 'react';
-import { OverlayRoot } from '~/components/overlay';
+import { OverlayLayout } from '~/layouts/overlay-layout';
+import { createNextPage } from '~/lib/create-next-page';
 import { BottomBar } from '~/modules/bottom-bar';
 
 const BottomBarNYEPage: NextPage = () => {
-  return (
-    <OverlayRoot>
-      <BottomBar variant="nye" />
-    </OverlayRoot>
-  );
+  return <BottomBar variant="nye" />;
 };
 
-export default BottomBarNYEPage;
+export default createNextPage(BottomBarNYEPage, {
+  layout: OverlayLayout,
+});

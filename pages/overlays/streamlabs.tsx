@@ -1,14 +1,12 @@
-import { NextPage } from 'next';
 import * as React from 'react';
-import { OverlayRoot } from '~/components/overlay';
+import { OverlayLayout } from '~/layouts/overlay-layout';
+import { createNextPage } from '~/lib/create-next-page';
 import { StreamlabsAlerts } from '~/modules/alerts/streamlabs-alerts';
 
-const AlertsOverlayPage: NextPage = () => {
-  return (
-    <OverlayRoot>
-      <StreamlabsAlerts />
-    </OverlayRoot>
-  );
-};
+function AlertsOverlayPage() {
+  return <StreamlabsAlerts />;
+}
 
-export default AlertsOverlayPage;
+export default createNextPage(AlertsOverlayPage, {
+  layout: OverlayLayout,
+});

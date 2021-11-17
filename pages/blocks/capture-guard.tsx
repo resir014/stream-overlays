@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { NextPage } from 'next';
-import { OverlayRoot } from '~/components/overlay';
+import { createNextPage } from '~/lib/create-next-page';
+import { OverlayLayout } from '~/layouts/overlay-layout';
 
 const CaptureGuardBlock: NextPage = () => {
   return (
-    <OverlayRoot>
-      <div className="flex flex-auto items-center justify-center bg-chungking-black border-4 border-chungking-green-500">
-        <span className="inline-block max-w-[480px] text-4xl text-chungking-white font-semibold">
-          if you&apos;re reading this then something bad happened
-        </span>
-      </div>
-    </OverlayRoot>
+    <div className="flex flex-auto items-center justify-center bg-chungking-black border-4 border-chungking-green-500">
+      <span className="inline-block max-w-[480px] text-4xl text-chungking-white font-semibold">
+        if you&apos;re reading this then something bad happened
+      </span>
+    </div>
   );
 };
 
-export default CaptureGuardBlock;
+export default createNextPage(CaptureGuardBlock, {
+  layout: OverlayLayout,
+});
