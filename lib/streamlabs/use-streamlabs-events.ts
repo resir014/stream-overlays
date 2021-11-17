@@ -7,7 +7,8 @@ import { StreamlabsEvent } from './types';
 export function useStreamlabsSocket(handler?: (eventData: StreamlabsEvent) => void) {
   const handleSocketEvent = React.useCallback(
     (eventData: StreamlabsEvent) => {
-      console.log(eventData);
+      console.log('[Streamlabs] Event:', eventData);
+
       if (handler) {
         handler(eventData);
       }
