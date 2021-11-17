@@ -2,7 +2,8 @@ import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { OverlayRoot } from '~/components/overlay';
+import { OverlayLayout } from '~/layouts/overlay-layout';
+import { createNextPage } from '~/lib/create-next-page';
 import { parseTimeSignalQuery } from '~/lib/query-parser';
 
 const TimeSignalWrapper = dynamic(() => import('~/modules/time-signal/time-signal-wrapper'), {
@@ -14,11 +15,9 @@ const TimeSignalPage: NextPage = () => {
 
   const { h, m } = React.useMemo(() => parseTimeSignalQuery(router.query), [router.query]);
 
-  return (
-    <OverlayRoot>
-      <TimeSignalWrapper startH={h} startM={m} />
-    </OverlayRoot>
-  );
+  return <TimeSignalWrapper startH={h} startM={m} />;
 };
 
-export default TimeSignalPage;
+export default createNextPage(TimeSignalPage, {
+  layout: OverlayLayout,
+});

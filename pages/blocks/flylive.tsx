@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { NextPage } from 'next';
-import { OverlayRoot } from '~/components/overlay';
 import FlyLiveStats from '~/modules/flightsim/flylive-stats';
+import { createNextPage } from '~/lib/create-next-page';
+import { OverlayLayout } from '~/layouts/overlay-layout';
 
 const FlyLiveOverlayPage: NextPage = () => {
-  return (
-    <OverlayRoot>
-      <FlyLiveStats />
-    </OverlayRoot>
-  );
+  return <FlyLiveStats />;
 };
 
-export default FlyLiveOverlayPage;
+export default createNextPage(FlyLiveOverlayPage, {
+  layout: OverlayLayout,
+});

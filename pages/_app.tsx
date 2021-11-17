@@ -1,22 +1,25 @@
 import * as React from 'react';
-import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
 
 import { ChungkingProvider } from '@resir014/chungking-react';
+import { NextAppProps } from '~/interfaces/next';
 import emotionCache from '~/lib/emotion-cache';
 
 import '~/styles/fonts';
 import '~/styles/globals.css';
 
-export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+export default function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
+  const getLayout = Component.layout ?? ((children: JSX.Element) => children);
+  const page = getLayout(<Component {...pageProps} />);
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <ChungkingProvider disableResetCSS disableInjection>
-        <Component {...pageProps} />
+        {page}
       </ChungkingProvider>
     </CacheProvider>
   );
