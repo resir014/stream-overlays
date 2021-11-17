@@ -4,21 +4,16 @@ import * as React from 'react';
 import io from 'socket.io-client';
 import { StreamlabsEvent } from './types';
 
-export function useStreamlabsEvents() {
-  const [events, setEvents] = React.useState<StreamlabsEvent[]>([]);
-
-  const addEvents = (eventData: StreamlabsEvent) => {
-    setEvents(prev => [eventData, ...prev]);
-  };
-
-  const handleSocketEvent = React.useCallback((eventData: StreamlabsEvent) => {
-    if (eventData.for === 'twitch_account' || eventData.type === 'donation') {
-      addEvents({ id: eventData.message[0]._id, ...eventData });
-    } else {
-      // default case
+export function useStreamlabsSocket(handler?: (eventData: StreamlabsEvent) => void) {
+  const handleSocketEvent = React.useCallback(
+    (eventData: StreamlabsEvent) => {
       console.log(eventData);
-    }
-  }, []);
+      if (handler) {
+        handler(eventData);
+      }
+    },
+    [handler],
+  );
 
   React.useEffect(() => {
     const client = io(
@@ -34,6 +29,4 @@ export function useStreamlabsEvents() {
       client.off('event', handleSocketEvent);
     };
   }, [handleSocketEvent]);
-
-  return { events, setEvents };
 }

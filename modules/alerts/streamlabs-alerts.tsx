@@ -1,19 +1,32 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '../alert-manager';
-import { useStreamlabsEvents, StreamlabsEvent } from '~/lib/streamlabs';
+import { useStreamlabsSocket, StreamlabsEvent } from '~/lib/streamlabs';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
 export const StreamlabsAlerts: React.FC = () => {
-  const { events, setEvents } = useStreamlabsEvents();
+  const [events, setEvents] = React.useState<StreamlabsEvent[]>([]);
   const [stale, setStale] = React.useState(false);
   const [current, setCurrent] = React.useState<StreamlabsEvent | undefined>(undefined);
+
+  const addEvents = (eventData: StreamlabsEvent) => {
+    setEvents(prev => [eventData, ...prev]);
+  };
 
   const addEventToQueue = (eventData: StreamlabsEvent) => {
     setCurrent(eventData);
     setStale(false);
   };
+
+  useStreamlabsSocket(eventData => {
+    if (eventData.for === 'twitch_account' || eventData.type === 'donation') {
+      addEvents({ id: eventData.message[0]._id, ...eventData });
+    } else {
+      // default case
+      console.log(eventData);
+    }
+  });
 
   React.useEffect(() => {
     console.log('[DEBUG] current event', current);
