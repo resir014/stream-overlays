@@ -1,2 +1,2 @@
 export * from './types';
-export * from './use-streamlabs-events';
+export * from './use-streamlabs-socket';

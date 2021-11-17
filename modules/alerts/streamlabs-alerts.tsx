@@ -1,23 +1,36 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '../alert-manager';
-import { useStreamlabsEvents, StreamlabsEvent } from '~/lib/streamlabs';
+import { useStreamlabsSocket, StreamlabsEvent } from '~/lib/streamlabs';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
 export const StreamlabsAlerts: React.FC = () => {
-  const { events, setEvents } = useStreamlabsEvents();
+  const [events, setEvents] = React.useState<StreamlabsEvent[]>([]);
   const [stale, setStale] = React.useState(false);
   const [current, setCurrent] = React.useState<StreamlabsEvent | undefined>(undefined);
+
+  const addEvents = (eventData: StreamlabsEvent) => {
+    setEvents(prev => [eventData, ...prev]);
+  };
 
   const addEventToQueue = (eventData: StreamlabsEvent) => {
     setCurrent(eventData);
     setStale(false);
   };
 
+  useStreamlabsSocket(eventData => {
+    if (eventData.for === 'twitch_account' || eventData.type === 'donation') {
+      addEvents({ id: eventData.message[0]._id, ...eventData });
+    } else {
+      // default case
+      console.log('[StreamlabsAlerts] unprocessed event:', eventData);
+    }
+  });
+
   React.useEffect(() => {
-    console.log('[DEBUG] current event', current);
-    console.log('[DEBUG] stale?', stale);
+    console.log('[StreamlabsAlerts] current event:', current);
+    console.log('[StreamlabsAlerts] stale?', stale);
 
     const onRemove = (id?: string) => {
       setStale(true);
@@ -140,7 +153,7 @@ export const StreamlabsAlerts: React.FC = () => {
           }
           default: {
             // default case
-            console.log('[DEBUG] unprocessed event:', eventData);
+            console.log('[StreamlabsAlerts] unprocessed event:', eventData);
             break;
           }
         }
@@ -154,8 +167,8 @@ export const StreamlabsAlerts: React.FC = () => {
 
   React.useEffect(() => {
     const [recent] = events;
-    console.log('[DEBUG] events.length', events.length);
-    console.log('[DEBUG] events', events);
+    console.log('[StreamlabsAlerts] events.length', events.length);
+    console.log('[StreamlabsAlerts] events', events);
 
     if (events.length > 0) {
       setTimeout(() => {
