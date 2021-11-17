@@ -24,13 +24,13 @@ export const StreamlabsAlerts: React.FC = () => {
       addEvents({ id: eventData.message[0]._id, ...eventData });
     } else {
       // default case
-      console.log(eventData);
+      console.log('[StreamlabsAlerts] unprocessed event:', eventData);
     }
   });
 
   React.useEffect(() => {
-    console.log('[DEBUG] current event', current);
-    console.log('[DEBUG] stale?', stale);
+    console.log('[StreamlabsAlerts] current event:', current);
+    console.log('[StreamlabsAlerts] stale?', stale);
 
     const onRemove = (id?: string) => {
       setStale(true);
@@ -153,7 +153,7 @@ export const StreamlabsAlerts: React.FC = () => {
           }
           default: {
             // default case
-            console.log('[DEBUG] unprocessed event:', eventData);
+            console.log('[StreamlabsAlerts] unprocessed event:', eventData);
             break;
           }
         }
@@ -167,8 +167,8 @@ export const StreamlabsAlerts: React.FC = () => {
 
   React.useEffect(() => {
     const [recent] = events;
-    console.log('[DEBUG] events.length', events.length);
-    console.log('[DEBUG] events', events);
+    console.log('[StreamlabsAlerts] events.length', events.length);
+    console.log('[StreamlabsAlerts] events', events);
 
     if (events.length > 0) {
       setTimeout(() => {
