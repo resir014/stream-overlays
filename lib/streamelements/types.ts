@@ -1,21 +1,15 @@
-export type StreamElementsEvent = { id?: string } & (
-  | {
-      listener: 'tip-latest';
-      event: {
-        name: string;
-        amount: number;
-        message: string;
-      };
-    }
-  | {
-      listener: 'follower-latest';
-      event: {
-        name: 'string';
-      };
-    }
-  | {
-      listener: 'subscriber-latest';
-      event: {
+export type StreamElementsEventBase<Listener extends string, Event extends {}> = {
+  _id?: string;
+  listener: Listener;
+  event: Event;
+};
+
+export type StreamElementsEvent =
+  | StreamElementsEventBase<'tip-latest', { name: string; amount: number; message: string }>
+  | StreamElementsEventBase<'follower-latest', { name: string }>
+  | StreamElementsEventBase<
+      'subscriber-latest',
+      {
         name: string;
         amount: number;
         message: string;
@@ -23,28 +17,8 @@ export type StreamElementsEvent = { id?: string } & (
         gifted: boolean;
         bulkGifted: boolean;
         sender?: string;
-      };
-    }
-  | {
-      listener: 'host-latest';
-      event: {
-        name: string;
-        amount: number;
-      };
-    }
-  | {
-      listener: 'cheer-latest';
-      event: {
-        name: string;
-        amount: number;
-        message: string;
-      };
-    }
-  | {
-      listener: 'raid-latest';
-      event: {
-        name: string;
-        amount: number;
-      };
-    }
-);
+      }
+    >
+  | StreamElementsEventBase<'host-latest', { name: string; amount: number }>
+  | StreamElementsEventBase<'cheer-latest', { name: string; amount: number; message: string }>
+  | StreamElementsEventBase<'raid-latest', { name: string; amount: number }>;

@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as React from 'react';
 import { nanoid } from 'nanoid';
 import { useRouter } from 'next/router';
@@ -40,7 +40,7 @@ export const StreamElementsAlerts: React.FC = () => {
 
       if (allowedEventListeners.includes(eventData.listener)) {
         // Add unique id to allow for removal when the alert is stale
-        addEvents({ id: nanoid(), ...eventData });
+        addEvents({ _id: nanoid(), ...eventData });
       }
     },
   });
@@ -52,7 +52,7 @@ export const StreamElementsAlerts: React.FC = () => {
     const onRemove = (id?: string) => {
       setStale(true);
       setCurrent(undefined);
-      setEvents(prev => prev.filter(event => event.id !== id));
+      setEvents(prev => prev.filter(event => event._id !== id));
     };
 
     const handleToaster = (eventData: StreamElementsEvent) => {
@@ -65,7 +65,7 @@ export const StreamElementsAlerts: React.FC = () => {
           }).format(eventData.event.amount);
 
           alert.sendAlert({
-            id: eventData.id,
+            id: eventData._id,
             content: (
               <AlertToast
                 title="Donation"
@@ -81,7 +81,7 @@ export const StreamElementsAlerts: React.FC = () => {
         }
         case 'follower-latest': {
           alert.sendAlert({
-            id: eventData.id,
+            id: eventData._id,
             content: <AlertToast title="Follow" variant="follow" content={eventData.event.name} />,
             dismissAfter,
             onRemove,
@@ -96,7 +96,7 @@ export const StreamElementsAlerts: React.FC = () => {
             const { amount } = eventData.event;
 
             alert.sendAlert({
-              id: eventData.id,
+              id: eventData._id,
               content: (
                 <AlertToast
                   title="Gift Sub"
@@ -110,7 +110,7 @@ export const StreamElementsAlerts: React.FC = () => {
           } else if (gifted) {
             // Gift
             alert.sendAlert({
-              id: eventData.id,
+              id: eventData._id,
               content: (
                 <AlertToast
                   title="Gift Sub"
@@ -127,7 +127,7 @@ export const StreamElementsAlerts: React.FC = () => {
             if (amount > 1) {
               // Resub
               alert.sendAlert({
-                id: eventData.id,
+                id: eventData._id,
                 content: (
                   <AlertToast title="Resub" variant="resub" content={`${name} (×${amount})`} />
                 ),
@@ -137,7 +137,7 @@ export const StreamElementsAlerts: React.FC = () => {
             } else {
               // First sub
               alert.sendAlert({
-                id: eventData.id,
+                id: eventData._id,
                 content: (
                   <AlertToast
                     title={tier === 'prime' ? 'Prime Sub' : 'Subscriber'}
@@ -158,7 +158,7 @@ export const StreamElementsAlerts: React.FC = () => {
           const amount = new Intl.NumberFormat('en-GB').format(eventData.event.amount);
 
           alert.sendAlert({
-            id: eventData.id,
+            id: eventData._id,
             content: (
               <AlertToast
                 title="Host"
@@ -177,7 +177,7 @@ export const StreamElementsAlerts: React.FC = () => {
           const amount = new Intl.NumberFormat('en-GB').format(eventData.event.amount);
 
           alert.sendAlert({
-            id: eventData.id,
+            id: eventData._id,
             content: (
               <AlertToast
                 title="Bits"
@@ -196,7 +196,7 @@ export const StreamElementsAlerts: React.FC = () => {
           const amount = new Intl.NumberFormat('en-GB').format(eventData.event.amount);
 
           alert.sendAlert({
-            id: eventData.id,
+            id: eventData._id,
             content: (
               <AlertToast
                 title="Raid"
