@@ -1,3 +1,12 @@
+export type AlertEventTypes =
+  | 'donation'
+  | 'follow'
+  | 'subscription'
+  | 'resub'
+  | 'host'
+  | 'bits'
+  | 'raid';
+
 export interface AlertSettings {
   id?: string;
   index?: number;

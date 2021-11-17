@@ -1,17 +1,17 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import * as React from 'react';
+import { AlertEventTypes } from '.';
 import alertsAudio from '~/lib/data/alerts-audio';
-import { StreamlabsEventTypes } from '~/lib/streamlabs';
 
 interface AlertToastProps extends React.ComponentPropsWithoutRef<'div'> {
   title: string;
   recipient?: string;
   content: string;
-  variant?: StreamlabsEventTypes;
+  variant?: AlertEventTypes;
 }
 
-function alertToastVariants(variant?: StreamlabsEventTypes) {
+function alertToastVariants(variant?: AlertEventTypes) {
   switch (variant) {
     case 'donation': {
       return 'bg-chungking-green-300 text-chungking-black';

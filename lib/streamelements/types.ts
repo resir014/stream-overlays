@@ -1,4 +1,4 @@
-export type StreamElementsEvent =
+export type StreamElementsEvent = { id?: string } & (
   | {
       listener: 'tip-latest';
       event: {
@@ -46,4 +46,5 @@ export type StreamElementsEvent =
         name: string;
         amount: number;
       };
-    };
+    }
+);

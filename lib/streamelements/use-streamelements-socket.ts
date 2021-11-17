@@ -4,6 +4,15 @@ import * as React from 'react';
 import io from 'socket.io-client';
 import { StreamElementsEvent } from './types';
 
+export const allowedEventListeners = [
+  'tip-latest',
+  'follower-latest',
+  'subscriber-latest',
+  'host-latest',
+  'cheer-latest',
+  'raid-latest',
+];
+
 export interface UseStreamElementsSocketOptions {
   token?: string;
   handler?: (eventData: StreamElementsEvent) => void;
