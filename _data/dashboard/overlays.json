@@ -4,6 +4,10 @@
     "url": "/overlays/streamlabs"
   },
   {
+    "title": "StreamElements",
+    "url": "/overlays/streamelements"
+  },
+  {
     "title": "Saweria",
     "url": "/overlays/saweria"
   }
