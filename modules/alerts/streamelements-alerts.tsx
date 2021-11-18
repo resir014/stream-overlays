@@ -35,12 +35,16 @@ export const StreamElementsAlerts: React.FC = () => {
   useStreamElementsSocket({
     isTest,
     token: process.env.NEXT_PUBLIC_STREAMELEMENTS_ACCESS_TOKEN,
-    handler: eventData => {
+    handler: ({ name, listener, ...eventData }) => {
       console.log('[StreamElementsAlerts] Event:', eventData);
 
-      if (allowedEventListeners.includes(eventData.listener)) {
+      if (allowedEventListeners.includes(name || listener)) {
         // Add unique id to allow for removal when the alert is stale
-        addEvents({ _id: nanoid(), ...eventData });
+        addEvents({
+          _id: nanoid(),
+          listener: name ?? listener,
+          ...eventData,
+        } as StreamElementsEvent);
       }
     },
   });

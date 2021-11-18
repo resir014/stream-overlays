@@ -58,8 +58,6 @@ export function useStreamElementsSocket({
       client.on('event:test', handleSocketEvent);
     } else {
       client.on('event', handleSocketEvent);
-      client.on('event:update', handleSocketEvent);
-      client.on('event:reset', handleSocketEvent);
     }
 
     return () => {
@@ -70,8 +68,6 @@ export function useStreamElementsSocket({
         client.off('event:test', handleSocketEvent);
       } else {
         client.off('event', handleSocketEvent);
-        client.off('event:update', handleSocketEvent);
-        client.off('event:reset', handleSocketEvent);
       }
     };
   }, [token, handleSocketEvent, isTest]);

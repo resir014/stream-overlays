@@ -1,6 +1,7 @@
 export type StreamElementsEventBase<Listener extends string, Event extends {}> = {
   _id?: string;
   listener: Listener;
+  name?: Listener;
   event: Event;
 };
 
