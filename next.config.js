@@ -12,12 +12,17 @@ const nextConfig = {
         ],
       },
       {
-        source: '/(.*)',
+        source: '/',
         headers: [
           {
             key: 'X-Frame-Options',
             value: 'DENY',
           },
+        ],
+      },
+      {
+        source: '/(.*)',
+        headers: [
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
