@@ -35,19 +35,20 @@ export const StreamElementsAlerts: React.FC = () => {
   useStreamElementsSocket({
     isTest,
     token: process.env.NEXT_PUBLIC_STREAMELEMENTS_ACCESS_TOKEN,
-    handler: ({ name, listener, ...eventData }) => {
-      const isEventProcessable = allowedEventListeners.includes(name ?? listener);
+    handler: eventData => {
+      const isEventProcessable = allowedEventListeners.includes(
+        eventData.type ?? eventData.listener,
+      );
 
-      console.log('[StreamElementsAlerts] Event:', { eventData });
-      console.log('[StreamElementsAlerts] Event type:', name ?? listener);
+      console.log('[StreamElementsAlerts] Event type:', eventData.type ?? eventData.listener);
       console.log('[StreamElementsAlerts] is event processable?', isEventProcessable);
 
       if (isEventProcessable) {
         // Add unique id to allow for removal when the alert is stale
         addEvents({
-          _id: nanoid(),
-          listener: name ?? listener,
           ...eventData,
+          _id: eventData._id ?? nanoid(),
+          listener: eventData.type ?? eventData.listener,
         } as StreamElementsEvent);
       }
     },
@@ -65,6 +66,7 @@ export const StreamElementsAlerts: React.FC = () => {
 
     const handleToaster = (eventData: StreamElementsEvent) => {
       switch (eventData.listener) {
+        case 'tip':
         case 'tip-latest': {
           const { name, message } = eventData.event;
           const amount = new Intl.NumberFormat('en-GB', {
@@ -87,6 +89,7 @@ export const StreamElementsAlerts: React.FC = () => {
           });
           break;
         }
+        case 'follow':
         case 'follower-latest': {
           alert.sendAlert({
             id: eventData._id,
@@ -96,8 +99,9 @@ export const StreamElementsAlerts: React.FC = () => {
           });
           break;
         }
+        case 'subscriber':
         case 'subscriber-latest': {
-          const { name, tier, sender, gifted, bulkGifted } = eventData.event;
+          const { name, tier, sender, gifted, bulkGifted, message } = eventData.event;
 
           if (bulkGifted) {
             // Community gift
@@ -119,13 +123,7 @@ export const StreamElementsAlerts: React.FC = () => {
             // Gift
             alert.sendAlert({
               id: eventData._id,
-              content: (
-                <AlertToast
-                  title="Gift Sub"
-                  variant="subscription"
-                  content={`${sender} gifted a sub to ${name}!`}
-                />
-              ),
+              content: <AlertToast title="Gift Sub" variant="subscription" content={message} />,
               dismissAfter,
               onRemove,
             });

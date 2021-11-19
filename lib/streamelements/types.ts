@@ -1,15 +1,19 @@
 export type StreamElementsEventBase<Listener extends string, Event extends {}> = {
   _id?: string;
+  channel?: string;
+  provider?: string;
+  flagged?: boolean;
   listener: Listener;
-  name?: Listener;
+  type?: Listener;
   event: Event;
+  data?: Event;
 };
 
 export type StreamElementsEvent =
-  | StreamElementsEventBase<'tip-latest', { name: string; amount: number; message: string }>
-  | StreamElementsEventBase<'follower-latest', { name: string }>
+  | StreamElementsEventBase<'tip' | 'tip-latest', { name: string; amount: number; message: string }>
+  | StreamElementsEventBase<'follow' | 'follower-latest', { name: string }>
   | StreamElementsEventBase<
-      'subscriber-latest',
+      'subscriber' | 'subscriber-latest',
       {
         name: string;
         amount: number;
@@ -20,6 +24,9 @@ export type StreamElementsEvent =
         sender?: string;
       }
     >
-  | StreamElementsEventBase<'host-latest', { name: string; amount: number }>
-  | StreamElementsEventBase<'cheer-latest', { name: string; amount: number; message: string }>
-  | StreamElementsEventBase<'raid-latest', { name: string; amount: number }>;
+  | StreamElementsEventBase<'host' | 'host-latest', { name: string; amount: number }>
+  | StreamElementsEventBase<
+      'cheer' | 'cheer-latest',
+      { name: string; amount: number; message: string }
+    >
+  | StreamElementsEventBase<'raid' | 'raid-latest', { name: string; amount: number }>;
