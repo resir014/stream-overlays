@@ -36,9 +36,13 @@ export const StreamElementsAlerts: React.FC = () => {
     isTest,
     token: process.env.NEXT_PUBLIC_STREAMELEMENTS_ACCESS_TOKEN,
     handler: ({ name, listener, ...eventData }) => {
-      console.log('[StreamElementsAlerts] Event:', eventData);
+      const isEventProcessable = allowedEventListeners.includes(name ?? listener);
 
-      if (allowedEventListeners.includes(name || listener)) {
+      console.log('[StreamElementsAlerts] Event:', { eventData });
+      console.log('[StreamElementsAlerts] Event type:', name ?? listener);
+      console.log('[StreamElementsAlerts] is event processable?', isEventProcessable);
+
+      if (isEventProcessable) {
         // Add unique id to allow for removal when the alert is stale
         addEvents({
           _id: nanoid(),
