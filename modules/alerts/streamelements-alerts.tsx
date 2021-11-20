@@ -159,6 +159,7 @@ export const StreamElementsAlerts: React.FC = () => {
 
           break;
         }
+        case 'host':
         case 'host-latest': {
           const { name } = eventData.event;
           const amount = new Intl.NumberFormat('en-GB').format(eventData.event.amount);
@@ -178,6 +179,7 @@ export const StreamElementsAlerts: React.FC = () => {
           });
           break;
         }
+        case 'cheer':
         case 'cheer-latest': {
           const { name, message } = eventData.event;
           const amount = new Intl.NumberFormat('en-GB').format(eventData.event.amount);
@@ -197,6 +199,7 @@ export const StreamElementsAlerts: React.FC = () => {
           });
           break;
         }
+        case 'raid':
         case 'raid-latest': {
           const { name } = eventData.event;
           const amount = new Intl.NumberFormat('en-GB').format(eventData.event.amount);
