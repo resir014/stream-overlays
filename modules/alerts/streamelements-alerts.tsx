@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '../alert-manager';
 import {
   allowedEventListeners,
-  StreamElementsEvent,
+  StreamElementsTestEvent,
   useStreamElementsSocket,
 } from '~/lib/streamelements';
 import { parseString } from '~/lib/query-parser';
@@ -14,20 +14,20 @@ const dismissAfter = DEFAULT_DISMISS_DURATION;
 
 export const StreamElementsAlerts: React.FC = () => {
   const router = useRouter();
-  const [events, setEvents] = React.useState<StreamElementsEvent[]>([]);
+  const [events, setEvents] = React.useState<StreamElementsTestEvent[]>([]);
   const [stale, setStale] = React.useState(false);
-  const [current, setCurrent] = React.useState<StreamElementsEvent | undefined>(undefined);
+  const [current, setCurrent] = React.useState<StreamElementsTestEvent | undefined>(undefined);
 
   const isTest = React.useMemo(
     () => !!parseString(router.query.isTest) || undefined,
     [router.query.isTest],
   );
 
-  const addEvents = (eventData: StreamElementsEvent) => {
+  const addEvents = (eventData: StreamElementsTestEvent) => {
     setEvents(prev => [eventData, ...prev]);
   };
 
-  const addEventToQueue = (eventData: StreamElementsEvent) => {
+  const addEventToQueue = (eventData: StreamElementsTestEvent) => {
     setCurrent(eventData);
     setStale(false);
   };
@@ -35,13 +35,13 @@ export const StreamElementsAlerts: React.FC = () => {
   useStreamElementsSocket({
     isTest,
     token: process.env.NEXT_PUBLIC_STREAMELEMENTS_ACCESS_TOKEN,
-    handler: eventData => {
+    handleTestEvent: eventData => {
       const isEventProcessable = allowedEventListeners.includes(
         eventData.type ?? eventData.listener,
       );
 
-      console.log('[StreamElementsAlerts] Event type:', eventData.type ?? eventData.listener);
-      console.log('[StreamElementsAlerts] is event processable?', isEventProcessable);
+      console.log('[StreamElementsAlerts] Test Event type:', eventData.type ?? eventData.listener);
+      console.log('[StreamElementsAlerts] is test event processable?', isEventProcessable);
 
       if (isEventProcessable) {
         // Add unique id to allow for removal when the alert is stale
@@ -49,7 +49,7 @@ export const StreamElementsAlerts: React.FC = () => {
           ...eventData,
           _id: eventData._id ?? nanoid(),
           listener: eventData.type ?? eventData.listener,
-        } as StreamElementsEvent);
+        } as StreamElementsTestEvent);
       }
     },
   });
@@ -64,7 +64,7 @@ export const StreamElementsAlerts: React.FC = () => {
       setEvents(prev => prev.filter(event => event._id !== id));
     };
 
-    const handleToaster = (eventData: StreamElementsEvent) => {
+    const handleToaster = (eventData: StreamElementsTestEvent) => {
       switch (eventData.listener) {
         case 'tip':
         case 'tip-latest': {

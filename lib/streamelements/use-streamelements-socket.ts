@@ -2,12 +2,12 @@
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import io from 'socket.io-client';
-import { StreamElementsEvent } from './types';
+import { StreamElementsEvent, StreamElementsTestEvent } from './types';
 
 export const allowedEventListeners = [
   'tip',
   'tip-latest',
-  'follower',
+  'follow',
   'follower-latest',
   'subscriber',
   'subscriber-latest',
@@ -21,30 +21,31 @@ export const allowedEventListeners = [
 
 export interface UseStreamElementsSocketOptions {
   token?: string;
-  handler?: (eventData: StreamElementsEvent) => void;
+  handleEvent?: (eventData: StreamElementsEvent) => void;
+  handleTestEvent?: (eventData: StreamElementsTestEvent) => void;
   isTest?: boolean;
 }
 
 export function useStreamElementsSocket({
   token,
-  handler,
+  handleTestEvent,
   isTest = false,
 }: UseStreamElementsSocketOptions = {}) {
-  const handleSocketEvent = React.useCallback(
-    ({ listener, type, data, event, ...eventData }: StreamElementsEvent) => {
-      console.log('[StreamElements] Event:', { ...eventData, listener, type, data, event });
+  const handleSocketTestEvent = React.useCallback(
+    ({ listener, type, data, event, ...eventData }: StreamElementsTestEvent) => {
+      console.log('[StreamElements] Test Event:', { ...eventData, listener, type, data, event });
 
       const normalisedEventData = {
         ...eventData,
         listener: type ?? listener,
         event: data ?? event,
-      } as StreamElementsEvent;
+      } as StreamElementsTestEvent;
 
-      if (handler) {
-        handler(normalisedEventData);
+      if (handleTestEvent) {
+        handleTestEvent(normalisedEventData);
       }
     },
-    [handler],
+    [handleTestEvent],
   );
 
   React.useEffect(() => {
@@ -68,15 +69,15 @@ export function useStreamElementsSocket({
     client.on('connect', handleConnect);
     client.on('authenticated', handleAuthenticated);
 
-    client.on('event:test', handleSocketEvent);
-    client.on('event', handleSocketEvent);
+    client.on('event:test', handleSocketTestEvent);
+    client.on('event', handleSocketTestEvent);
 
     return () => {
       client.off('connect', handleConnect);
       client.off('authenticated', handleAuthenticated);
 
-      client.off('event:test', handleSocketEvent);
-      client.off('event', handleSocketEvent);
+      client.off('event:test', handleSocketTestEvent);
+      client.off('event', handleSocketTestEvent);
     };
-  }, [token, handleSocketEvent, isTest]);
+  }, [token, handleSocketTestEvent, isTest]);
 }

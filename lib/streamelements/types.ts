@@ -1,4 +1,4 @@
-export type StreamElementsEventBase<Listener extends string, Event extends {}> = {
+export type StreamElementsTestEventBase<Listener extends string, Event extends {}> = {
   _id?: string;
   channel?: string;
   provider?: string;
@@ -9,10 +9,13 @@ export type StreamElementsEventBase<Listener extends string, Event extends {}> =
   data?: Event;
 };
 
-export type StreamElementsEvent =
-  | StreamElementsEventBase<'tip' | 'tip-latest', { name: string; amount: number; message: string }>
-  | StreamElementsEventBase<'follow' | 'follower-latest', { name: string }>
-  | StreamElementsEventBase<
+export type StreamElementsTestEvent =
+  | StreamElementsTestEventBase<
+      'tip' | 'tip-latest',
+      { name: string; amount: number; message: string }
+    >
+  | StreamElementsTestEventBase<'follow' | 'follower-latest', { name: string }>
+  | StreamElementsTestEventBase<
       'subscriber' | 'subscriber-latest',
       {
         name: string;
@@ -24,9 +27,22 @@ export type StreamElementsEvent =
         sender?: string;
       }
     >
-  | StreamElementsEventBase<'host' | 'host-latest', { name: string; amount: number }>
-  | StreamElementsEventBase<
+  | StreamElementsTestEventBase<'host' | 'host-latest', { name: string; amount: number }>
+  | StreamElementsTestEventBase<
       'cheer' | 'cheer-latest',
       { name: string; amount: number; message: string }
     >
-  | StreamElementsEventBase<'raid' | 'raid-latest', { name: string; amount: number }>;
+  | StreamElementsTestEventBase<'raid' | 'raid-latest', { name: string; amount: number }>;
+
+export type StreamElementsEventBase<Listener extends string, Event extends {}> = {
+  _id: string;
+  channel: string;
+  type: Listener;
+  provider: 'twitch' | 'youtube' | 'facebook';
+  flagged: boolean;
+  data: Event;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type StreamElementsEvent = object;
