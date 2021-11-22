@@ -1,12 +1,12 @@
+export type TwitchSubscriptionTier = '1000' | '2000' | '3000' | 'prime';
+
 export type StreamElementsTestEventBase<Listener extends string, Event extends {}> = {
   _id?: string;
   channel?: string;
   provider?: string;
   flagged?: boolean;
   listener: Listener;
-  type?: Listener;
   event: Event;
-  data?: Event;
 };
 
 export type StreamElementsTestEvent =
@@ -21,7 +21,7 @@ export type StreamElementsTestEvent =
         name: string;
         amount: number;
         message: string;
-        tier: '1000' | '2000' | '3000' | 'prime';
+        tier: TwitchSubscriptionTier;
         gifted: boolean;
         bulkGifted: boolean;
         sender?: string;
@@ -45,4 +45,57 @@ export type StreamElementsEventBase<Listener extends string, Event extends {}> =
   updatedAt: string;
 };
 
-export type StreamElementsEvent = object;
+export type StreamElementsEvent =
+  | StreamElementsEventBase<
+      'tip',
+      {
+        tipId: string;
+        username: string;
+        displayName: string;
+        amount: number;
+        currency: string;
+        message: string;
+      }
+    >
+  | StreamElementsEventBase<'follow', { username: string; displayName: string }>
+  | StreamElementsEventBase<
+      'subscriber',
+      {
+        username: string;
+        displayName: string;
+        amount: number;
+        streak: number;
+        tier: TwitchSubscriptionTier;
+        gifted: boolean;
+        bulkGifted: boolean;
+        message: string;
+        sender?: string;
+      }
+    >
+  | StreamElementsEventBase<
+      'host',
+      {
+        username: string;
+        displayName: string;
+        amount: number;
+      }
+    >
+  | StreamElementsEventBase<
+      'cheer',
+      {
+        username: string;
+        displayName: string;
+        amount: number;
+        streak: number;
+        tier: TwitchSubscriptionTier;
+        message: string;
+      }
+    >
+  | StreamElementsEventBase<
+      'raid',
+      {
+        username: string;
+        displayName: string;
+        amount: number;
+      }
+    >;
