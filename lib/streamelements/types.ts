@@ -12,7 +12,7 @@ export type StreamElementsTestEventBase<Listener extends string, Event extends {
 export type StreamElementsTestEvent =
   | StreamElementsTestEventBase<
       'tip' | 'tip-latest',
-      { name: string; amount: number; message: string }
+      { name: string; username: string; displayName: string; amount: number; message: string }
     >
   | StreamElementsTestEventBase<'follow' | 'follower-latest', { name: string }>
   | StreamElementsTestEventBase<

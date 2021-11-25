@@ -15,7 +15,7 @@ export function handleTestToast({
 }: HandleTestToastOptions) {
   switch (eventData.listener) {
     case 'tip-latest': {
-      const { name, message } = eventData.event;
+      const { displayName, name, message } = eventData.event;
       const amount = new Intl.NumberFormat('en-GB', {
         style: 'currency',
         currency: 'USD',
@@ -27,7 +27,7 @@ export function handleTestToast({
           <AlertToast
             title="Donation"
             variant="donation"
-            recipient={`${name} (${amount})`}
+            recipient={`${displayName || name} (${amount})`}
             content={message}
           />
         ),
