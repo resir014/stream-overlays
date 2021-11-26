@@ -1,11 +1,9 @@
-import { useRouter } from 'next/router';
 import * as React from 'react';
 import { format } from 'date-fns';
 import clsx from 'clsx';
 import { getPrestreamAccentColor } from './utils';
-import { parseStreamTimeQuery } from '~/lib/query-parser';
-import { usePrestreamClock } from '~/lib/pre-stream/use-prestream-clock';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
+import { useClock } from '~/lib/hooks/use-clock';
 
 export interface PreStreamHeaderProps {
   headerText?: string;
@@ -13,12 +11,7 @@ export interface PreStreamHeaderProps {
 }
 
 export function PreStreamHeader({ headerText, variant = 'pre-stream' }: PreStreamHeaderProps) {
-  const router = useRouter();
-  const { startH, startM } = React.useMemo(
-    () => parseStreamTimeQuery(router.query),
-    [router.query],
-  );
-  const { time } = usePrestreamClock(startH, startM);
+  const time = useClock();
 
   return (
     <div className="flex flex-col overflow-hidden">
