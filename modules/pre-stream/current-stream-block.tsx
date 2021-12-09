@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import { PrestreamCountdown } from './pre-stream-countdown';
 import { getPrestreamAccentColor } from './utils';
+import { PrestreamClock } from './pre-stream-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { useCurrentStream } from '~/lib/pre-stream/stream-schedule';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
@@ -20,8 +20,8 @@ export function CurrentStreamBlock({ variant = 'pre-stream' }: CurrentStreamBloc
   });
 
   const renderCountdown = () => {
-    if (clockRendered && variant === 'pre-stream') {
-      return <PrestreamCountdown />;
+    if (clockRendered) {
+      return <PrestreamClock />;
     }
 
     return null;
