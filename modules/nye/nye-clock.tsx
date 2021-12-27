@@ -7,12 +7,10 @@ export default function NYEClock() {
   const time = useClock();
   const ticks: undefined[] = Array<undefined>(60).fill(undefined);
 
-  const [h, m, s] = React.useMemo(
+  const [, , s] = React.useMemo(
     () => [time.getHours(), time.getMinutes(), time.getSeconds()] as const,
     [time],
   );
-
-  console.log(h, m, s);
 
   return (
     <div className="inline-flex flex-col items-center space-y-8 rounded-xl bg-chungking-black px-6 py-12">
