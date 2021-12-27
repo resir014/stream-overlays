@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import * as React from 'react';
+import isValidHex from '~/lib/is-valid-hex';
 
 export interface ClockWatchTickProps extends React.ComponentPropsWithoutRef<'div'> {
   currentSecond: number;
@@ -10,6 +11,18 @@ export interface ClockWatchTickProps extends React.ComponentPropsWithoutRef<'div
 
 export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickProps>(
   ({ className, style, active, currentSecond, hasFace, watchFaceColor = '#33ffd7' }, ref) => {
+    const resolveHexColor = React.useMemo(() => {
+      const normalisedHexColor = watchFaceColor.startsWith('#')
+        ? watchFaceColor
+        : `#${watchFaceColor}`;
+
+      if (isValidHex(normalisedHexColor)) {
+        return normalisedHexColor;
+      }
+
+      return '#33ffd7';
+    }, [watchFaceColor]);
+
     return (
       <div
         ref={ref}
@@ -33,7 +46,7 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
               : 'bg-chungking-white bg-opacity-20',
           )}
           style={{
-            backgroundColor: active || currentSecond === 60 ? watchFaceColor : undefined,
+            backgroundColor: active || currentSecond === 60 ? resolveHexColor : undefined,
           }}
         />
       </div>
