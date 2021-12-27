@@ -2,8 +2,11 @@ import * as React from 'react';
 import { format } from 'date-fns';
 import { ClockWatchTick } from './clock-watch-tick';
 import { useClock } from '~/lib/hooks/use-clock';
+import { useRouter } from 'next/router';
+import { parseString } from '~/lib/query-parser';
 
 export default function NYEClock() {
+  const router = useRouter();
   const time = useClock();
   const ticks: undefined[] = Array<undefined>(60).fill(undefined);
   const timeZoneOptions = new Intl.DateTimeFormat().resolvedOptions();
@@ -11,6 +14,11 @@ export default function NYEClock() {
   const [, , s] = React.useMemo(
     () => [time.getHours(), time.getMinutes(), time.getSeconds()] as const,
     [time],
+  );
+
+  const watchFaceColor = React.useMemo(
+    () => parseString(router.query.watchFaceColor) ?? undefined,
+    [router.query.watchFaceColor],
   );
 
   return (
@@ -25,6 +33,7 @@ export default function NYEClock() {
                 currentSecond={second}
                 hasFace={second % 5 === 0}
                 active={s >= second}
+                watchFaceColor={watchFaceColor}
               />
             );
           })}

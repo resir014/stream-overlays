@@ -5,10 +5,11 @@ export interface ClockWatchTickProps extends React.ComponentPropsWithoutRef<'div
   currentSecond: number;
   active?: boolean;
   hasFace?: boolean;
+  watchFaceColor?: string;
 }
 
 export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickProps>(
-  ({ className, style, active, currentSecond, hasFace }, ref) => {
+  ({ className, style, active, currentSecond, hasFace, watchFaceColor = '#33ffd7' }, ref) => {
     return (
       <div
         ref={ref}
@@ -26,11 +27,14 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
           className={clsx(
             'h-4 w-4 rounded-full',
             active || currentSecond === 60
-              ? 'bg-chungking-turquoise-400'
+              ? undefined
               : hasFace
               ? 'bg-chungking-white'
-              : 'bg-chungking-white bg-opacity-10',
+              : 'bg-chungking-white bg-opacity-20',
           )}
+          style={{
+            backgroundColor: active || currentSecond === 60 ? watchFaceColor : undefined,
+          }}
         />
       </div>
     );
