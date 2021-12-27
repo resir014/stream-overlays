@@ -27,7 +27,7 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
       <div
         ref={ref}
         className={clsx(
-          'flex items-center justify-end absolute top-[172px] left-1/2 w-[180px] h-4',
+          'flex items-center justify-end absolute top-[184px] left-1/2 w-[192px] h-4 space-x-1.5',
           className,
         )}
         style={{
@@ -38,7 +38,7 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
       >
         <div
           className={clsx(
-            'h-4 w-4 rounded-full',
+            'h-3 w-3 rounded-full',
             active || currentSecond === 60
               ? undefined
               : hasFace
@@ -47,6 +47,16 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
           )}
           style={{
             backgroundColor: active || currentSecond === 60 ? resolveHexColor : undefined,
+          }}
+        />
+        <div
+          className="h-3 w-3 rounded-full bg-chungking-white"
+          style={{
+            backgroundColor: hasFace
+              ? active || currentSecond === 60
+                ? resolveHexColor
+                : undefined
+              : 'transparent',
           }}
         />
       </div>
