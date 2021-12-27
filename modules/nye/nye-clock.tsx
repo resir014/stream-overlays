@@ -32,9 +32,9 @@ export default function NYEClock() {
           <div className="flex items-center justify-center w-full h-full bg-chungking-black rounded-full overflow-hidden">
             <div className="space-y-2 text-center text-chungking-white">
               <div className="flex items-center justify-center h-[60px]">
-                <div className="space-y-0">
-                  <p className="text-lg font-bold">{format(time, 'EEEE')}</p>
-                  <p className="text-lg">{format(time, 'dd MMMM yyyy')}</p>
+                <div className="space-y-2">
+                  <p className="text-xl leading-none font-bold">{format(time, 'EEEE')}</p>
+                  <p className="text-xl leading-none">{format(time, 'dd MMMM yyyy')}</p>
                 </div>
               </div>
               <p className="text-8xl leading-none font-mono font-bold">{format(time, 'HH:mm')}</p>
