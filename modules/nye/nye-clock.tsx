@@ -6,6 +6,7 @@ import { useClock } from '~/lib/hooks/use-clock';
 export default function NYEClock() {
   const time = useClock();
   const ticks: undefined[] = Array<undefined>(60).fill(undefined);
+  const timeZoneOptions = new Intl.DateTimeFormat().resolvedOptions();
 
   const [, , s] = React.useMemo(
     () => [time.getHours(), time.getMinutes(), time.getSeconds()] as const,
@@ -44,8 +45,9 @@ export default function NYEClock() {
         </div>
       </div>
       <div className="text-center space-y-2">
-        <p className="text-2xl leading-none font-bold text-chungking-white">Jakarta</p>
-        <p className="text-2xl leading-none text-chungking-white">Indonesia</p>
+        <p className="text-2xl leading-none font-bold text-chungking-white">
+          {timeZoneOptions.timeZone}
+        </p>
       </div>
     </div>
   );
