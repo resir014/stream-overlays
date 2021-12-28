@@ -9,7 +9,7 @@ export const ChatPanel = React.forwardRef<HTMLDivElement, ChatPanelProps>(
       <div
         ref={ref}
         className={clsx(
-          'flex-none w-full max-w-[496px] h-full rounded-lg bg-chungking-black bg-opacity-75',
+          'flex-none w-full max-w-[496px] h-full rounded-xl bg-chungking-black bg-opacity-75',
           className,
         )}
         {...rest}
