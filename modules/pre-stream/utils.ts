@@ -17,7 +17,7 @@ export function getPrestreamAccentGradient(variant: PreStreamVariants) {
   }
 }
 
-export function getPrestreamAccentColor(variant: PreStreamVariants) {
+export function getPrestreamAccentColor(variant: PreStreamVariants = 'pre-stream') {
   switch (variant) {
     case 'pre-stream': {
       return 'bg-chungking-blue-500';
@@ -27,6 +27,9 @@ export function getPrestreamAccentColor(variant: PreStreamVariants) {
     }
     case 'end': {
       return 'bg-chungking-orange-500';
+    }
+    case 'nye': {
+      return 'bg-chungking-turquoise-400';
     }
     default: {
       return 'bg-chungking-blue-500';
