@@ -10,5 +10,9 @@
   {
     "title": "End Scene",
     "url": "/scenes/end"
+  },
+  {
+    "title": "NYE 2022",
+    "url": "/scenes/nye-clock"
   }
 ]
