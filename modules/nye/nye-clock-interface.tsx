@@ -5,7 +5,7 @@ import { ClockWatchTick } from './clock-watch-tick';
 import { useClock } from '~/lib/hooks/use-clock';
 import { parseString } from '~/lib/query-parser';
 
-export default function NYEClock() {
+export function NYEClockInterface() {
   const router = useRouter();
   const time = useClock();
   const ticks: undefined[] = Array<undefined>(60).fill(undefined);

@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 import { PreStreamContent } from '~/modules/pre-stream/pre-stream-content';
 import { ChatPanel } from '~/modules/pre-stream/chat-panel';
 import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
 import { createNextPage } from '~/lib/create-next-page';
 import { NYEHeader } from '~/modules/nye/nye-header';
-
-const NYEClock = dynamic(() => import('~/modules/nye/nye-clock'), {
-  ssr: false,
-});
+import { useOnMount } from '~/lib/hooks/use-on-mount';
+import { NYEClockInterface } from '~/modules/nye/nye-clock-interface';
 
 const NYEClockScenePage: NextPage = () => {
+  const [isClockRendered, setIsClockRendered] = React.useState(false);
+
+  useOnMount(() => {
+    setIsClockRendered(true);
+  });
+
   return (
     <SceneWrapper>
       <div className="flex flex-row items-end justify-between flex-1 w-full">
@@ -20,7 +23,7 @@ const NYEClockScenePage: NextPage = () => {
           <NYEHeader />
           <PreStreamContent>
             <ChatPanel className="max-h-[504px]" />
-            <NYEClock />
+            {isClockRendered && <NYEClockInterface />}
           </PreStreamContent>
         </div>
       </div>
