@@ -1,18 +1,17 @@
-import dynamic from 'next/dynamic';
 import * as React from 'react';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 import { createNextPage } from '~/lib/create-next-page';
-
-const NYEClock = dynamic(() => import('~/modules/nye/nye-clock'), {
-  ssr: false,
-});
+import { useOnMount } from '~/lib/hooks/use-on-mount';
+import { NYEClockInterface } from '~/modules/nye/nye-clock-interface';
 
 function NYEClockPage() {
-  return (
-    <div>
-      <NYEClock />
-    </div>
-  );
+  const [isClockRendered, setIsClockRendered] = React.useState(false);
+
+  useOnMount(() => {
+    setIsClockRendered(true);
+  });
+
+  return <div>{isClockRendered && <NYEClockInterface />}</div>;
 }
 
 export default createNextPage(NYEClockPage, {

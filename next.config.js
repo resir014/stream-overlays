@@ -1,5 +1,8 @@
 /** @type {import("next/dist/next-server/server/config-shared").NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   async headers() {
     return [
       {
