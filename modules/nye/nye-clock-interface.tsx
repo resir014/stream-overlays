@@ -46,7 +46,7 @@ export function NYEClockInterface({ uiFont, watchFaceFont }: NYEClockInterfacePr
       void import('webfontloader').then(mod => {
         mod.default.load({
           google: {
-            families: [uiFont, watchFaceFont].filter(Boolean).map(font => `${font}&display=swap`),
+            families: [uiFont, watchFaceFont].filter(Boolean).map(font => `${font}`),
           },
         });
       });
