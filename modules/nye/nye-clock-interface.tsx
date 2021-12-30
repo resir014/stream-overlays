@@ -28,9 +28,7 @@ export function NYEClockInterface({ fontFamily }: NYEClockInterfaceProps) {
 
   const style = React.useMemo(
     () => ({
-      fontFamily: fontFamily
-        ? `${fontFamily}, system-ui, sans-serif`
-        : 'Inter, system-ui, sans-serif',
+      fontFamily: `${fontFamily ?? 'Inter'}, system-ui, sans-serif`,
     }),
     [fontFamily],
   );
