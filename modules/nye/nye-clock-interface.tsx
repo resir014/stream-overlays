@@ -42,7 +42,7 @@ export function NYEClockInterface({ uiFont, watchFaceFont }: NYEClockInterfacePr
   );
 
   React.useEffect(() => {
-    if (typeof window !== 'undefined' && uiFont) {
+    if (typeof window !== 'undefined' && (uiFont || watchFaceFont)) {
       void import('webfontloader').then(mod => {
         mod.default.load({
           google: {
