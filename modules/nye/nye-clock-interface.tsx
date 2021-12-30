@@ -6,10 +6,11 @@ import { useClock } from '~/lib/hooks/use-clock';
 import { parseString } from '~/lib/query-parser';
 
 export interface NYEClockInterfaceProps {
-  fontFamily?: string;
+  uiFont?: string;
+  watchFaceFont?: string;
 }
 
-export function NYEClockInterface({ fontFamily }: NYEClockInterfaceProps) {
+export function NYEClockInterface({ uiFont, watchFaceFont }: NYEClockInterfaceProps) {
   const router = useRouter();
   const time = useClock();
 
@@ -26,24 +27,31 @@ export function NYEClockInterface({ fontFamily }: NYEClockInterfaceProps) {
     [router.query.watchFaceColor],
   );
 
-  const style = React.useMemo(
+  const watchUIStyle = React.useMemo(
     () => ({
-      fontFamily: `${fontFamily ?? 'Inter'}, system-ui, sans-serif`,
+      fontFamily: `${uiFont ?? 'Inter'}, system-ui, sans-serif`,
     }),
-    [fontFamily],
+    [uiFont],
+  );
+
+  const watchFaceStyle = React.useMemo(
+    () => ({
+      fontFamily: `${watchFaceFont ?? 'JetBrains Mono'}, monospace`,
+    }),
+    [watchFaceFont],
   );
 
   React.useEffect(() => {
-    if (typeof window !== 'undefined' && fontFamily) {
+    if (typeof window !== 'undefined' && uiFont) {
       void import('webfontloader').then(mod => {
         mod.default.load({
           google: {
-            families: [`${fontFamily}&display=swap`],
+            families: [uiFont, watchFaceFont].filter(Boolean).map(font => `${font}&display=swap`),
           },
         });
       });
     }
-  }, [fontFamily]);
+  }, [uiFont, watchFaceFont]);
 
   return (
     <div className="inline-flex flex-col items-center space-y-8 rounded-xl bg-chungking-black px-4 py-8">
@@ -65,25 +73,31 @@ export function NYEClockInterface({ fontFamily }: NYEClockInterfaceProps) {
         <div className="absolute top-0 left-0 w-full h-full p-8">
           <div className="flex flex-col items-center justify-center w-full h-full rounded-full overflow-hidden">
             <div className="flex items-end flex-auto mb-4 text-center text-chungking-white">
-              <div className="space-y-2" style={style}>
+              <div className="space-y-2" style={watchUIStyle}>
                 <p className="text-2xl leading-none font-bold">{format(time, 'EEEE')}</p>
                 <p className="text-2xl leading-none">{format(time, 'dd MMMM yyyy')}</p>
               </div>
             </div>
             <div>
-              <p className="text-8xl leading-none font-mono font-bold text-chungking-white">
+              <p
+                className="text-8xl leading-none font-bold tabular-nums text-chungking-white"
+                style={watchFaceStyle}
+              >
                 {format(time, 'HH:mm')}
               </p>
             </div>
             <div className="flex-auto mt-2">
-              <p className="text-6xl leading-none font-mono font-bold text-chungking-white">
+              <p
+                className="text-6xl leading-none font-bold tabular-nums text-chungking-white"
+                style={watchFaceStyle}
+              >
                 {format(time, 'ss')}
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="text-center space-y-2 text-chungking-white" style={style}>
+      <div className="text-center space-y-2 text-chungking-white" style={watchUIStyle}>
         <p className="text-2xl leading-none font-bold">{timeZoneOptions.timeZone}</p>
       </div>
     </div>

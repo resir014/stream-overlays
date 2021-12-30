@@ -14,12 +14,15 @@ function NYEClockPage() {
     setIsClockRendered(true);
   });
 
-  const font = React.useMemo(
-    () => parseString(router.query.fonts) ?? undefined,
-    [router.query.fonts],
+  const clockProps = React.useMemo(
+    () => ({
+      uiFont: parseString(router.query.uiFont) ?? undefined,
+      watchFaceFont: parseString(router.query.watchFaceFont) ?? undefined,
+    }),
+    [router.query],
   );
 
-  return <div>{isClockRendered && <NYEClockInterface fontFamily={font} />}</div>;
+  return <div>{isClockRendered && <NYEClockInterface {...clockProps} />}</div>;
 }
 
 export default createNextPage(NYEClockPage, {
