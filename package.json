@@ -56,7 +56,8 @@
     "styled-system": "^5.1.5",
     "swr": "^1.0.0",
     "text-case": "^1.0.9",
-    "typeface-inter": "^3.18.1"
+    "typeface-inter": "^3.18.1",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@resir014/tailwind-preset-chungking": "^0.1.4-canary.1",
@@ -68,6 +69,7 @@
     "@types/react-transition-group": "^4.4.2",
     "@types/socket.io-client": "^1.4.34",
     "@types/styled-jsx": "^3.4.4",
+    "@types/webfontloader": "^1.6.34",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
     "autoprefixer": "^10.3.3",
