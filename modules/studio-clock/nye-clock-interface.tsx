@@ -5,12 +5,12 @@ import { ClockWatchTick } from './clock-watch-tick';
 import { useClock } from '~/lib/hooks/use-clock';
 import { parseString } from '~/lib/query-parser';
 
-export interface NYEClockInterfaceProps {
+export interface StudioClockInterfaceProps {
   uiFont?: string;
   watchFaceFont?: string;
 }
 
-export function NYEClockInterface({ uiFont, watchFaceFont }: NYEClockInterfaceProps) {
+export function StudioClockInterface({ uiFont, watchFaceFont }: StudioClockInterfaceProps) {
   const router = useRouter();
   const time = useClock();
 

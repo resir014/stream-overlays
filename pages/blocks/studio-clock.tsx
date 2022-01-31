@@ -6,7 +6,7 @@ import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { parseString } from '~/lib/query-parser';
 import { StudioClockInterface } from '~/modules/studio-clock/nye-clock-interface';
 
-function NYEClockPage() {
+function StudioClockPage() {
   const router = useRouter();
   const [isClockRendered, setIsClockRendered] = React.useState(false);
 
@@ -25,6 +25,6 @@ function NYEClockPage() {
   return <div>{isClockRendered && <StudioClockInterface {...clockProps} />}</div>;
 }
 
-export default createNextPage(NYEClockPage, {
+export default createNextPage(StudioClockPage, {
   layout: OverlayLayout,
 });
