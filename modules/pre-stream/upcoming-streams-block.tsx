@@ -84,7 +84,7 @@ const UpcomingStreamsItem: React.FC<UpcomingStreamsItemProps> = ({
       )}
       <div className="flex flex-col flex-1 text-chungking-white space-y-2">
         <h2 className="font-semibold text-4xl leading-none">{stream_name}</h2>
-        <p className="text-xl leading-none">{description}</p>
+        <p className="text-xl leading-none">{description ?? 'No description available.'}</p>
       </div>
     </div>
   );
