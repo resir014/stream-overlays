@@ -15,7 +15,7 @@ export function handleToast({
 }: HandleToastOptions) {
   switch (eventData.type) {
     case 'tip': {
-      const { displayName, message, currency } = eventData.data;
+      const { displayName, name, username, message, currency } = eventData.data;
       const amount = new Intl.NumberFormat('en-GB', {
         style: 'currency',
         currency,
@@ -27,7 +27,7 @@ export function handleToast({
           <AlertToast
             title="Donation"
             variant="donation"
-            recipient={`${displayName} (${amount})`}
+            recipient={`${displayName || name || username} (${amount})`}
             content={message}
           />
         ),

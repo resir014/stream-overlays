@@ -50,6 +50,7 @@ export type StreamElementsEvent =
       'tip',
       {
         tipId: string;
+        name: string;
         username: string;
         displayName: string;
         amount: number;
