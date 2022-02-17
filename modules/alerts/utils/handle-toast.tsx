@@ -27,7 +27,7 @@ export function handleToast({
           <AlertToast
             title="Donation"
             variant="donation"
-            recipient={`${displayName || name || username} (${amount})`}
+            recipient={`${displayName || username || name} (${amount})`}
             content={message}
           />
         ),
