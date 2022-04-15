@@ -5,13 +5,19 @@ const createJestConfig = nextJest({
 });
 
 const jestConfig = {
-  ...require('./test/jest-common'),
+  setupFilesAfterEnv: [
+    '@testing-library/jest-dom/extend-expect',
+    'react-intersection-observer/test-utils',
+  ],
+  moduleNameMapper: {
+    '~/(.*)': '<rootDir>/$1',
+  },
   collectCoverageFrom: [
     './(components|lib|pages)/**/*.(ts|tsx|js|jsx)',
     '!./(components|lib|pages)/**/__tests__/**/*.test.(ts|tsx|js|jsx)',
     '!./(components|lib|pages)/**/__mocks__/**/*.(ts|tsx|js|jsx)',
   ],
-  projects: ['./test/jest.client.js', './test/jest.server.js'],
+  testEnvironment: 'jest-environment-jsdom',
 };
 
 module.exports = createJestConfig(jestConfig);
