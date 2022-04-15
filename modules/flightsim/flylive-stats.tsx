@@ -2,12 +2,12 @@ import * as React from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { InfoCardWrapper } from './info-card-wrapper';
-import FlightProgress from './flight-progress';
-import FlightItinerary from './flight-itinerary';
+import { FlightProgress } from './flight-progress';
+import { FlightItinerary } from './flight-itinerary';
 import { InfoItemCard } from '~/components/info-item-card';
 import { useFlyLiveData } from '~/lib/flightsim/flylive';
 
-const FlyLiveStats: NextPage = () => {
+export const FlyLiveStats: NextPage = () => {
   // Calls the local FlyLive telemetry API endpoint and refetches every second
   const { data, isLoading } = useFlyLiveData();
   const router = useRouter();
@@ -50,5 +50,3 @@ const FlyLiveStats: NextPage = () => {
 
   return null;
 };
-
-export default FlyLiveStats;
