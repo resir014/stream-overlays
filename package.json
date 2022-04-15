@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/eslint-plugin": "^7.17.7",
+    "@babel/preset-react": "^7.16.7",
     "@resir014/tailwind-preset-chungking": "^0.1.4-canary.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.5",
@@ -60,8 +61,8 @@
     "@types/socket.io-client": "^1.4.34",
     "@types/styled-jsx": "^3.4.4",
     "@types/webfontloader": "^1.6.34",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "autoprefixer": "^10.4.4",
     "eslint": "^7.32.0",
     "eslint-config-kentcdodds": "^19.1.1",
