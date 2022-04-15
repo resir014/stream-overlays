@@ -50,6 +50,7 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
+    "@babel/eslint-plugin": "^7.17.7",
     "@resir014/tailwind-preset-chungking": "^0.1.4-canary.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.5",
