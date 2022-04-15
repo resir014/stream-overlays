@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-invalid-this */
 /* eslint-disable consistent-return */
 
 import * as React from 'react';

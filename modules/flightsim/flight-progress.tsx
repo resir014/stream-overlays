@@ -1,25 +1,11 @@
-import styled from '@emotion/styled';
-import { theme } from '@resir014/chungking-react';
+import * as React from 'react';
+import clsx from 'clsx';
 
-const FlightProgress = styled('progress')`
-  @supports (-webkit-appearance: none) {
-    &[value] {
-      /* Reset the default appearance */
-      -webkit-appearance: none;
-      appearance: none;
+export const FlightProgress = React.forwardRef<
+  HTMLProgressElement,
+  React.ComponentPropsWithoutRef<'progress'>
+>(({ className, ...rest }, ref) => {
+  return <progress ref={ref} className={clsx('flight-progress', className)} {...rest} />;
+});
 
-      width: 100%;
-      height: 4px;
-
-      ::-webkit-progress-bar {
-        background-color: #fff;
-      }
-
-      ::-webkit-progress-value {
-        background-color: ${theme.colors.blue[500]};
-      }
-    }
-  }
-`;
-
-export default FlightProgress;
+FlightProgress.displayName = 'FlightProgress';

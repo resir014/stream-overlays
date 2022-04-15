@@ -6,8 +6,6 @@ export interface FlightItineraryProps {
   destination: string;
 }
 
-const FlightItinerary: React.FC<FlightItineraryProps> = ({ origin, destination }) => {
+export const FlightItinerary: React.FC<FlightItineraryProps> = ({ origin, destination }) => {
   return <InfoItemCard content={`${origin} -> ${destination}`} />;
 };
-
-export default FlightItinerary;

@@ -21,7 +21,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "typeRoots": ["./@types", "./node_modules/@types"]
+    "typeRoots": ["./@types", "./node_modules/@types"],
+    "incremental": true
   },
   "exclude": ["node_modules"],
   "include": ["env.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"]

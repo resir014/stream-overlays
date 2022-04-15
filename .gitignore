@@ -8,6 +8,9 @@
 # Static export path
 out/
 
+# TypeScript build info
+*.tsbuildinfo
+
 # Logs
 logs
 *.log

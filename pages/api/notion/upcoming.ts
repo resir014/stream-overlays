@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { NextApiHandler } from 'next';
 import { notion } from '~/lib/notion';
 import { parseNumber, parseString } from '~/lib/query-parser';
@@ -36,8 +39,8 @@ const handler: NextApiHandler = async (req, res) => {
           page_size: parsedPageSize ?? 3,
         });
 
+        // @ts-expect-error - see: https://github.com/makenotion/notion-sdk-js/issues/288
         const data = results.map(({ id, properties }) => {
-          console.log(JSON.stringify({ id, properties }, null, 2));
           return {
             id,
             date: properties.Date.type === 'date' ? properties.Date.date.start : undefined,
@@ -46,7 +49,8 @@ const handler: NextApiHandler = async (req, res) => {
               properties.Series.type === 'select' ? properties.Series.select?.name : undefined,
             category:
               properties.Category.type === 'multi_select'
-                ? properties.Category.multi_select.map(select => select.name)
+                ? // @ts-expect-error - see: https://github.com/makenotion/notion-sdk-js/issues/288
+                  properties.Category.multi_select.map(select => select.name)
                 : undefined,
             stream_name:
               properties['Stream Name'].type === 'title'

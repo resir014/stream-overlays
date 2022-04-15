@@ -2,14 +2,12 @@
 
 /** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
-  mode: 'jit',
-  purge: [
+  content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './layouts/**/*.{js,ts,jsx,tsx}',
     './modules/**/*.{js,ts,jsx,tsx}',
   ],
-  darkMode: 'media', // or 'media' or 'class'
   presets: [require('@resir014/tailwind-preset-chungking')],
   theme: {
     extend: {

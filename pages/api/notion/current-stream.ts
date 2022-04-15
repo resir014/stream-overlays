@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { NextApiHandler } from 'next';
 import { notion } from '~/lib/notion';
 
@@ -27,13 +30,15 @@ const handler: NextApiHandler = async (req, res) => {
         });
 
         if (results.length > 0) {
+          // @ts-expect-error - see: https://github.com/makenotion/notion-sdk-js/issues/288
           const currentStream = results.map(({ id, properties }) => ({
             id,
             date: properties.Date.type === 'date' ? properties.Date.date.start : undefined,
             series: properties.Series.type === 'select' ? properties.Series.select.name : undefined,
             category:
               properties.Category.type === 'multi_select'
-                ? properties.Category.multi_select.map(select => select.name)
+                ? // @ts-expect-error - see: https://github.com/makenotion/notion-sdk-js/issues/288
+                  properties.Category.multi_select.map(select => select.name)
                 : undefined,
             stream_name:
               properties['Stream Name'].type === 'title'

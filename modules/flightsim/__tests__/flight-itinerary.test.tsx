@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import FlightItinerary from '../flight-itinerary';
+import { FlightItinerary } from '../flight-itinerary';
 
 describe('components/flightsim', () => {
   describe('FlightItinerary', () => {
