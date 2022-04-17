@@ -36,8 +36,9 @@ export function BottomBarClock() {
   };
 
   return (
-    <div className="block px-4 text-right border-r-2 border-chungking-blue-500">
+    <div className="flex items-center pl-4 text-right space-x-2">
       {renderClock()}
+      <div className="inline-flex w-3 h-3 rounded-full bg-chungking-blue-500" aria-hidden />
     </div>
   );
 }
