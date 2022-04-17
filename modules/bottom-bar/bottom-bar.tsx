@@ -1,11 +1,12 @@
 import * as React from 'react';
-import clsx from 'clsx';
 import { BottomBarSocialLinks } from './social-links';
 import { BottomBarEvents } from './bottom-bar-events';
 import { BottomBarClock } from './bottom-bar-clock';
 
-interface BottomBarProps {
-  variant?: 'default' | 'prestream' | 'nye';
+export type BottomBarVariants = 'default' | 'prestream' | 'nye';
+
+export interface BottomBarProps {
+  variant?: BottomBarVariants;
 }
 
 export const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
@@ -13,12 +14,7 @@ export const BottomBar: React.FC<BottomBarProps> = ({ variant }) => {
   const nyeVariant = React.useMemo(() => variant === 'nye', [variant]);
 
   return (
-    <div
-      className={clsx(
-        'grid grid-rows-bottom-bar grid-cols-bottom-bar w-full h-full text-chungking-white bg-chungking-black bg-opacity-90',
-        hideClock ? 'max-h-[88px]' : 'max-h-[64px]',
-      )}
-    >
+    <div className="grid grid-rows-bottom-bar grid-cols-bottom-bar w-full h-full text-chungking-white bg-chungking-black bg-opacity-90 max-h-[64px]">
       <BottomBarEvents />
       <div className="flex items-center justify-end px-12">
         {hideClock || nyeVariant ? <BottomBarSocialLinks /> : <BottomBarClock />}
