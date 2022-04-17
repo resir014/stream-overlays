@@ -28,7 +28,7 @@ export const BottomBarSocialLinks: React.FC = () => {
   return (
     <Transition
       show={!transitioning}
-      className="px-3 border-r-2 border-chungking-blue-500"
+      className="px-3"
       enter="transition-opacity duration-500"
       enterFrom="opacity-0"
       enterTo="opacity-100"
