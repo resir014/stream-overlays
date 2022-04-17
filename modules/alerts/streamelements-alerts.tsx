@@ -3,6 +3,8 @@ import * as React from 'react';
 import { nanoid } from 'nanoid';
 import { useRouter } from 'next/router';
 import { DEFAULT_DISMISS_DURATION } from '../alert-manager';
+import { handleTestToast } from './utils/handle-test-toast';
+import { handleToast } from './utils/handle-toast';
 import {
   allowedEventListeners,
   allowedTestEventListeners,
@@ -11,8 +13,6 @@ import {
   useStreamElementsSocket,
 } from '~/lib/streamelements';
 import { parseString } from '~/lib/query-parser';
-import { handleTestToast } from './utils/handle-test-toast';
-import { handleToast } from './utils/handle-toast';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
