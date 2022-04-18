@@ -62,15 +62,14 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
 
     return (
       <div
-        className={clsx('flex items-center w-full h-[56px]', alertToastVariants(variant))}
+        className={clsx('flex items-start w-full h-[64px] bg-chungking-black text-white')}
         ref={ref}
         {...rest}
       >
-        <div className="flex items-center flex-shrink-0 h-14 pl-12 pr-6">
+        <div className="flex items-center flex-shrink-0 h-[40px] pl-12 pr-4">
           <Transition
-            as="span"
             show={isMounted}
-            className="text-2xl font-bold"
+            className="inline-flex items-center space-x-3"
             enter="transition duration-300 ease-in-out-alerts"
             enterFrom="opacity-0 translate-y-0.5"
             enterTo="opacity-100 translate-y-0"
@@ -78,15 +77,22 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            {title}
+            <div
+              className={clsx('inline-flex w-3 h-3 rounded-full', alertToastVariants(variant))}
+              aria-hidden
+            />
+            <span className="text-2xl leading-10 font-bold">{title}</span>
           </Transition>
         </div>
-        <div className="flex items-center flex-1 min-w-0 h-14 pl-6 pr-12">
+        <div className="flex items-center flex-1 min-w-0 h-[40px] pr-16 pl-4">
           {recipient && (
             <Transition
               as="span"
               show={isMounted}
-              className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal truncate')}
+              className={clsx(
+                'ml-8 first-of-type:ml-0',
+                'text-2xl leading-10 font-normal truncate',
+              )}
               enter="transition duration-300 ease-in-out-alerts delay-100"
               enterFrom="opacity-0 translate-y-0.5"
               enterTo="opacity-100 translate-y-0"
@@ -100,7 +106,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
           <Transition
             as="span"
             show={isMounted}
-            className={clsx('ml-12 first-of-type:ml-0', 'text-2xl font-normal truncate')}
+            className={clsx('ml-8 first-of-type:ml-0', 'text-2xl leading-10 font-normal truncate')}
             enter={clsx(
               'transition duration-300 ease-in-out-alerts',
               recipient ? 'delay-200' : 'delay-100',
