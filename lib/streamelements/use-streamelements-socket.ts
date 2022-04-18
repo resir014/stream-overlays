@@ -68,8 +68,14 @@ export function useStreamElementsSocket({
       console.log(`[StreamElements] Successfully connected to channel ${channelId}`);
     };
 
+    const handleDisconnected = () => {
+      console.log('[StreamElements] Disconnected from websocket');
+    };
+
     client.on('connect', handleConnect);
+    client.on('disconnect', handleDisconnected);
     client.on('authenticated', handleAuthenticated);
+    client.on('unauthorized', console.error);
 
     client.on('event:test', handleSocketTestEvent);
     client.on('event', handleSocketEvent);
