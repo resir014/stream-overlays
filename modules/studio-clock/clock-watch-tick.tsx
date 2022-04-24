@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import * as React from 'react';
-import isValidHex from '~/lib/is-valid-hex';
+import { resolveHexColor } from '~/lib/colors';
 
 export interface ClockWatchTickProps extends React.ComponentPropsWithoutRef<'div'> {
   currentSecond: number;
@@ -11,17 +11,7 @@ export interface ClockWatchTickProps extends React.ComponentPropsWithoutRef<'div
 
 export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickProps>(
   ({ className, style, active, currentSecond, hasFace, watchFaceColor = '#33ffd7' }, ref) => {
-    const resolveHexColor = React.useMemo(() => {
-      const normalisedHexColor = watchFaceColor.startsWith('#')
-        ? watchFaceColor
-        : `#${watchFaceColor}`;
-
-      if (isValidHex(normalisedHexColor)) {
-        return normalisedHexColor;
-      }
-
-      return '#33ffd7';
-    }, [watchFaceColor]);
+    const hexColor = React.useMemo(() => resolveHexColor(watchFaceColor), [watchFaceColor]);
 
     return (
       <div
@@ -46,7 +36,7 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
               : 'bg-chungking-white bg-opacity-20',
           )}
           style={{
-            backgroundColor: active || currentSecond === 60 ? resolveHexColor : undefined,
+            backgroundColor: active || currentSecond === 60 ? hexColor : undefined,
           }}
         />
         <div
@@ -54,7 +44,7 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
           style={{
             backgroundColor: hasFace
               ? active || currentSecond === 60
-                ? resolveHexColor
+                ? hexColor
                 : undefined
               : 'transparent',
           }}
