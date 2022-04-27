@@ -7,7 +7,7 @@ import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
 import { createNextPage } from '~/lib/create-next-page';
 import { NYEHeader } from '~/modules/nye/nye-header';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
-import { StudioClockInterface } from '~/modules/studio-clock/nye-clock-interface';
+import { StudioClockInterface } from '~/modules/studio-clock/studio-clock-interface';
 
 const NYEClockScenePage: NextPage = () => {
   const [isClockRendered, setIsClockRendered] = React.useState(false);

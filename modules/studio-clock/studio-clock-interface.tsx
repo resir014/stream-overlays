@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { format } from 'date-fns';
-import { useRouter } from 'next/router';
 import { ClockWatchTick } from './clock-watch-tick';
 import { useClock } from '~/lib/hooks/use-clock';
-import { parseString } from '~/lib/query-parser';
 
 export interface StudioClockInterfaceProps {
   uiFont?: string;
   watchFaceFont?: string;
+  watchFaceColor?: string;
 }
 
-export function StudioClockInterface({ uiFont, watchFaceFont }: StudioClockInterfaceProps) {
-  const router = useRouter();
+export function StudioClockInterface({
+  uiFont,
+  watchFaceFont,
+  watchFaceColor,
+}: StudioClockInterfaceProps) {
   const time = useClock();
 
   const ticks: undefined[] = Array<undefined>(60).fill(undefined);
@@ -20,11 +22,6 @@ export function StudioClockInterface({ uiFont, watchFaceFont }: StudioClockInter
   const [, , s] = React.useMemo(
     () => [time.getHours(), time.getMinutes(), time.getSeconds()] as const,
     [time],
-  );
-
-  const watchFaceColor = React.useMemo(
-    () => parseString(router.query.watchFaceColor) ?? undefined,
-    [router.query.watchFaceColor],
   );
 
   const watchUIStyle = React.useMemo(
