@@ -7,12 +7,14 @@ export interface StudioClockInterfaceProps {
   uiFont?: string;
   watchFaceFont?: string;
   watchFaceColor?: string;
+  hideTimezone?: boolean;
 }
 
 export function StudioClockInterface({
   uiFont,
   watchFaceFont,
   watchFaceColor,
+  hideTimezone,
 }: StudioClockInterfaceProps) {
   const time = useClock();
 
@@ -94,9 +96,11 @@ export function StudioClockInterface({
           </div>
         </div>
       </div>
-      <div className="text-center space-y-2 text-chungking-white" style={watchUIStyle}>
-        <p className="text-2xl leading-none font-bold">{timeZoneOptions.timeZone}</p>
-      </div>
+      {!hideTimezone && (
+        <div className="text-center space-y-2 text-chungking-white" style={watchUIStyle}>
+          <p className="text-2xl leading-none font-bold">{timeZoneOptions.timeZone}</p>
+        </div>
+      )}
     </div>
   );
 }
