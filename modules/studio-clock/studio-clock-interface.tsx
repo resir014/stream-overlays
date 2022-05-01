@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { format } from 'date-fns';
+import clsx from 'clsx';
 import { ClockWatchTick } from './clock-watch-tick';
 import { useClock } from '~/lib/hooks/use-clock';
 
-export interface StudioClockInterfaceProps {
+export interface StudioClockInterfaceProps extends React.ComponentPropsWithoutRef<'div'> {
   uiFont?: string;
   watchFaceFont?: string;
   watchFaceColor?: string;
@@ -11,10 +12,13 @@ export interface StudioClockInterfaceProps {
 }
 
 export function StudioClockInterface({
+  className,
+  style,
   uiFont,
   watchFaceFont,
   watchFaceColor,
   hideTimezone,
+  ...rest
 }: StudioClockInterfaceProps) {
   const time = useClock();
 
@@ -53,7 +57,14 @@ export function StudioClockInterface({
   }, [uiFont, watchFaceFont]);
 
   return (
-    <div className="inline-flex flex-col items-center space-y-8 rounded-xl bg-chungking-black px-4 py-8">
+    <div
+      className={clsx(
+        'inline-flex flex-col items-center space-y-8 rounded-xl bg-chungking-black px-4 py-8',
+        className,
+      )}
+      style={style}
+      {...rest}
+    >
       <div className="inline-block relative w-[384px] h-[384px] rounded-full overflow-hidden">
         <div className="ticks relative w-full h-full" style={{ transform: `rotate(-90deg)` }}>
           {ticks.map((_, i) => {

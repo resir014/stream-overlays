@@ -9,7 +9,7 @@ export function CurrentStreamBlock({ header }: CurrentStreamBlockProps) {
   const { currentStream } = useCurrentStream();
 
   return (
-    <div className="flex flex-col items-start pr-12">
+    <div className="flex flex-col items-start px-6">
       <div className="flex flex-1 items-end w-full">
         <p className="text-chungking-white text-3xl leading-[36px]">
           {currentStream?.stream_name ?? 'Untitled Stream'}

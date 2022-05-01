@@ -36,7 +36,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
 
   const renderStudioClock = () => {
     if (clockRendered) {
-      return <StudioClockInterface />;
+      return <StudioClockInterface className="transform scale-75" />;
     }
 
     return null;
@@ -45,12 +45,21 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
   return (
     <SceneWrapper>
       <div className="grid grid-cols-pre-stream flex-1 w-full">
-        <div className="flex items-center justify-end pl-12">{renderCountdown()}</div>
-        <div className="flex items-center px-6">
-          <div className={clsx('block w-9 h-9 rounded-full', getPrestreamAccentColor(variant))} />
+        <div className="flex items-center justify-end pl-12 pr-6">{renderCountdown()}</div>
+        <div
+          className={clsx(
+            'flex flex-col items-center justify-center px-6',
+            getPrestreamAccentColor(variant),
+          )}
+        >
+          <div className="flex items-center justify-center h-[72px]">
+            <div className="block w-9 h-9 rounded-full bg-chungking-white" />
+          </div>
         </div>
         <CurrentStreamBlock header={headerText} />
-        <div className="flex items-center bg-chungking-black">{renderStudioClock()}</div>
+        <div className="flex items-center justify-center bg-chungking-black">
+          {renderStudioClock()}
+        </div>
       </div>
     </SceneWrapper>
   );
