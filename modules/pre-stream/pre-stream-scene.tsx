@@ -45,7 +45,9 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
   return (
     <SceneWrapper>
       <div className="grid grid-cols-pre-stream flex-1 w-full">
-        <div className="flex items-center justify-end pl-12 pr-6">{renderCountdown()}</div>
+        <div className="flex items-center justify-end pl-12 pr-6 bg-chungking-black bg-opacity-90">
+          {renderCountdown()}
+        </div>
         <div
           className={clsx(
             'flex flex-col items-center justify-center px-6',
