@@ -35,7 +35,7 @@ export type StreamElementsTestEvent =
   | StreamElementsTestEventBase<'raid' | 'raid-latest', { name: string; amount: number }>;
 
 export type StreamElementsEventBase<Listener extends string, Event extends {}> = {
-  _id: string;
+  _id?: string;
   channel: string;
   type: Listener;
   provider: 'twitch' | 'youtube' | 'facebook';

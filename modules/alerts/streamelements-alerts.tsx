@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as React from 'react';
 import { nanoid } from 'nanoid';
-import { useRouter } from 'next/router';
 import { DEFAULT_DISMISS_DURATION } from '../alert-manager';
 import { handleTestToast } from './utils/handle-test-toast';
 import { handleToast } from './utils/handle-toast';
@@ -12,22 +11,15 @@ import {
   StreamElementsTestEvent,
   useStreamElementsSocket,
 } from '~/lib/streamelements';
-import { parseString } from '~/lib/query-parser';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
 type ProdOrTestEvent = StreamElementsEvent | StreamElementsTestEvent;
 
 export const StreamElementsAlerts: React.FC = () => {
-  const router = useRouter();
   const [events, setEvents] = React.useState<ProdOrTestEvent[]>([]);
   const [stale, setStale] = React.useState(false);
   const [current, setCurrent] = React.useState<ProdOrTestEvent | undefined>(undefined);
-
-  const isTest = React.useMemo(
-    () => !!parseString(router.query.isTest) || undefined,
-    [router.query.isTest],
-  );
 
   const addEvents = (eventData: ProdOrTestEvent) => {
     setEvents(prev => [eventData, ...prev]);
@@ -39,27 +31,25 @@ export const StreamElementsAlerts: React.FC = () => {
   };
 
   useStreamElementsSocket({
-    isTest,
     token: process.env.NEXT_PUBLIC_STREAMELEMENTS_ACCESS_TOKEN,
     handleEvent: eventData => {
       const isEventProcessable = allowedEventListeners.includes(eventData.type);
 
-      console.log('[StreamElementsAlerts] Event type:', eventData.type);
-      console.log('[StreamElementsAlerts] is event processable?', isEventProcessable);
+      console.log('[Alerts] Event type:', eventData.type);
+      console.log('[Alerts] is event processable?', isEventProcessable);
 
       if (isEventProcessable) {
-        // Add unique id to allow for removal when the alert is stale
         addEvents({
           ...eventData,
-          _id: eventData._id || nanoid(),
+          _id: eventData._id ?? nanoid(),
         } as StreamElementsEvent);
       }
     },
     handleTestEvent: eventData => {
       const isEventProcessable = allowedTestEventListeners.includes(eventData.listener);
 
-      console.log('[StreamElementsAlerts] Test Event type:', eventData.listener);
-      console.log('[StreamElementsAlerts] is test event processable?', isEventProcessable);
+      console.log('[Alerts] Test Event type:', eventData.listener);
+      console.log('[Alerts] is test event processable?', isEventProcessable);
 
       if (isEventProcessable) {
         // Add unique id to allow for removal when the alert is stale
@@ -72,8 +62,8 @@ export const StreamElementsAlerts: React.FC = () => {
   });
 
   React.useEffect(() => {
-    console.log('[StreamElementsAlerts] current event:', current);
-    console.log('[StreamElementsAlerts] stale?', stale);
+    console.log('[Alerts] current event:', current);
+    console.log('[Alerts] stale?', stale);
 
     const onRemove = (id?: string) => {
       setStale(true);
@@ -89,10 +79,7 @@ export const StreamElementsAlerts: React.FC = () => {
       } else if ('type' in eventData) {
         handleToast({ eventData, dismissAfter, onRemove });
       } else {
-        console.log(
-          '[StreamElementsAlerts] unable to determine whether an alert is test or not',
-          eventData,
-        );
+        console.log('[Alerts] unable to determine whether an alert is test or not', eventData);
       }
     };
 
@@ -103,8 +90,8 @@ export const StreamElementsAlerts: React.FC = () => {
 
   React.useEffect(() => {
     const [recent] = events;
-    console.log('[StreamElementsAlerts] events.length', events.length);
-    console.log('[StreamElementsAlerts] events', events);
+    console.log('[Alerts] events.length', events.length);
+    console.log('[Alerts] events', events);
 
     if (events.length > 0) {
       setTimeout(() => {
