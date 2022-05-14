@@ -14,5 +14,9 @@
   {
     "title": "Studio Clock",
     "url": "/blocks/studio-clock"
+  },
+  {
+    "title": "Flightsim (FlyLive)",
+    "url": "/blocks/flylive"
   }
 ]
