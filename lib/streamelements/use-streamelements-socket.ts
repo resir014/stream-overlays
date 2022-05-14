@@ -26,7 +26,6 @@ export function useStreamElementsSocket({
   token,
   handleEvent,
   handleTestEvent,
-  isTest = false,
 }: UseStreamElementsSocketOptions = {}) {
   const handleSocketEvent = React.useCallback(
     (eventData: StreamElementsEvent) => {
@@ -87,5 +86,5 @@ export function useStreamElementsSocket({
       client.off('event:test', handleSocketTestEvent);
       client.off('event', handleSocketEvent);
     };
-  }, [token, handleSocketEvent, handleSocketTestEvent, isTest]);
+  }, [token, handleSocketEvent, handleSocketTestEvent]);
 }

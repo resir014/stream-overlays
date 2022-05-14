@@ -29,8 +29,8 @@ export const StreamlabsAlerts: React.FC = () => {
   });
 
   React.useEffect(() => {
-    console.log('[StreamlabsAlerts] current event:', current);
-    console.log('[StreamlabsAlerts] stale?', stale);
+    console.log('[Alerts] current event:', current);
+    console.log('[Alerts] stale?', stale);
 
     const onRemove = (id?: string) => {
       setStale(true);
