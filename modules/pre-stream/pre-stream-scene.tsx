@@ -36,7 +36,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
 
   const renderStudioClock = () => {
     if (clockRendered) {
-      return <StudioClockInterface className="transform scale-75" />;
+      return <StudioClockInterface className="transform scale-75" hideTimezone />;
     }
 
     return null;
