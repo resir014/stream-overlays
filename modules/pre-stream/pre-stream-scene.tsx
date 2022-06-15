@@ -50,7 +50,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
         </div>
         <div
           className={clsx(
-            'flex flex-col items-center justify-center px-6',
+            'flex flex-col items-center justify-center w-[72px]',
             getPrestreamAccentColor(variant),
           )}
         >
