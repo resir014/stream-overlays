@@ -50,4 +50,10 @@
   .helper-disambiguation {
     font-feature-settings: 'ss02' 1;
   }
+
+  .helper-countdown-outline {
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: black;
+  }
 }
