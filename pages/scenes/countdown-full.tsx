@@ -1,7 +1,7 @@
 import * as React from 'react';
 import dynamic from 'next/dynamic';
 
-const KominfuCountdown = dynamic(() => import('~/modules/kominfu/kominfu-countdown'), {
+const KominfuCountdown = dynamic(() => import('~/modules/kominfu/kominfu-countdown-full'), {
   ssr: false,
 });
 
