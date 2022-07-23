@@ -8,7 +8,7 @@ import { DashboardLayout } from '~/layouts/dashbard-layout';
 import { createNextPage } from '~/lib/create-next-page';
 import { blocks, overlays, scenes } from '~/lib/data/dashboard';
 
-function IndexPage(): JSX.Element {
+function IndexPage() {
   return (
     <section className="flex h-[calc(100vh-60px)]">
       <DashboardSidebar />

@@ -94,7 +94,7 @@ export const UpcomingStreamsBlock = React.forwardRef<HTMLDivElement, UpcomingStr
   ({ className, variant = 'pre-stream', ...rest }, ref) => {
     const { currentStream } = useCurrentStream();
     const { upcomingStreams } = useUpcomingStreams({
-      referenceDate: currentStream?.date,
+      referenceDate: currentStream?.date ?? null,
       pageSize: 3,
     });
 

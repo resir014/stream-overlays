@@ -1,3 +1,4 @@
+import { withTRPC } from '@trpc/next';
 import * as React from 'react';
 import Head from 'next/head';
 
@@ -5,8 +6,9 @@ import { NextAppProps } from '~/interfaces/next';
 
 import '~/styles/fonts';
 import '~/styles/globals.css';
+import { AppRouter } from '~/server/router';
 
-export default function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
+function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
   const getLayout = Component.layout ?? ((children: JSX.Element) => children);
   const page = getLayout(<Component {...pageProps} />);
 
@@ -23,3 +25,14 @@ export default function MyApp({ Component, pageProps }: NextAppProps): JSX.Eleme
     </>
   );
 }
+
+export default withTRPC<AppRouter>({
+  config() {
+    const host = process.env.VERCEL_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL;
+    const url = host ? `https://${host}/api/trpc` : 'http://localhost:3000/api/trpc';
+
+    return {
+      url,
+    };
+  },
+})(MyApp);
