@@ -1,12 +1,10 @@
-import useSWR from 'swr';
-import qs from 'query-string';
+import { trpc } from '../trpc';
+import { GetUpcomingStreamsOptions } from '~/server/notion/get-upcoming-streams';
 
-import { APIResponse, ErrorBuilder, fetch } from '../fetch';
-
-export interface UseUpcomingStreamOptions {
-  referenceDate?: string;
-  pageSize?: number;
-  refreshInterval?: number;
+export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
+  referenceDate: string | null;
+  pageSize: number | null;
+  refetchInterval?: number;
 }
 
 export interface ParsedCurrentStream {
@@ -18,44 +16,27 @@ export interface ParsedCurrentStream {
   stream_name?: string;
 }
 
-export function useCurrentStream(refreshInterval = 5000) {
-  const { data, error } = useSWR<APIResponse<ParsedCurrentStream>, ErrorBuilder>(
-    '/api/notion/current-stream',
-    fetch,
-    {
-      refreshInterval,
-    },
-  );
+export function useCurrentStream(refetchInterval = 5000) {
+  const { data, error } = trpc.useQuery(['notion.current-stream'], { refetchInterval });
 
   return {
-    currentStream: data?.status === 'ok' && !error ? data.data : undefined,
+    currentStream: data,
     isLoading: !error && !data,
     isError: !!error,
   };
 }
 
 export function useUpcomingStreams({
-  referenceDate,
-  pageSize,
-  refreshInterval = 5000,
-}: UseUpcomingStreamOptions = {}) {
-  const { data, error } = useSWR<APIResponse<ParsedCurrentStream[]>, ErrorBuilder>(
-    () =>
-      qs.stringifyUrl({
-        url: '/api/notion/upcoming',
-        query: {
-          reference_date: referenceDate,
-          page_size: pageSize,
-        },
-      }),
-    fetch,
-    {
-      refreshInterval,
-    },
-  );
+  referenceDate = null,
+  pageSize = null,
+  refetchInterval = 5000,
+}: UseUpcomingStreamOptions) {
+  const { data, error } = trpc.useQuery(['notion.upcoming-streams', { referenceDate, pageSize }], {
+    refetchInterval,
+  });
 
   return {
-    upcomingStreams: data?.status === 'ok' && !error ? data.data : undefined,
+    upcomingStreams: data,
     isLoading: !error && !data,
     isError: !!error,
   };

@@ -1,15 +1,11 @@
-import useSWR from 'swr';
-import { FlyLiveParsedData } from './types';
-import { APIResponse, fetch } from '~/lib/fetch';
+import { trpc } from '../trpc';
 
-export function useFlyLiveData(refreshInterval = 1000 / 24) {
-  const { data, error } = useSWR<APIResponse<FlyLiveParsedData>>('/api/flylive', fetch, {
-    refreshInterval,
-  });
+export function useFlyLiveData(refetchInterval = 1000 / 24) {
+  const { data, error } = trpc.useQuery(['flylive.live-flight'], { refetchInterval });
 
   return {
-    data: data?.status === 'ok' ? data.data : undefined,
+    data,
     isLoading: !error && !data,
-    isError: error,
+    isError: !!error,
   };
 }
