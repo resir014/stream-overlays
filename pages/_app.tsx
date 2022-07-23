@@ -28,6 +28,9 @@ function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
 
 export default withTRPC<AppRouter>({
   config() {
+    // The `NEXT_PUBLIC_SITE_URL` variable is overwritten in `.env.development` and
+    // `.env.production`, as well as in production through Vercel's Environment Variables settings.
+    // https://github.com/vercel/next.js/discussions/16429#discussioncomment-1302156
     const url = process.env.NEXT_PUBLIC_SITE_URL
       ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/trpc`
       : 'http://localhost:3000/api/trpc';
