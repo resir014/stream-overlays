@@ -6,6 +6,7 @@ import { NextAppProps } from '~/interfaces/next';
 
 import '~/styles/fonts';
 import '~/styles/globals.css';
+import { AppRouter } from '~/server/router';
 
 function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
   const getLayout = Component.layout ?? ((children: JSX.Element) => children);
@@ -25,11 +26,11 @@ function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
   );
 }
 
-export default withTRPC({
+export default withTRPC<AppRouter>({
   config() {
-    const url = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}/api/trpc`
-      : 'http://localhost:3000/api/trpc';
+    const host = process.env.VERCEL_URL ?? process.env.NEXT_PUBLIC_VERCEL_URL;
+    console.log(host);
+    const url = host ? `https://${host}/api/trpc` : 'http://localhost:3000/api/trpc';
 
     return {
       url,
