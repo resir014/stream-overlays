@@ -27,10 +27,9 @@ function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
 }
 
 export default withTRPC<AppRouter>({
-  config({ ctx }) {
-    console.log(process.env.VERCEL_URL, process.env.NEXT_PUBLIC_VERCEL_URL, ctx?.req?.headers.host);
+  config() {
     const url = process.env.NEXT_PUBLIC_SITE_URL
-      ? `${process.env.NEXT_PUBLIC_SITE_URL}://${process.env.NEXT_PUBLIC_SITE_URL}/api/trpc`
+      ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/trpc`
       : 'http://localhost:3000/api/trpc';
 
     return {
