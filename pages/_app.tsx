@@ -8,6 +8,19 @@ import '~/styles/fonts';
 import '~/styles/globals.css';
 import { AppRouter } from '~/server/router';
 
+// https://github.com/nexxeln/trpc-nextjs/blob/ca61d28d8e5350f172d3952bfa6093b06da9e4b9/src/pages/_app.tsx#L11-L17
+function getBaseUrl() {
+  if (typeof window !== 'undefined') {
+    return '';
+  }
+
+  if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  }
+
+  return `http://localhost:${process.env.PORT ?? 3000}`;
+}
+
 function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
   const getLayout = Component.layout ?? ((children: JSX.Element) => children);
   const page = getLayout(<Component {...pageProps} />);
@@ -28,15 +41,11 @@ function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
 
 export default withTRPC<AppRouter>({
   config() {
-    // The `NEXT_PUBLIC_SITE_URL` variable is overwritten in `.env.development` and
-    // `.env.production`, as well as in production through Vercel's Environment Variables settings.
-    // https://github.com/vercel/next.js/discussions/16429#discussioncomment-1302156
-    const url = process.env.NEXT_PUBLIC_SITE_URL
-      ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/trpc`
-      : 'http://localhost:3000/api/trpc';
+    const url = `${getBaseUrl()}/api/trpc`;
 
     return {
       url,
     };
   },
+  ssr: false,
 })(MyApp);
