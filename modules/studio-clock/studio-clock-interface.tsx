@@ -49,7 +49,9 @@ export function StudioClockInterface({
       void import('webfontloader').then(mod => {
         mod.default.load({
           google: {
-            families: [uiFont, watchFaceFont].filter(Boolean).map(font => `${font}`),
+            families: [uiFont, watchFaceFont]
+              .filter(Boolean)
+              .map(font => `${font}:400,700,400italic,700italic`),
           },
         });
       });
