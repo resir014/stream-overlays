@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { LayoutType } from '.';
 import { GoogleFontsPrefetch } from '~/modules/webfonts/google-fonts-prefetch';
+import { LayoutType } from '.';
 
 export const OverlayLayout: LayoutType = page => {
   return (

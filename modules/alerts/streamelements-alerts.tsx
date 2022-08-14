@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as React from 'react';
 import { nanoid } from 'nanoid';
-import { DEFAULT_DISMISS_DURATION } from '../alert-manager';
-import { handleTestToast } from './utils/handle-test-toast';
-import { handleToast } from './utils/handle-toast';
 import {
   allowedEventListeners,
   allowedTestEventListeners,
@@ -11,6 +8,9 @@ import {
   StreamElementsTestEvent,
   useStreamElementsSocket,
 } from '~/lib/streamelements';
+import { DEFAULT_DISMISS_DURATION } from '../alert-manager';
+import { handleTestToast } from './utils/handle-test-toast';
+import { handleToast } from './utils/handle-toast';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 

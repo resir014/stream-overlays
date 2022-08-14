@@ -23,7 +23,7 @@ const NYEClockScenePage: NextPage = () => {
           <NYEHeader />
           <PreStreamContent>
             <ChatPanel className="max-h-[504px]" />
-            {isClockRendered && <StudioClockInterface />}
+            {isClockRendered ? <StudioClockInterface /> : null}
           </PreStreamContent>
         </div>
       </div>
