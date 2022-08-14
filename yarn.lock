@@ -1273,32 +1273,32 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@trpc/client@^9.26.2":
-  version "9.26.2"
-  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-9.26.2.tgz#82f57bfe96388a8028b10ebb9aad4eb58ec90b71"
-  integrity sha512-R7eaxEtcK1C6PwxlGZCmMEiGGfn1BUU/hnulTpHVw/Mkd/3EqQqvP3Gs7pAYnJAZ44rjNF3Hepw5q2nP2Ctnhg==
+"@trpc/client@^9.27.0":
+  version "9.27.0"
+  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-9.27.0.tgz#6fb2af2df051dea834173e5b9f12e74c65662af2"
+  integrity sha512-Yh+oDBiANArjDx69bSnXqIK36wjlRm8iGLQkMmrvTTFwVRt3hgfreCzjyj4PgNEd4SNX4iGrhLLPIDHeH+qlJA==
   dependencies:
     "@babel/runtime" "^7.9.0"
 
-"@trpc/next@^9.26.2":
-  version "9.26.2"
-  resolved "https://registry.yarnpkg.com/@trpc/next/-/next-9.26.2.tgz#4ae95513b81971070c321b932bb4f3407b5d1e86"
-  integrity sha512-CTSQ2G8m/GONbEnf7asDlmoiBCY/WPihuVnev4BWRu6cDnEe2CtVxo34biWknpiGacEykTzH9dEWBDmZAGReJA==
+"@trpc/next@^9.27.0":
+  version "9.27.0"
+  resolved "https://registry.yarnpkg.com/@trpc/next/-/next-9.27.0.tgz#8574b6f7107d0482c624ff79ffeb9b9779cb0dad"
+  integrity sha512-hndgdL9yMIX+SedEeA97tlxjVzOOFKh+uIRgrysoTv9zrTDt+1njQF0p438/yg16AJZN9bv5e0NtuJYUvB4GKg==
   dependencies:
     "@babel/runtime" "^7.9.0"
     react-ssr-prepass "^1.5.0"
 
-"@trpc/react@^9.26.2":
-  version "9.26.2"
-  resolved "https://registry.yarnpkg.com/@trpc/react/-/react-9.26.2.tgz#fbea785e4cc206646c215cc1d371ccf21eeda79f"
-  integrity sha512-YCwn+Cd1/Yl6qB+/ZSF9A+32prBU4Z7un5Ms/q79mC090deCdfOL0IGNrv/7kX5EtsuOSo0RR/NUTo9f+xx1NA==
+"@trpc/react@^9.27.0":
+  version "9.27.0"
+  resolved "https://registry.yarnpkg.com/@trpc/react/-/react-9.27.0.tgz#db2334b42416027a292a856cb164def23b37a067"
+  integrity sha512-vAMBvI5AQP/US9MluO12V0OU/zwnGOUUTkRh22QQ20rcmR6NXPE28lMCdcJaHoTcbv1Mlr6vGXH7Er+/2+9tRg==
   dependencies:
     "@babel/runtime" "^7.9.0"
 
-"@trpc/server@^9.26.2":
-  version "9.26.2"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-9.26.2.tgz#2386d0d0c76b9d6cbdcef3006ea3221729617c21"
-  integrity sha512-J1kP072cVYC5H2qFhiLQ/gV57s0of++9QLLKf9n8mVfx300tecKQW2eu/oFvRCDPRTTQ1prHz9zm15IzLwoRrw==
+"@trpc/server@^9.27.0":
+  version "9.27.0"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-9.27.0.tgz#08aef2d0b025442e93f0c6b1421ddd7e81ae0eb5"
+  integrity sha512-5A/d5U9Y8L6+4q46a9gLackTyMRUFyNubo6JlIpSxtea/wW8teR6Azux4gg/uKIM3+6+lgg/HxQHWvwkG0VOSg==
 
 "@types/aria-query@^4.2.0":
   version "4.2.0"
@@ -6666,7 +6666,7 @@ yocto-queue@^0.1.0:
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
-zod@^3.17.10:
-  version "3.17.10"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-3.17.10.tgz#8716a05e6869df6faaa878a44ffe3c79e615defb"
-  integrity sha512-IHXnQYQuOOOL/XgHhgl8YjNxBHi3xX0mVcHmqsvJgcxKkEczPshoWdxqyFwsARpf41E0v9U95WUROqsHHxt0UQ==
+zod@^3.18.0:
+  version "3.18.0"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.18.0.tgz#2eed58b3cafb8d9a67aa2fee69279702f584f3bc"
+  integrity sha512-gwTm8RfUCe8l9rDwN5r2A17DkAa8Ez4Yl4yXqc5VqeGaXaJahzYYXbTwvhroZi0SNBqTwh/bKm2N0mpCzuw4bA==
