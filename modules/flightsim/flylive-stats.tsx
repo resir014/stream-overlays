@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { InfoItemCard } from '~/components/info-item-card';
-import { useFlyLiveData } from '~/lib/flightsim/flylive';
+import { useFlyLiveData } from './use-flylive-data';
 import { InfoCardWrapper } from './info-card-wrapper';
 import { FlightProgress } from './flight-progress';
 import { FlightItinerary } from './flight-itinerary';
