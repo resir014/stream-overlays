@@ -26,6 +26,7 @@
     "validate": "npm run type-check && npm run lint"
   },
   "dependencies": {
+    "@fontsource/jetbrains-mono": "^4.5.10",
     "@headlessui/react": "^1.6.6",
     "@notionhq/client": "^1.0.4",
     "@resir014/lerp": "^0.1.1",
