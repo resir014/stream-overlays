@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { BottomBarSocialLinkItem } from './bottom-bar-social-link-item';
 import ChatAlternate from '~/components/icons/ChatAlternate';
 import GitHub from '~/components/icons/GitHub';
 import Globe from '~/components/icons/Globe';
 import Twitter from '~/components/icons/Twitter';
+import { BottomBarSocialLinkItem } from './bottom-bar-social-link-item';
 
 export const socialLinks = [
   <BottomBarSocialLinkItem key="social-link-twitter" icon={Twitter} text="@resir014" />,

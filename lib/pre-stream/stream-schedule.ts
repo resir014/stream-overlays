@@ -1,5 +1,5 @@
-import { trpc } from '../trpc';
 import { GetUpcomingStreamsOptions } from '~/server/notion/get-upcoming-streams';
+import { trpc } from '../trpc';
 
 export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
   referenceDate: string | null;

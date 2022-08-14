@@ -1,8 +1,8 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import * as React from 'react';
-import { AlertEventTypes } from '.';
 import alertsAudio from '~/lib/data/alerts-audio';
+import { AlertEventTypes } from '.';
 
 interface AlertToastProps extends React.ComponentPropsWithoutRef<'div'> {
   title: string;
@@ -85,7 +85,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
           </Transition>
         </div>
         <div className="flex items-center flex-1 min-w-0 h-[40px] pr-16 pl-4">
-          {recipient && (
+          {recipient ? (
             <Transition
               as="span"
               show={isMounted}
@@ -102,7 +102,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
             >
               {recipient}
             </Transition>
-          )}
+          ) : null}
           <Transition
             as="span"
             show={isMounted}

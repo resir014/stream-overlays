@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { format } from 'date-fns';
 import clsx from 'clsx';
-import { ClockWatchTick } from './clock-watch-tick';
 import { useClock } from '~/lib/hooks/use-clock';
+import { ClockWatchTick } from './clock-watch-tick';
 
 export interface StudioClockInterfaceProps extends React.ComponentPropsWithoutRef<'div'> {
   uiFont?: string;
@@ -107,7 +107,7 @@ export function StudioClockInterface({
           </div>
         </div>
       </div>
-      {!hideTimezone && (
+      {hideTimezone ? null : (
         <div className="text-center space-y-2 text-chungking-white" style={watchUIStyle}>
           <p className="text-2xl leading-none font-bold">{timeZoneOptions.timeZone}</p>
         </div>

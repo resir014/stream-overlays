@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { format } from 'date-fns';
 import clsx from 'clsx';
-import { getPrestreamAccentColor } from './utils';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
 import { useClock } from '~/lib/hooks/use-clock';
+import { getPrestreamAccentColor } from './utils';
 
 export interface PreStreamHeaderProps {
   headerText?: string;
@@ -21,14 +21,14 @@ export function PreStreamHeader({ headerText, variant = 'pre-stream' }: PreStrea
           <div className={clsx('block w-4 h-4 rounded-full', getPrestreamAccentColor(variant))} />
           <span className="inline-block">{format(time, 'dd MMMM yyyy')}</span>
         </div>
-        {headerText && (
+        {headerText ? (
           <div className="flex flex-row items-center space-x-4">
             <div className="flex flex-row space-x-4 text-3xl leading-none text-chungking-white">
               <span className="inline-block">{headerText}</span>
             </div>
             <div className={clsx('block w-4 h-4 rounded-full', getPrestreamAccentColor(variant))} />
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

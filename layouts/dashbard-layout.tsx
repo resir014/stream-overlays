@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 
-import { LayoutType } from '.';
 import { DashboardHeader, DashboardRoot } from '~/components/dashboard';
+import { LayoutType } from '.';
 
 export const DashboardLayout: LayoutType = page => {
   return (

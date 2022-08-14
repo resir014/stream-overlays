@@ -1,12 +1,12 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import { PreStreamVariants } from '~/lib/pre-stream/types';
+import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { SceneWrapper } from '../scenes/scene-wrapper';
 import { StudioClockInterface } from '../studio-clock/studio-clock-interface';
 import { CurrentStreamBlock } from './current-stream-block';
 import { PrestreamCountdown } from './pre-stream-countdown';
 import { getPrestreamAccentColor } from './utils';
-import { PreStreamVariants } from '~/lib/pre-stream/types';
-import { useOnMount } from '~/lib/hooks/use-on-mount';
 
 export interface PreStreamSceneProps {
   headerText: string;

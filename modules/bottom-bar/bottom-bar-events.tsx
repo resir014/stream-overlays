@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { BottomBarEventBox } from './bottom-bar-event-box';
 import DollarSign from '~/components/icons/DollarSign';
 import Star from '~/components/icons/Star';
 import TrendingUp from '~/components/icons/TrendingUp';
+import { BottomBarEventBox } from './bottom-bar-event-box';
 
 export const BottomBarEvents: React.FC = () => {
   return (

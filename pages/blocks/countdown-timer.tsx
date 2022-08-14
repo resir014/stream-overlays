@@ -21,7 +21,7 @@ function CountdownTimerPage() {
 
   return (
     <div>
-      {isCountdownRendered && (
+      {isCountdownRendered ? (
         <Countdown
           date={Date.now() + minutes}
           precision={3}
@@ -32,7 +32,7 @@ function CountdownTimerPage() {
             </p>
           )}
         />
-      )}
+      ) : null}
     </div>
   );
 }

@@ -18,7 +18,9 @@ export const InfoItemCard = React.forwardRef<HTMLElement, InfoItemCardProps>(
         )}
         {...rest}
       >
-        {title && <span className="inline-flex items-center px-2 h-[30px] font-bold">{title}</span>}
+        {title ? (
+          <span className="inline-flex items-center px-2 h-[30px] font-bold">{title}</span>
+        ) : null}
         <span className="inline-flex items-center px-2 h-[30px] font-medium tabular-nums">
           {content}
         </span>

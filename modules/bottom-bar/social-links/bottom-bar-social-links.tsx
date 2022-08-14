@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Transition } from '@headlessui/react';
-import { socialLinks } from './social-links';
 import { useInterval } from '~/lib/hooks/use-interval';
 import sleep from '~/lib/sleep';
+import { socialLinks } from './social-links';
 
 export const TRANSITION_DURATION = 500;
 

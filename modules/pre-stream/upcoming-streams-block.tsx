@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import { format } from 'date-fns';
 import * as React from 'react';
-import { getPrestreamAccentGradient, getPrestreamAccentColor } from './utils';
 import {
   ParsedCurrentStream,
   useCurrentStream,
   useUpcomingStreams,
 } from '~/lib/pre-stream/stream-schedule';
 import { PreStreamVariants } from '~/lib/pre-stream/types';
+import { getPrestreamAccentGradient, getPrestreamAccentColor } from './utils';
 
 export interface UpcomingStreamsBlockProps extends React.ComponentPropsWithoutRef<'div'> {
   variant?: PreStreamVariants;

@@ -23,7 +23,7 @@ function StudioClockPage() {
     [router.query],
   );
 
-  return <div>{isClockRendered && <StudioClockInterface {...clockProps} />}</div>;
+  return <div>{isClockRendered ? <StudioClockInterface {...clockProps} /> : null}</div>;
 }
 
 export default createNextPage(StudioClockPage, {

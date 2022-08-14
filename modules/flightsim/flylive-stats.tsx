@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { InfoItemCard } from '~/components/info-item-card';
+import { useFlyLiveData } from '~/lib/flightsim/flylive';
 import { InfoCardWrapper } from './info-card-wrapper';
 import { FlightProgress } from './flight-progress';
 import { FlightItinerary } from './flight-itinerary';
-import { InfoItemCard } from '~/components/info-item-card';
-import { useFlyLiveData } from '~/lib/flightsim/flylive';
 
 export const FlyLiveStats: NextPage = () => {
   // Calls the local FlyLive telemetry API endpoint and refetches every second
@@ -31,18 +31,22 @@ export const FlyLiveStats: NextPage = () => {
       <>
         <FlightProgress value={flightData.flightPercent ?? 0} max={100} />
         <InfoCardWrapper>
-          {flightData.dep && flightData.arr && (
+          {flightData.dep && flightData.arr ? (
             <FlightItinerary origin={flightData.dep} destination={flightData.arr} />
-          )}
-          {flightData.callsign && <InfoItemCard title="ATC" content={flightData.callsign} />}
-          {flightData.aircraftType && <InfoItemCard title="AC" content={flightData.aircraftType} />}
-          {network && <InfoItemCard title="NW" content={network} />}
-          {flightData.groundSpeed && <InfoItemCard title="GSPD" content={flightData.groundSpeed} />}
-          {flightData.airSpeed && <InfoItemCard title="IAS" content={flightData.airSpeed} />}
-          {flightData.heading && <InfoItemCard title="HDG" content={flightData.heading} />}
-          {flightData.vSpeed && <InfoItemCard title="VSPD" content={flightData.vSpeed} />}
-          {flightData.altitude && <InfoItemCard title="ALT" content={flightData.altitude} />}
-          {flightData.eta && <InfoItemCard title="ETA" content={flightData.eta} />}
+          ) : null}
+          {flightData.callsign ? <InfoItemCard title="ATC" content={flightData.callsign} /> : null}
+          {flightData.aircraftType ? (
+            <InfoItemCard title="AC" content={flightData.aircraftType} />
+          ) : null}
+          {network ? <InfoItemCard title="NW" content={network} /> : null}
+          {flightData.groundSpeed ? (
+            <InfoItemCard title="GSPD" content={flightData.groundSpeed} />
+          ) : null}
+          {flightData.airSpeed ? <InfoItemCard title="IAS" content={flightData.airSpeed} /> : null}
+          {flightData.heading ? <InfoItemCard title="HDG" content={flightData.heading} /> : null}
+          {flightData.vSpeed ? <InfoItemCard title="VSPD" content={flightData.vSpeed} /> : null}
+          {flightData.altitude ? <InfoItemCard title="ALT" content={flightData.altitude} /> : null}
+          {flightData.eta ? <InfoItemCard title="ETA" content={flightData.eta} /> : null}
         </InfoCardWrapper>
       </>
     );
