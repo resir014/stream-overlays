@@ -36,7 +36,7 @@
     "clsx": "^1.2.1",
     "date-fns": "^2.29.1",
     "isomorphic-unfetch": "^3.1.0",
-    "nanoid": "^3.3.2",
+    "nanoid": "^3.3.4",
     "next": "^12.2.5",
     "normalize.css": "^8.0.1",
     "polished": "^4.2.2",
