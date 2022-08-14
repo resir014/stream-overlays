@@ -8,8 +8,8 @@ export const BottomBarEvents: React.FC = () => {
   return (
     <div className="flex flex-row items-center pl-12 pr-4 text-chungking-white">
       <BottomBarEventBox icon={DollarSign} />
-      <BottomBarEventBox icon={Star} borderColorClassName="bg-chungking-orange-400" />
-      <BottomBarEventBox icon={TrendingUp} borderColorClassName="bg-chungking-turquoise-500" />
+      <BottomBarEventBox icon={Star} />
+      <BottomBarEventBox icon={TrendingUp} />
     </div>
   );
 };
