@@ -14,8 +14,8 @@ export interface StudioClockInterfaceProps extends React.ComponentPropsWithoutRe
 export function StudioClockInterface({
   className,
   style,
-  uiFont,
-  watchFaceFont,
+  uiFont = 'Inter',
+  watchFaceFont = 'JetBrains Mono',
   watchFaceColor,
   hideTimezone,
   ...rest
@@ -32,14 +32,14 @@ export function StudioClockInterface({
 
   const watchUIStyle = React.useMemo(
     () => ({
-      fontFamily: `${uiFont ?? 'Inter'}, system-ui, sans-serif`,
+      fontFamily: `${uiFont}, system-ui, sans-serif`,
     }),
     [uiFont],
   );
 
   const watchFaceStyle = React.useMemo(
     () => ({
-      fontFamily: `${watchFaceFont ?? 'JetBrains Mono'}, monospace`,
+      fontFamily: `${watchFaceFont}, monospace`,
     }),
     [watchFaceFont],
   );
@@ -49,7 +49,9 @@ export function StudioClockInterface({
       void import('webfontloader').then(mod => {
         mod.default.load({
           google: {
-            families: [uiFont, watchFaceFont].filter(Boolean).map(font => `${font}`),
+            families: [uiFont, watchFaceFont]
+              .filter(Boolean)
+              .map(font => `${font}:400,700,400italic,700italic`),
           },
         });
       });
