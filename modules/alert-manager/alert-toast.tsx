@@ -1,6 +1,14 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import * as React from 'react';
+import {
+  IconBits,
+  IconExclamationMark,
+  IconFollow,
+  IconHeart,
+  IconMoney,
+  IconTV,
+} from '~/components/icons';
 import alertsAudio from '~/lib/data/alerts-audio';
 import { AlertEventTypes } from '.';
 
@@ -14,28 +22,28 @@ interface AlertToastProps extends React.ComponentPropsWithoutRef<'div'> {
 function alertToastVariants(variant?: AlertEventTypes) {
   switch (variant) {
     case 'donation': {
-      return 'bg-chungking-green-300 text-chungking-black';
+      return { colors: 'bg-chungking-green-300 text-chungking-black', icon: IconMoney };
     }
     case 'follow': {
-      return 'bg-chungking-white text-chungking-black';
+      return { colors: 'bg-chungking-black text-chungking-white', icon: IconFollow };
     }
     case 'subscription': {
-      return 'bg-chungking-orange-400 text-chungking-black';
+      return { colors: 'bg-chungking-orange-400 text-chungking-black', icon: IconHeart };
     }
     case 'resub': {
-      return 'bg-chungking-orange-400 text-chungking-black';
+      return { colors: 'bg-chungking-orange-400 text-chungking-black', icon: IconHeart };
     }
     case 'host': {
-      return 'bg-chungking-blue-500 text-chungking-white';
+      return { colors: 'bg-chungking-blue-500 text-chungking-white', icon: IconTV };
     }
     case 'bits': {
-      return 'bg-[#9b45ff] text-chungking-white';
+      return { colors: 'bg-[#9b45ff] text-chungking-white', icon: IconBits };
     }
     case 'raid': {
-      return 'bg-chungking-magenta-500 text-chungking-white';
+      return { colors: 'bg-chungking-magenta-500 text-chungking-white', icon: IconExclamationMark };
     }
     default: {
-      return 'bg-chungking-white text-chungking-black';
+      return { colors: 'bg-chungking-black text-chungking-white', icon: IconFollow };
     }
   }
 }
@@ -60,9 +68,11 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
       };
     }, [audio]);
 
+    const currentVariant = React.useMemo(() => alertToastVariants(variant), [variant]);
+
     return (
       <div
-        className={clsx('flex items-start w-full h-[64px] bg-chungking-black text-white')}
+        className={clsx('flex items-center w-full h-[62px]', currentVariant.colors)}
         ref={ref}
         {...rest}
       >
@@ -77,10 +87,10 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div
-              className={clsx('inline-flex w-3 h-3 rounded-full', alertToastVariants(variant))}
-              aria-hidden
-            />
+            {React.createElement(currentVariant.icon, {
+              className: 'inline-flex w-6 h-6 rounded-full',
+              'aria-hidden': true,
+            })}
             <span className="text-2xl leading-10 font-bold">{title}</span>
           </Transition>
         </div>
