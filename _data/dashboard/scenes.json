@@ -8,11 +8,11 @@
     "url": "/scenes/brb"
   },
   {
-    "title": "End Scene",
-    "url": "/scenes/end"
+    "title": "Technical Issues Scene",
+    "url": "/scenes/tech-issues"
   },
   {
-    "title": "NYE 2022",
-    "url": "/scenes/nye-2022"
+    "title": "End Scene",
+    "url": "/scenes/end"
   }
 ]

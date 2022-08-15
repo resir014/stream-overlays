@@ -17,7 +17,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'bottom-bar': 'auto 320px',
-        'pre-stream': '320px 84px auto 376px',
+        'pre-stream': '110px auto 562px',
       },
       transitionTimingFunction: {
         'in-out-alerts': 'cubic-bezier(0.4, 0, 0.2, 1)',
