@@ -8,10 +8,10 @@ export interface PreStreamTitlesProps {
 export function PreStreamTitles({ header, description }: PreStreamTitlesProps) {
   return (
     <div className="flex flex-row items-center w-full h-full px-12">
-      <div className="space-y-2">
-        <h1 className="text-chungking-white text-7xl leading-none font-bold">{header}</h1>
+      <div>
+        <h1 className="text-chungking-white text-[128px] leading-tight font-bold">{header}</h1>
         {description ? (
-          <p className="text-chungking-white text-3xl leading-[36px]">{description}</p>
+          <p className="text-chungking-white text-[48px] leading-tight">{description}</p>
         ) : null}
       </div>
     </div>

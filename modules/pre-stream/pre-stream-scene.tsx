@@ -58,16 +58,14 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
       <div className="flex px-12 py-6">
         <div
           className={clsx(
-            'flex flex-row flex-1 w-full h-full overflow-hidden rounded-3xl bg-chungking-black bg-opacity-25 border-4',
+            'flex flex-row flex-1 w-full h-full overflow-hidden rounded-3xl bg-chungking-black/75 border-4',
             accentColors.border,
           )}
         >
           <div
-            className={clsx('flex flex-col items-center justify-center w-[72px]', accentColors.bg)}
+            className={clsx('flex flex-col items-center justify-center w-[110px]', accentColors.bg)}
           >
-            <div className="flex items-center justify-center h-[72px]">
-              <div className="block w-9 h-9 rounded-full bg-chungking-white" />
-            </div>
+            <div className="block w-10 h-10 rounded-full bg-chungking-white" />
           </div>
           <div className="flex items-center justify-center relative w-full h-full">
             <div className="flex-1 h-full">
@@ -76,7 +74,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
                 description={
                   variant === 'tech-issues'
                     ? 'Please wait a moment!'
-                    : currentStream?.description ?? 'No description available.'
+                    : currentStream?.stream_name ?? 'No description available.'
                 }
               />
             </div>
