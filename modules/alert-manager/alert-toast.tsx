@@ -72,18 +72,11 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
 
     return (
       <div className={clsx('relative w-full h-[62px]', currentVariant.colors)} ref={ref} {...rest}>
-        <Transition
-          show={isMounted}
+        <div
           className={clsx(
-            'flex items-center justify-center absolute w-full h-[62px] px-12 z-10',
+            'flex items-center justify-center absolute w-full h-[62px] px-12',
             currentVariant.colors,
           )}
-          enter="transition duration-300 ease-in-out-alerts"
-          enterFrom="opacity-0 translate-y-[62px]"
-          enterTo="opacity-100 translate-y-0"
-          leave="transition-opacity duration-300"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
         >
           <div className="flex items-center flex-shrink-0 h-[40px] space-x-4 pr-4">
             {React.createElement(currentVariant.icon, {
@@ -92,12 +85,12 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
             })}
             <span className="text-2xl leading-10 font-bold">{title}</span>
           </div>
-        </Transition>
+        </div>
         {recipient ? (
           <Transition
             show={isMounted}
             className={clsx(
-              'flex items-center justify-center absolute w-full h-[62px] px-12 z-20',
+              'flex items-center justify-center absolute w-full h-[62px] px-12 z-10',
               currentVariant.colors,
             )}
             enter="transition duration-300 ease-in-out-alerts delay-[1500ms]"
@@ -113,7 +106,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
         <Transition
           show={isMounted}
           className={clsx(
-            'flex items-center justify-center absolute w-full h-[62px] px-12 z-30',
+            'flex items-center justify-center absolute w-full h-[62px] px-12 z-20',
             currentVariant.colors,
           )}
           enter={clsx(
