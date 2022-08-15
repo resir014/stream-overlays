@@ -81,7 +81,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
             show={isMounted}
             className="inline-flex items-center space-x-3"
             enter="transition duration-300 ease-in-out-alerts"
-            enterFrom="opacity-0 translate-y-0.5"
+            enterFrom="opacity-0 translate-y-1"
             enterTo="opacity-100 translate-y-0"
             leave="transition-opacity duration-300"
             leaveFrom="opacity-100"
@@ -104,7 +104,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
                 'text-2xl leading-10 font-normal truncate',
               )}
               enter="transition duration-300 ease-in-out-alerts delay-100"
-              enterFrom="opacity-0 translate-y-0.5"
+              enterFrom="opacity-0 translate-y-1"
               enterTo="opacity-100 translate-y-0"
               leave="transition-opacity duration-300"
               leaveFrom="opacity-100"
@@ -121,7 +121,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
               'transition duration-300 ease-in-out-alerts',
               recipient ? 'delay-200' : 'delay-100',
             )}
-            enterFrom="opacity-0 translate-y-0.5"
+            enterFrom="opacity-0 translate-y-1"
             enterTo="opacity-100 translate-y-0"
             leave="transition-opacity duration-300"
             leaveFrom="opacity-100"
