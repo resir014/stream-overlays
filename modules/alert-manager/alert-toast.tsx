@@ -71,65 +71,63 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
     const currentVariant = React.useMemo(() => alertToastVariants(variant), [variant]);
 
     return (
-      <div
-        className={clsx('flex items-center w-full h-[62px]', currentVariant.colors)}
-        ref={ref}
-        {...rest}
-      >
-        <div className="flex items-center flex-shrink-0 h-[40px] pl-12 pr-4">
-          <Transition
-            show={isMounted}
-            className="inline-flex items-center space-x-3"
-            enter="transition duration-300 ease-in-out-alerts"
-            enterFrom="opacity-0 translate-y-1"
-            enterTo="opacity-100 translate-y-0"
-            leave="transition-opacity duration-300"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
+      <div className={clsx('relative w-full h-[62px]', currentVariant.colors)} ref={ref} {...rest}>
+        <Transition
+          show={isMounted}
+          className={clsx(
+            'flex items-center justify-center absolute w-full h-[62px] px-12 z-10',
+            currentVariant.colors,
+          )}
+          enter="transition duration-300 ease-in-out-alerts"
+          enterFrom="opacity-0 translate-y-[62px]"
+          enterTo="opacity-100 translate-y-0"
+          leave="transition-opacity duration-300"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="flex items-center flex-shrink-0 h-[40px] space-x-4 pr-4">
             {React.createElement(currentVariant.icon, {
               className: 'inline-flex w-6 h-6 rounded-full',
               'aria-hidden': true,
             })}
             <span className="text-2xl leading-10 font-bold">{title}</span>
-          </Transition>
-        </div>
-        <div className="flex items-center flex-1 min-w-0 h-[40px] pr-16 pl-4">
-          {recipient ? (
-            <Transition
-              as="span"
-              show={isMounted}
-              className={clsx(
-                'ml-8 first-of-type:ml-0',
-                'text-2xl leading-10 font-normal truncate',
-              )}
-              enter="transition duration-300 ease-in-out-alerts delay-100"
-              enterFrom="opacity-0 translate-y-1"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition-opacity duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              {recipient}
-            </Transition>
-          ) : null}
+          </div>
+        </Transition>
+        {recipient ? (
           <Transition
-            as="span"
             show={isMounted}
-            className={clsx('ml-8 first-of-type:ml-0', 'text-2xl leading-10 font-normal truncate')}
-            enter={clsx(
-              'transition duration-300 ease-in-out-alerts',
-              recipient ? 'delay-200' : 'delay-100',
+            className={clsx(
+              'flex items-center justify-center absolute w-full h-[62px] px-12 z-20',
+              currentVariant.colors,
             )}
-            enterFrom="opacity-0 translate-y-1"
+            enter="transition duration-300 ease-in-out-alerts delay-[1500ms]"
+            enterFrom="opacity-0 translate-y-[62px]"
             enterTo="opacity-100 translate-y-0"
             leave="transition-opacity duration-300"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            {content}
+            <span className="text-2xl leading-10">{recipient}</span>
           </Transition>
-        </div>
+        ) : null}
+        <Transition
+          show={isMounted}
+          className={clsx(
+            'flex items-center justify-center absolute w-full h-[62px] px-12 z-30',
+            currentVariant.colors,
+          )}
+          enter={clsx(
+            'transition duration-300 ease-in-out-alerts',
+            recipient ? 'delay-[3000ms]' : 'delay-[1500ms]',
+          )}
+          enterFrom="opacity-0 translate-y-[62px]"
+          enterTo="opacity-100 translate-y-0"
+          leave="transition-opacity duration-300"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <span className="text-2xl leading-10 truncate">{content}</span>
+        </Transition>
       </div>
     );
   },
