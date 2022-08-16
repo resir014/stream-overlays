@@ -15,14 +15,15 @@ import { AlertEventTypes } from '.';
 interface AlertToastProps extends React.ComponentPropsWithoutRef<'div'> {
   title: string;
   recipient?: string;
-  content: string;
+  amount?: string;
+  content?: string;
   variant?: AlertEventTypes;
 }
 
 function alertToastVariants(variant?: AlertEventTypes) {
   switch (variant) {
     case 'donation': {
-      return { colors: 'bg-chungking-green-300 text-chungking-black', icon: IconMoney };
+      return { colors: 'bg-chungking-green-500 text-chungking-black', icon: IconMoney };
     }
     case 'follow': {
       return { colors: 'bg-chungking-black text-chungking-white', icon: IconFollow };
@@ -49,7 +50,7 @@ function alertToastVariants(variant?: AlertEventTypes) {
 }
 
 export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
-  ({ title, recipient, variant = 'follow', content, ...rest }, ref) => {
+  ({ title, recipient, amount, variant = 'follow', content, ...rest }, ref) => {
     const [isMounted, setIsMounted] = React.useState(false);
     const audio = React.useMemo(
       () => (alertsAudio[variant]?.src ? new Audio(alertsAudio[variant]?.src) : undefined),
@@ -100,27 +101,32 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <span className="text-2xl leading-10">{recipient}</span>
+            <div className="flex items-center flex-shrink-0 h-[40px] space-x-10 pr-4">
+              <span className="text-2xl leading-10">{recipient}</span>
+              {amount ? <span className="text-2xl leading-10">({amount})</span> : null}
+            </div>
           </Transition>
         ) : null}
-        <Transition
-          show={isMounted}
-          className={clsx(
-            'flex items-center justify-center absolute w-full h-[62px] px-12 z-20',
-            currentVariant.colors,
-          )}
-          enter={clsx(
-            'transition duration-300 ease-in-out-alerts',
-            recipient ? 'delay-[3000ms]' : 'delay-[1500ms]',
-          )}
-          enterFrom="opacity-0 translate-y-[62px]"
-          enterTo="opacity-100 translate-y-0"
-          leave="transition-opacity duration-300"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <span className="text-2xl leading-10 truncate">{content}</span>
-        </Transition>
+        {content ? (
+          <Transition
+            show={isMounted}
+            className={clsx(
+              'flex items-center justify-center absolute w-full h-[62px] px-12 z-20',
+              currentVariant.colors,
+            )}
+            enter={clsx(
+              'transition duration-300 ease-in-out-alerts',
+              recipient ? 'delay-[3000ms]' : 'delay-[1500ms]',
+            )}
+            enterFrom="opacity-0 translate-y-[62px]"
+            enterTo="opacity-100 translate-y-0"
+            leave="transition-opacity duration-300"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <span className="text-2xl leading-10 truncate">{content}</span>
+          </Transition>
+        ) : null}
       </div>
     );
   },

@@ -27,7 +27,8 @@ export function handleToast({
           <AlertToast
             title="Donation"
             variant="donation"
-            recipient={`${displayName || username || name} (${amount})`}
+            recipient={`${displayName || username || name}`}
+            amount={`${amount}`}
             content={message}
           />
         ),
@@ -40,7 +41,7 @@ export function handleToast({
       const { displayName } = eventData.data;
       alert.sendAlert({
         id: eventData._id,
-        content: <AlertToast title="Follow" variant="follow" content={displayName} />,
+        content: <AlertToast title="New Follower" variant="follow" content={displayName} />,
         dismissAfter,
         onRemove,
       });
@@ -76,7 +77,12 @@ export function handleToast({
         alert.sendAlert({
           id: eventData._id,
           content: (
-            <AlertToast title="Resub" variant="resub" content={`${displayName} (×${amount})`} />
+            <AlertToast
+              title="Resub"
+              variant="resub"
+              recipient={`${displayName}`}
+              amount={`×${amount}`}
+            />
           ),
           dismissAfter,
           onRemove,
@@ -108,9 +114,9 @@ export function handleToast({
         content: (
           <AlertToast
             title="Host"
-            recipient={displayName}
             variant="host"
-            content={`${formattedAmount} viewers`}
+            recipient={displayName}
+            amount={`${formattedAmount} viewers`}
           />
         ),
         dismissAfter,
@@ -127,8 +133,9 @@ export function handleToast({
         content: (
           <AlertToast
             title="Bits"
-            recipient={`${displayName} (×${formattedAmount})`}
             variant="bits"
+            recipient={`${displayName}`}
+            amount={`×${formattedAmount}`}
             content={message}
           />
         ),
@@ -146,9 +153,9 @@ export function handleToast({
         content: (
           <AlertToast
             title="Raid"
-            recipient={displayName}
             variant="raid"
-            content={`${formattedAmount} raiders`}
+            recipient={displayName}
+            amount={`${formattedAmount} raiders`}
           />
         ),
         dismissAfter,

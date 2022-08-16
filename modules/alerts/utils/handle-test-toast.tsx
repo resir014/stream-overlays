@@ -27,7 +27,8 @@ export function handleTestToast({
           <AlertToast
             title="Donation"
             variant="donation"
-            recipient={`${displayName || name} (${amount})`}
+            recipient={`${displayName || name}`}
+            amount={`${amount}`}
             content={message}
           />
         ),
@@ -40,7 +41,9 @@ export function handleTestToast({
     case 'follower-latest': {
       alert.sendAlert({
         id: eventData._id,
-        content: <AlertToast title="Follow" variant="follow" content={eventData.event.name} />,
+        content: (
+          <AlertToast title="New Follower" variant="follow" content={eventData.event.name} />
+        ),
         dismissAfter,
         onRemove,
       });
@@ -80,7 +83,9 @@ export function handleTestToast({
           // Resub
           alert.sendAlert({
             id: eventData._id,
-            content: <AlertToast title="Resub" variant="resub" content={`${name} (×${amount})`} />,
+            content: (
+              <AlertToast title="Resub" variant="resub" content={`${name}`} amount={`×${amount}`} />
+            ),
             dismissAfter,
             onRemove,
           });
@@ -110,7 +115,7 @@ export function handleTestToast({
       alert.sendAlert({
         id: eventData._id,
         content: (
-          <AlertToast title="Host" recipient={name} variant="host" content={`${amount} viewers`} />
+          <AlertToast title="Host" variant="host" recipient={name} amount={`${amount} viewers`} />
         ),
         dismissAfter,
         onRemove,
@@ -126,8 +131,9 @@ export function handleTestToast({
         content: (
           <AlertToast
             title="Bits"
-            recipient={`${name} (×${amount})`}
             variant="bits"
+            recipient={`${name}`}
+            amount={`×${amount}`}
             content={message}
           />
         ),
@@ -143,7 +149,7 @@ export function handleTestToast({
       alert.sendAlert({
         id: eventData._id,
         content: (
-          <AlertToast title="Raid" recipient={name} variant="raid" content={`${amount} raiders`} />
+          <AlertToast title="Raid" variant="raid" recipient={name} amount={`${amount} raiders`} />
         ),
         dismissAfter,
         onRemove,
