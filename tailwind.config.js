@@ -13,7 +13,7 @@ module.exports = {
     extend: {
       gridTemplateRows: {
         'bottom-bar': '40px 24px',
-        'scene-wrapper': '1fr 44px 64px',
+        'scene-wrapper': '1fr 32px 64px',
       },
       gridTemplateColumns: {
         'bottom-bar': 'auto 320px',
