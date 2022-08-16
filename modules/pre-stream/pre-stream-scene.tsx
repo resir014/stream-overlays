@@ -8,6 +8,7 @@ import { PreStreamTitles } from './pre-stream-titles';
 import { PrestreamCountdown } from './pre-stream-countdown';
 import { getPrestreamAccentColor } from './utils';
 import { PrestreamDate } from './pre-stream-date';
+import { SocialLinksRotator } from '../social-links';
 
 export interface PreStreamSceneProps {
   headerText: string;
@@ -53,6 +54,14 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
     return null;
   };
 
+  const renderLinks = () => {
+    if (clockRendered) {
+      return <SocialLinksRotator />;
+    }
+
+    return null;
+  };
+
   return (
     <SceneWrapper>
       <div className="flex px-12 py-6">
@@ -81,7 +90,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
             {renderCountdown()}
             <div className="flex items-center justify-between absolute bottom-8 w-full px-12">
               <div className="text-3xl font-bold text-chungking-white">{renderDateTime()}</div>
-              <div className="text-3xl font-bold text-chungking-white">twitch.tv/resir014</div>
+              <div className="text-3xl font-bold text-chungking-white">{renderLinks()}</div>
             </div>
           </div>
         </div>
