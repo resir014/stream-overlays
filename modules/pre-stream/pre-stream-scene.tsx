@@ -64,7 +64,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
 
   return (
     <SceneWrapper>
-      <div className="flex px-12 py-6">
+      <div className="flex p-12">
         <div
           className={clsx(
             'flex flex-row flex-1 w-full h-full overflow-hidden rounded-3xl bg-chungking-black/75 border-4',
