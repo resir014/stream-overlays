@@ -46,7 +46,8 @@ export const StreamlabsAlerts: React.FC = () => {
             <AlertToast
               title="Donation"
               variant={eventData.type}
-              recipient={`${eventData.message[0].name} (${eventData.message[0].formatted_amount})`}
+              recipient={`${eventData.message[0].name}`}
+              amount={`${eventData.message[0].formatted_amount}`}
               content={eventData.message[0].message}
             />
           ),
@@ -62,7 +63,7 @@ export const StreamlabsAlerts: React.FC = () => {
               id: eventData.id,
               content: (
                 <AlertToast
-                  title="Follow"
+                  title="New Follower"
                   variant={eventData.type}
                   content={eventData.message[0].name}
                 />
@@ -93,7 +94,8 @@ export const StreamlabsAlerts: React.FC = () => {
               content: (
                 <AlertToast
                   title="Resub"
-                  recipient={`${eventData.message[0].name} (×${eventData.message[0].months})`}
+                  recipient={`${eventData.message[0].name}`}
+                  amount={`×${eventData.message[0].months}`}
                   variant={eventData.type}
                   content={eventData.message[0].message}
                 />
@@ -110,8 +112,8 @@ export const StreamlabsAlerts: React.FC = () => {
                 <AlertToast
                   title="Host"
                   recipient={eventData.message[0].name}
+                  amount={`${eventData.message[0].viewers} viewers`}
                   variant={eventData.type}
-                  content={`${eventData.message[0].viewers} viewers`}
                 />
               ),
               dismissAfter,
@@ -125,7 +127,8 @@ export const StreamlabsAlerts: React.FC = () => {
               content: (
                 <AlertToast
                   title="Bits"
-                  recipient={`${eventData.message[0].name} (${eventData.message[0].amount})`}
+                  recipient={`${eventData.message[0].name}`}
+                  amount={`(${eventData.message[0].amount})`}
                   variant={eventData.type}
                   content={eventData.message[0].message}
                 />
@@ -142,8 +145,8 @@ export const StreamlabsAlerts: React.FC = () => {
                 <AlertToast
                   title="Raid"
                   recipient={eventData.message[0].name}
+                  amount={`${eventData.message[0].raiders} raiders`}
                   variant={eventData.type}
-                  content={`${eventData.message[0].raiders} raiders`}
                 />
               ),
               dismissAfter,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Star: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
+export const IconStar: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
   width = 24,
   height = 24,
   ...rest
@@ -18,5 +18,3 @@ const Star: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
     </svg>
   );
 };
-
-export default Star;

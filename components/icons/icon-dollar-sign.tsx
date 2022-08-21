@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const DollarSign: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
+export const IconDollarSign: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
   width = 24,
   height = 24,
   ...rest
@@ -23,5 +23,3 @@ const DollarSign: React.FC<React.SVGAttributes<SVGSVGElement>> = ({
     </svg>
   );
 };
-
-export default DollarSign;

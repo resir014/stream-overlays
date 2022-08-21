@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Transition } from '@headlessui/react';
 import { useInterval } from '~/lib/hooks/use-interval';
 import sleep from '~/lib/sleep';
-import { socialLinks } from './social-links';
+import { socialLinksData } from './social-links';
 
 export const TRANSITION_DURATION = 500;
 
-export const BottomBarSocialLinks: React.FC = () => {
+export const SocialLinksRotator: React.FC = () => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [transitioning, setTransitioning] = React.useState(false);
 
@@ -16,7 +16,7 @@ export const BottomBarSocialLinks: React.FC = () => {
 
     await sleep(1000);
 
-    if (socialLinks[next]) {
+    if (socialLinksData[next]) {
       setCurrentIndex(next);
     } else {
       setCurrentIndex(0);
@@ -36,7 +36,7 @@ export const BottomBarSocialLinks: React.FC = () => {
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      {socialLinks[currentIndex]}
+      {socialLinksData[currentIndex]}
     </Transition>
   );
 };

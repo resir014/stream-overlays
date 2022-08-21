@@ -1,21 +1,19 @@
+import { createStyleString } from '@capsizecss/core';
+import fontMetrics from '@capsizecss/metrics/inter';
 import { format } from 'date-fns';
 import * as React from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 
+const styles = createStyleString('capsized-text', {
+  capHeight: 18,
+  lineGap: 0,
+  fontMetrics,
+});
+
 export function BottomBarClock() {
   const time = useClock();
   const [mounted, setMounted] = React.useState<boolean>(false);
-
-  const clockSeparator = React.useMemo(() => {
-    const ms = time.getMilliseconds();
-
-    if (ms < 500) {
-      return ':';
-    }
-
-    return ' ';
-  }, [time]);
 
   useOnMount(() => {
     setMounted(true);
@@ -24,11 +22,9 @@ export function BottomBarClock() {
   const renderClock = () => {
     if (mounted) {
       return (
-        <span className="flex items-center text-chungking-white text-2xl leading-none font-mono font-bold">
-          {format(time, 'HH')}
-          {clockSeparator}
-          {format(time, 'mm')}
-        </span>
+        <div className="flex items-center justify-center w-[96px] h-[32px] py-1 text-chungking-black bg-chungking-white rounded-xl leading-none font-bold">
+          <span className="capsized-text">{format(time, 'HH:mm')}</span>
+        </div>
       );
     }
 
@@ -38,7 +34,9 @@ export function BottomBarClock() {
   return (
     <div className="flex items-center pl-4 text-right space-x-2">
       {renderClock()}
-      <div className="inline-flex w-3 h-3 rounded-full bg-chungking-blue-500" aria-hidden />
+      <style jsx>{`
+        ${styles}
+      `}</style>
     </div>
   );
 }

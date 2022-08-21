@@ -1,47 +1,56 @@
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import * as React from 'react';
+import {
+  IconBits,
+  IconExclamationMark,
+  IconFollow,
+  IconHeart,
+  IconMoney,
+  IconTV,
+} from '~/components/icons';
 import alertsAudio from '~/lib/data/alerts-audio';
 import { AlertEventTypes } from '.';
 
 interface AlertToastProps extends React.ComponentPropsWithoutRef<'div'> {
   title: string;
   recipient?: string;
-  content: string;
+  amount?: string;
+  content?: string;
   variant?: AlertEventTypes;
 }
 
 function alertToastVariants(variant?: AlertEventTypes) {
   switch (variant) {
     case 'donation': {
-      return 'bg-chungking-green-300 text-chungking-black';
+      return { colors: 'bg-chungking-green-500 text-chungking-black', icon: IconMoney };
     }
     case 'follow': {
-      return 'bg-chungking-white text-chungking-black';
+      return { colors: 'bg-chungking-black text-chungking-white', icon: IconFollow };
     }
     case 'subscription': {
-      return 'bg-chungking-orange-400 text-chungking-black';
+      return { colors: 'bg-chungking-orange-400 text-chungking-black', icon: IconHeart };
     }
     case 'resub': {
-      return 'bg-chungking-orange-400 text-chungking-black';
+      return { colors: 'bg-chungking-orange-400 text-chungking-black', icon: IconHeart };
     }
     case 'host': {
-      return 'bg-chungking-blue-500 text-chungking-white';
+      return { colors: 'bg-chungking-blue-500 text-chungking-white', icon: IconTV };
     }
     case 'bits': {
-      return 'bg-[#9b45ff] text-chungking-white';
+      return { colors: 'bg-[#9b45ff] text-chungking-white', icon: IconBits };
     }
     case 'raid': {
-      return 'bg-chungking-magenta-500 text-chungking-white';
+      return { colors: 'bg-chungking-magenta-500 text-chungking-white', icon: IconExclamationMark };
     }
     default: {
-      return 'bg-chungking-white text-chungking-black';
+      return { colors: 'bg-chungking-black text-chungking-white', icon: IconFollow };
     }
   }
 }
 
 export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
-  ({ title, recipient, variant = 'follow', content, ...rest }, ref) => {
+  ({ title, recipient, amount, variant = 'follow', content, ...rest }, ref) => {
     const [isMounted, setIsMounted] = React.useState(false);
     const audio = React.useMemo(
       () => (alertsAudio[variant]?.src ? new Audio(alertsAudio[variant]?.src) : undefined),
@@ -60,66 +69,64 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
       };
     }, [audio]);
 
+    const currentVariant = React.useMemo(() => alertToastVariants(variant), [variant]);
+
     return (
-      <div
-        className={clsx('flex items-start w-full h-[64px] bg-chungking-black text-white')}
-        ref={ref}
-        {...rest}
-      >
-        <div className="flex items-center flex-shrink-0 h-[40px] pl-12 pr-4">
+      <div className={clsx('relative w-full h-[62px]', currentVariant.colors)} ref={ref} {...rest}>
+        <div
+          className={clsx(
+            'flex items-center justify-center absolute w-full h-[62px] px-12',
+            currentVariant.colors,
+          )}
+        >
+          <div className="flex items-center flex-shrink-0 h-[40px] space-x-4 pr-4">
+            {React.createElement(currentVariant.icon, {
+              className: 'inline-flex w-6 h-6 rounded-full',
+              'aria-hidden': true,
+            })}
+            <span className="text-2xl leading-10 font-bold">{title}</span>
+          </div>
+        </div>
+        {recipient ? (
           <Transition
             show={isMounted}
-            className="inline-flex items-center space-x-3"
-            enter="transition duration-300 ease-in-out-alerts"
-            enterFrom="opacity-0 translate-y-0.5"
+            className={clsx(
+              'flex items-center justify-center absolute w-full h-[62px] px-12 z-10',
+              currentVariant.colors,
+            )}
+            enter="transition duration-300 ease-in-out-alerts delay-[1500ms]"
+            enterFrom="opacity-0 translate-y-[62px]"
             enterTo="opacity-100 translate-y-0"
             leave="transition-opacity duration-300"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div
-              className={clsx('inline-flex w-3 h-3 rounded-full', alertToastVariants(variant))}
-              aria-hidden
-            />
-            <span className="text-2xl leading-10 font-bold">{title}</span>
+            <div className="flex items-center flex-shrink-0 h-[40px] space-x-10 pr-4">
+              <span className="text-2xl leading-10">{recipient}</span>
+              {amount ? <span className="text-2xl leading-10">({amount})</span> : null}
+            </div>
           </Transition>
-        </div>
-        <div className="flex items-center flex-1 min-w-0 h-[40px] pr-16 pl-4">
-          {recipient ? (
-            <Transition
-              as="span"
-              show={isMounted}
-              className={clsx(
-                'ml-8 first-of-type:ml-0',
-                'text-2xl leading-10 font-normal truncate',
-              )}
-              enter="transition duration-300 ease-in-out-alerts delay-100"
-              enterFrom="opacity-0 translate-y-0.5"
-              enterTo="opacity-100 translate-y-0"
-              leave="transition-opacity duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              {recipient}
-            </Transition>
-          ) : null}
+        ) : null}
+        {content ? (
           <Transition
-            as="span"
             show={isMounted}
-            className={clsx('ml-8 first-of-type:ml-0', 'text-2xl leading-10 font-normal truncate')}
+            className={clsx(
+              'flex items-center justify-center absolute w-full h-[62px] px-12 z-20',
+              currentVariant.colors,
+            )}
             enter={clsx(
               'transition duration-300 ease-in-out-alerts',
-              recipient ? 'delay-200' : 'delay-100',
+              recipient ? 'delay-[3000ms]' : 'delay-[1500ms]',
             )}
-            enterFrom="opacity-0 translate-y-0.5"
+            enterFrom="opacity-0 translate-y-[62px]"
             enterTo="opacity-100 translate-y-0"
             leave="transition-opacity duration-300"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            {content}
+            <span className="text-2xl leading-10 truncate">{content}</span>
           </Transition>
-        </div>
+        ) : null}
       </div>
     );
   },

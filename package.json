@@ -26,6 +26,8 @@
     "validate": "npm run type-check && npm run lint"
   },
   "dependencies": {
+    "@capsizecss/core": "^3.0.0",
+    "@capsizecss/metrics": "^0.3.0",
     "@fontsource/jetbrains-mono": "^4.5.10",
     "@headlessui/react": "^1.6.6",
     "@notionhq/client": "^1.0.4",
