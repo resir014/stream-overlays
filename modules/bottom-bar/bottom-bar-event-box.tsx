@@ -8,7 +8,7 @@ interface BottomBarEventBoxProps {
 export const BottomBarEventBox: React.FC<BottomBarEventBoxProps> = ({ icon }) => {
   return (
     <div className={clsx('flex flex-auto items-center h-6 pr-3')}>
-      {React.createElement(icon)}
+      {React.createElement(icon, { className: 'h-6 w-6' })}
       <div className="flex-auto ml-2 h-6" />
     </div>
   );
