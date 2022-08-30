@@ -30,6 +30,8 @@ export function StudioClockInterface({
     [time],
   );
 
+  console.log(time);
+
   const watchUIStyle = React.useMemo(
     () => ({
       fontFamily: `${uiFont}, system-ui, sans-serif`,
