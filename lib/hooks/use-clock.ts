@@ -1,38 +1,39 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { getDate, getHours, getMinutes, getMonth, getSeconds, getYear } from 'date-fns';
 import { dequal } from 'dequal';
 import create from 'zustand';
 
 export interface DateMap {
   year: number;
-  month: number;
+  monthIndex: number;
   day: number;
   hours: number;
   minutes: number;
   seconds: number;
 }
 
-function leftPad(maybeNumber: unknown, maxLength = 2) {
-  if (typeof maybeNumber !== 'number') {
-    return Number(maybeNumber).toString().padStart(maxLength, '0');
-  }
-
-  return maybeNumber.toString().padStart(2, '0');
-}
-
 function createDateMap(date: Date): DateMap {
   return {
-    year: date.getFullYear(),
-    month: date.getMonth(),
-    day: date.getDate(),
-    hours: date.getHours(),
-    minutes: date.getMinutes(),
-    seconds: date.getSeconds(),
+    year: getYear(date),
+    // by default getMonth() is zero-indexed
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth
+    monthIndex: getMonth(date),
+    day: getDate(date),
+    hours: getHours(date),
+    minutes: getMinutes(date),
+    seconds: getSeconds(date),
   };
 }
 
-function createDateObjectFromMap({ year, month, day, hours, minutes, seconds }: DateMap): Date {
-  const isoDate = `${year}-${leftPad(month)}-${leftPad(day)}`;
-  const isoTime = `${leftPad(hours)}:${leftPad(minutes)}:${leftPad(seconds)}+07:00`;
-  return new Date(`${isoDate}T${isoTime}`);
+function createDateObjectFromMap({
+  year,
+  monthIndex,
+  day,
+  hours,
+  minutes,
+  seconds,
+}: DateMap): Date {
+  return new Date(year, monthIndex, day, hours, minutes, seconds);
 }
 
 export const useClockStore = create<DateMap>(() => {
