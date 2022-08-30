@@ -38,6 +38,7 @@
     "@trpc/server": "^9.27.0",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.1",
+    "dequal": "^2.0.3",
     "isomorphic-unfetch": "^3.1.0",
     "nanoid": "^3.3.4",
     "next": "^12.2.5",
@@ -53,7 +54,8 @@
     "text-case": "^1.0.9",
     "typeface-inter": "^3.18.1",
     "webfontloader": "^1.6.28",
-    "zod": "^3.18.0"
+    "zod": "^3.18.0",
+    "zustand": "^4.1.1"
   },
   "devDependencies": {
     "@babel/eslint-plugin": "^7.18.10",
