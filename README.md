@@ -2,11 +2,29 @@
 
 > Dynamic stream overlays/widgets for OBS.
 
+## Developing
+
+A nodejs LTS setup with [yarn](https://yarnpkg.com/) is recommended.
+
+```bash
+# install dependencies
+yarn
+
+# serve with hot reload at localhost:3000
+yarn dev
+
+# build for production
+yarn build
+
+# run tests (lint + type check)
+yarn test
+```
+
 ## Preview
 
-### Live Coding
+### Display Capture
 
-![Code overlay Preview](./public/static/code-overlay-preview.png)
+![Display overlay preview](./public/static/display-overlay-preview.png)
 
 ### Gaming
 
