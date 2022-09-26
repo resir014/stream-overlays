@@ -3,6 +3,13 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
+
   async headers() {
     return [
       {

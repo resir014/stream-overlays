@@ -1,3 +1,4 @@
+import Image from 'next/future/image';
 import * as React from 'react';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 import { createNextPage } from '~/lib/create-next-page';
@@ -21,12 +22,12 @@ function StudioClockScenePage() {
           </div>
         ) : null}
         {isClockRendered ? (
-          <div className="flex items-center justify-center space-x-4">
-            <span className="text-[72px] leading-[84px] font-semibold text-chungking-white">
-              resir014
-            </span>
-            <img src="/static/resir014-logo-light.svg" className="h-[114px]" alt="resir014 logo" />
-          </div>
+          <Image
+            src="/static/resir014-logo-wordmark.png"
+            width={369}
+            height={114}
+            alt="resir014 logo"
+          />
         ) : null}
       </div>
     </SceneWrapper>
