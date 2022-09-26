@@ -10,6 +10,7 @@ module.exports = {
   ],
   plugins: ['prettier'],
   rules: {
+    '@next/next/no-img-element': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     'jsx-a11y/anchor-is-valid': 'off',
   },
