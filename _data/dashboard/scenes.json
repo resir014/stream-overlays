@@ -14,5 +14,9 @@
   {
     "title": "End Scene",
     "url": "/scenes/end"
+  },
+  {
+    "title": "Studio Clock Scene",
+    "url": "/scenes/studio-clock"
   }
 ]
