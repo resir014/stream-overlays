@@ -7,15 +7,6 @@ export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
   refetchInterval?: number;
 }
 
-export interface ParsedCurrentStream {
-  id: string;
-  date?: string;
-  series?: string;
-  category?: string[];
-  description?: string;
-  stream_name?: string;
-}
-
 export function useCurrentStream(refetchInterval = 5000) {
   const { data, error } = trpc.useQuery(['notion.current-stream'], { refetchInterval });
 
