@@ -8,6 +8,9 @@
 # Static export path
 out/
 
+# swc
+.swc/
+
 # TypeScript build info
 *.tsbuildinfo
 

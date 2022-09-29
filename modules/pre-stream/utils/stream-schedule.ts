@@ -1,19 +1,10 @@
 import { GetUpcomingStreamsOptions } from '~/server/notion/get-upcoming-streams';
-import { trpc } from '../trpc';
+import { trpc } from '~/lib/trpc';
 
 export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
   referenceDate: string | null;
   pageSize: number | null;
   refetchInterval?: number;
-}
-
-export interface ParsedCurrentStream {
-  id: string;
-  date?: string;
-  series?: string;
-  category?: string[];
-  description?: string;
-  stream_name?: string;
 }
 
 export function useCurrentStream(refetchInterval = 5000) {
@@ -23,7 +14,7 @@ export function useCurrentStream(refetchInterval = 5000) {
     currentStream: data,
     isLoading: !error && !data,
     isError: !!error,
-  };
+  } as const;
 }
 
 export function useUpcomingStreams({
@@ -39,5 +30,5 @@ export function useUpcomingStreams({
     upcomingStreams: data,
     isLoading: !error && !data,
     isError: !!error,
-  };
+  } as const;
 }

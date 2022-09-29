@@ -2,9 +2,9 @@ import * as React from 'react';
 import { format, addSeconds } from 'date-fns';
 import { useRouter } from 'next/router';
 import { clamp } from '@resir014/lerp';
-import { usePrestreamClock } from '~/lib/pre-stream/use-prestream-clock';
-import { PreStreamVariants } from '~/lib/pre-stream/types';
 import { parseStreamTimeQuery } from '~/lib/query-parser';
+import { PreStreamVariants } from './types';
+import { usePrestreamClock } from './utils/use-prestream-clock';
 
 export interface PrestreamCountdownProps extends React.ComponentPropsWithoutRef<'span'> {
   startH?: number;

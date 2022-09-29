@@ -1,4 +1,4 @@
-import { PreStreamVariants } from '~/lib/pre-stream/types';
+import { PreStreamVariants } from '~/modules/pre-stream/types';
 
 export function getPrestreamAccentColor(variant: PreStreamVariants = 'pre-stream') {
   switch (variant) {
