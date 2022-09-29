@@ -1,14 +1,14 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { PreStreamVariants } from '~/lib/pre-stream/types';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
-import { useCurrentStream } from '~/lib/pre-stream/stream-schedule';
 import { SceneWrapper } from '../scenes/scene-wrapper';
 import { SocialLinksRotator } from '../social-links';
 import { PreStreamTitles } from './pre-stream-titles';
 import { PrestreamCountdown } from './pre-stream-countdown';
-import { getPrestreamAccentColor } from './utils';
 import { PrestreamDate } from './pre-stream-date';
+import { PreStreamVariants } from './types';
+import { getPrestreamAccentColor } from './utils/prestream-colors';
+import { useCurrentStream } from './utils/stream-schedule';
 
 export interface PreStreamSceneProps {
   headerText: string;

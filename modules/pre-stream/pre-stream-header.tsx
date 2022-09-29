@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { format } from 'date-fns';
 import clsx from 'clsx';
-import { PreStreamVariants } from '~/lib/pre-stream/types';
 import { useClock } from '~/lib/hooks/use-clock';
-import { getPrestreamAccentColor } from './utils';
+import { PreStreamVariants } from './types';
+import { getPrestreamAccentColor } from './utils/prestream-colors';
 
 export interface PreStreamHeaderProps {
   headerText?: string;
