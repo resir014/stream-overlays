@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import parseFlyliveData from '~/lib/flightsim/parse-flylive-data';
+import parseFlyliveData from '~/modules/flightsim/parse-flylive-data';
 
 export async function getFlyliveData() {
   const response = await fetch('http://localhost:8080/', {
