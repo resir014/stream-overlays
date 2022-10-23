@@ -16,8 +16,6 @@ export async function getOverlayData(): Promise<OverlayDataInformation | undefin
 
     const data: OverlayDataInformation = {};
 
-    console.log(JSON.stringify(databaseQuery.results, null, 2));
-
     for (const page of databaseQuery.results) {
       if (isFullPage(page)) {
         const { properties } = page;
