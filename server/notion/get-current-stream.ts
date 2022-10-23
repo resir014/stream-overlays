@@ -11,9 +11,9 @@ export type CurrentStreamInformation = {
 };
 
 export async function getCurrentStream(): Promise<CurrentStreamInformation | undefined> {
-  if (process.env.NOTION_DATABASE_ID) {
+  if (process.env.NOTION_STREAMS_TABLE_ID) {
     const databaseQuery = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE_ID,
+      database_id: process.env.NOTION_STREAMS_TABLE_ID,
       filter: {
         property: 'Current Stream',
         checkbox: {
