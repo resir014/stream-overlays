@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { format, addSeconds } from 'date-fns';
-import { useRouter } from 'next/router';
 import { clamp } from '@resir014/lerp';
-import { parseStreamTimeQuery } from '~/lib/query-parser';
 import { PreStreamVariants } from './types';
 import { usePrestreamClock } from './utils/use-prestream-clock';
 
@@ -14,12 +12,7 @@ export interface PrestreamCountdownProps extends React.ComponentPropsWithoutRef<
 
 export const PrestreamCountdown = React.forwardRef<HTMLSpanElement, PrestreamCountdownProps>(
   ({ ...rest }, ref) => {
-    const router = useRouter();
-    const { startH, startM } = React.useMemo(
-      () => parseStreamTimeQuery(router.query),
-      [router.query],
-    );
-    const { time, topOfTheHour } = usePrestreamClock(startH, startM);
+    const { time, topOfTheHour } = usePrestreamClock();
 
     const secondsToGo = React.useMemo(
       () =>

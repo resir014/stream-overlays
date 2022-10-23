@@ -19,9 +19,9 @@ export async function getUpcomingStreams({
   referenceDate,
   pageSize,
 }: GetUpcomingStreamsOptions = {}) {
-  if (process.env.NOTION_DATABASE_ID) {
+  if (process.env.NOTION_STREAMS_TABLE_ID) {
     const databaseQuery = await notion.databases.query({
-      database_id: process.env.NOTION_DATABASE_ID,
+      database_id: process.env.NOTION_STREAMS_TABLE_ID,
       filter: {
         property: 'Date',
         date: {

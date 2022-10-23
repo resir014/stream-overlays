@@ -1,31 +1,30 @@
+import { subSeconds } from 'date-fns';
 import * as React from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
+import { useOverlayData } from '../overlay-data/use-overlay-data';
 
 export interface TimeSignalWrapperProps {
   startH: number;
   startM: number;
 }
 
-const TimeSignalWrapper: React.FC<TimeSignalWrapperProps> = ({ startH, startM }) => {
+export default function TimeSignalWrapper() {
   const time = useClock();
+  const { overlayData } = useOverlayData();
   const playButtonRef = React.useRef<HTMLButtonElement>(null);
   const audio = React.useMemo(() => new Audio('/static/audio/timesignal.ogg'), []);
 
-  const [hours, minutes, seconds] = [time.getHours(), time.getMinutes(), time.getSeconds()];
+  const startOfTimeSignal = React.useMemo(
+    () => (overlayData?.timeSignal ? subSeconds(new Date(overlayData.timeSignal), 5) : undefined),
+    [overlayData?.timeSignal],
+  );
 
   React.useEffect(() => {
-    // If top of the hour (m === 0):
-    // - use previous hour, else keep current hour
-    // - use minute 59, else m - 1
-    if (
-      hours === (startM === 0 ? startH - 1 : startH) &&
-      minutes === (startM === 0 ? 59 : startM - 1) &&
-      seconds === 55
-    ) {
+    if (time.toISOString() === startOfTimeSignal?.toISOString()) {
       // Fake a click event on a hidden button which plays the audio file.
       playButtonRef.current?.click();
     }
-  }, [hours, minutes, seconds, startH, startM]);
+  }, [startOfTimeSignal, time]);
 
   return (
     <div className="flex flex-col justify-end w-full h-full min-h-screen">
@@ -34,6 +33,4 @@ const TimeSignalWrapper: React.FC<TimeSignalWrapperProps> = ({ startH, startM })
       </button>
     </div>
   );
-};
-
-export default TimeSignalWrapper;
+}

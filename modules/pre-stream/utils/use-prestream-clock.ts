@@ -2,7 +2,7 @@ import * as React from 'react';
 import { clamp, lerpInverse } from '@resir014/lerp';
 import { format } from 'date-fns';
 import { useClock } from '~/lib/hooks/use-clock';
-import { useCurrentStream } from './stream-schedule';
+import { useOverlayData } from '~/modules/overlay-data/use-overlay-data';
 
 interface UsePrestreamClockResponse {
   time: Date;
@@ -16,24 +16,26 @@ function toTimeString(time: string | number) {
 
 const TEN_MINUTES_IN_MILLISECONDS = 60 * 10 * 1000;
 
-export function usePrestreamClock(startH = 21, startM = 0): UsePrestreamClockResponse {
+export function usePrestreamClock(): UsePrestreamClockResponse {
   const time = useClock();
-  const { currentStream } = useCurrentStream();
+  const { overlayData } = useOverlayData();
 
   const topOfTheHour = React.useMemo(() => {
-    if (currentStream?.date) {
+    if (overlayData?.streamStart) {
+      const startdate = new Date(overlayData.streamStart);
+
       const [date, h, m, s] = [
-        format(new Date(currentStream.date), 'yyyy-MM-dd'),
-        toTimeString(startH),
-        toTimeString(startM),
-        toTimeString(0),
+        format(startdate, 'yyyy-MM-dd'),
+        toTimeString(startdate.getHours()),
+        toTimeString(startdate.getMinutes()),
+        toTimeString(startdate.getSeconds()),
       ];
 
       return new Date(`${date}T${h}:${m}:${s}+07:00`);
     }
 
     return undefined;
-  }, [currentStream, startH, startM]);
+  }, [overlayData?.streamStart]);
 
   const percentage = React.useMemo(() => {
     const timeStamp = time.getTime();
