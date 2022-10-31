@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import * as React from 'react';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 import { createNextPage } from '~/lib/create-next-page';

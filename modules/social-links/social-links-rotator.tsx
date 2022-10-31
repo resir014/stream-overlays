@@ -6,7 +6,7 @@ import { socialLinksData } from './social-links';
 
 export const TRANSITION_DURATION = 500;
 
-export const SocialLinksRotator: React.FC = () => {
+export function SocialLinksRotator() {
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [transitioning, setTransitioning] = React.useState(false);
 
@@ -39,4 +39,4 @@ export const SocialLinksRotator: React.FC = () => {
       {socialLinksData[currentIndex]}
     </Transition>
   );
-};
+}

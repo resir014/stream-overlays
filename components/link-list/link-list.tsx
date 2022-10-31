@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import LinkListItem, { LinkListItemProps } from './link-list-item';
+import { LinkListItem, LinkListItemProps } from './link-list-item';
 
 export interface LinkListProps {
   items: LinkListItemProps[];

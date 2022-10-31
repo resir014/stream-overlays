@@ -5,12 +5,12 @@ export interface SceneWrapperProps extends React.HTMLProps<HTMLDivElement> {
   darkBackground?: boolean;
 }
 
-export const SceneWrapper: React.FC<SceneWrapperProps> = ({
+export function SceneWrapper({
   children,
   className,
   darkBackground,
   ...rest
-}) => {
+}: React.PropsWithChildren<SceneWrapperProps>) {
   return (
     <div
       className={clsx(
@@ -23,4 +23,4 @@ export const SceneWrapper: React.FC<SceneWrapperProps> = ({
       {children}
     </div>
   );
-};
+}
