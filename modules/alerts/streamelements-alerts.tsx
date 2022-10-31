@@ -16,7 +16,7 @@ const dismissAfter = DEFAULT_DISMISS_DURATION;
 
 type ProdOrTestEvent = StreamElementsEvent | StreamElementsTestEvent;
 
-export const StreamElementsAlerts: React.FC = () => {
+export function StreamElementsAlerts() {
   const [events, setEvents] = React.useState<ProdOrTestEvent[]>([]);
   const [stale, setStale] = React.useState(false);
   const [current, setCurrent] = React.useState<ProdOrTestEvent | undefined>(undefined);
@@ -103,4 +103,4 @@ export const StreamElementsAlerts: React.FC = () => {
   }, [events]);
 
   return <div className="flex flex-col justify-end w-full h-full min-h-screen" />;
-};
+}

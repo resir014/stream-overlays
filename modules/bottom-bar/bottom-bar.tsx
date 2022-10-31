@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BottomBarEvents } from './bottom-bar-events';
 import { BottomBarClock } from './bottom-bar-clock';
 
-export const BottomBar: React.FC = () => {
+export function BottomBar() {
   return (
     <div className="grid grid-cols-bottom-bar w-full h-full text-chungking-white bg-chungking-black border-t-2 border-chungking-white max-h-[64px]">
       <BottomBarEvents />
@@ -11,4 +11,4 @@ export const BottomBar: React.FC = () => {
       </div>
     </div>
   );
-};
+}

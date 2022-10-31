@@ -2,19 +2,19 @@ import * as React from 'react';
 import { Transition } from '@headlessui/react';
 import { AlertSettings } from './types';
 
-interface AlertWrapperProps {
+export interface AlertWrapperProps {
   id?: string;
   settings: Omit<AlertSettings, 'id' | 'onRemove' | 'dismissAfter'>;
   onRemove?: () => void;
   dismissAfter?: number;
 }
 
-const AlertWrapper: React.FC<AlertWrapperProps> = ({
+export function AlertWrapper({
   id,
   settings: { index, content },
   onRemove,
   dismissAfter = 5000,
-}) => {
+}: AlertWrapperProps) {
   const [isOpen, setIsOpen] = React.useState(false);
   const closeTimerRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
 
@@ -51,6 +51,4 @@ const AlertWrapper: React.FC<AlertWrapperProps> = ({
       {content}
     </Transition>
   );
-};
-
-export default AlertWrapper;
+}

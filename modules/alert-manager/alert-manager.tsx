@@ -2,7 +2,7 @@
 /* eslint-disable react/sort-comp */
 
 import * as React from 'react';
-import AlertWrapper from './alert-wrapper';
+import { AlertWrapper } from './alert-wrapper';
 import { DEFAULT_DISMISS_DURATION } from './constants';
 import { AlertHandler, AlertSettings } from './types';
 

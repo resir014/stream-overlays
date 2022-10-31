@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-export const DashboardSectionHeader: React.FC = ({ children }) => {
+export function DashboardSectionHeader({ children }: React.PropsWithChildren) {
   return <h2 className="text-3xl font-semibold">{children}</h2>;
-};
+}

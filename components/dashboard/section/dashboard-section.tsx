@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-export const DashboardSection: React.FC = ({ children }) => {
+export function DashboardSection({ children }: React.PropsWithChildren) {
   return <div className="space-y-6">{children}</div>;
-};
+}

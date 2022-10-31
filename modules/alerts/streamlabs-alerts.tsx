@@ -5,7 +5,7 @@ import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '../alert-manager';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
-export const StreamlabsAlerts: React.FC = () => {
+export function StreamlabsAlerts() {
   const [events, setEvents] = React.useState<StreamlabsEvent[]>([]);
   const [stale, setStale] = React.useState(false);
   const [current, setCurrent] = React.useState<StreamlabsEvent | undefined>(undefined);
@@ -183,4 +183,4 @@ export const StreamlabsAlerts: React.FC = () => {
   }, [events]);
 
   return <div className="flex flex-col justify-end w-full h-full min-h-screen" />;
-};
+}
