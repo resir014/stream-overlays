@@ -1,4 +1,4 @@
-import { GetUpcomingStreamsOptions } from '~/server/notion/get-upcoming-streams';
+import { GetUpcomingStreamsOptions } from '~/server/modules/notion/get-upcoming-streams';
 import { trpc } from '~/lib/trpc';
 
 export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {

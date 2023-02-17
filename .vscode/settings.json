@@ -11,5 +11,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "css.validate": false,
   "stylelint.enable": true,
-  "deno.enable": false
+  "deno.enable": false,
+  "dotenv.enableAutocloaking": true
 }

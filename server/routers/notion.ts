@@ -1,9 +1,9 @@
 import * as trpc from '@trpc/server';
 import { z } from 'zod';
-import { createRouter } from '../create-router';
-import { getCurrentStream } from '../notion/get-current-stream';
-import { getOverlayData } from '../notion/get-overlay-data';
-import { getUpcomingStreams } from '../notion/get-upcoming-streams';
+import { createRouter } from '../trpc';
+import { getCurrentStream } from '../modules/notion/get-current-stream';
+import { getOverlayData } from '../modules/notion/get-overlay-data';
+import { getUpcomingStreams } from '../modules/notion/get-upcoming-streams';
 
 export const notionRouter = createRouter()
   .query('current-stream', {

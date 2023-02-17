@@ -1,6 +1,6 @@
-import { createRouter } from './create-router';
-import { flyliveRouter } from './routers/flylive';
-import { notionRouter } from './routers/notion';
+import { createRouter } from '../trpc';
+import { flyliveRouter } from './flylive';
+import { notionRouter } from './notion';
 
 export const appRouter = createRouter()
   .merge('notion.', notionRouter)

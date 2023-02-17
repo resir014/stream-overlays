@@ -6,7 +6,7 @@ import { NextAppProps } from '~/interfaces/next';
 
 import '~/styles/fonts';
 import '~/styles/globals.css';
-import { AppRouter } from '~/server/router';
+import { AppRouter } from '~/server/routers/_app';
 
 // https://github.com/nexxeln/trpc-nextjs/blob/ca61d28d8e5350f172d3952bfa6093b06da9e4b9/src/pages/_app.tsx#L11-L17
 function getBaseUrl() {
