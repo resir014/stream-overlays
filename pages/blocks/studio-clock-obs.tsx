@@ -13,11 +13,7 @@ function StudioClockOBSSourcePage() {
 
   return (
     <div className="flex w-full h-screen items-center justify-center bg-chungking-black">
-      {isClockRendered ? (
-        <div className="scale-50">
-          <StudioClockInterface hideTimezone />
-        </div>
-      ) : null}
+      {isClockRendered ? <StudioClockInterface hideTimezone /> : null}
     </div>
   );
 }
