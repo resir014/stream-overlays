@@ -16,7 +16,7 @@ const StandaloneCountdownPage: NextPage = () => {
   const renderCountdown = () => {
     if (clockRendered) {
       return (
-        <PrestreamCountdown className="flex items-center space-x-1 text-[64px] leading-none text-chungking-white tabular-nums helper-alternate-digits" />
+        <PrestreamCountdown className="flex items-center space-x-1 text-[64px] leading-none text-chungking-white font-semibold tabular-nums helper-alternate-digits" />
       );
     }
 
