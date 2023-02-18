@@ -12,16 +12,16 @@ export interface PrestreamCountdownProps extends React.ComponentPropsWithoutRef<
 
 export const PrestreamCountdown = React.forwardRef<HTMLSpanElement, PrestreamCountdownProps>(
   ({ ...rest }, ref) => {
-    const { time, topOfTheHour } = usePrestreamClock();
+    const { time, streamStart } = usePrestreamClock();
 
     const secondsToGo = React.useMemo(
       () =>
         clamp(
-          Math.ceil(topOfTheHour ? (topOfTheHour.getTime() - time.getTime()) / 1000 : 0),
+          Math.ceil(streamStart ? (streamStart.getTime() - time.getTime()) / 1000 : 0),
           0,
           1800,
         ),
-      [time, topOfTheHour],
+      [time, streamStart],
     );
 
     const formattedDuration = React.useMemo(

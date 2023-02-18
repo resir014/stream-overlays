@@ -14,7 +14,7 @@ export function usePrestreamClock() {
   const time = useClock();
   const { overlayData } = useOverlayData();
 
-  const topOfTheHour = React.useMemo(() => {
+  const streamStart = React.useMemo(() => {
     if (overlayData?.streamStart) {
       const startdate = new Date(overlayData.streamStart);
 
@@ -50,11 +50,11 @@ export function usePrestreamClock() {
 
   const percentage = React.useMemo(() => {
     const timeStamp = time.getTime();
-    const topFormatted = topOfTheHour?.getTime() ?? 0;
-    const startFormatted = topOfTheHour ? topOfTheHour.getTime() - TEN_MINUTES_IN_MILLISECONDS : 0;
+    const topFormatted = streamStart?.getTime() ?? 0;
+    const startFormatted = streamStart ? streamStart.getTime() - TEN_MINUTES_IN_MILLISECONDS : 0;
 
     return clamp(lerpInverse(timeStamp, startFormatted, topFormatted), 0, 1);
-  }, [time, topOfTheHour]);
+  }, [time, streamStart]);
 
-  return { time, topOfTheHour, breakReturnTime, percentage } as const;
+  return { time, streamStart, breakReturnTime, percentage } as const;
 }
