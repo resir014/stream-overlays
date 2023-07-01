@@ -1,8 +1,9 @@
 import * as trpc from '@trpc/server';
 import { getFlyliveData } from '../modules/flylive/get-flylive-data';
+import { publicProcedure, router } from '../trpc';
 
-export const flyliveRouter = trpc.router().query('live-flight', {
-  async resolve() {
+export const flyliveRouter = router({
+  getLiveFlight: publicProcedure.query(async () => {
     try {
       return await getFlyliveData();
     } catch (err: unknown) {
@@ -12,7 +13,7 @@ export const flyliveRouter = trpc.router().query('live-flight', {
         cause: err,
       });
     }
-  },
+  }),
 });
 
 export type FlyLiveRouter = typeof flyliveRouter;
