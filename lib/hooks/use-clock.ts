@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { getDate, getHours, getMinutes, getMonth, getSeconds, getYear } from 'date-fns';
 import { dequal } from 'dequal';
-import create from 'zustand';
+import { create } from 'zustand';
 
 export interface DateMap {
   year: number;
