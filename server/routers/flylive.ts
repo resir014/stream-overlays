@@ -1,8 +1,7 @@
 import * as trpc from '@trpc/server';
-import { createRouter } from '../trpc';
 import { getFlyliveData } from '../modules/flylive/get-flylive-data';
 
-export const flyliveRouter = createRouter().query('live-flight', {
+export const flyliveRouter = trpc.router().query('live-flight', {
   async resolve() {
     try {
       return await getFlyliveData();
