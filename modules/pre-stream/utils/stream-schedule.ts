@@ -1,5 +1,5 @@
-import { GetUpcomingStreamsOptions } from '~/server/modules/notion/get-upcoming-streams';
 import { trpc } from '~/lib/trpc';
+import { GetUpcomingStreamsOptions } from '~/server/modules/notion/get-upcoming-streams';
 
 export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
   referenceDate: string | null;
@@ -8,7 +8,9 @@ export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
 }
 
 export function useCurrentStream(refetchInterval = 5000) {
-  const { data, error } = trpc.useQuery(['notion.current-stream'], { refetchInterval });
+  const { data, error } = trpc.notion.getCurrentStream.useQuery(undefined, { refetchInterval });
+
+  console.log(data);
 
   return {
     currentStream: data,
@@ -22,9 +24,10 @@ export function useUpcomingStreams({
   pageSize = null,
   refetchInterval = 5000,
 }: UseUpcomingStreamOptions) {
-  const { data, error } = trpc.useQuery(['notion.upcoming-streams', { referenceDate, pageSize }], {
-    refetchInterval,
-  });
+  const { data, error } = trpc.notion.getUpcomingStreams.useQuery(
+    { referenceDate, pageSize },
+    { refetchInterval },
+  );
 
   return {
     upcomingStreams: data,

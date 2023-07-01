@@ -1,7 +1,7 @@
 import { trpc } from '~/lib/trpc';
 
 export function useOverlayData(refetchInterval = 5000) {
-  const { data, error } = trpc.useQuery(['notion.overlay-data'], { refetchInterval });
+  const { data, error } = trpc.notion.getOverlayData.useQuery(undefined, { refetchInterval });
 
   return {
     overlayData: data,

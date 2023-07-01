@@ -1,7 +1,9 @@
-import { trpc } from '../../lib/trpc';
+import { trpc } from '~/lib/trpc';
 
 export function useFlyLiveData(refetchInterval = 1000 / 24) {
-  const { data, error } = trpc.useQuery(['flylive.live-flight'], { refetchInterval });
+  const { data, error } = trpc.flylive.getLiveFlight.useQuery(undefined, {
+    refetchInterval,
+  });
 
   return {
     data,
