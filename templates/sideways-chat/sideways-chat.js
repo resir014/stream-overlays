@@ -245,7 +245,7 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
   console.log(pronounDisplay);
   if (typeof pronounUser[0] !== 'undefined') {
     const pronouns = pronounList.find(pronoun => pronoun.name === pronounUser[0].pronoun_id);
-    pronounDisplay = pronouns?.display;
+    pronounDisplay = `<span class="pronoun">${pronouns?.display}</span>`;
   }
   console.log('after check');
   console.log(pronounDisplay);
@@ -253,7 +253,7 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
   let username = data.displayName;
   const nickname = data.displayName;
   const color = data.displayColor !== '' ? data.displayColor : `#${md5(username).substr(26)}`;
-  username = `<span class="pronoun">${pronounDisplay}</span><span style="color:${color}">${username}</span>`;
+  username = `${pronounDisplay}<span style="color:${color}">${username}</span>`;
 
   highlight = obj.detail.event.data.tags['msg-id'] === 'highlighted-message';
 
