@@ -1,0 +1,122 @@
+/*
+ * Widget created by Shiromu Kara, (c) 2023.
+ * https://shiromu.carrd.co/
+ */
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+  color: white;
+  font-weight: 400;
+  --white: #fff;
+  --black: #0d0d0f;
+}
+
+.main-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 9999px;
+  height: calc(24px - 0px);
+  white-space: nowrap;
+  overflow: hidden;
+  padding-bottom: 15px;
+  padding-right: 8px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.message-row {
+  display: inline-block;
+  bottom: 0;
+  right: 0;
+  float: right;
+  padding: 4px 4px;
+  transform: translatey(7px);
+}
+
+.avatar {
+  display: inline-block;
+  margin-right: 0em;
+  position: relative;
+  height: 1em;
+  vertical-align: middle;
+  top: 0px;
+  border-radius: 3px;
+}
+.badge {
+  display: inline-block;
+  margin-right: 0em;
+  position: relative;
+  height: 1em;
+  vertical-align: middle;
+  top: -1px;
+}
+
+.pronoun {
+  padding: 0px 4px;
+  border: 1px solid var(--white);
+  border-radius: 4px;
+  margin-right: 4px;
+}
+
+.user-box {
+  display: inline;
+}
+
+.hidden-box {
+  position: absolute;
+  /* stylelint-disable-next-line property-no-unknown */
+  widget: 0px;
+  opacity: 0;
+}
+
+.user-box > span {
+}
+
+.user-message {
+  display: inline;
+  word-wrap: break-word;
+}
+
+.emote {
+  display: inline-block;
+  margin-right: 0.1em;
+  position: relative;
+  height: 1.1em;
+  vertical-align: middle;
+  top: 0em;
+}
+
+.emote img {
+  display: inline-block;
+  position: relative;
+  height: 1.3em;
+  opacity: 0;
+}
+
+.user-alert {
+  font-weight: 700;
+}
+
+.user-text-username {
+  font-weight: 700;
+}
+
+.alert-row > * {
+  padding: 8px 12px;
+}
+
+.alert-row .user-alert {
+  margin-right: -4px;
+}
+
+:is(.follow, .donation, .sub) .user-alert {
+  color: var(--black);
+}
+
+.action {
+  font-style: italic;
+}
