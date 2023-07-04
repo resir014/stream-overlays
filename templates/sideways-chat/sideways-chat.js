@@ -1,12 +1,12 @@
 /* eslint-disable dot-notation */
 /* eslint-disable no-invalid-this */
 /* eslint-disable no-negated-condition */
+/* eslint-disable complexity */
 /*
  * Widget created by Shiromu Kara, (c) 2023.
  * https://shiromu.carrd.co/
  */
 
-/* eslint-disable complexity */
 let totalMessages = 0;
 let messagesLimit = 0;
 let noname = 'show';
@@ -29,7 +29,7 @@ const ignored_emotes = [];
 window.addEventListener('onEventReceived', async function handleEventReceived(obj) {
   if (obj.detail.event.listener === 'widget-button') {
     if (obj.detail.event.field === 'testMessage') {
-      let emulated = new CustomEvent('onEventReceived', {
+      const emulated = new CustomEvent('onEventReceived', {
         detail: {
           listener: 'message',
           event: {
@@ -112,74 +112,74 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
   // inline events:
   // new followers
   if (obj.detail.listener === 'follower-latest') {
-    let event = obj['detail']['event'];
-    let eventUsername = `<span class="user-text-username">${event['name']}</span>`;
-    let eventColor = '#FFFFFF';
-    let eventSound = new Audio('{{followEventSound}}');
-    let subtext = 'New Follower';
-    let text = `${eventUsername} is now following. Thank you!`;
-    let type = 'follow';
+    const event = obj['detail']['event'];
+    const eventUsername = `<span class="user-text-username">${event['name']}</span>`;
+    const eventColor = '#FFFFFF';
+    const eventSound = new Audio('{{followEventSound}}');
+    const subtext = 'New Follower';
+    const text = `${eventUsername} is now following. Thank you!`;
+    const type = 'follow';
     addAlert(text, subtext, eventColor, eventSound, type);
     return;
   }
 
   // new raids
   if (obj.detail.listener === 'raid-latest') {
-    let event = obj['detail']['event'];
-    let eventUsername = `<span class="user-text-username">${event['name']}</span>`;
-    let eventAmount = event['amount'];
-    let eventColor = '#D71176';
-    let eventSound = new Audio('{{raidEventSound}}');
-    let subtext = 'Raid';
-    let text = `${eventUsername} raided with a party of ${eventAmount}!`;
-    let type = 'raid';
+    const event = obj['detail']['event'];
+    const eventUsername = `<span class="user-text-username">${event['name']}</span>`;
+    const eventAmount = event['amount'];
+    const eventColor = '#D71176';
+    const eventSound = new Audio('{{raidEventSound}}');
+    const subtext = 'Raid';
+    const text = `${eventUsername} raided with a party of ${eventAmount}!`;
+    const type = 'raid';
     addAlert(text, subtext, eventColor, eventSound, type);
     return;
   }
 
   // new cheers
   if (obj.detail.listener === 'cheer-latest') {
-    let event = obj['detail']['event'];
-    let eventUsername = `<span class="user-text-username">${event['name']}</span>`;
-    let eventAmount = event['amount'];
-    let eventColor = '#9B45FF';
-    let eventSound = new Audio('{{supportEventSound}}');
-    let subtext = 'Bits';
-    let text = `${eventUsername} just cheered ${eventAmount} bits!`;
-    let type = 'cheer';
+    const event = obj['detail']['event'];
+    const eventUsername = `<span class="user-text-username">${event['name']}</span>`;
+    const eventAmount = event['amount'];
+    const eventColor = '#9B45FF';
+    const eventSound = new Audio('{{supportEventSound}}');
+    const subtext = 'Bits';
+    const text = `${eventUsername} just cheered ${eventAmount} bits!`;
+    const type = 'cheer';
     addAlert(text, subtext, eventColor, eventSound, type);
     return;
   }
 
   // new tipping
   if (obj.detail.listener === 'tip-latest') {
-    let event = obj['detail']['event'];
+    const event = obj['detail']['event'];
     // let userCurrency = event['userCurrency']['symbol'];
-    let userCurrency = '$';
-    let eventUsername = `<span class="user-text-username">${event['name']}</span>`;
-    let eventAmount = userCurrency + event['amount'];
-    let eventColor = '#00FFCD';
-    let eventSound = new Audio('{{supportEventSound}}');
-    let subtext = 'Donation';
-    let text = `${eventUsername} donated ${eventAmount}!`;
-    let type = 'donation';
+    const userCurrency = '$';
+    const eventUsername = `<span class="user-text-username">${event['name']}</span>`;
+    const eventAmount = userCurrency + event['amount'];
+    const eventColor = '#00FFCD';
+    const eventSound = new Audio('{{supportEventSound}}');
+    const subtext = 'Donation';
+    const text = `${eventUsername} donated ${eventAmount}!`;
+    const type = 'donation';
     addAlert(text, subtext, eventColor, eventSound, type);
     return;
   }
 
   // new subs
   if (obj.detail.listener === 'subscriber-latest') {
-    let event = obj['detail']['event'];
+    const event = obj['detail']['event'];
     let eventUsername = `<span class="user-text-username">${event['name']}</span>`;
-    let eventColor = '#F49B0B';
-    let eventSound = new Audio('{{supportEventSound}}');
-    let type = 'sub';
+    const eventColor = '#F49B0B';
+    const eventSound = new Audio('{{supportEventSound}}');
+    const type = 'sub';
 
     // lay out the groundwork for sub types
     // these should have been 'true' or 'false'
-    let isCommunityGift = event['isCommunityGift'];
-    let isGifted = event['gifted'];
-    let subBomb = event['bulkGifted'];
+    const isCommunityGift = event['isCommunityGift'];
+    const isGifted = event['gifted'];
+    const subBomb = event['bulkGifted'];
 
     // classifications
     // don't display anything if it's "continued sub"
@@ -189,41 +189,41 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
 
     // sub bombs
     if (subBomb) {
-      let subtext = 'Gift Sub';
-      let eventAmountCount = event['amount'] > 1 ? 'subs' : 'sub';
-      let eventAmount = event['amount'] + eventAmountCount;
-      let text = `${eventUsername} just gifted ${eventAmount} to the community!`;
+      const subtext = 'Gift Sub';
+      const eventAmountCount = event['amount'] > 1 ? 'subs' : 'sub';
+      const eventAmount = event['amount'] + eventAmountCount;
+      const text = `${eventUsername} just gifted ${eventAmount} to the community!`;
       addAlert(text, subtext, eventColor, eventSound, type);
 
       // direct gifted sub
     } else if (isGifted) {
-      let subtext = 'Gift Sub';
+      const subtext = 'Gift Sub';
       eventUsername = event['name'];
-      let text = `<span class="user-text-username">${event['sender']}</span> just gifted a sub to ${eventUsername}!`;
+      const text = `<span class="user-text-username">${event['sender']}</span> just gifted a sub to ${eventUsername}!`;
       addAlert(text, subtext, eventColor, eventSound, type);
 
       // resub
     } else if (event['amount'] > 1) {
-      let subtext = event['tier'] == 'prime' ? 'Prime Resub' : 'Resub';
+      const subtext = event['tier'] == 'prime' ? 'Prime Resub' : 'Resub';
       // let subtext = 'Resub';
-      let eventAmount = `${event['amount']} months`;
-      let text = `${eventUsername} just resubbed for ${eventAmount}`;
+      const eventAmount = `${event['amount']} months`;
+      const text = `${eventUsername} just resubbed for ${eventAmount}`;
       addAlert(text, subtext, eventColor, eventSound, type);
 
       // first sub
     } else if (event['amount'] == 1) {
-      let subtext = event['tier'] == 'prime' ? 'Prime Subcriber' : 'Subscriber';
-      let text = `${eventUsername} is now subscribed!`;
+      const subtext = event['tier'] == 'prime' ? 'Prime Subcriber' : 'Subscriber';
+      const text = `${eventUsername} is now subscribed!`;
       addAlert(text, subtext, eventColor, eventSound, type);
     }
     return;
   }
 
   if (obj.detail.listener !== 'message') return;
-  let data = obj.detail.event.data;
+  const data = obj.detail.event.data;
   if (data.text.startsWith('!') && hideCommands === 'yes') return;
   if (ignoredUsers.indexOf(data.nick) !== -1) return;
-  let message = attachEmotes(data);
+  const message = attachEmotes(data);
   let badges = '';
   let badge;
   if (provider === 'mixer') {
@@ -234,10 +234,10 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
     badges += `<img alt="" src="${badge.url}" class="badge"> `;
   }
   // get pronouns
-  let pronounList = await fetch('https://pronouns.alejo.io/api/pronouns').then(response =>
+  const pronounList = await fetch('https://pronouns.alejo.io/api/pronouns').then(response =>
     response.json(),
   );
-  let pronounUser = await fetch(
+  const pronounUser = await fetch(
     `https://pronouns.alejo.io/api/users/${obj.detail.event.data.displayName.toLowerCase()}`,
   ).then(response => response.json());
   let pronounDisplay = '';
@@ -251,7 +251,7 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
   console.log(pronounDisplay);
 
   let username = data.displayName;
-  let nickname = data.displayName;
+  const nickname = data.displayName;
   const color = data.displayColor !== '' ? data.displayColor : `#${md5(username).substr(26)}`;
   username = `<span class="pronoun">${pronounDisplay}</span><span style="color:${color}">${username}</span>`;
 
@@ -289,14 +289,14 @@ window.addEventListener('onWidgetLoad', function handleWidgetLoad(obj) {
 });
 
 function attachEmotes(message) {
-  let text = html_encode(message.text);
-  let data = message.emotes;
+  const text = html_encode(message.text);
+  const data = message.emotes;
   return text.replace(/([^\s]*)/gi, (m, key) => {
-    let result = data.filter(emote => {
+    const result = data.filter(emote => {
       return emote.name === key;
     });
     if (typeof result[0] !== 'undefined') {
-      let url = result[0]['urls'][1];
+      const url = result[0]['urls'][1];
       return `<img alt="" src="${url}" class="emote"/>`;
     } else return key;
   });
@@ -341,7 +341,7 @@ function addMessage({
   if (hideAfter !== 999) {
     $('.main-container').prepend(element);
     if (highlight) {
-      let highlightmsg = document.querySelector(`#msg-${totalMessages}`);
+      const highlightmsg = document.querySelector(`#msg-${totalMessages}`);
       highlightmsg.classList.add('highlight');
     }
     gsap.fromTo(
@@ -367,7 +367,7 @@ function addMessage({
   } else {
     $('.main-container').prepend(element);
     if (highlight) {
-      let highlightmsg = document.querySelector(`#msg-${totalMessages}`);
+      const highlightmsg = document.querySelector(`#msg-${totalMessages}`);
       highlightmsg.classList.add('highlight');
     }
     gsap.fromTo(
@@ -423,7 +423,7 @@ function addAlert(text, subtext, eventColor, eventSound, type) {
   } else {
     $('.main-container').prepend(element);
     if (highlight) {
-      let highlightmsg = document.querySelector(`#msg-${totalMessages}`);
+      const highlightmsg = document.querySelector(`#msg-${totalMessages}`);
       highlightmsg.classList.add('highlight');
     }
     gsap.fromTo(
