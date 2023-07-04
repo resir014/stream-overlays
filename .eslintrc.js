@@ -1,5 +1,7 @@
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
+  parser: '@typescript-eslint/parser',
   extends: [
     'kentcdodds',
     'kentcdodds/react',
@@ -35,8 +37,22 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['templates/**/*.{js,jsx,ts,tsx}'],
+      extends: ['eslint-config-gsap'],
+      env: {
+        browser: true,
+        commonjs: true,
+        es6: true,
+        jquery: true,
+      },
+      globals: {
+        gsap: true,
+        md5: true,
+      },
+      rules: {},
+    },
+    {
       files: ['**/*.(d.)?ts(x)?'],
-      parser: '@typescript-eslint/parser',
       parserOptions: {
         project: './tsconfig.json',
       },

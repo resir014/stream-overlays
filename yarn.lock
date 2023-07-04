@@ -2813,6 +2813,11 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
+eslint-config-gsap@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-gsap/-/eslint-config-gsap-3.0.0.tgz#b843ea007348e317a103b03eaf92bbf621aad071"
+  integrity sha512-1sMmNxExEm4/IU6py57qBTe0UXy8Mhio8kBvO1uGAgCVVxd39SvY9hXRrbUvsmo+FlkG33d158M6UT5Awf5fcQ==
+
 eslint-config-kentcdodds@^20.3.1:
   version "20.3.1"
   resolved "https://registry.yarnpkg.com/eslint-config-kentcdodds/-/eslint-config-kentcdodds-20.3.1.tgz#1c92861d297f1ee88ab1490e6c8a418acaf14ffa"

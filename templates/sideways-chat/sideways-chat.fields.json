@@ -1,0 +1,64 @@
+{
+  "testMessage": {
+    "type": "button",
+    "label": "Test message",
+    "value": "Test message",
+    "group": "Test"
+  },
+  "messagesLimit": {
+    "type": "number",
+    "label": "Messages limit",
+    "value": 6
+  },
+  "hideAfter": {
+    "type": "number",
+    "label": "Hide after seconds (999 to disable)",
+    "value": 999
+  },
+  "hideCommands": {
+    "label": "Hide lines starting with ! (!command)",
+    "type": "dropdown",
+    "value": "yes",
+    "options": {
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "ignoredUsers": {
+    "label": "Ignored users (comma separated)",
+    "type": "text",
+    "value": "StreamElements,OtherBot"
+  },
+  "eventThemeType": {
+    "label": "Events theme type",
+    "type": "dropdown",
+    "value": "colors",
+    "options": {
+      "userpic": "User picture",
+      "colors": "Colors"
+    }
+  },
+  "eventVolume": {
+    "type": "slider",
+    "label": "Events volume",
+    "value": 0.0,
+    "min": 0.0,
+    "max": 1.0,
+    "step": 0.05
+  },
+  "followEventSound": {
+    "type": "sound-input",
+    "label": "Alert sound: follows",
+    "value": "https://cdn.streamelements.com/uploads/fbdc0098-4408-4ed4-a5c6-cefeec4caf58.ogg"
+  },
+  "supportEventSound": {
+    "type": "sound-input",
+    "label": "Alert sound: support (bit, sub, tip)",
+    "value": "https://cdn.streamelements.com/uploads/fbdc0098-4408-4ed4-a5c6-cefeec4caf58.ogg"
+  },
+  "raidEventSound": {
+    "type": "sound-input",
+    "label": "Alert sound: raids",
+    "value": "https://cdn.streamelements.com/uploads/fbdc0098-4408-4ed4-a5c6-cefeec4caf58.ogg"
+  }
+}
