@@ -207,12 +207,12 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
       const subtext = event['tier'] == 'prime' ? 'Prime Resub' : 'Resub';
       // let subtext = 'Resub';
       const eventAmount = `${event['amount']} months`;
-      const text = `${eventUsername} just resubbed for ${eventAmount}`;
+      const text = `${eventUsername} just resubbed for ${eventAmount}!`;
       addAlert(text, subtext, eventColor, eventSound, type);
 
       // first sub
     } else if (event['amount'] == 1) {
-      const subtext = event['tier'] == 'prime' ? 'Prime Subcriber' : 'Subscriber';
+      const subtext = event['tier'] == 'prime' ? 'Prime Sub' : 'Subscriber';
       const text = `${eventUsername} is now subscribed!`;
       addAlert(text, subtext, eventColor, eventSound, type);
     }
