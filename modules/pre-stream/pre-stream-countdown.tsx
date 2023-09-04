@@ -7,11 +7,12 @@ import { usePrestreamClock } from './utils/use-prestream-clock';
 export interface PrestreamCountdownProps extends React.ComponentPropsWithoutRef<'span'> {
   startH?: number;
   startM?: number;
+  timeFormat?: string;
   variant?: PreStreamVariants;
 }
 
 export const PrestreamCountdown = React.forwardRef<HTMLSpanElement, PrestreamCountdownProps>(
-  ({ ...rest }, ref) => {
+  ({ timeFormat = 'mm:ss', ...rest }, ref) => {
     const { time, streamStart } = usePrestreamClock();
 
     const secondsToGo = React.useMemo(
@@ -31,7 +32,7 @@ export const PrestreamCountdown = React.forwardRef<HTMLSpanElement, PrestreamCou
 
     return (
       <span ref={ref} {...rest}>
-        {format(formattedDuration, 'mm:ss')}
+        {format(formattedDuration, timeFormat)}
       </span>
     );
   },

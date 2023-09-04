@@ -2,17 +2,20 @@ import * as React from 'react';
 import { format } from 'date-fns';
 import { useClock } from '~/lib/hooks/use-clock';
 
-export const PrestreamDate = React.forwardRef<
-  HTMLSpanElement,
-  React.ComponentPropsWithoutRef<'span'>
->(({ ...rest }, ref) => {
-  const time = useClock();
+export interface PrestreamDateProps extends React.ComponentPropsWithoutRef<'span'> {
+  dateFormat?: string;
+}
 
-  return (
-    <span ref={ref} {...rest}>
-      {format(time, 'dd MMMM y')}
-    </span>
-  );
-});
+export const PrestreamDate = React.forwardRef<HTMLSpanElement, PrestreamDateProps>(
+  ({ dateFormat = 'dd MMMM y', ...rest }, ref) => {
+    const time = useClock();
+
+    return (
+      <span ref={ref} {...rest}>
+        {format(time, dateFormat)}
+      </span>
+    );
+  },
+);
 
 PrestreamDate.displayName = 'PrestreamDate';
