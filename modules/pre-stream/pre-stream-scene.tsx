@@ -5,6 +5,7 @@ import { PrestreamCountdown } from './pre-stream-countdown';
 import { PrestreamDate } from './pre-stream-date';
 import { PreStreamVariants } from './types';
 import { useCurrentStream } from './utils/stream-schedule';
+import { PreStreamWipeStinger } from './pre-stream-wipe-stinger';
 
 export interface PreStreamSceneProps {
   headerText: string;
@@ -51,10 +52,17 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
     return null;
   };
 
+  const renderWipeStinger = () => {
+    if (clockRendered) {
+      return <PreStreamWipeStinger />;
+    }
+  };
+
   return (
     <SceneWrapper>
       <div className="grid grid-rows-scene-wrapper grid-cols-1 flex-1">
-        <div className="grid w-full">
+        <div className="grid w-full relative">
+          {renderWipeStinger()}
           <div className="grid grid-cols-3 gap-8 w-full pt-[96px] pb-[24px] px-[128px]">
             <div className="flex flex-col justify-center relative">
               <div className="flex flex-1 items-center">{renderDateTime()}</div>
