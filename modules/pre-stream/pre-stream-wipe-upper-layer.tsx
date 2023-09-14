@@ -15,7 +15,7 @@ export function PreStreamWipeUpperLayer({ isVisible = false }) {
       </Transition.Child>
       <Transition.Child
         as={React.Fragment}
-        enter="transition ease-in-out duration-700 transform delay-500"
+        enter="transition ease-in-out duration-700 transform delay-[600ms]"
         enterFrom="-translate-x-full"
         enterTo="translate-x-0 shadow-drop-layers"
       >
@@ -23,7 +23,7 @@ export function PreStreamWipeUpperLayer({ isVisible = false }) {
       </Transition.Child>
       <Transition.Child
         as={React.Fragment}
-        enter="transition ease-in-out duration-700 transform delay-700"
+        enter="transition ease-in-out duration-700 transform delay-[900ms]"
         enterFrom="scale-0"
         enterTo="scale-100"
       >

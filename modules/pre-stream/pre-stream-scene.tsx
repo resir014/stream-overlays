@@ -1,3 +1,4 @@
+/* eslint-disable no-negated-condition */
 import * as React from 'react';
 import clsx from 'clsx';
 import { useClock } from '~/lib/hooks/use-clock';
@@ -128,12 +129,14 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
             </div>
           </div>
           <div className="absolute top-0 left-0 w-full h-full z-10">
-            <div
-              className={clsx(
-                'absolute w-full h-full -translate-x-[90%] shadow-drop-layers',
-                getColorClassName(),
-              )}
-            />
+            {!isAnimationActive ? (
+              <div
+                className={clsx(
+                  'absolute w-full h-full -translate-x-[90%] shadow-drop-layers',
+                  getColorClassName(),
+                )}
+              />
+            ) : null}
             {renderWipeLowerLayer()}
           </div>
         </div>
