@@ -31,12 +31,5 @@ export function BottomBarClock() {
     return null;
   };
 
-  return (
-    <div className="flex items-center pl-4 text-right space-x-2">
-      {renderClock()}
-      <style jsx>{`
-        ${styles}
-      `}</style>
-    </div>
-  );
+  return <div className="flex items-center pl-4 text-right space-x-2">{renderClock()}</div>;
 }
