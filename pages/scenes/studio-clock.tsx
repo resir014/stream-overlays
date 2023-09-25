@@ -14,12 +14,12 @@ function StudioClockScenePage() {
   });
 
   return (
-    <SceneWrapper darkBackground>
+    <SceneWrapper transparent className="bg-chungking-black/90">
       <div className="grid grid-rows-scene-wrapper grid-cols-1 flex-1">
         <div className="flex flex-col items-center justify-center p-12 space-y-6">
           {isClockRendered ? (
             <div className="flex items-center justify-center w-[672px] h-[672px]">
-              <StudioClockInterface hideTimezone className="scale-150" />
+              <StudioClockInterface hideTimezone transparent className="scale-150" />
             </div>
           ) : null}
           {isClockRendered ? (
