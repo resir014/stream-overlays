@@ -15,20 +15,22 @@ function StudioClockScenePage() {
 
   return (
     <SceneWrapper darkBackground>
-      <div className="flex flex-col items-center justify-center p-12 space-y-6">
-        {isClockRendered ? (
-          <div className="flex items-center justify-center w-[672px] h-[672px]">
-            <StudioClockInterface hideTimezone className="scale-150" />
-          </div>
-        ) : null}
-        {isClockRendered ? (
-          <Image
-            src="/static/resir014-logo-wordmark.png"
-            width={369}
-            height={114}
-            alt="resir014 logo"
-          />
-        ) : null}
+      <div className="grid grid-rows-scene-wrapper grid-cols-1 flex-1">
+        <div className="flex flex-col items-center justify-center p-12 space-y-6">
+          {isClockRendered ? (
+            <div className="flex items-center justify-center w-[672px] h-[672px]">
+              <StudioClockInterface hideTimezone className="scale-150" />
+            </div>
+          ) : null}
+          {isClockRendered ? (
+            <Image
+              src="/static/resir014-logo-wordmark.png"
+              width={369}
+              height={114}
+              alt="resir014 logo"
+            />
+          ) : null}
+        </div>
       </div>
     </SceneWrapper>
   );
