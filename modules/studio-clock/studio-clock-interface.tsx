@@ -9,6 +9,7 @@ export interface StudioClockInterfaceProps extends React.ComponentPropsWithoutRe
   watchFaceFont?: string;
   watchFaceColor?: string;
   hideTimezone?: boolean;
+  transparent?: boolean;
 }
 
 export function StudioClockInterface({
@@ -18,6 +19,7 @@ export function StudioClockInterface({
   watchFaceFont = 'JetBrains Mono',
   watchFaceColor,
   hideTimezone,
+  transparent,
   ...rest
 }: StudioClockInterfaceProps) {
   const time = useClock();
@@ -63,7 +65,8 @@ export function StudioClockInterface({
   return (
     <div
       className={clsx(
-        'inline-flex flex-col items-center space-y-8 rounded-xl bg-chungking-black px-4 py-8',
+        'inline-flex flex-col items-center space-y-8 rounded-xl px-4 py-8',
+        transparent ? undefined : 'bg-chungking-black',
         className,
       )}
       style={style}

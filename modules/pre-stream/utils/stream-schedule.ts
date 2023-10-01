@@ -10,8 +10,6 @@ export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
 export function useCurrentStream(refetchInterval = 5000) {
   const { data, error } = trpc.notion.getCurrentStream.useQuery(undefined, { refetchInterval });
 
-  console.log(data);
-
   return {
     currentStream: data,
     isLoading: !error && !data,

@@ -22,6 +22,9 @@ module.exports = {
       transitionTimingFunction: {
         'in-out-alerts': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
+      boxShadow: {
+        'drop-layers': '0px 0px 150px 0px #000',
+      },
     },
   },
   variants: {

@@ -1,14 +1,16 @@
+/* eslint-disable no-negated-condition */
 import * as React from 'react';
 import clsx from 'clsx';
+import { useClock } from '~/lib/hooks/use-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
+import { useOverlayData } from '../overlay-data/use-overlay-data';
 import { SceneWrapper } from '../scenes/scene-wrapper';
-import { SocialLinksRotator } from '../social-links';
-import { PreStreamTitles } from './pre-stream-titles';
+import { useCurrentStream } from './utils/stream-schedule';
 import { PrestreamCountdown } from './pre-stream-countdown';
 import { PrestreamDate } from './pre-stream-date';
 import { PreStreamVariants } from './types';
-import { getPrestreamAccentColor } from './utils/prestream-colors';
-import { useCurrentStream } from './utils/stream-schedule';
+import { PreStreamWipeUpperLayer } from './pre-stream-wipe-upper-layer';
+import { PreStreamWipeLowerLayer } from './pre-stream-wipe-lower-layer';
 
 export interface PreStreamSceneProps {
   headerText: string;
@@ -16,27 +18,60 @@ export interface PreStreamSceneProps {
 }
 
 export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStreamSceneProps) {
-  const [clockRendered, setClockRendered] = React.useState(false);
+  const time = useClock();
+  const [isClientReady, setIsClientReady] = React.useState(false);
+  const { overlayData } = useOverlayData();
   const { currentStream } = useCurrentStream();
 
-  const accentColors = React.useMemo(() => getPrestreamAccentColor(variant), [variant]);
+  const streamStart = React.useMemo(
+    () => (overlayData?.streamStart ? new Date(overlayData.streamStart) : undefined),
+    [overlayData?.streamStart],
+  );
+
+  const isAnimationActive = React.useMemo(() => {
+    if (variant !== 'pre-stream') {
+      return false;
+    }
+
+    if (streamStart) {
+      return time.toISOString() >= streamStart.toISOString();
+    }
+
+    return false;
+  }, [streamStart, time, variant]);
 
   useOnMount(() => {
-    setClockRendered(true);
+    setIsClientReady(true);
   });
 
-  const renderCountdown = () => {
-    if (clockRendered) {
+  const getColorClassName = () => {
+    switch (variant) {
+      case 'pre-stream': {
+        return 'bg-chungking-blue-500';
+      }
+      case 'brb': {
+        return 'bg-chungking-green-500';
+      }
+      case 'tech-issues': {
+        return 'bg-chungking-magenta-500';
+      }
+      case 'end': {
+        return 'bg-chungking-orange-500';
+      }
+      default: {
+        return 'bg-chungking-blue-500';
+      }
+    }
+  };
+
+  const renderCountdown = (format?: string) => {
+    if (isClientReady) {
       if (variant === 'pre-stream') {
         return (
-          <div
-            className={clsx(
-              'flex items-center justify-center w-full max-w-[562px] h-full px-6',
-              accentColors.bg,
-            )}
-          >
-            <PrestreamCountdown className="flex items-center space-x-1 text-[128px] leading-none text-chungking-white font-bold tabular-nums helper-alternate-digits" />
-          </div>
+          <PrestreamCountdown
+            className="text-[216px] leading-none text-chungking-white font-bold tabular-nums helper-alternate-digits"
+            timeFormat={format}
+          />
         );
       }
 
@@ -47,51 +82,62 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
   };
 
   const renderDateTime = () => {
-    if (clockRendered) {
-      return <PrestreamDate />;
+    if (isClientReady) {
+      return (
+        <div className="flex flex-col space-y-2">
+          <PrestreamDate className="text-4xl leading-none text-chungking-white" dateFormat="EEEE" />
+          <PrestreamDate className="text-4xl leading-none text-chungking-white font-bold" />
+        </div>
+      );
     }
 
     return null;
   };
 
-  const renderLinks = () => {
-    if (clockRendered) {
-      return <SocialLinksRotator />;
+  const renderWipeUpperLayer = () => {
+    if (isClientReady) {
+      return <PreStreamWipeUpperLayer isVisible={isAnimationActive} />;
     }
+  };
 
-    return null;
+  const renderWipeLowerLayer = () => {
+    if (isClientReady) {
+      return <PreStreamWipeLowerLayer isVisible={isAnimationActive} />;
+    }
   };
 
   return (
     <SceneWrapper>
-      <div className="flex p-12">
-        <div
-          className={clsx(
-            'flex flex-row flex-1 w-full h-full overflow-hidden rounded-3xl border-4',
-            accentColors.border,
-          )}
-        >
-          <div
-            className={clsx('flex flex-col items-center justify-center w-[110px]', accentColors.bg)}
-          >
-            <div className="block w-10 h-10 rounded-full bg-chungking-white" />
+      <div className="grid grid-rows-scene-wrapper grid-cols-1 flex-1">
+        <div className="grid w-full relative">
+          <div className="absolute top-0 left-0 w-full h-full z-30">{renderWipeUpperLayer()}</div>
+          <div className="grid grid-cols-3 gap-8 w-full pt-[96px] pb-[24px] px-[128px] z-20">
+            <div className="flex flex-col justify-center relative">
+              <div className="flex flex-1 items-center">{renderDateTime()}</div>
+              <div className="flex flex-col absolute bottom-6 left-0">{renderCountdown('mm')}</div>
+            </div>
+            <div className="flex flex-col col-span-2 justify-center relative">
+              <div className="flex flex-1 items-center">
+                <div className="flex flex-col space-y-2">
+                  <span className="text-4xl leading-none text-chungking-white">{headerText}</span>
+                  <span className="text-4xl leading-none text-chungking-white font-bold">
+                    {currentStream?.stream_name ?? 'No current stream.'}
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col absolute bottom-6 left-0">{renderCountdown('ss')}</div>
+            </div>
           </div>
-          <div className="flex items-center justify-center relative w-full h-full bg-gradient-to-r from-chungking-black to-chungking-black/30">
-            <div className="flex-1 h-full">
-              <PreStreamTitles
-                header={headerText}
-                description={
-                  variant === 'tech-issues'
-                    ? 'Please wait a moment!'
-                    : currentStream?.stream_name ?? 'No description available.'
-                }
+          <div className="absolute top-0 left-0 w-full h-full z-10">
+            {!isAnimationActive ? (
+              <div
+                className={clsx(
+                  'absolute w-full h-full -translate-x-[90%] shadow-drop-layers',
+                  getColorClassName(),
+                )}
               />
-            </div>
-            {renderCountdown()}
-            <div className="flex items-center justify-between absolute bottom-8 w-full px-12">
-              <div className="text-3xl font-bold text-chungking-white">{renderDateTime()}</div>
-              <div className="text-3xl font-bold text-chungking-white">{renderLinks()}</div>
-            </div>
+            ) : null}
+            {renderWipeLowerLayer()}
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { subSeconds } from 'date-fns';
 import * as React from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOverlayData } from '../overlay-data/use-overlay-data';
@@ -12,10 +11,10 @@ export default function TimeSignalWrapper() {
   const time = useClock();
   const { overlayData } = useOverlayData();
   const playButtonRef = React.useRef<HTMLButtonElement>(null);
-  const audio = React.useMemo(() => new Audio('/static/audio/timesignal.ogg'), []);
+  const audio = React.useMemo(() => new Audio('/static/audio/start-chime.ogg'), []);
 
   const startOfTimeSignal = React.useMemo(
-    () => (overlayData?.timeSignal ? subSeconds(new Date(overlayData.timeSignal), 5) : undefined),
+    () => (overlayData?.timeSignal ? new Date(overlayData.timeSignal) : undefined),
     [overlayData?.timeSignal],
   );
 

@@ -22,7 +22,7 @@ export function BottomBarClock() {
   const renderClock = () => {
     if (mounted) {
       return (
-        <div className="flex items-center justify-center w-[96px] h-[32px] py-1 text-chungking-black bg-chungking-white rounded-xl leading-none font-bold">
+        <div className="flex items-center justify-center w-[96px] h-[32px] py-1 text-chungking-black bg-chungking-white rounded-full leading-none font-bold">
           <span style={styles}>{format(time, 'HH:mm')}</span>
         </div>
       );
@@ -31,12 +31,5 @@ export function BottomBarClock() {
     return null;
   };
 
-  return (
-    <div className="flex items-center pl-4 text-right space-x-2">
-      {renderClock()}
-      <style jsx>{`
-        ${styles}
-      `}</style>
-    </div>
-  );
+  return <div className="flex items-center pl-4 text-right space-x-2">{renderClock()}</div>;
 }
