@@ -1,6 +1,5 @@
 /* eslint-disable no-negated-condition */
 import * as React from 'react';
-import clsx from 'clsx';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { useOverlayData } from '../overlay-data/use-overlay-data';
@@ -102,7 +101,9 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
 
   const renderWipeLowerLayer = () => {
     if (isClientReady) {
-      return <PreStreamWipeLowerLayer isVisible={isAnimationActive} />;
+      return (
+        <PreStreamWipeLowerLayer className={getColorClassName()} isVisible={isAnimationActive} />
+      );
     }
   };
 
@@ -128,17 +129,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
               <div className="flex flex-col absolute bottom-6 left-0">{renderCountdown('ss')}</div>
             </div>
           </div>
-          <div className="absolute top-0 left-0 w-full h-full z-10">
-            {!isAnimationActive ? (
-              <div
-                className={clsx(
-                  'absolute w-full h-full -translate-x-[90%] shadow-drop-layers',
-                  getColorClassName(),
-                )}
-              />
-            ) : null}
-            {renderWipeLowerLayer()}
-          </div>
+          <div className="absolute top-0 left-0 w-full h-full z-10">{renderWipeLowerLayer()}</div>
         </div>
       </div>
     </SceneWrapper>

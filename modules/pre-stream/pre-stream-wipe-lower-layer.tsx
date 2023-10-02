@@ -1,18 +1,30 @@
 import * as React from 'react';
 import { Transition } from '@headlessui/react';
+import clsx from 'clsx';
 
-export function PreStreamWipeLowerLayer({ isVisible = false }) {
+interface PreStreamWipeLowerLayerProps {
+  className?: string;
+  isVisible?: boolean;
+}
+
+export function PreStreamWipeLowerLayer({
+  className,
+  isVisible = false,
+}: PreStreamWipeLowerLayerProps) {
   return (
-    <Transition show={isVisible} className="relative w-full h-full">
-      <Transition.Child
-        as={React.Fragment}
-        enter="transition ease-in-out duration-700 transform"
-        enterFrom="-translate-x-[90%]"
-        enterTo="translate-x-0"
-        unmount={false}
-      >
-        <div className="absolute bg-chungking-blue-500 w-full h-full -translate-x-[90%] shadow-drop-layers" />
-      </Transition.Child>
-    </Transition>
+    <>
+      <div className={clsx('absolute w-full h-full -translate-x-[90%] z-0', className)} />
+      <Transition show={isVisible} as={React.Fragment}>
+        <Transition.Child
+          as={React.Fragment}
+          enter="transition ease-in-out duration-700 transform"
+          enterFrom="-translate-x-[90%]"
+          enterTo="translate-x-0 shadow-drop-layers"
+          unmount={false}
+        >
+          <div className={clsx('absolute w-full h-full -translate-x-[90%] z-10', className)} />
+        </Transition.Child>
+      </Transition>
+    </>
   );
 }
