@@ -55,7 +55,7 @@
     "text-case": "^1.0.9",
     "typeface-inter": "^3.18.1",
     "webfontloader": "^1.6.28",
-    "zod": "^3.21.4",
+    "zod": "^3.22.3",
     "zustand": "^4.3.8"
   },
   "devDependencies": {
