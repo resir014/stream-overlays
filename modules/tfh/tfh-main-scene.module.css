@@ -10,7 +10,8 @@
 }
 
 .standingsWidget {
-  @apply bg-black;
+  @apply flex items-start justify-center p-3 bg-black text-white;
+  font-family: Montserrat, sans-serif;
 }
 
 .freeformTextWidget {
