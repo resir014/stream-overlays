@@ -1,0 +1,25 @@
+.sceneGrid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1140px 560px;
+  grid-template-rows: 641px 166px;
+}
+
+.gameWidget {
+  background-color: #0f0;
+}
+
+.standingsWidget {
+  @apply bg-black;
+}
+
+.freeformTextWidget {
+  background-color: #12124c;
+}
+
+.countdownWidget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b12c34;
+}

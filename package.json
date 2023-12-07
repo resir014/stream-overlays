@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "16.x || 18.x"
+    "node": "18.x || 20.x"
   },
   "scripts": {
     "build": "next build",
