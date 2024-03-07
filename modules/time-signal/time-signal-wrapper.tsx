@@ -7,11 +7,15 @@ export interface TimeSignalWrapperProps {
   startM: number;
 }
 
-export default function TimeSignalWrapper() {
+export default function TimeSignalWrapper({ cerveza = false }) {
   const time = useClock();
   const { overlayData } = useOverlayData();
   const playButtonRef = React.useRef<HTMLButtonElement>(null);
-  const audio = React.useMemo(() => new Audio('/static/audio/start-chime.ogg'), []);
+  const audio = React.useMemo(
+    () =>
+      new Audio(cerveza ? '/static/audio/cerveza-cristal.ogg' : '/static/audio/start-chime.ogg'),
+    [cerveza],
+  );
 
   const startOfTimeSignal = React.useMemo(
     () => (overlayData?.timeSignal ? new Date(overlayData.timeSignal) : undefined),
