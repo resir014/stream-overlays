@@ -28,7 +28,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
   );
 
   const isAnimationActive = React.useMemo(() => {
-    if (variant !== 'pre-stream') {
+    if (variant !== 'pre-stream' && variant !== 'pre-stream-cerveza') {
       return false;
     }
 
@@ -45,7 +45,8 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
 
   const getColorClassName = () => {
     switch (variant) {
-      case 'pre-stream': {
+      case 'pre-stream':
+      case 'pre-stream-cerveza': {
         return 'bg-chungking-blue-500';
       }
       case 'brb': {
@@ -65,7 +66,7 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
 
   const renderCountdown = (format?: string) => {
     if (isClientReady) {
-      if (variant === 'pre-stream') {
+      if (variant === 'pre-stream' || variant === 'pre-stream-cerveza') {
         return (
           <PrestreamCountdown
             className="text-[216px] leading-none text-chungking-white font-bold tabular-nums helper-alternate-digits"
@@ -95,7 +96,12 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
 
   const renderWipeUpperLayer = () => {
     if (isClientReady) {
-      return <PreStreamWipeUpperLayer isVisible={isAnimationActive} />;
+      return (
+        <PreStreamWipeUpperLayer
+          isVisible={isAnimationActive}
+          cerveza={variant === 'pre-stream-cerveza'}
+        />
+      );
     }
   };
 
