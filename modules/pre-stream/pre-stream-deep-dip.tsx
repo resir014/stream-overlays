@@ -12,7 +12,7 @@ export function PreStreamDeepDipScene() {
       <div className="flex flex-col w-full flex-1 pt-[96px] pb-[24px] px-[128px] space-y-4">
         <div className="flex items-center justify-between h-[72px] px-6 bg-black/75 rounded-lg">
           <div className="text-white text-4xl font-bold">Deep Dip 2 - Current Standings</div>
-          <div className="text-white text-xl">Be right back.</div>
+          <div className="text-white text-3xl">Be right back.</div>
         </div>
         <div className="flex flex-col flex-1 space-y-4">
           {truncatedLeaderboard.length
@@ -22,13 +22,13 @@ export function PreStreamDeepDipScene() {
                   key={item.wsid}
                 >
                   <div className="flex items-center justify-center w-[64px]">
-                    <span className="text-white text-xl font-bold">{item.rank}</span>
+                    <span className="text-white text-2xl font-bold">{item.rank}</span>
                   </div>
                   <div className="flex items-center justify-start flex-1 pr-3">
-                    <span className="text-white text-xl font-bold">{item.name}</span>
+                    <span className="text-white text-2xl font-bold">{item.name}</span>
                   </div>
                   <div className="flex items-center justify-end pl-3 pr-6">
-                    <span className="text-white text-xl tabular-nums">
+                    <span className="text-white text-2xl tabular-nums">
                       {item.height.toFixed(1)}m
                     </span>
                   </div>
@@ -46,13 +46,13 @@ export function PreStreamDeepDipScene() {
           {progress ? (
             <div className="flex items-center justify-between h-[48px] bg-black/75 rounded-lg gap-6">
               <div className="flex items-center justify-center w-[64px]">
-                <span className="text-white text-xl font-bold">{progress.rank}</span>
+                <span className="text-white text-2xl font-bold">{progress.rank}</span>
               </div>
               <div className="flex items-center justify-start flex-1 pr-3">
-                <span className="text-white text-xl font-bold">{progress.name}</span>
+                <span className="text-white text-2xl font-bold">{progress.name}</span>
               </div>
               <div className="flex items-center justify-end pl-3 pr-6">
-                <span className="text-white text-xl tabular-nums">
+                <span className="text-white text-2xl tabular-nums">
                   {progress.height.toFixed(1)}m
                 </span>
               </div>
