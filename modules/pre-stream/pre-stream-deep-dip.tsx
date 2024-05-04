@@ -9,37 +9,39 @@ export function PreStreamDeepDipScene() {
 
   return (
     <SceneWrapper>
-      <div className="flex flex-col w-full flex-1 pt-[96px] pb-[24px] px-[128px] space-y-4">
-        <div className="flex items-center justify-between h-[72px] px-6 bg-black/90 rounded-lg">
+      <div className="flex flex-col items-center flex-1 pt-[96px] pb-[24px] px-[128px] space-y-4">
+        <div className="flex items-center justify-between w-full max-w-7xl h-[72px] px-6 bg-black/90 rounded-lg">
           <div className="text-white text-4xl font-bold">Deep Dip 2 - Current Standings</div>
           <div className="text-white text-3xl">Be right back.</div>
         </div>
-        <div className="flex flex-col flex-1 space-y-2">
-          {isLeaderboardLoading
-            ? Array(10).map((_, key) => (
-                <div
-                  className="flex items-center justify-between h-[56px] bg-black/90 rounded-lg gap-6"
-                  key={key}
-                />
-              ))
-            : truncatedLeaderboard.map(item => (
-                <div
-                  className="flex items-center justify-between bg-black/90 rounded-lg gap-6 p-1"
-                  key={item.wsid}
-                >
-                  <div className="flex items-center justify-center w-[48px] h-[48px] rounded-md bg-blue-600">
-                    <span className="text-white text-2xl font-bold">{item.rank}</span>
+        <div className="flex flex-col flex-1 w-full max-w-7xl space-y-3">
+          <div className="flex flex-col space-y-2">
+            {isLeaderboardLoading
+              ? Array(10).map((_, key) => (
+                  <div
+                    className="flex items-center justify-between h-[56px] bg-black/90 rounded-lg gap-6"
+                    key={key}
+                  />
+                ))
+              : truncatedLeaderboard.map(item => (
+                  <div
+                    className="flex items-center justify-between bg-black/90 rounded-lg gap-6 p-1"
+                    key={item.wsid}
+                  >
+                    <div className="flex items-center justify-center w-[48px] h-[48px] rounded-md bg-blue-600">
+                      <span className="text-white text-2xl font-bold">{item.rank}</span>
+                    </div>
+                    <div className="flex items-center justify-start flex-1 pr-3">
+                      <span className="text-white text-2xl font-bold">{item.name}</span>
+                    </div>
+                    <div className="flex items-center justify-end pl-3 pr-6">
+                      <span className="text-white text-2xl tabular-nums">
+                        {item.height.toFixed(1)}m
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-start flex-1 pr-3">
-                    <span className="text-white text-2xl font-bold">{item.name}</span>
-                  </div>
-                  <div className="flex items-center justify-end pl-3 pr-6">
-                    <span className="text-white text-2xl tabular-nums">
-                      {item.height.toFixed(1)}m
-                    </span>
-                  </div>
-                </div>
-              ))}
+                ))}
+          </div>
 
           {isProgressLoading ? (
             <div className="flex items-center justify-between h-[56px] bg-black/90 rounded-lg gap-6" />
