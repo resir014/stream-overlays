@@ -36,8 +36,8 @@ export function PreStreamDeepDipScene() {
                     <div className="flex items-center justify-start flex-1 pr-3">
                       <span className="text-white text-2xl font-bold">{item.name}</span>
                     </div>
-                    <div className="flex items-center justify-end px-4 h-[48px] rounded-md bg-white">
-                      <span className="text-black text-2xl font-bold tabular-nums">
+                    <div className="flex items-center justify-center px-2 w-[128px] h-[48px] rounded-md bg-white">
+                      <span className="text-black text-2xl font-bold">
                         {item.height.toFixed(1)}m
                       </span>
                     </div>
@@ -60,7 +60,7 @@ export function PreStreamDeepDipScene() {
                 <div className="flex items-center justify-start flex-1 pr-3">
                   <span className="text-white text-2xl font-bold">{progress.name}</span>
                 </div>
-                <div className="flex items-center justify-end px-4 h-[48px] rounded-md bg-white">
+                <div className="flex items-center justify-center px-2 w-[128px] h-[48px] rounded-md bg-white">
                   <span className="text-black text-2xl font-bold tabular-nums">
                     {progress.height.toFixed(1)}m
                   </span>
