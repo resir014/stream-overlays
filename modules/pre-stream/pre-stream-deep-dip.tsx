@@ -17,25 +17,27 @@ export function PreStreamDeepDipScene() {
         <div className="flex flex-col flex-1 w-full max-w-7xl space-y-3">
           <div className="flex flex-col space-y-2">
             {isLeaderboardLoading
-              ? Array(10).map((_, key) => (
-                  <div
-                    className="flex items-center justify-between h-[56px] bg-black/90 rounded-lg gap-6"
-                    key={key}
-                  />
-                ))
+              ? Array(10)
+                  .fill(undefined)
+                  .map((_, key) => (
+                    <div
+                      className="flex items-center justify-between h-[56px] bg-black/90 rounded-lg gap-6"
+                      key={key}
+                    />
+                  ))
               : truncatedLeaderboard.map(item => (
                   <div
                     className="flex items-center justify-between bg-black/90 rounded-lg gap-6 p-1"
                     key={item.wsid}
                   >
-                    <div className="flex items-center justify-center w-[48px] h-[48px] rounded-md bg-blue-600">
+                    <div className="flex items-center justify-center w-[64px] h-[48px] rounded-md bg-blue-600">
                       <span className="text-white text-2xl font-bold">{item.rank}</span>
                     </div>
                     <div className="flex items-center justify-start flex-1 pr-3">
                       <span className="text-white text-2xl font-bold">{item.name}</span>
                     </div>
-                    <div className="flex items-center justify-end pl-3 pr-6">
-                      <span className="text-white text-2xl tabular-nums">
+                    <div className="flex items-center justify-end px-4 h-[48px] rounded-md bg-white">
+                      <span className="text-black text-2xl font-bold tabular-nums">
                         {item.height.toFixed(1)}m
                       </span>
                     </div>
@@ -44,19 +46,22 @@ export function PreStreamDeepDipScene() {
           </div>
 
           {isProgressLoading ? (
-            <div className="flex items-center justify-between h-[56px] bg-black/90 rounded-lg gap-6" />
+            <>
+              <div className="flex items-center justify-center h-[16px] bg-black/90 rounded-lg gap-6" />
+              <div className="flex items-center justify-between h-[56px] bg-black/90 rounded-lg gap-6" />
+            </>
           ) : progress ? (
             <>
-              <div className="flex items-center justify-center h-[32px] bg-black/90 rounded-lg gap-6" />
+              <div className="flex items-center justify-center h-[16px] bg-black/90 rounded-lg gap-6" />
               <div className="flex items-center justify-between bg-black/90 rounded-lg gap-6 p-1">
-                <div className="flex items-center justify-center w-[48px] h-[48px] rounded-md bg-blue-600">
+                <div className="flex items-center justify-center w-[64px] h-[48px] rounded-md bg-blue-600">
                   <span className="text-white text-xl font-bold">{progress.rank}</span>
                 </div>
                 <div className="flex items-center justify-start flex-1 pr-3">
                   <span className="text-white text-2xl font-bold">{progress.name}</span>
                 </div>
-                <div className="flex items-center justify-end pl-3 pr-6">
-                  <span className="text-white text-2xl tabular-nums">
+                <div className="flex items-center justify-end px-4 h-[48px] rounded-md bg-white">
+                  <span className="text-black text-2xl font-bold tabular-nums">
                     {progress.height.toFixed(1)}m
                   </span>
                 </div>
