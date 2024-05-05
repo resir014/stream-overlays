@@ -116,7 +116,7 @@ export function PreStreamDeepDipScene({ headerText, variant }: PreStreamScenePro
       <div className="grid grid-rows-scene-wrapper grid-cols-1 flex-1">
         <div className="grid w-full relative">
           <div className="absolute top-0 left-0 w-full h-full z-30">{renderWipeUpperLayer()}</div>
-          <div className="grid grid-cols-12 gap-3 pt-[96px] pb-[24px] px-[128px]">
+          <div className="grid grid-cols-12 gap-3 pt-[96px] pb-[24px] px-[128px] z-20">
             <div className="flex flex-col items-start justify-between col-span-4 p-6 bg-chungking-black/90 rounded-lg">
               <div className="flex flex-col space-y-2">
                 <span className="text-4xl leading-none text-chungking-white font-bold">

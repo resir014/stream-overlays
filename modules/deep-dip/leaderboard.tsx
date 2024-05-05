@@ -11,9 +11,7 @@ export function DeepDip2Leaderboard({ className }: React.ComponentPropsWithoutRe
   return (
     <div className={clsx('flex flex-col items-center flex-1 space-y-3', className)}>
       <div className="flex items-center justify-between flex-1 w-full max-w-7xl px-6 bg-chungking-black/90 rounded-lg">
-        <div className="text-chungking-white text-4xl font-bold">
-          Deep Dip 2 - Current Standings
-        </div>
+        <div className="text-chungking-white text-4xl font-bold">Current Standings</div>
       </div>
       <div className="flex flex-col flex-1 w-full max-w-7xl space-y-3">
         <div className="flex flex-col space-y-2">
