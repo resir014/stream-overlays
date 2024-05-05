@@ -5,10 +5,10 @@ import { OverlayLayout } from '~/layouts/overlay-layout';
 import { createNextPage } from '~/lib/create-next-page';
 import { PreStreamDeepDipScene } from '~/modules/pre-stream/pre-stream-deep-dip';
 
-const DeepDipBRBScenePage: NextPage = () => {
-  return <PreStreamDeepDipScene />;
+const DeepDipPreStreamScenePage: NextPage = () => {
+  return <PreStreamDeepDipScene headerText="Starting soon." variant="pre-stream" />;
 };
 
-export default createNextPage(DeepDipBRBScenePage, {
+export default createNextPage(DeepDipPreStreamScenePage, {
   layout: OverlayLayout,
 });
