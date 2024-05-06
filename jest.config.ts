@@ -6,7 +6,7 @@ const createJestConfig = nextJest({
 });
 
 const jestConfig: Config = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts', 'react-intersection-observer/test-utils'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '~/(.*)': '<rootDir>/$1',
   },
