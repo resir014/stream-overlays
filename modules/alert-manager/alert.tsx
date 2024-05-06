@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import AlertManager from './alert-manager';
 import { AlertHandler, AlertSettings } from './types';
 
-const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+const isBrowser = typeof window.document !== 'undefined';
 
 /**
  * Base class for interacting with the notifications system.
