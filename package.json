@@ -63,6 +63,7 @@
     "@resir014/tailwind-preset-chungking": "0.1.4-canary.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.5.12",
     "@types/node": "^17.0.45",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
