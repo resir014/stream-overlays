@@ -1,8 +1,11 @@
 /* eslint-disable global-require */
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './layouts/**/*.{js,ts,jsx,tsx}',
@@ -11,6 +14,10 @@ module.exports = {
   presets: [require('@resir014/tailwind-preset-chungking')],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
+      },
       gridTemplateRows: {
         'bottom-bar': '40px 24px',
         'scene-wrapper': '1fr 32px 64px',
