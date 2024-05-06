@@ -1,16 +1,16 @@
 import * as React from 'react';
+import clsx from 'clsx';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { DeepDip2Leaderboard } from '../deep-dip/leaderboard';
 import { useOverlayData } from '../overlay-data/use-overlay-data';
 import { SceneWrapper } from '../scenes/scene-wrapper';
+import { DD2Logo } from '../deep-dip/dd2-logo';
 import { PreStreamSceneProps } from './pre-stream-scene';
 import { PreStreamWipeUpperLayer } from './pre-stream-wipe-upper-layer';
 import { PreStreamWipeLowerLayer } from './pre-stream-wipe-lower-layer';
 import { PrestreamCountdown } from './pre-stream-countdown';
 import { PrestreamDate } from './pre-stream-date';
-import { DD2Logo } from '../deep-dip/dd2-logo';
-import clsx from 'clsx';
 
 export function PreStreamDeepDipScene({ headerText, variant }: PreStreamSceneProps) {
   const time = useClock();
