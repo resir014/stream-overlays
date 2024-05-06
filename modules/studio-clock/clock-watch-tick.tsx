@@ -13,6 +13,8 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
   ({ className, style, active, currentSecond, hasFace, watchFaceColor = '#33ffd7' }, ref) => {
     const hexColor = React.useMemo(() => resolveHexColor(watchFaceColor), [watchFaceColor]);
 
+    const isActive = active ?? currentSecond === 60;
+
     return (
       <div
         ref={ref}
@@ -29,24 +31,20 @@ export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickPro
         <div
           className={clsx(
             'h-3 w-3 rounded-full',
-            active || currentSecond === 60
+            isActive
               ? undefined
               : hasFace
-              ? 'bg-chungking-white'
-              : 'bg-chungking-white bg-opacity-20',
+                ? 'bg-chungking-white'
+                : 'bg-chungking-white bg-opacity-20',
           )}
           style={{
-            backgroundColor: active || currentSecond === 60 ? hexColor : undefined,
+            backgroundColor: isActive ? hexColor : undefined,
           }}
         />
         <div
           className="h-3 w-3 rounded-full bg-chungking-white"
           style={{
-            backgroundColor: hasFace
-              ? active || currentSecond === 60
-                ? hexColor
-                : undefined
-              : 'transparent',
+            backgroundColor: hasFace ? (isActive ? hexColor : undefined) : 'transparent',
           }}
         />
       </div>

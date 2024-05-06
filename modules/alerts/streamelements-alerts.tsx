@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import * as React from 'react';
 import { nanoid } from 'nanoid';
@@ -94,9 +96,12 @@ export function StreamElementsAlerts() {
     console.log('[Alerts] events', events);
 
     if (events.length > 0) {
-      setTimeout(() => {
-        addEventToQueue(recent);
-      }, (dismissAfter + 500) * (events.length - 1));
+      setTimeout(
+        () => {
+          addEventToQueue(recent);
+        },
+        (dismissAfter + 500) * (events.length - 1),
+      );
     } else {
       addEventToQueue(recent);
     }

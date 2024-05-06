@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import { useStreamlabsSocket, StreamlabsEvent } from '~/lib/streamlabs';
@@ -174,9 +176,12 @@ export function StreamlabsAlerts() {
     console.log('[StreamlabsAlerts] events', events);
 
     if (events.length > 0) {
-      setTimeout(() => {
-        addEventToQueue(recent);
-      }, (dismissAfter + 500) * (events.length - 1));
+      setTimeout(
+        () => {
+          addEventToQueue(recent);
+        },
+        (dismissAfter + 500) * (events.length - 1),
+      );
     } else {
       addEventToQueue(recent);
     }

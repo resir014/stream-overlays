@@ -11,36 +11,39 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: yarn install --frozen-lockfile
-      - uses: actions/cache@v1
-        id: cache-build
-        with:
-          path: '.'
-          key: ${{ github.sha }}
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  validate:
-    name: Validate
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/cache@v1
-        id: restore-build
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          path: '.'
-          key: ${{ github.sha }}
-      - run: yarn validate
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run typecheck
+        run: pnpm run validate
         env:
           CI: true
 
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/cache@v1
-        id: restore-build
-        with:
-          path: '.'
-          key: ${{ github.sha }}
-      - run: yarn test
+      - name: Run tests
+        run: pnpm run test
