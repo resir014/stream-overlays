@@ -1,9 +1,11 @@
 import * as React from 'react';
+import clsx from 'clsx';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { DeepDip2Leaderboard } from '../deep-dip/leaderboard';
 import { useOverlayData } from '../overlay-data/use-overlay-data';
 import { SceneWrapper } from '../scenes/scene-wrapper';
+import { DD2Logo } from '../deep-dip/dd2-logo';
 import { PreStreamSceneProps } from './pre-stream-scene';
 import { PreStreamWipeUpperLayer } from './pre-stream-wipe-upper-layer';
 import { PreStreamWipeLowerLayer } from './pre-stream-wipe-lower-layer';
@@ -75,19 +77,19 @@ export function PreStreamDeepDipScene({ headerText, variant }: PreStreamScenePro
     switch (variant) {
       case 'pre-stream':
       case 'pre-stream-cerveza': {
-        return 'bg-chungking-blue-500';
+        return 'bg-chungking-blue-500 text-chungking-white';
       }
       case 'brb': {
-        return 'bg-chungking-green-500';
+        return 'bg-chungking-turquoise-500 text-chungking-black';
       }
       case 'tech-issues': {
-        return 'bg-chungking-magenta-500';
+        return 'bg-chungking-magenta-500 text-chungking-white';
       }
       case 'end': {
-        return 'bg-chungking-orange-500';
+        return 'bg-chungking-orange-500 text-chungking-black';
       }
       default: {
-        return 'bg-chungking-blue-500';
+        return 'bg-chungking-blue-500 text-chungking-white';
       }
     }
   };
@@ -117,15 +119,20 @@ export function PreStreamDeepDipScene({ headerText, variant }: PreStreamScenePro
         <div className="grid w-full relative">
           <div className="absolute top-0 left-0 w-full h-full z-30">{renderWipeUpperLayer()}</div>
           <div className="grid grid-cols-12 gap-3 pt-[96px] pb-12 px-[128px] z-20">
-            <div className="flex flex-col items-start justify-between col-span-4 p-6 bg-chungking-black/90 rounded-lg">
-              <div className="flex flex-col space-y-2">
-                <span className="text-4xl leading-none text-chungking-white font-bold">
-                  Deep Dip 2
-                </span>
-                <span className="text-4xl leading-none text-chungking-white">{headerText}</span>
+            <div className="flex flex-col items-start justify-between col-span-4 bg-chungking-black/90 rounded-lg">
+              <div className="flex flex-col items-center w-full space-y-4 px-6 pt-12">
+                <DD2Logo height={144} />
               </div>
-              <div className="flex flex-col space-y-3 w-full">
+              <div className="flex flex-col space-y-3 w-full px-6 pb-6">
                 {renderCountdown('mm:ss')}
+                <div
+                  className={clsx(
+                    'flex items-center justify-center w-full p-4 rounded-md',
+                    getColorClassName(),
+                  )}
+                >
+                  <span className="text-4xl leading-none font-bold">{headerText}</span>
+                </div>
                 {renderDateTime()}
               </div>
             </div>
