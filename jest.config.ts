@@ -8,12 +8,12 @@ const createJestConfig = nextJest({
 const jestConfig: Config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    '~/(.*)': '<rootDir>/$1',
+    '~/(.*)': '<rootDir>/src/$1',
   },
   collectCoverageFrom: [
-    './(components|lib|pages)/**/*.(ts|tsx|js|jsx)',
-    '!./(components|lib|pages)/**/__tests__/**/*.test.(ts|tsx|js|jsx)',
-    '!./(components|lib|pages)/**/__mocks__/**/*.(ts|tsx|js|jsx)',
+    './src/(components|lib|pages)/**/*.(ts|tsx|js|jsx)',
+    '!./src/(components|lib|pages)/**/__tests__/**/*.test.(ts|tsx|js|jsx)',
+    '!./src/(components|lib|pages)/**/__mocks__/**/*.(ts|tsx|js|jsx)',
   ],
   testEnvironment: 'jest-environment-jsdom',
 };

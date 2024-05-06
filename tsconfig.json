@@ -6,7 +6,7 @@
     "lib": ["dom", "es2017"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./src/*"]
     },
     "moduleResolution": "node",
     "strict": true,
