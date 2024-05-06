@@ -50,7 +50,7 @@
     "react-countdown": "^2.3.5",
     "react-dom": "^18.3.1",
     "react-feather": "^2.0.10",
-    "socket.io-client": "^4.7.5",
+    "socket.io-client": "^2.4.0",
     "text-case": "^1.0.9",
     "typeface-inter": "^3.18.1",
     "webfontloader": "^1.6.28",

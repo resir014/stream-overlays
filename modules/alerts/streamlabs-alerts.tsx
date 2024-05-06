@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable no-underscore-dangle */
 import * as React from 'react';
 import { useStreamlabsSocket, StreamlabsEvent } from '~/lib/streamlabs';
