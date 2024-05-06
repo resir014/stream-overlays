@@ -1,14 +1,12 @@
-const nextJest = require('next/jest');
+import type { Config } from 'jest';
+import nextJest from 'next/jest.js';
 
 const createJestConfig = nextJest({
   dir: './',
 });
 
-const jestConfig = {
-  setupFilesAfterEnv: [
-    '@testing-library/jest-dom/extend-expect',
-    'react-intersection-observer/test-utils',
-  ],
+const jestConfig: Config = {
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts', 'react-intersection-observer/test-utils'],
   moduleNameMapper: {
     '~/(.*)': '<rootDir>/$1',
   },
