@@ -4,20 +4,20 @@
 
 ## Developing
 
-A nodejs LTS setup with [yarn](https://yarnpkg.com/) is recommended.
+A nodejs LTS setup with [pnpm](https://pnpm.io/) is recommended.
 
 ```bash
 # install dependencies
-yarn
+pnpm install
 
 # serve with hot reload at localhost:3000
-yarn dev
+pnpm run dev
 
 # build for production
-yarn build
+pnpm run build
 
 # run tests (lint + type check)
-yarn test
+pnpm run test
 ```
 
 ## Preview
