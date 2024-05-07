@@ -124,15 +124,18 @@ export function PreStreamDeepDipScene({ headerText, variant }: PreStreamScenePro
                 <DD2Logo height={144} />
               </div>
               <div className="flex flex-col space-y-3 w-full px-6 pb-6">
-                {renderCountdown('mm:ss')}
-                <div
-                  className={clsx(
-                    'flex items-center justify-center w-full p-4 rounded-md',
-                    getColorClassName(),
-                  )}
-                >
-                  <span className="text-4xl leading-none font-bold">{headerText}</span>
-                </div>
+                {variant === 'pre-stream' ? (
+                  renderCountdown('mm:ss')
+                ) : (
+                  <div
+                    className={clsx(
+                      'flex items-center justify-center w-full p-4 rounded-md',
+                      getColorClassName(),
+                    )}
+                  >
+                    <span className="text-4xl leading-none font-bold">{headerText}</span>
+                  </div>
+                )}
                 {renderDateTime()}
               </div>
             </div>
