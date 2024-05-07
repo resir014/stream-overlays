@@ -1,8 +1,6 @@
 /* eslint-disable no-negated-condition */
 import * as React from 'react';
-import { useClock } from '~/lib/hooks/use-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
-import { useOverlayData } from '../overlay-data/use-overlay-data';
 import { SceneWrapper } from '../scenes/scene-wrapper';
 import { useCurrentStream } from './utils/stream-schedule';
 import { PrestreamCountdown } from './pre-stream-countdown';
@@ -17,27 +15,8 @@ export interface PreStreamSceneProps {
 }
 
 export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStreamSceneProps) {
-  const time = useClock();
   const [isClientReady, setIsClientReady] = React.useState(false);
-  const { overlayData } = useOverlayData();
   const { currentStream } = useCurrentStream();
-
-  const streamStart = React.useMemo(
-    () => (overlayData?.streamStart ? new Date(overlayData.streamStart) : undefined),
-    [overlayData?.streamStart],
-  );
-
-  const isAnimationActive = React.useMemo(() => {
-    if (variant !== 'pre-stream' && variant !== 'pre-stream-cerveza') {
-      return false;
-    }
-
-    if (streamStart) {
-      return time.toISOString() >= streamStart.toISOString();
-    }
-
-    return false;
-  }, [streamStart, time, variant]);
 
   useOnMount(() => {
     setIsClientReady(true);
@@ -96,20 +75,13 @@ export function PreStreamScene({ headerText, variant = 'pre-stream' }: PreStream
 
   const renderWipeUpperLayer = () => {
     if (isClientReady) {
-      return (
-        <PreStreamWipeUpperLayer
-          isVisible={isAnimationActive}
-          cerveza={variant === 'pre-stream-cerveza'}
-        />
-      );
+      return <PreStreamWipeUpperLayer variant={variant} />;
     }
   };
 
   const renderWipeLowerLayer = () => {
     if (isClientReady) {
-      return (
-        <PreStreamWipeLowerLayer className={getColorClassName()} isVisible={isAnimationActive} />
-      );
+      return <PreStreamWipeLowerLayer className={getColorClassName()} variant={variant} />;
     }
   };
 

@@ -1,10 +1,20 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import Image from 'next/image';
 import { Transition } from '@headlessui/react';
+import { useAnimateStart } from './utils/use-animate-start';
+import { PreStreamVariants } from './types';
 
-export function PreStreamWipeUpperLayer({ isVisible = false, cerveza = false }) {
+export interface PreStreamWipeUpperLayerProps {
+  className?: string;
+  variant?: PreStreamVariants;
+}
+
+export function PreStreamWipeUpperLayer({ className, variant }: PreStreamWipeUpperLayerProps) {
+  const isAnimationActive = useAnimateStart(variant);
+
   return (
-    <Transition show={isVisible} className="relative w-full h-full">
+    <Transition show={isAnimationActive} className={clsx('relative w-full h-full', className)}>
       <Transition.Child
         as={React.Fragment}
         enter="transition ease-in-out duration-700 transform delay-300"
@@ -21,7 +31,7 @@ export function PreStreamWipeUpperLayer({ isVisible = false, cerveza = false }) 
       >
         <div className="absolute bg-chungking-blue-900 w-full h-full" />
       </Transition.Child>
-      {cerveza ? (
+      {variant === 'pre-stream-cerveza' ? (
         <Transition.Child
           as={React.Fragment}
           enter="transition ease-in-out duration-700 transform delay-[900ms]"
