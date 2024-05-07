@@ -1,9 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { useClock } from '~/lib/hooks/use-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { DeepDip2Leaderboard } from '../deep-dip/leaderboard';
-import { useOverlayData } from '../overlay-data/use-overlay-data';
 import { SceneWrapper } from '../scenes/scene-wrapper';
 import { DD2Logo } from '../deep-dip/dd2-logo';
 import { PreStreamSceneProps } from './pre-stream-scene';
@@ -13,26 +11,7 @@ import { PrestreamCountdown } from './pre-stream-countdown';
 import { PrestreamDate } from './pre-stream-date';
 
 export function PreStreamDeepDipScene({ headerText, variant }: PreStreamSceneProps) {
-  const time = useClock();
   const [isClientReady, setIsClientReady] = React.useState(false);
-  const { overlayData } = useOverlayData();
-
-  const streamStart = React.useMemo(
-    () => (overlayData?.streamStart ? new Date(overlayData.streamStart) : undefined),
-    [overlayData?.streamStart],
-  );
-
-  const isAnimationActive = React.useMemo(() => {
-    if (variant !== 'pre-stream' && variant !== 'pre-stream-cerveza') {
-      return false;
-    }
-
-    if (streamStart) {
-      return time.toISOString() >= streamStart.toISOString();
-    }
-
-    return false;
-  }, [streamStart, time, variant]);
 
   useOnMount(() => {
     setIsClientReady(true);
@@ -96,20 +75,13 @@ export function PreStreamDeepDipScene({ headerText, variant }: PreStreamScenePro
 
   const renderWipeUpperLayer = () => {
     if (isClientReady) {
-      return (
-        <PreStreamWipeUpperLayer
-          isVisible={isAnimationActive}
-          cerveza={variant === 'pre-stream-cerveza'}
-        />
-      );
+      return <PreStreamWipeUpperLayer variant={variant} />;
     }
   };
 
   const renderWipeLowerLayer = () => {
     if (isClientReady) {
-      return (
-        <PreStreamWipeLowerLayer className={getColorClassName()} isVisible={isAnimationActive} />
-      );
+      return <PreStreamWipeLowerLayer className={getColorClassName()} variant={variant} />;
     }
   };
 
