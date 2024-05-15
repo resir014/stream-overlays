@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { NextPage } from 'next';
 
 import { OverlayLayout } from '~/layouts/overlay-layout';
-import { createNextPage } from '~/lib/create-next-page';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { PrestreamIntermission } from '~/modules/pre-stream/pre-stream-intermission';
 
-const StandaloneIntermissionPage: NextPage = () => {
+export default function StandaloneIntermissionPage() {
   const [clockRendered, setClockRendered] = React.useState(false);
 
   useOnMount(() => {
@@ -23,9 +21,9 @@ const StandaloneIntermissionPage: NextPage = () => {
     return null;
   };
 
-  return <div className="flex items-center justify-center h-full w-full">{renderCountdown()}</div>;
-};
-
-export default createNextPage(StandaloneIntermissionPage, {
-  layout: OverlayLayout,
-});
+  return (
+    <OverlayLayout>
+      <div className="flex items-center justify-center h-full w-full">{renderCountdown()}</div>
+    </OverlayLayout>
+  );
+}
