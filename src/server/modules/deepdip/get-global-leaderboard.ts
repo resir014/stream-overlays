@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-unfetch';
-
 export interface LeaderboardResult {
   /** Current player rank */
   rank: number;

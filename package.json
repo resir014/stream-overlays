@@ -41,7 +41,6 @@
     "date-fns": "^2.30.0",
     "dequal": "^2.0.3",
     "eslint-config-gsap": "^3.0.0",
-    "isomorphic-unfetch": "^4.0.2",
     "nanoid": "^5.0.7",
     "next": "^14.2.3",
     "normalize.css": "^8.0.1",
