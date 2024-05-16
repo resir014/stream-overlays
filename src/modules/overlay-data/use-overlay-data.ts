@@ -1,3 +1,5 @@
+'use client';
+
 import { trpc } from '~/lib/trpc';
 
 export function useOverlayData(refetchInterval = 5000) {

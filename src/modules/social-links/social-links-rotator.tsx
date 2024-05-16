@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { Transition } from '@headlessui/react';
 import { useInterval } from '~/lib/hooks/use-interval';

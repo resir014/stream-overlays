@@ -1,3 +1,5 @@
+'use client';
+
 import { createStyleObject } from '@capsizecss/core';
 import fontMetrics from '@capsizecss/metrics/inter';
 import { format } from 'date-fns';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import * as React from 'react';

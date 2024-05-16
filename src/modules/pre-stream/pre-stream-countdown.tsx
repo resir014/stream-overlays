@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { format, addSeconds } from 'date-fns';
 import { clamp } from '@resir014/lerp';

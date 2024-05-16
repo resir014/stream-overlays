@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOverlayData } from '../overlay-data/use-overlay-data';
