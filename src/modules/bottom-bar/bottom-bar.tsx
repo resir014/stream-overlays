@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { BottomBarEvents } from './bottom-bar-events';
 import { BottomBarClock } from './bottom-bar-clock';
 

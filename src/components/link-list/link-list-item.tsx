@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import * as React from 'react';
 
 export interface LinkListItemProps {
   title: string;

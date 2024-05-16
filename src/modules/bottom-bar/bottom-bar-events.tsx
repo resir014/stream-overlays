@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { IconChart, IconDollarSign, IconStar } from '~/components/icons';
 import { BottomBarEventBox } from './bottom-bar-event-box';
 

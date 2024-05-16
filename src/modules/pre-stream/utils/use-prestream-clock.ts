@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { clamp, lerpInverse } from '@resir014/lerp';
 import { format } from 'date-fns';
+import { useMemo } from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOverlayData } from '~/modules/overlay-data/use-overlay-data';
 
@@ -14,7 +14,7 @@ export function usePrestreamClock() {
   const time = useClock();
   const { overlayData } = useOverlayData();
 
-  const streamStart = React.useMemo(() => {
+  const streamStart = useMemo(() => {
     if (overlayData?.streamStart) {
       const startdate = new Date(overlayData.streamStart);
 
@@ -31,7 +31,7 @@ export function usePrestreamClock() {
     return undefined;
   }, [overlayData?.streamStart]);
 
-  const breakReturnTime = React.useMemo(() => {
+  const breakReturnTime = useMemo(() => {
     if (overlayData?.breakReturnTime) {
       const startdate = new Date(overlayData.breakReturnTime);
 
@@ -48,7 +48,7 @@ export function usePrestreamClock() {
     return undefined;
   }, [overlayData?.breakReturnTime]);
 
-  const percentage = React.useMemo(() => {
+  const percentage = useMemo(() => {
     const timeStamp = time.getTime();
     const topFormatted = streamStart?.getTime() ?? 0;
     const startFormatted = streamStart ? streamStart.getTime() - TEN_MINUTES_IN_MILLISECONDS : 0;

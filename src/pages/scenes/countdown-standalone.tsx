@@ -1,11 +1,10 @@
-import * as React from 'react';
-
+import { useState } from 'react';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { PrestreamCountdown } from '~/modules/pre-stream/pre-stream-countdown';
 
 export default function StandaloneCountdownPage() {
-  const [clockRendered, setClockRendered] = React.useState(false);
+  const [clockRendered, setClockRendered] = useState(false);
 
   useOnMount(() => {
     setClockRendered(true);

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { LeaderboardResult } from '~/server/modules/deepdip/get-global-leaderboard';
 
 export interface ResultBlockProps {

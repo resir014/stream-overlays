@@ -1,12 +1,12 @@
 'use client';
 
-import * as React from 'react';
 import { format } from 'date-fns';
 import clsx from 'clsx';
+import { ComponentPropsWithoutRef, useEffect, useMemo } from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { ClockWatchTick } from './clock-watch-tick';
 
-export interface StudioClockInterfaceProps extends React.ComponentPropsWithoutRef<'div'> {
+export interface StudioClockInterfaceProps extends ComponentPropsWithoutRef<'div'> {
   uiFont?: string;
   watchFaceFont?: string;
   watchFaceColor?: string;
@@ -29,28 +29,28 @@ export function StudioClockInterface({
   const ticks: undefined[] = Array<undefined>(60).fill(undefined);
   const timeZoneOptions = new Intl.DateTimeFormat().resolvedOptions();
 
-  const [, , s] = React.useMemo(
+  const [, , s] = useMemo(
     () => [time.getHours(), time.getMinutes(), time.getSeconds()] as const,
     [time],
   );
 
   console.log(time);
 
-  const watchUIStyle = React.useMemo(
+  const watchUIStyle = useMemo(
     () => ({
       fontFamily: `${uiFont}, system-ui, sans-serif`,
     }),
     [uiFont],
   );
 
-  const watchFaceStyle = React.useMemo(
+  const watchFaceStyle = useMemo(
     () => ({
       fontFamily: `${watchFaceFont}, monospace`,
     }),
     [watchFaceFont],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window !== 'undefined' && (uiFont || watchFaceFont)) {
       void import('webfontloader').then(mod => {
         mod.default.load({

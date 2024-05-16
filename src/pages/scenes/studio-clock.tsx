@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import * as React from 'react';
+import { useState } from 'react';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { SceneWrapper } from '~/modules/scenes/scene-wrapper';
 import { StudioClockInterface } from '~/modules/studio-clock/studio-clock-interface';
 
 export default function StudioClockScenePage() {
-  const [isClockRendered, setIsClockRendered] = React.useState(false);
+  const [isClockRendered, setIsClockRendered] = useState(false);
 
   useOnMount(() => {
     setIsClockRendered(true);

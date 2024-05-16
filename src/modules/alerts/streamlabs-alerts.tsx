@@ -1,16 +1,16 @@
 'use client';
 
 /* eslint-disable no-underscore-dangle */
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { useStreamlabsSocket, StreamlabsEvent } from '~/lib/streamlabs';
 import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '../alert-manager';
 
 const dismissAfter = DEFAULT_DISMISS_DURATION;
 
 export function StreamlabsAlerts() {
-  const [events, setEvents] = React.useState<StreamlabsEvent[]>([]);
-  const [stale, setStale] = React.useState(false);
-  const [current, setCurrent] = React.useState<StreamlabsEvent | undefined>(undefined);
+  const [events, setEvents] = useState<StreamlabsEvent[]>([]);
+  const [stale, setStale] = useState(false);
+  const [current, setCurrent] = useState<StreamlabsEvent | undefined>(undefined);
 
   const addEvents = (eventData: StreamlabsEvent) => {
     setEvents(prev => [eventData, ...prev]);
@@ -30,7 +30,7 @@ export function StreamlabsAlerts() {
     }
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('[Alerts] current event:', current);
     console.log('[Alerts] stale?', stale);
 
@@ -170,7 +170,7 @@ export function StreamlabsAlerts() {
     }
   }, [current, stale, setEvents]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const [recent] = events;
     console.log('[StreamlabsAlerts] events.length', events.length);
     console.log('[StreamlabsAlerts] events', events);

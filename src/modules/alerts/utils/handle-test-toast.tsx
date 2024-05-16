@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { StreamElementsTestEvent } from '~/lib/streamelements';
 import { alert, AlertToast, DEFAULT_DISMISS_DURATION } from '~/modules/alert-manager';
 

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Head from 'next/head';
 
 import { trpc } from '~/lib/trpc';
@@ -8,9 +7,6 @@ import '~/styles/fonts';
 import '~/styles/globals.css';
 
 function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
-  const getLayout = Component.layout ?? ((children: JSX.Element) => children);
-  const page = getLayout(<Component {...pageProps} />);
-
   return (
     <>
       <Head>
@@ -20,7 +16,7 @@ function MyApp({ Component, pageProps }: NextAppProps): JSX.Element {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      {page}
+      <Component {...pageProps} />
     </>
   );
 }

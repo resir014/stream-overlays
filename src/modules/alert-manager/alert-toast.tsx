@@ -2,7 +2,14 @@
 
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
-import * as React from 'react';
+import {
+  ComponentPropsWithoutRef,
+  createElement,
+  forwardRef,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import {
   IconBits,
   IconExclamationMark,
@@ -14,7 +21,7 @@ import {
 import alertsAudio from '~/lib/data/alerts-audio';
 import { AlertEventTypes } from '.';
 
-interface AlertToastProps extends React.ComponentPropsWithoutRef<'div'> {
+interface AlertToastProps extends ComponentPropsWithoutRef<'div'> {
   title: string;
   recipient?: string;
   amount?: string;
@@ -51,15 +58,15 @@ function alertToastVariants(variant?: AlertEventTypes) {
   }
 }
 
-export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
+export const AlertToast = forwardRef<HTMLDivElement, AlertToastProps>(
   ({ title, recipient, amount, variant = 'follow', content, ...rest }, ref) => {
-    const [isMounted, setIsMounted] = React.useState(false);
-    const audio = React.useMemo(
+    const [isMounted, setIsMounted] = useState(false);
+    const audio = useMemo(
       () => (alertsAudio[variant]?.src ? new Audio(alertsAudio[variant]?.src) : undefined),
       [variant],
     );
 
-    React.useEffect(() => {
+    useEffect(() => {
       void audio?.play();
 
       const timeout = setTimeout(() => {
@@ -71,7 +78,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
       };
     }, [audio]);
 
-    const currentVariant = React.useMemo(() => alertToastVariants(variant), [variant]);
+    const currentVariant = useMemo(() => alertToastVariants(variant), [variant]);
 
     return (
       <div className={clsx('relative w-full h-[62px]', currentVariant.colors)} ref={ref} {...rest}>
@@ -82,7 +89,7 @@ export const AlertToast = React.forwardRef<HTMLDivElement, AlertToastProps>(
           )}
         >
           <div className="flex items-center flex-shrink-0 h-[40px] space-x-4 pr-4">
-            {React.createElement(currentVariant.icon, {
+            {createElement(currentVariant.icon, {
               className: 'inline-flex w-6 h-6 rounded-full',
               'aria-hidden': true,
             })}

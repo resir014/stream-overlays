@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import * as React from 'react';
+import { useMemo, useState } from 'react';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { parseString } from '~/lib/query-parser';
@@ -7,13 +7,13 @@ import { StudioClockInterface } from '~/modules/studio-clock/studio-clock-interf
 
 export default function NYEClockPage() {
   const router = useRouter();
-  const [isClockRendered, setIsClockRendered] = React.useState(false);
+  const [isClockRendered, setIsClockRendered] = useState(false);
 
   useOnMount(() => {
     setIsClockRendered(true);
   });
 
-  const clockProps = React.useMemo(
+  const clockProps = useMemo(
     () => ({
       uiFont: parseString(router.query.uiFont) ?? undefined,
       watchFaceFont: parseString(router.query.watchFaceFont) ?? undefined,

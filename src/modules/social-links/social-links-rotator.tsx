@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from 'react';
 import { Transition } from '@headlessui/react';
+import { useState } from 'react';
 import { useInterval } from '~/lib/hooks/use-interval';
 import sleep from '~/lib/sleep';
 import { socialLinksData } from './social-links';
@@ -9,8 +9,8 @@ import { socialLinksData } from './social-links';
 export const TRANSITION_DURATION = 500;
 
 export function SocialLinksRotator() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-  const [transitioning, setTransitioning] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
 
   useInterval(async () => {
     const next = currentIndex + 1;

@@ -3,7 +3,7 @@
 import { createStyleObject } from '@capsizecss/core';
 import fontMetrics from '@capsizecss/metrics/inter';
 import { format } from 'date-fns';
-import * as React from 'react';
+import { useState } from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 
@@ -15,7 +15,7 @@ const styles = createStyleObject({
 
 export function BottomBarClock() {
   const time = useClock();
-  const [mounted, setMounted] = React.useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useOnMount(() => {
     setMounted(true);

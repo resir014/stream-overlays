@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
-interface SocialLinkItemProps extends React.ComponentPropsWithoutRef<'div'> {
+interface SocialLinkItemProps extends ComponentPropsWithoutRef<'div'> {
   text: string;
 }
 
-export const SocialLinkItem = React.forwardRef<HTMLSpanElement, SocialLinkItemProps>(
+export const SocialLinkItem = forwardRef<HTMLSpanElement, SocialLinkItemProps>(
   ({ text, ...rest }, ref) => {
     return (
       <span ref={ref} {...rest}>

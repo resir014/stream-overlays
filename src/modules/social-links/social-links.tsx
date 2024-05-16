@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { SocialLinkItem } from './social-link-item';
 
 export const socialLinksData = [
