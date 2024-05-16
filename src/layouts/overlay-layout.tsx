@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { type PropsWithChildren } from 'react';
 import { GoogleFontsPrefetch } from '~/modules/webfonts/google-fonts-prefetch';
 
-export function OverlayLayout({ children }: React.PropsWithChildren) {
+export function OverlayLayout({ children }: PropsWithChildren) {
   return (
     <>
       <GoogleFontsPrefetch />

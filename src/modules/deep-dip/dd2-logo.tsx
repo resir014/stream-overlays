@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { SVGProps } from 'react';
 
-export function DD2Logo({ width, height, fill = '#fff', ...rest }: React.SVGProps<SVGSVGElement>) {
+export function DD2Logo({ width, height, fill = '#fff', ...rest }: SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={width}

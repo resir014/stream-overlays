@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import * as React from 'react';
+import { HTMLProps, PropsWithChildren } from 'react';
 
-export interface SceneWrapperProps extends React.HTMLProps<HTMLDivElement> {
+export interface SceneWrapperProps extends HTMLProps<HTMLDivElement> {
   darkBackground?: boolean;
   transparent?: boolean;
 }
@@ -12,7 +12,7 @@ export function SceneWrapper({
   darkBackground,
   transparent,
   ...rest
-}: React.PropsWithChildren<SceneWrapperProps>) {
+}: PropsWithChildren<SceneWrapperProps>) {
   return (
     <div
       className={clsx(

@@ -1,12 +1,12 @@
 import clsx from 'clsx';
-import * as React from 'react';
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 
-export interface InfoItemCardProps extends React.ComponentPropsWithoutRef<'section'> {
+export interface InfoItemCardProps extends ComponentPropsWithoutRef<'section'> {
   title?: string;
   content: string;
 }
 
-export const InfoItemCard = React.forwardRef<HTMLElement, InfoItemCardProps>(
+export const InfoItemCard = forwardRef<HTMLElement, InfoItemCardProps>(
   ({ title, content, className, ...rest }, ref) => {
     return (
       <section

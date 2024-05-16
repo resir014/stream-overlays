@@ -1,19 +1,19 @@
 'use client';
 
 import clsx from 'clsx';
-import * as React from 'react';
+import { ComponentPropsWithoutRef, forwardRef, useMemo } from 'react';
 import { resolveHexColor } from '~/lib/colors';
 
-export interface ClockWatchTickProps extends React.ComponentPropsWithoutRef<'div'> {
+export interface ClockWatchTickProps extends ComponentPropsWithoutRef<'div'> {
   currentSecond: number;
   active?: boolean;
   hasFace?: boolean;
   watchFaceColor?: string;
 }
 
-export const ClockWatchTick = React.forwardRef<HTMLDivElement, ClockWatchTickProps>(
+export const ClockWatchTick = forwardRef<HTMLDivElement, ClockWatchTickProps>(
   ({ className, style, active, currentSecond, hasFace, watchFaceColor = '#33ffd7' }, ref) => {
-    const hexColor = React.useMemo(() => resolveHexColor(watchFaceColor), [watchFaceColor]);
+    const hexColor = useMemo(() => resolveHexColor(watchFaceColor), [watchFaceColor]);
 
     const isActive = active ?? currentSecond === 60;
 

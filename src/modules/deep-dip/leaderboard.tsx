@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import clsx from 'clsx';
 import { useCurrentProgress, useGlobalLeaderboard } from '../pre-stream/utils/deep-dip';
 import { ResultBlock, ResultBlockDivider, ResultBlockFallback } from './result-block';

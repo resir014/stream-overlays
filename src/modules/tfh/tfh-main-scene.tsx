@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Montserrat as montserratFont } from 'next/font/google';
 import { SceneWrapper } from '../scenes/scene-wrapper';
 import styles from './tfh-main-scene.module.css';

@@ -1,3 +1,5 @@
+'use client';
+
 import { trpc } from '~/lib/trpc';
 import { GetUpcomingStreamsOptions } from '~/server/modules/notion/get-upcoming-streams';
 

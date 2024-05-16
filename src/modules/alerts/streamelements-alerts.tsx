@@ -1,8 +1,8 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import * as React from 'react';
 import { nanoid } from 'nanoid';
+import { useEffect, useState } from 'react';
 import {
   allowedEventListeners,
   allowedTestEventListeners,
@@ -19,9 +19,9 @@ const dismissAfter = DEFAULT_DISMISS_DURATION;
 type ProdOrTestEvent = StreamElementsEvent | StreamElementsTestEvent;
 
 export function StreamElementsAlerts() {
-  const [events, setEvents] = React.useState<ProdOrTestEvent[]>([]);
-  const [stale, setStale] = React.useState(false);
-  const [current, setCurrent] = React.useState<ProdOrTestEvent | undefined>(undefined);
+  const [events, setEvents] = useState<ProdOrTestEvent[]>([]);
+  const [stale, setStale] = useState(false);
+  const [current, setCurrent] = useState<ProdOrTestEvent | undefined>(undefined);
 
   const addEvents = (eventData: ProdOrTestEvent) => {
     setEvents(prev => [eventData, ...prev]);
@@ -63,7 +63,7 @@ export function StreamElementsAlerts() {
     },
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('[Alerts] current event:', current);
     console.log('[Alerts] stale?', stale);
 
@@ -90,7 +90,7 @@ export function StreamElementsAlerts() {
     }
   }, [current, stale]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const [recent] = events;
     console.log('[Alerts] events.length', events.length);
     console.log('[Alerts] events', events);

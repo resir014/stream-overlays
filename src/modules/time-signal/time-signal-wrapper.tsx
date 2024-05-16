@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOverlayData } from '../overlay-data/use-overlay-data';
 
@@ -12,19 +12,19 @@ export interface TimeSignalWrapperProps {
 export default function TimeSignalWrapper({ cerveza = false }) {
   const time = useClock();
   const { overlayData } = useOverlayData();
-  const playButtonRef = React.useRef<HTMLButtonElement>(null);
-  const audio = React.useMemo(
+  const playButtonRef = useRef<HTMLButtonElement>(null);
+  const audio = useMemo(
     () =>
       new Audio(cerveza ? '/static/audio/cerveza-cristal.ogg' : '/static/audio/start-chime.ogg'),
     [cerveza],
   );
 
-  const startOfTimeSignal = React.useMemo(
+  const startOfTimeSignal = useMemo(
     () => (overlayData?.timeSignal ? new Date(overlayData.timeSignal) : undefined),
     [overlayData?.timeSignal],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (time.toISOString() === startOfTimeSignal?.toISOString()) {
       // Fake a click event on a hidden button which plays the audio file.
       playButtonRef.current?.click();

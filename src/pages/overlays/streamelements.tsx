@@ -1,4 +1,3 @@
-import * as React from 'react';
 import dynamic from 'next/dynamic';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 

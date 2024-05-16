@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { StudioClockInterface } from '~/modules/studio-clock/studio-clock-interface';
 
 export default function StudioClockOBSSourcePage() {
-  const [isClockRendered, setIsClockRendered] = React.useState(false);
+  const [isClockRendered, setIsClockRendered] = useState(false);
 
   useOnMount(() => {
     setIsClockRendered(true);

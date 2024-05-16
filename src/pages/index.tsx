@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { DashboardSidebar } from '~/components/dashboard';
 import { DashboardPageContent, DashboardPageHeader } from '~/components/dashboard/page';
 import { DashboardSection, DashboardSectionHeader } from '~/components/dashboard/section';

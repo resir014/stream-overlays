@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { OverlayLayout } from '~/layouts/overlay-layout';
 
 export default function CaptureGuardBlock() {

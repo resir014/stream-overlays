@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOverlayData } from '~/modules/overlay-data/use-overlay-data';

@@ -1,8 +1,8 @@
 'use client';
 
-import * as React from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import { InfoItemCard } from '~/components/info-item-card';
 import { useFlyLiveData } from './use-flylive-data';
 import { InfoCardWrapper } from './info-card-wrapper';
@@ -14,7 +14,7 @@ export const FlyLiveStats: NextPage = () => {
   const { data, isLoading } = useFlyLiveData();
   const router = useRouter();
 
-  const network = React.useMemo(() => {
+  const network = useMemo(() => {
     if (router.query.network) {
       if (Array.isArray(router.query.network)) {
         return router.query.network[0];

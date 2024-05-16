@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { InfoItemCard } from '~/components/info-item-card';
 
 export interface FlightItineraryProps {
@@ -6,6 +5,6 @@ export interface FlightItineraryProps {
   destination: string;
 }
 
-export const FlightItinerary: React.FC<FlightItineraryProps> = ({ origin, destination }) => {
+export function FlightItinerary({ origin, destination }: FlightItineraryProps) {
   return <InfoItemCard content={`${origin} -> ${destination}`} />;
-};
+}

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { AlertSettings } from './types';
 
@@ -15,10 +15,10 @@ export function AlertWrapper({
   onRemove,
   dismissAfter = 5000,
 }: AlertWrapperProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const closeTimerRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
+  const [isOpen, setIsOpen] = useState(false);
+  const closeTimerRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setIsOpen(true);
 
     closeTimerRef.current = setTimeout(() => {
