@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-unfetch';
 import parseFlyliveData from '~/modules/flightsim/parse-flylive-data';
 
 export async function getFlyliveData() {
