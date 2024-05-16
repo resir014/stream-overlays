@@ -1,3 +1,5 @@
+'use client';
+
 import { trpc } from '~/lib/trpc';
 
 export function useFlyLiveData(refetchInterval = 1000 / 24) {

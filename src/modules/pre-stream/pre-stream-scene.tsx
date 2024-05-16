@@ -1,4 +1,6 @@
 /* eslint-disable no-negated-condition */
+'use client';
+
 import * as React from 'react';
 import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { SceneWrapper } from '../scenes/scene-wrapper';

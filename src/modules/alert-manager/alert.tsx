@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-invalid-this */
 /* eslint-disable consistent-return */
 
