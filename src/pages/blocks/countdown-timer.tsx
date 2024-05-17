@@ -1,17 +1,13 @@
+'use client';
+
 import { useRouter } from 'next/router';
-import { useMemo, useState } from 'react';
+import { Suspense, useMemo } from 'react';
 import Countdown from 'react-countdown';
 import { OverlayLayout } from '~/layouts/overlay-layout';
-import { useOnMount } from '~/lib/hooks/use-on-mount';
 import { parseNumber } from '~/lib/query-parser';
 
 export default function CountdownTimerPage() {
   const router = useRouter();
-  const [isCountdownRendered, setIsCountdownRendered] = useState(false);
-
-  useOnMount(() => {
-    setIsCountdownRendered(true);
-  });
 
   const minutes = useMemo(
     () => (parseNumber(router.query.minutes) ?? 1) * 60 * 1000,
@@ -21,7 +17,7 @@ export default function CountdownTimerPage() {
   return (
     <OverlayLayout>
       <div>
-        {isCountdownRendered ? (
+        <Suspense>
           <Countdown
             date={Date.now() + minutes}
             precision={3}
@@ -32,7 +28,7 @@ export default function CountdownTimerPage() {
               </p>
             )}
           />
-        ) : null}
+        </Suspense>
       </div>
     </OverlayLayout>
   );
