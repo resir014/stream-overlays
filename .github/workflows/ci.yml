@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [master, next]
+    branches: [main]
   pull_request:
     types: [opened, synchronize]
 
