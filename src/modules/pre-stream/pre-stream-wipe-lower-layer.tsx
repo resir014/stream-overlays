@@ -1,8 +1,8 @@
 'use client';
 
-import * as React from 'react';
 import { Transition } from '@headlessui/react';
 import clsx from 'clsx';
+import { Fragment, useState } from 'react';
 import { useAnimateStart } from './utils/use-animate-start';
 import { PreStreamVariants } from './types';
 
@@ -15,7 +15,7 @@ export function PreStreamWipeLowerLayer({
   className,
   variant = 'pre-stream',
 }: PreStreamWipeLowerLayerProps) {
-  const [isAnimationEnded, setIsAnimationEnded] = React.useState(false);
+  const [isAnimationEnded, setIsAnimationEnded] = useState(false);
   const isAnimationActive = useAnimateStart(variant);
 
   return (
@@ -24,19 +24,20 @@ export function PreStreamWipeLowerLayer({
         className={clsx(
           'absolute w-full h-full z-0',
           {
-            '-translate-x-[97.5%]': !isAnimationEnded,
             'translate-x-0 shadow-drop-layers': isAnimationEnded,
+            '-translate-x-[97.5%]': !isAnimationEnded,
           },
           className,
         )}
       />
       <Transition
         show={isAnimationActive}
-        as={React.Fragment}
+        as={Fragment}
+        beforeLeave={() => setIsAnimationEnded(false)}
         afterEnter={() => setIsAnimationEnded(true)}
       >
         <Transition.Child
-          as={React.Fragment}
+          as={Fragment}
           enter="transition ease-in-out duration-700 transform"
           enterFrom="-translate-x-[97.5%]"
           enterTo="translate-x-0 shadow-drop-layers"
