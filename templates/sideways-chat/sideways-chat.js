@@ -245,7 +245,7 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
   console.log(pronounDisplay);
   if (typeof pronounUser[0] !== 'undefined') {
     const pronouns = pronounList.find(pronoun => pronoun.name === pronounUser[0].pronoun_id);
-    pronounDisplay = `<span class="pronoun">${pronouns?.display}</span>`;
+    pronounDisplay = `<span class="pronoun">${pronouns?.display || 'Other'}</span>`;
   }
   console.log('after check');
   console.log(pronounDisplay);
