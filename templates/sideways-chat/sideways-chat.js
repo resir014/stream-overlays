@@ -255,7 +255,7 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
     response.json(),
   );
 
-  /** @type {PronounUser} */
+  /** @type {PronounUser | string} */
   const pronounUser = await fetch(
     `https://pronouns.alejo.io/v1/users/${obj.detail.event.data.displayName.toLowerCase()}`,
   ).then(response => response.json());
@@ -263,7 +263,7 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
   let pronounDisplay = '';
   console.log('before check');
   console.log(pronounDisplay);
-  if (typeof pronounUser !== 'undefined') {
+  if (typeof pronounUser === 'object' && 'pronoun_id' in pronounUser) {
     if (pronounUser.pronoun_id in pronounList) {
       const pronoun = pronounList[pronounUser.pronoun_id];
       const pronounText = pronoun.singular
