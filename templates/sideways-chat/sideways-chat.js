@@ -258,26 +258,29 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
   /** @type {PronounUser | string} */
   const pronounUser = await fetch(
     `https://pronouns.alejo.io/v1/users/${obj.detail.event.data.displayName.toLowerCase()}`,
-  ).then(response => response.json());
+  ).then(response => (response.status === 404 ? {} : response.json()));
 
   let pronounDisplay = '';
   console.log('before check');
   console.log(pronounDisplay);
   if (typeof pronounUser === 'object' && 'pronoun_id' in pronounUser) {
     if (pronounUser.pronoun_id in pronounList) {
+      let pronounText = '';
+
       const pronoun = pronounList[pronounUser.pronoun_id];
-      const pronounText = pronoun.singular
+
+      pronounText = pronoun.singular
         ? `${pronoun.subject}`
         : `${pronoun.subject}/${pronoun.object}`;
-      pronounDisplay += `<span class="pronoun">${pronounText}</span>`;
-    }
 
-    if (pronounUser.alt_pronoun_id && pronounUser.alt_pronoun_id in pronounList) {
-      const altPronoun = pronounList[pronounUser.alt_pronoun_id];
-      const altPronounText = altPronoun.singular
-        ? `${altPronoun.subject}`
-        : `${altPronoun.subject}/${altPronoun.object}`;
-      pronounDisplay += `<span class="pronoun">${altPronounText}</span>`;
+      if ('alt_pronoun_id' in pronounUser && pronounUser.alt_pronoun_id in pronounList) {
+        const altPronoun = pronounList[pronounUser.alt_pronoun_id];
+        pronounText = altPronoun.singular
+          ? `${altPronoun.subject}`
+          : `${pronoun.subject}/${altPronoun.subject}`;
+      }
+
+      pronounDisplay = `<span class="pronoun">${pronounText}</span>`;
     }
   }
   console.log('after check');
