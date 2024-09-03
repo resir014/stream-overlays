@@ -269,7 +269,7 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
       const pronounText = pronoun.singular
         ? `${pronoun.subject}`
         : `${pronoun.subject}/${pronoun.object}`;
-      pronounDisplay = `<span class="pronoun">${pronounText}</span>`;
+      pronounDisplay += `<span class="pronoun">${pronounText}</span>`;
     }
 
     if (pronounUser.alt_pronoun_id && pronounUser.alt_pronoun_id in pronounList) {
@@ -277,7 +277,7 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
       const altPronounText = altPronoun.singular
         ? `${altPronoun.subject}`
         : `${altPronoun.subject}/${altPronoun.object}`;
-      pronounDisplay = `<span class="pronoun">${altPronounText}</span>`;
+      pronounDisplay += `<span class="pronoun">${altPronounText}</span>`;
     }
   }
   console.log('after check');
