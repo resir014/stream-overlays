@@ -26,6 +26,22 @@ let ignoredUsers = [];
 let previousSender = '';
 const ignored_emotes = [];
 
+/**
+ * @typedef {Object} PronounUser
+ * @property {string} channel_id Twitch ID
+ * @property {string} channel_login Twitch username
+ * @property {string} pronoun_id Maps to the corresponding ID from the pronouns endpoint
+ * @property {string?} alt_pronoun_id Same as above for secondary pronoun, optional (can be null)
+ */
+
+/**
+ * @typedef {Object} PronounData
+ * @property {string} name Maps to `pronoun_id` and `alt_pronoun_id` in the users API
+ * @property {string} subject For "She/Her", this is "She"
+ * @property {string} object For "She/Her", this is "Her"
+ * @property {boolean} singular Only display the subject (for example "Any" instead of "Any/Any")
+ */
+
 window.addEventListener('onEventReceived', async function handleEventReceived(obj) {
   if (obj.detail.event.listener === 'widget-button') {
     if (obj.detail.event.field === 'testMessage') {
@@ -233,19 +249,39 @@ window.addEventListener('onEventReceived', async function handleEventReceived(ob
     badge = data.badges[i];
     badges += `<img alt="" src="${badge.url}" class="badge"> `;
   }
-  // get pronouns
-  const pronounList = await fetch('https://pronouns.alejo.io/api/pronouns').then(response =>
+
+  /** @type {Record<string, PronounData>} */
+  const pronounList = await fetch('https://pronouns.alejo.io/v1/pronouns').then(response =>
     response.json(),
   );
+
+  /** @type {PronounUser | string} */
   const pronounUser = await fetch(
-    `https://pronouns.alejo.io/api/users/${obj.detail.event.data.displayName.toLowerCase()}`,
-  ).then(response => response.json());
+    `https://pronouns.alejo.io/v1/users/${obj.detail.event.data.displayName.toLowerCase()}`,
+  ).then(response => (response.status === 404 ? {} : response.json()));
+
   let pronounDisplay = '';
   console.log('before check');
   console.log(pronounDisplay);
-  if (typeof pronounUser[0] !== 'undefined') {
-    const pronouns = pronounList.find(pronoun => pronoun.name === pronounUser[0].pronoun_id);
-    pronounDisplay = `<span class="pronoun">${pronouns?.display || 'Other'}</span>`;
+  if (typeof pronounUser === 'object' && 'pronoun_id' in pronounUser) {
+    if (pronounUser.pronoun_id in pronounList) {
+      let pronounText = '';
+
+      const pronoun = pronounList[pronounUser.pronoun_id];
+
+      pronounText = pronoun.singular
+        ? `${pronoun.subject}`
+        : `${pronoun.subject}/${pronoun.object}`;
+
+      if ('alt_pronoun_id' in pronounUser && pronounUser.alt_pronoun_id in pronounList) {
+        const altPronoun = pronounList[pronounUser.alt_pronoun_id];
+        pronounText = altPronoun.singular
+          ? `${altPronoun.subject}`
+          : `${pronoun.subject}/${altPronoun.subject}`;
+      }
+
+      pronounDisplay = `<span class="pronoun">${pronounText}</span>`;
+    }
   }
   console.log('after check');
   console.log(pronounDisplay);
