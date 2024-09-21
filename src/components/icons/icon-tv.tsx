@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { SVGAttributes } from 'react';
 
-export const IconTV: React.FC<React.SVGAttributes<SVGSVGElement>> = props => {
+export function IconTV(props: SVGAttributes<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -9,4 +9,4 @@ export const IconTV: React.FC<React.SVGAttributes<SVGSVGElement>> = props => {
       />
     </svg>
   );
-};
+}
