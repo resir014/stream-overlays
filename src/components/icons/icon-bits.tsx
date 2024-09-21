@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { SVGAttributes } from 'react';
 
-export const IconBits: React.FC<React.SVGAttributes<SVGSVGElement>> = props => {
+export function IconBits(props: SVGAttributes<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_3632_581)">
@@ -21,4 +21,4 @@ export const IconBits: React.FC<React.SVGAttributes<SVGSVGElement>> = props => {
       </defs>
     </svg>
   );
-};
+}
