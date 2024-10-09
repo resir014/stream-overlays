@@ -34,8 +34,6 @@ export function StudioClockInterface({
     [time],
   );
 
-  console.log(time);
-
   const watchUIStyle = useMemo(
     () => ({
       fontFamily: `${uiFont}, system-ui, sans-serif`,
@@ -76,18 +74,15 @@ export function StudioClockInterface({
     >
       <div className="inline-block relative w-[384px] h-[384px] rounded-full overflow-hidden">
         <div className="ticks relative w-full h-full" style={{ transform: `rotate(-90deg)` }}>
-          {ticks.map((_, i) => {
-            const second = i + 1;
-            return (
-              <ClockWatchTick
-                key={i}
-                currentSecond={second}
-                hasFace={second % 5 === 0}
-                active={s >= second}
-                watchFaceColor={watchFaceColor}
-              />
-            );
-          })}
+          {ticks.map((_, second) => (
+            <ClockWatchTick
+              key={second}
+              currentSecond={second}
+              hasFace={second % 5 === 0}
+              active={s >= second}
+              watchFaceColor={watchFaceColor}
+            />
+          ))}
         </div>
         <div className="absolute top-0 left-0 w-full h-full p-8">
           <div className="flex flex-col items-center justify-center w-full h-full rounded-full overflow-hidden">
