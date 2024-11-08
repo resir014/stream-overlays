@@ -1,0 +1,48 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+
+import DashboardHeader from './components/dashboard-header/index.astro';
+import DashboardPageContent from './components/dashboard-page/content.astro';
+import DashboardPageHeader from './components/dashboard-page/header.astro';
+import DashboardRoot from './components/dashboard-root/index.astro';
+import DashboardSection from './components/dashboard-section/index.astro';
+import DashboardSidebar from './components/dashboard-sidebar/index.astro';
+
+import Document from '../_document.astro';
+import { LinkList } from '~/components/link-list';
+
+type Props = {
+  dashboardContent: InferEntrySchema<'dashboard'>[];
+};
+
+const { dashboardContent } = Astro.props;
+console.log(dashboardContent);
+---
+
+<Document>
+  <main
+    class:list={[
+      'flex flex-col w-full h-full min-h-screen overflow-hidden',
+      'bg-chungking-white text-chungking-black dark:bg-chungking-black dark:text-chungking-white',
+    ]}
+  >
+    <DashboardHeader />
+    <section class="flex h-[calc(100vh-60px)]">
+      <DashboardSidebar />
+      <div class="flex flex-col flex-auto">
+        <DashboardPageHeader title="Home" />
+        <DashboardPageContent>
+          <div class="space-y-8">
+            {
+              dashboardContent.map(({ title, items }) => (
+                <DashboardSection title={title}>
+                  <LinkList items={items} />
+                </DashboardSection>
+              ))
+            }
+          </div>
+        </DashboardPageContent>
+      </div>
+    </section>
+  </main>
+</Document>

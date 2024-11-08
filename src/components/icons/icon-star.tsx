@@ -1,4 +1,4 @@
-import { SVGAttributes } from 'react';
+import { type SVGAttributes } from 'react';
 
 export function IconStar({ width = 24, height = 24, ...rest }: SVGAttributes<SVGSVGElement>) {
   return (

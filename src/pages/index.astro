@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+
+import DashboardPage from '~/@dashboard/index.astro';
+
+const dashboard = await getCollection('dashboard');
+
+const dashboardContent = dashboard.map(item => item.data);
+---
+
+<DashboardPage dashboardContent={dashboardContent} />

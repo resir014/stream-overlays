@@ -1,0 +1,15 @@
+---
+type Props = {
+  title: string;
+  subtitle?: string;
+};
+
+const { title, subtitle } = Astro.props;
+---
+
+<header class="pt-6 px-6 pb-4 border-b border-chungking-grey-100 dark:border-chungking-grey-900">
+  <div class="mx-auto w-full max-w-5xl">
+    <h1 class="text-4xl font-semibold">{title}</h1>
+    {subtitle ? <p class="text-2xl">{subtitle}</p> : null}
+  </div>
+</header>

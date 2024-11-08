@@ -1,0 +1,37 @@
+{
+  "title": "Scenes",
+  "items": [
+    {
+      "title": "Pre-Stream Scene",
+      "url": "/scenes/pre-stream"
+    },
+    {
+      "title": "Pre-Stream Scene (DD2)",
+      "url": "/scenes/deep-dip/pre-stream"
+    },
+    {
+      "title": "BRB Scene",
+      "url": "/scenes/brb"
+    },
+    {
+      "title": "BRB Scene (DD2)",
+      "url": "/scenes/deep-dip/brb"
+    },
+    {
+      "title": "Technical Issues Scene",
+      "url": "/scenes/tech-issues"
+    },
+    {
+      "title": "End Scene",
+      "url": "/scenes/end"
+    },
+    {
+      "title": "End Scene (DD2)",
+      "url": "/scenes/deep-dip/end"
+    },
+    {
+      "title": "Studio Clock Scene",
+      "url": "/scenes/studio-clock"
+    }
+  ]
+}

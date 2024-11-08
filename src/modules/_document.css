@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-transparent !important;
+  }
+}
+
+@layer components {
+  @supports (-webkit-appearance: none) {
+    .flight-progress[value] {
+      /* Reset the default appearance */
+      -webkit-appearance: none;
+      appearance: none;
+
+      @apply w-full h-[4px];
+    }
+
+    .flight-progress[value] ::-webkit-progress-bar {
+      @apply bg-chungking-white;
+    }
+
+    .flight-progress[value] ::-webkit-progress-value {
+      @apply bg-chungking-blue-500;
+    }
+  }
+}
+
+@layer utilities {
+  .helper-link-cover::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .helper-kern {
+    font-feature-settings: 'kern' 1;
+  }
+
+  .helper-alternate-digits {
+    font-feature-settings: 'ss01' 1;
+  }
+
+  .helper-disambiguation {
+    font-feature-settings: 'ss02' 1;
+  }
+
+  .helper-countdown-outline {
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 4px;
+    -webkit-text-stroke-color: black;
+  }
+}
