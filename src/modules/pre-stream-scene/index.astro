@@ -1,0 +1,18 @@
+---
+import Document from '../_document.astro';
+import { StreamTitle } from './components/stream-title';
+import { type PreStreamVariants } from './types';
+
+type Props = {
+  headerText: string;
+  variant?: PreStreamVariants;
+};
+
+const { headerText } = Astro.props;
+---
+
+<Document>
+  <main class="flex flex-col w-full h-screen bg-transparent overflow-hidden">
+    <StreamTitle headerText={headerText} client:load />
+  </main>
+</Document>
