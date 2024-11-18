@@ -1,6 +1,6 @@
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
 import { createTRPCReact } from '@trpc/react-query';
-import { type AppRouter } from '~/server/routers/_app';
+import type { AppRouter } from '~/server/routers/_app';
 
 const isNetlifyProdDeploy = process.env.CONTEXT === 'production';
 const isNetlifyPreviewOrBranchDeploy =

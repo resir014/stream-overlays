@@ -24,6 +24,7 @@ module.exports = {
     '@typescript-eslint/require-await': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
+    'import/consistent-type-specifier-style': 'off',
     // END: required by trpc
     'jsx-a11y/anchor-is-valid': 'off',
   },
