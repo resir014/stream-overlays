@@ -45,5 +45,5 @@ jobs:
         env:
           CI: true
 
-      # - name: Run tests
-      #   run: pnpm run test
+      - name: Run tests
+        run: pnpm run test

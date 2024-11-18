@@ -4,12 +4,13 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "start": "astro preview",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc --noEmit",
-    "validate": "npm run type-check && npm run lint"
+    "validate": "npm run type-check && npm run lint",
+    "test": "vitest"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -63,6 +64,7 @@
     "stylelint": "^16.10.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recommended": "^14.0.1",
-    "stylelint-config-standard": "^36.0.1"
+    "stylelint-config-standard": "^36.0.1",
+    "vitest": "^2.1.5"
   }
 }
