@@ -1,27 +1,14 @@
 import { isFullPage } from '@notionhq/client';
 import { notion } from '~/lib/notion';
-
-export type GetUpcomingStreamsOptions = {
-  referenceDate?: string | null;
-  pageSize?: number | null;
-};
-
-export type UpcomingStreamData = {
-  id: string;
-  date?: string;
-  series?: string;
-  category?: string[];
-  stream_name?: string;
-  description?: string;
-};
+import type { GetUpcomingStreamsOptions, UpcomingStreamData } from './types';
 
 export async function getUpcomingStreams({
   referenceDate,
   pageSize,
 }: GetUpcomingStreamsOptions = {}) {
-  if (process.env.NOTION_STREAMS_TABLE_ID) {
+  if (import.meta.env.NOTION_STREAMS_TABLE_ID) {
     const databaseQuery = await notion.databases.query({
-      database_id: process.env.NOTION_STREAMS_TABLE_ID,
+      database_id: import.meta.env.NOTION_STREAMS_TABLE_ID,
       filter: {
         property: 'Date',
         date: {

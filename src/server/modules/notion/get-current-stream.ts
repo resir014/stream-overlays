@@ -1,19 +1,11 @@
 import { isFullPage } from '@notionhq/client';
 import { notion } from '~/lib/notion';
-
-export type CurrentStreamInformation = {
-  id: string;
-  date?: string;
-  series?: string;
-  categories?: string[];
-  stream_name?: string;
-  description?: string;
-};
+import type { CurrentStreamInformation } from './types';
 
 export async function getCurrentStream(): Promise<CurrentStreamInformation | undefined> {
-  if (process.env.NOTION_STREAMS_TABLE_ID) {
+  if (import.meta.env.NOTION_STREAMS_TABLE_ID) {
     const databaseQuery = await notion.databases.query({
-      database_id: process.env.NOTION_STREAMS_TABLE_ID,
+      database_id: import.meta.env.NOTION_STREAMS_TABLE_ID,
       filter: {
         property: 'Current Stream',
         checkbox: {

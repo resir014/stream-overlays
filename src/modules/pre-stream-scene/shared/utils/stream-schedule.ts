@@ -1,7 +1,5 @@
-'use client';
-
 import { trpcReact } from '~/lib/trpc';
-import { type GetUpcomingStreamsOptions } from '~/server/modules/notion/get-upcoming-streams';
+import type { GetUpcomingStreamsOptions } from '~/server/modules/notion/types';
 
 export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
   referenceDate: string | null;
@@ -13,8 +11,6 @@ export function useCurrentStream(refetchInterval = 5000) {
   const { data, error } = trpcReact.notion.getCurrentStream.useQuery(undefined, {
     refetchInterval,
   });
-
-  console.log(data, error);
 
   return {
     currentStream: data,

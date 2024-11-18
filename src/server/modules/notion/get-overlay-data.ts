@@ -1,16 +1,11 @@
 import { isFullPage } from '@notionhq/client';
 import { notion } from '~/lib/notion';
-
-export interface OverlayDataInformation {
-  breakReturnTime?: string;
-  timeSignal?: string;
-  streamStart?: string;
-}
+import type { OverlayDataInformation } from './types';
 
 export async function getOverlayData(): Promise<OverlayDataInformation | undefined> {
-  if (process.env.NOTION_OVERLAY_DATA_ID) {
+  if (import.meta.env.NOTION_OVERLAY_DATA_ID) {
     const databaseQuery = await notion.databases.query({
-      database_id: process.env.NOTION_OVERLAY_DATA_ID,
+      database_id: import.meta.env.NOTION_OVERLAY_DATA_ID,
       page_size: 10,
     });
 
