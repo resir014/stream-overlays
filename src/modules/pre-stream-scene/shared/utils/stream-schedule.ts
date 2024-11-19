@@ -1,5 +1,5 @@
 import { trpcReact } from '~/lib/trpc';
-import type { GetUpcomingStreamsOptions } from '~/server/modules/notion/types';
+import type { GetUpcomingStreamsOptions } from '~/server/modules/notion/get-upcoming-streams/types';
 
 export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
   referenceDate: string | null;

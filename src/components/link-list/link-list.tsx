@@ -1,4 +1,5 @@
-import { LinkListItem, type LinkListItemProps } from './link-list-item';
+import { LinkListItem } from './link-list-item';
+import type { LinkListItemProps } from './link-list-item';
 
 export interface LinkListProps {
   items: LinkListItemProps[];

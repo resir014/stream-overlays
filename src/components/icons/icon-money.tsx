@@ -1,4 +1,4 @@
-import { type SVGAttributes } from 'react';
+import type { SVGAttributes } from 'react';
 
 export function IconMoney(props: SVGAttributes<SVGSVGElement>) {
   return (

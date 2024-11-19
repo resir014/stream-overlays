@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { forwardRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 export interface InfoItemCardProps extends ComponentPropsWithoutRef<'section'> {
   title?: string;

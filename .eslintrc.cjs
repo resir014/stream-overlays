@@ -11,9 +11,9 @@ module.exports = {
   ],
   plugins: ['prettier'],
   rules: {
-    '@next/next/no-img-element': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     // BEGIN: required by trpc
+    '@typescript-eslint/consistent-type-imports': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/no-unsafe-argument': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
@@ -24,8 +24,8 @@ module.exports = {
     '@typescript-eslint/require-await': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
-    'import/consistent-type-specifier-style': 'off',
     // END: required by trpc
+    'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
     'jsx-a11y/anchor-is-valid': 'off',
   },
   settings: {

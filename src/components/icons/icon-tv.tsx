@@ -1,4 +1,4 @@
-import { type SVGAttributes } from 'react';
+import type { SVGAttributes } from 'react';
 
 export function IconTV(props: SVGAttributes<SVGSVGElement>) {
   return (
