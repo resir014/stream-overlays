@@ -14,7 +14,7 @@ function getBaseUrl() {
 
   if (import.meta.env.URL && isNetlifyProdDeploy) {
     // reference for Netlify (production)
-    return import.meta.env.DEPLOY_PRIME_URL;
+    return import.meta.env.URL;
   }
 
   if (import.meta.env.DEPLOY_PRIME_URL && isNetlifyPreviewOrBranchDeploy) {

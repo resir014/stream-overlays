@@ -1,5 +1,6 @@
 ---
 import Document from '../_document.astro';
+import OverlayWrapper from './shared/components/overlay-wrapper/index.astro';
 import { StreamTitle } from './components/stream-title';
 import type { PreStreamVariants } from './types';
 
@@ -12,7 +13,7 @@ const { headerText } = Astro.props;
 ---
 
 <Document>
-  <main class="flex flex-col w-full h-screen bg-transparent overflow-hidden">
+  <OverlayWrapper>
     <StreamTitle headerText={headerText} client:load />
-  </main>
+  </OverlayWrapper>
 </Document>
