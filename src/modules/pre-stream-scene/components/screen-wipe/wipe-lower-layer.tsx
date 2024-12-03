@@ -5,14 +5,13 @@ import clsx from 'clsx';
 import { Fragment, useState } from 'react';
 import type { PreStreamVariants } from '~/@pre-stream/shared/types';
 import { useAnimateStart } from '~/@pre-stream/shared/utils/use-animate-start';
-import { TRPCProvider } from '~/@pre-stream/shared/components/trpc-provider';
 
 export interface WipeLowerLayerProps {
   className?: string;
   variant?: PreStreamVariants;
 }
 
-function WipeLowerLayerInner({ className, variant = 'pre-stream' }: WipeLowerLayerProps) {
+export function WipeLowerLayer({ className, variant = 'pre-stream' }: WipeLowerLayerProps) {
   const [isAnimationEnded, setIsAnimationEnded] = useState(false);
   const isAnimationActive = useAnimateStart(variant);
 
@@ -45,13 +44,5 @@ function WipeLowerLayerInner({ className, variant = 'pre-stream' }: WipeLowerLay
         </TransitionChild>
       </Transition>
     </>
-  );
-}
-
-export function WipeLowerLayer(props: WipeLowerLayerProps) {
-  return (
-    <TRPCProvider>
-      <WipeLowerLayerInner {...props} />
-    </TRPCProvider>
   );
 }

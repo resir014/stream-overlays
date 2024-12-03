@@ -1,7 +1,1 @@
-export type PreStreamVariants =
-  | 'pre-stream'
-  | 'pre-stream-cerveza'
-  | 'brb'
-  | 'end'
-  | 'tech-issues'
-  | 'nye';
+export type PreStreamVariants = 'pre-stream' | 'brb' | 'end' | 'tech-issues';

@@ -2,19 +2,21 @@
 
 import clsx from 'clsx';
 import { Fragment } from 'react';
-import type { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 import { Transition, TransitionChild } from '@headlessui/react';
 import type { PreStreamVariants } from '~/@pre-stream/shared/types';
 import { useAnimateStart } from '~/@pre-stream/shared/utils/use-animate-start';
-import { TRPCProvider } from '~/@pre-stream/shared/components/trpc-provider';
 
 export interface WipeUpperLayerProps {
   className?: string;
   variant?: PreStreamVariants;
-  logo?: ReactNode;
 }
 
-function WipeUpperLayerInner({ className, variant, logo }: WipeUpperLayerProps) {
+export function WipeUpperLayer({
+  className,
+  variant,
+  children,
+}: PropsWithChildren<WipeUpperLayerProps>) {
   const isAnimationActive = useAnimateStart(variant);
 
   return (
@@ -42,17 +44,9 @@ function WipeUpperLayerInner({ className, variant, logo }: WipeUpperLayerProps) 
           enterFrom="scale-0"
           enterTo="scale-100"
         >
-          {logo}
+          {children}
         </TransitionChild>
       </div>
     </Transition>
-  );
-}
-
-export function WipeUpperLayer({ logo, ...props }: WipeUpperLayerProps) {
-  return (
-    <TRPCProvider>
-      <WipeUpperLayerInner {...props}>{logo}</WipeUpperLayerInner>
-    </TRPCProvider>
   );
 }

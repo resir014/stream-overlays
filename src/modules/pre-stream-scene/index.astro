@@ -1,12 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import Document from '../_document.astro';
 import OverlayWrapper from './shared/components/overlay-wrapper/index.astro';
 import SceneWrapper from './shared/components/scene-wrapper/index.astro';
-import { StreamTitle } from './components/stream-title';
 import type { PreStreamVariants } from './shared/types';
-import { WipeUpperLayer } from './components/screen-wipe/wipe-upper-layer';
-import { WipeLowerLayer } from './components/screen-wipe/wipe-lower-layer';
+import { SceneLayers } from './components/scene-layers';
+import { SceneContent } from './components/scene-content';
 
 type Props = {
   headerText: string;
@@ -14,60 +12,15 @@ type Props = {
 };
 
 const { headerText, variant } = Astro.props;
-
-const getColorClassName = () => {
-  switch (variant) {
-    case 'pre-stream':
-    case 'pre-stream-cerveza': {
-      return 'bg-chungking-blue-500';
-    }
-    case 'brb': {
-      return 'bg-chungking-green-500';
-    }
-    case 'tech-issues': {
-      return 'bg-chungking-magenta-500';
-    }
-    case 'end': {
-      return 'bg-chungking-orange-500';
-    }
-    default: {
-      return 'bg-chungking-blue-500';
-    }
-  }
-};
-
-const isPrestream = variant === 'pre-stream' || variant === 'pre-stream-cerveza';
 ---
 
 <Document>
   <OverlayWrapper>
     <SceneWrapper>
       <div class="grid grid-rows-scene-wrapper grid-cols-1 flex-1">
-        <div class="grid w-full relative">
-          <div class="absolute top-0 left-0 w-full h-full z-30">
-            <WipeUpperLayer client:load>
-              <Fragment slot="logo">
-                <Image
-                  class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] mt-[48px] rounded-full"
-                  src="/static/resir014-logo-2023.png"
-                  alt="resir014 logo"
-                  width={256}
-                  height={256}
-                />
-              </Fragment>
-            </WipeUpperLayer>
-          </div>
-          <div class="grid grid-cols-3 gap-8 w-full pt-[96px] pb-[24px] px-[128px] z-20">
-            <div class="flex flex-col justify-center relative">
-              <div class="flex flex-1 items-center">
-                <StreamTitle headerText={headerText} client:load />
-              </div>
-            </div>
-          </div>
-          <div class="absolute top-0 left-0 w-full h-full z-10">
-            <WipeLowerLayer className={getColorClassName()} variant={variant} client:load />
-          </div>
-        </div>
+        <SceneLayers variant={variant} client:load>
+          <SceneContent headerText={headerText} variant={variant} client:load />
+        </SceneLayers>
       </div>
     </SceneWrapper>
   </OverlayWrapper>
