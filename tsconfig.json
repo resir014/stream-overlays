@@ -7,7 +7,8 @@
     "paths": {
       "~/*": ["./src/*"],
       "~/@dashboard/*": ["./src/modules/dashboard/*"],
-      "~/@pre-stream/*": ["./src/modules/pre-stream-scene/*"]
+      "~/@pre-stream/*": ["./src/modules/pre-stream-scene/*"],
+      "~/@time-signal/*": ["./src/modules/time-signal-block/*"]
     },
     "plugins": [
       {
