@@ -1,5 +1,5 @@
-import { TRPCProvider } from '~/@pre-stream/shared/components/trpc-provider';
 import type { PreStreamVariants } from '~/@pre-stream/shared/types';
+import { TRPCProvider } from '~/lib/trpc/trpc-provider';
 import { StreamTitle } from './stream-title';
 import { StreamDateTime } from './stream-date-time';
 import { StreamCountdown } from './stream-countdown';

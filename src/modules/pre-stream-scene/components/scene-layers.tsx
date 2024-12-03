@@ -1,5 +1,5 @@
-import { TRPCProvider } from '~/@pre-stream/shared/components/trpc-provider';
 import type { PreStreamVariants } from '~/@pre-stream/shared/types';
+import { TRPCProvider } from '~/lib/trpc/trpc-provider';
 import type { PropsWithChildren } from 'react';
 import { WipeUpperLayer } from './screen-wipe/wipe-upper-layer';
 import { WipeLowerLayer } from './screen-wipe/wipe-lower-layer';
@@ -10,8 +10,7 @@ export interface SceneLayersProps {
 
 const getColorClassName = (variant?: PreStreamVariants) => {
   switch (variant) {
-    case 'pre-stream':
-    case 'pre-stream-cerveza': {
+    case 'pre-stream': {
       return 'bg-chungking-blue-500';
     }
     case 'brb': {
