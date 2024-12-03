@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOverlayData } from '~/lib/trpc/notion';
-import type { PreStreamVariants } from '../types';
+import type { PreStreamVariants } from '~/@pre-stream/shared/types';
 
 export function useAnimateStart(variant: PreStreamVariants = 'pre-stream') {
   const time = useClock();
@@ -15,7 +15,7 @@ export function useAnimateStart(variant: PreStreamVariants = 'pre-stream') {
   );
 
   const isAnimationActive = useMemo(() => {
-    if (variant !== 'pre-stream' && variant !== 'pre-stream-cerveza') {
+    if (variant !== 'pre-stream') {
       return false;
     }
 

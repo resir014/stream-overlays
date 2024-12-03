@@ -1,4 +1,4 @@
-import { PreStreamVariants } from '~/modules/pre-stream/types';
+import type { PreStreamVariants } from '~/@pre-stream/shared/types';
 
 export function getPrestreamAccentColor(variant: PreStreamVariants = 'pre-stream') {
   switch (variant) {
@@ -24,12 +24,6 @@ export function getPrestreamAccentColor(variant: PreStreamVariants = 'pre-stream
       return {
         bg: 'bg-chungking-magenta-500',
         border: 'border-chungking-magenta-500',
-      };
-    }
-    case 'nye': {
-      return {
-        bg: 'bg-chungking-turquoise-500',
-        border: 'border-chungking-turquoise-500',
       };
     }
     default: {
