@@ -1,0 +1,25 @@
+---
+import OverlayWrapper from '~/components/overlay-wrapper/index.astro';
+import { parseString } from '~/lib/query-parser';
+import {
+  StudioClockInterface,
+  type StudioClockInterfaceProps,
+} from './components/studio-clock-interface';
+import Document from '../_document.astro';
+
+const { searchParams } = Astro.url;
+
+const clockProps: StudioClockInterfaceProps = {
+  uiFont: parseString(searchParams.get('uiFont')),
+  watchFaceFont: parseString(searchParams.get('watchFaceFont')),
+  watchFaceColor: parseString(searchParams.get('watchFaceColor')),
+};
+---
+
+<Document>
+  <OverlayWrapper>
+    <div>
+      <StudioClockInterface {...clockProps} client:only="react" />
+    </div>
+  </OverlayWrapper>
+</Document>

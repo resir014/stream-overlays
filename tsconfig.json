@@ -7,7 +7,7 @@
     "paths": {
       "~/@dashboard/*": ["./src/modules/dashboard/*"],
       "~/@pre-stream/*": ["./src/modules/pre-stream-scene/*"],
-      "~/@studio-clock/*": ["./src/modules/studio-clock-scene/*"],
+      "~/@studio-clock/*": ["src/modules/studio-clock/*"],
       "~/@time-signal/*": ["./src/modules/time-signal-block/*"],
       "~/*": ["./src/*"]
     },
