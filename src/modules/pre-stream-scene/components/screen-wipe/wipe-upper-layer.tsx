@@ -19,6 +19,10 @@ export function WipeUpperLayer({
 }: PropsWithChildren<WipeUpperLayerProps>) {
   const isAnimationActive = useAnimateStart(variant);
 
+  if (variant !== 'pre-stream') {
+    return null;
+  }
+
   return (
     <Transition show={isAnimationActive}>
       <div className={clsx('relative w-full h-full', className)}>

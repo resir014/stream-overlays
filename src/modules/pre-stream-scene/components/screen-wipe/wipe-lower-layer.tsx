@@ -2,7 +2,7 @@
 
 import { Transition, TransitionChild } from '@headlessui/react';
 import clsx from 'clsx';
-import { Fragment, useState } from 'react';
+import { Fragment, useCallback, useState } from 'react';
 import type { PreStreamVariants } from '~/@pre-stream/shared/types';
 import { useAnimateStart } from '~/@pre-stream/shared/utils/use-animate-start';
 
@@ -15,18 +15,12 @@ export function WipeLowerLayer({ className, variant = 'pre-stream' }: WipeLowerL
   const [isAnimationEnded, setIsAnimationEnded] = useState(false);
   const isAnimationActive = useAnimateStart(variant);
 
-  return (
-    <>
-      <div
-        className={clsx(
-          'absolute w-full h-full z-0',
-          {
-            'translate-x-0 shadow-drop-layers': isAnimationEnded,
-            '-translate-x-[97.5%]': !isAnimationEnded,
-          },
-          className,
-        )}
-      />
+  const renderTransition = useCallback(() => {
+    if (variant !== 'pre-stream') {
+      return null;
+    }
+
+    return (
       <Transition
         show={isAnimationActive}
         as={Fragment}
@@ -43,6 +37,22 @@ export function WipeLowerLayer({ className, variant = 'pre-stream' }: WipeLowerL
           <div className={clsx('absolute w-full h-full -translate-x-[97.5%] z-10', className)} />
         </TransitionChild>
       </Transition>
+    );
+  }, [className, isAnimationActive, variant]);
+
+  return (
+    <>
+      <div
+        className={clsx(
+          'absolute w-full h-full z-0',
+          {
+            'translate-x-0 shadow-drop-layers': isAnimationEnded,
+            '-translate-x-[97.5%]': !isAnimationEnded,
+          },
+          className,
+        )}
+      />
+      {renderTransition()}
     </>
   );
 }

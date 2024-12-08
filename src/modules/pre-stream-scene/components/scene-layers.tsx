@@ -33,7 +33,7 @@ export function SceneLayers({ variant, children }: PropsWithChildren<SceneLayers
     <TRPCProvider>
       <div className="grid w-full relative">
         <div className="absolute top-0 left-0 w-full h-full z-30">
-          <WipeUpperLayer>
+          <WipeUpperLayer variant={variant}>
             <img
               className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] mt-[48px] rounded-full"
               src="/static/resir014-logo-2023.png"
