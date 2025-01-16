@@ -5,6 +5,7 @@
     "baseUrl": ".",
     "lib": ["esnext", "DOM", "DOM.Iterable"],
     "paths": {
+      "~/@bottom-bar/*": ["./src/modules/bottom-bar-block/*"],
       "~/@dashboard/*": ["./src/modules/dashboard/*"],
       "~/@pre-stream/*": ["./src/modules/pre-stream-scene/*"],
       "~/@studio-clock/*": ["src/modules/studio-clock/*"],

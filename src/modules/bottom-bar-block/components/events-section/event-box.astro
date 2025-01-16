@@ -1,0 +1,14 @@
+---
+import type { ElementType, SVGProps } from 'react';
+
+type Props = {
+  icon: ElementType<SVGProps<SVGSVGElement>, 'svg'>;
+};
+
+const { icon: IconComponent } = Astro.props;
+---
+
+<div class="flex flex-auto items-center h-6 pr-3">
+  <IconComponent className="h-6 w-6" />
+  <div class="flex-auto ml-2 h-6"></div>
+</div>
