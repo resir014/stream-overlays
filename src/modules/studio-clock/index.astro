@@ -19,7 +19,11 @@ const clockProps: StudioClockInterfaceProps = {
 <Document>
   <OverlayWrapper>
     <div>
-      <StudioClockInterface {...clockProps} client:only="react" />
+      <StudioClockInterface {...clockProps} client:only="react">
+        <slot name="fallback">
+          <StudioClockInterface {...clockProps} />
+        </slot>
+      </StudioClockInterface>
     </div>
   </OverlayWrapper>
 </Document>
