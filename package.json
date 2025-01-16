@@ -7,6 +7,7 @@
     "start": "astro preview",
     "build": "astro check && astro build",
     "preview": "astro preview",
+    "lint": "astro check",
     "astro": "astro",
     "type-check": "tsc --noEmit",
     "validate": "npm run type-check && npm run lint",
@@ -47,12 +48,13 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
     "@resir014/tailwind-preset-chungking": "0.1.4-canary.7",
     "@types/node": "^20.12.8",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/webfontloader": "^1.6.38",
-    "eslint": "^8.56.0",
+    "eslint": "^9.16.0",
     "eslint-config-gsap": "^3.0.0",
     "eslint-config-kentcdodds": "^21.0.0",
     "eslint-config-prettier": "^9.1.0",
