@@ -10,7 +10,7 @@ export function TimeSignal() {
 
   const startOfTimeSignal = useMemo(
     () => (overlayData?.timeSignal ? new Date(overlayData.timeSignal) : undefined),
-    [overlayData?.timeSignal],
+    [overlayData?.timeSignal]
   );
 
   useEffect(() => {

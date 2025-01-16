@@ -3,7 +3,7 @@
 import { Transition, TransitionChild } from '@headlessui/react';
 import clsx from 'clsx';
 import { Fragment, useCallback, useState } from 'react';
-import type { PreStreamVariants } from '~/@pre-stream/shared/types';
+import { type PreStreamVariants } from '~/@pre-stream/shared/types';
 import { useAnimateStart } from '~/@pre-stream/shared/utils/use-animate-start';
 
 export interface WipeLowerLayerProps {
@@ -34,7 +34,7 @@ export function WipeLowerLayer({ className, variant = 'pre-stream' }: WipeLowerL
           enterTo="translate-x-0 shadow-drop-layers"
           unmount={false}
         >
-          <div className={clsx('absolute w-full h-full -translate-x-[97.5%] z-10', className)} />
+          <div className={clsx('absolute z-10 h-full w-full -translate-x-[97.5%]', className)} />
         </TransitionChild>
       </Transition>
     );
@@ -44,12 +44,12 @@ export function WipeLowerLayer({ className, variant = 'pre-stream' }: WipeLowerL
     <>
       <div
         className={clsx(
-          'absolute w-full h-full z-0',
+          'absolute z-0 h-full w-full',
           {
             'translate-x-0 shadow-drop-layers': isAnimationEnded,
             '-translate-x-[97.5%]': !isAnimationEnded,
           },
-          className,
+          className
         )}
       />
       {renderTransition()}

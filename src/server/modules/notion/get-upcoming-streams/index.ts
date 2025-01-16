@@ -1,6 +1,6 @@
 import { isFullPage } from '@notionhq/client';
+import { type GetUpcomingStreamsOptions, type UpcomingStreamData } from './types';
 import { notion } from '~/lib/notion';
-import type { GetUpcomingStreamsOptions, UpcomingStreamData } from './types';
 
 export async function getUpcomingStreams({
   referenceDate,
@@ -33,12 +33,10 @@ export async function getUpcomingStreams({
         const stream = {
           id,
           date: properties.Date.type === 'date' ? properties.Date.date?.start : undefined,
-          series:
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-            properties.Series.type === 'select' ? properties.Series.select?.name : undefined,
+          series: properties.Series.type === 'select' ? properties.Series.select?.name : undefined,
           category:
             properties.Category.type === 'multi_select'
-              ? properties.Category.multi_select.map(select => select.name)
+              ? properties.Category.multi_select.map((select) => select.name)
               : undefined,
           stream_name:
             properties['Stream Name'].type === 'title'

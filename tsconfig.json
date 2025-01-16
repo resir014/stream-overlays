@@ -1,5 +1,5 @@
 {
-  "extends": "astro/tsconfigs/strict",
+  "extends": ["@epic-web/config/typescript", "astro/tsconfigs/strict"],
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",

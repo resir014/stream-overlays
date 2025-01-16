@@ -1,9 +1,9 @@
 'use client';
 
 import { useMemo } from 'react';
+import { type PreStreamVariants } from '~/@pre-stream/shared/types';
 import { useClock } from '~/lib/hooks/use-clock';
 import { useOverlayData } from '~/lib/trpc/notion';
-import type { PreStreamVariants } from '~/@pre-stream/shared/types';
 
 export function useAnimateStart(variant: PreStreamVariants = 'pre-stream') {
   const time = useClock();
@@ -11,7 +11,7 @@ export function useAnimateStart(variant: PreStreamVariants = 'pre-stream') {
 
   const streamStart = useMemo(
     () => (overlayData?.streamStart ? new Date(overlayData.streamStart) : undefined),
-    [overlayData?.streamStart],
+    [overlayData?.streamStart]
   );
 
   const isAnimationActive = useMemo(() => {

@@ -1,4 +1,4 @@
-import type { PreStreamVariants } from '~/@pre-stream/shared/types';
+import { type PreStreamVariants } from '~/@pre-stream/shared/types';
 
 export function getPrestreamAccentColor(variant: PreStreamVariants = 'pre-stream') {
   switch (variant) {

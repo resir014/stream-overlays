@@ -5,10 +5,10 @@ export interface LinkListItemProps {
 
 export function LinkListItem({ url, title }: LinkListItemProps) {
   return (
-    <li className="group relative p-4 border rounded-lg hover:shadow-md border-chungking-grey-100 hover:bg-chungking-grey-100 dark:border-chungking-grey-900 dark:hover:bg-chungking-grey-900">
+    <li className="group relative rounded-lg border border-chungking-grey-100 p-4 hover:bg-chungking-grey-100 hover:shadow-md dark:border-chungking-grey-900 dark:hover:bg-chungking-grey-900">
       <a
         href={url}
-        className="helper-link-cover group-hover:underline text-chungking-blue-500 dark:text-chungking-turquoise-500"
+        className="helper-link-cover text-chungking-blue-500 group-hover:underline dark:text-chungking-turquoise-500"
       >
         {title}
       </a>

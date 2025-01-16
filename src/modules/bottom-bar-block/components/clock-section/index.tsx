@@ -15,7 +15,7 @@ export function BottomBarClock() {
   const time = useClock();
 
   return (
-    <div className="flex items-center justify-center w-[96px] h-[32px] py-1 text-chungking-black bg-chungking-white rounded-full leading-none font-bold">
+    <div className="flex h-[32px] w-[96px] items-center justify-center rounded-full bg-chungking-white py-1 font-bold leading-none text-chungking-black">
       <span style={styles}>{format(time, 'HH:mm')}</span>
     </div>
   );

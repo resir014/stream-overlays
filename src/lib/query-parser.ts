@@ -1,4 +1,4 @@
-import type { ParsedUrlQuery } from 'querystring';
+import { type ParsedUrlQuery } from 'querystring';
 
 /**
  * Converts a string-like value to a number.

@@ -1,8 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import type { ComponentPropsWithoutRef } from 'react';
-import { forwardRef, useMemo } from 'react';
+import { type ComponentPropsWithoutRef, forwardRef, useMemo } from 'react';
+
 import { resolveHexColor } from '~/lib/colors';
 
 export interface ClockWatchTickProps extends ComponentPropsWithoutRef<'div'> {
@@ -22,8 +22,8 @@ export const ClockWatchTick = forwardRef<HTMLDivElement, ClockWatchTickProps>(
       <div
         ref={ref}
         className={clsx(
-          'flex items-center justify-end absolute top-[184px] left-1/2 w-[192px] h-4 space-x-1.5',
-          className,
+          'absolute left-1/2 top-[184px] flex h-4 w-[192px] items-center justify-end space-x-1.5',
+          className
         )}
         style={{
           transformOrigin: '0% 50%',
@@ -38,7 +38,7 @@ export const ClockWatchTick = forwardRef<HTMLDivElement, ClockWatchTickProps>(
               ? undefined
               : hasFace
                 ? 'bg-chungking-white'
-                : 'bg-chungking-white bg-opacity-20',
+                : 'bg-chungking-white bg-opacity-20'
           )}
           style={{
             backgroundColor: isActive ? hexColor : undefined,
@@ -52,7 +52,7 @@ export const ClockWatchTick = forwardRef<HTMLDivElement, ClockWatchTickProps>(
         />
       </div>
     );
-  },
+  }
 );
 
 ClockWatchTick.displayName = 'ClockWatchTick';

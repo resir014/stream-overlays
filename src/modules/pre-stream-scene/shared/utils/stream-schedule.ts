@@ -1,5 +1,5 @@
 import { trpcReact } from '~/lib/trpc';
-import type { GetUpcomingStreamsOptions } from '~/server/modules/notion/get-upcoming-streams/types';
+import { type GetUpcomingStreamsOptions } from '~/server/modules/notion/get-upcoming-streams/types';
 
 export interface UseUpcomingStreamOptions extends GetUpcomingStreamsOptions {
   referenceDate: string | null;
@@ -26,7 +26,7 @@ export function useUpcomingStreams({
 }: UseUpcomingStreamOptions) {
   const { data, error } = trpcReact.notion.getUpcomingStreams.useQuery(
     { referenceDate, pageSize },
-    { refetchInterval },
+    { refetchInterval }
   );
 
   return {

@@ -8,7 +8,7 @@ const dashboard = defineCollection({
       z.object({
         title: z.string(),
         url: z.string(),
-      }),
+      })
     ),
   }),
 });

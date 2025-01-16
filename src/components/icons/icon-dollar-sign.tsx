@@ -1,4 +1,4 @@
-import type { SVGAttributes } from 'react';
+import { type SVGAttributes } from 'react';
 
 export function IconDollarSign(props: SVGAttributes<SVGSVGElement>) {
   return (

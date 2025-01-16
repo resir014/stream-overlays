@@ -14,7 +14,6 @@ const $goalBar = document.getElementById('goal-bar');
  */
 function appendHTML(element, text) {
   if (element) {
-    // eslint-disable-next-line no-param-reassign
     element.innerHTML = text;
   }
 }
@@ -25,7 +24,6 @@ function appendHTML(element, text) {
  */
 function appendText(element, text) {
   if (element) {
-    // eslint-disable-next-line no-param-reassign
     element.innerText = text;
   }
 }
@@ -36,7 +34,6 @@ function appendText(element, text) {
  */
 function manipulateProgressBar(element, width) {
   if (element) {
-    // eslint-disable-next-line no-param-reassign
     element.style.width = width;
   }
 }

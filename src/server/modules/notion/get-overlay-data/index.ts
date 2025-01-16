@@ -1,6 +1,6 @@
 import { isFullPage } from '@notionhq/client';
+import { type OverlayDataInformation } from './types';
 import { notion } from '~/lib/notion';
-import type { OverlayDataInformation } from './types';
 
 export async function getOverlayData(): Promise<OverlayDataInformation | undefined> {
   if (import.meta.env.NOTION_OVERLAY_DATA_ID) {
@@ -16,7 +16,6 @@ export async function getOverlayData(): Promise<OverlayDataInformation | undefin
         const { properties } = page;
 
         if (properties.Name.type === 'title' && properties.Date.type === 'date') {
-          // eslint-disable-next-line max-depth
           switch (properties.Name.title[0].plain_text) {
             case 'Stream Start': {
               data.streamStart =

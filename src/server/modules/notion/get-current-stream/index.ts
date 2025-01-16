@@ -1,6 +1,6 @@
 import { isFullPage } from '@notionhq/client';
+import { type CurrentStreamInformation } from './types';
 import { notion } from '~/lib/notion';
-import type { CurrentStreamInformation } from './types';
 
 export async function getCurrentStream(): Promise<CurrentStreamInformation | undefined> {
   if (import.meta.env.NOTION_STREAMS_TABLE_ID) {
@@ -33,7 +33,7 @@ export async function getCurrentStream(): Promise<CurrentStreamInformation | und
           series: properties.Series.type === 'select' ? properties.Series.select?.name : undefined,
           categories:
             properties.Category.type === 'multi_select'
-              ? properties.Category.multi_select.map(select => select.name)
+              ? properties.Category.multi_select.map((select) => select.name)
               : undefined,
           stream_name:
             properties['Stream Name'].type === 'title'

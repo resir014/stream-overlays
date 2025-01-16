@@ -30,7 +30,7 @@ export const notionRouter = router({
       z.object({
         referenceDate: z.string().nullable(),
         pageSize: z.number().nullable(),
-      }),
+      })
     )
     .query(async ({ input }) => {
       try {

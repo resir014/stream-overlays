@@ -1,10 +1,9 @@
 'use client';
 
-import clsx from 'clsx';
-import { Fragment } from 'react';
-import type { PropsWithChildren } from 'react';
 import { Transition, TransitionChild } from '@headlessui/react';
-import type { PreStreamVariants } from '~/@pre-stream/shared/types';
+import clsx from 'clsx';
+import { Fragment, type PropsWithChildren } from 'react';
+import { type PreStreamVariants } from '~/@pre-stream/shared/types';
 import { useAnimateStart } from '~/@pre-stream/shared/utils/use-animate-start';
 
 export interface WipeUpperLayerProps {
@@ -25,14 +24,14 @@ export function WipeUpperLayer({
 
   return (
     <Transition show={isAnimationActive}>
-      <div className={clsx('relative w-full h-full', className)}>
+      <div className={clsx('relative h-full w-full', className)}>
         <TransitionChild
           as={Fragment}
           enter="transition ease-in-out duration-700 transform delay-300"
           enterFrom="-translate-x-full"
           enterTo="translate-x-0 shadow-drop-layers"
         >
-          <div className="absolute bg-chungking-grey-100 w-full h-full" />
+          <div className="absolute h-full w-full bg-chungking-grey-100" />
         </TransitionChild>
         <TransitionChild
           as={Fragment}
@@ -40,7 +39,7 @@ export function WipeUpperLayer({
           enterFrom="-translate-x-full"
           enterTo="translate-x-0 shadow-drop-layers"
         >
-          <div className="absolute bg-chungking-blue-900 w-full h-full" />
+          <div className="absolute h-full w-full bg-chungking-blue-900" />
         </TransitionChild>
         <TransitionChild
           as={Fragment}

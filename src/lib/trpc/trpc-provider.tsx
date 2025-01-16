@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
-import { useState } from 'react';
-import type { PropsWithChildren } from 'react';
+import { useState, type PropsWithChildren } from 'react';
 
 import { httpBatchLinkUrl, trpcReact } from '~/lib/trpc';
 
@@ -14,7 +13,7 @@ export function TRPCProvider({ children }: PropsWithChildren) {
           url: httpBatchLinkUrl,
         }),
       ],
-    }),
+    })
   );
 
   return (

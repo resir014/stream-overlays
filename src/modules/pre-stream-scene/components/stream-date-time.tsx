@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from 'react';
 import { format } from 'date-fns';
+import * as React from 'react';
 import { useClock } from '~/lib/hooks/use-clock';
 
 export interface PrestreamDateProps extends React.ComponentPropsWithoutRef<'span'> {
@@ -17,7 +17,7 @@ export const StreamDateTime = React.forwardRef<HTMLSpanElement, PrestreamDatePro
         {format(time, dateFormat)}
       </span>
     );
-  },
+  }
 );
 
 StreamDateTime.displayName = 'StreamDateTime';

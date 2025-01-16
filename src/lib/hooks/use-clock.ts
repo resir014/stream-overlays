@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { getDate, getHours, getMinutes, getMonth, getSeconds, getYear } from 'date-fns';
 import { dequal } from 'dequal';
 import { createWithEqualityFn as create } from 'zustand/traditional';
@@ -43,8 +42,8 @@ export const useClockStore = create<DateMap>(() => {
 
 export function useClock() {
   const time = useClockStore(
-    state => createDateObjectFromMap(state),
-    (prevState, newState) => dequal(prevState, newState),
+    (state) => createDateObjectFromMap(state),
+    (prevState, newState) => dequal(prevState, newState)
   );
   return time;
 }

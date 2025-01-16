@@ -1,11 +1,10 @@
 'use client';
 
-import { format } from 'date-fns';
 import clsx from 'clsx';
-import type { ComponentPropsWithoutRef } from 'react';
-import { useEffect, useMemo } from 'react';
-import { useClock } from '~/lib/hooks/use-clock';
+import { format } from 'date-fns';
+import { type ComponentPropsWithoutRef, useEffect, useMemo } from 'react';
 import { ClockWatchTick } from './clock-watch-tick';
+import { useClock } from '~/lib/hooks/use-clock';
 
 export interface StudioClockInterfaceProps extends ComponentPropsWithoutRef<'div'> {
   uiFont?: string;
@@ -32,31 +31,31 @@ export function StudioClockInterface({
 
   const [, , s] = useMemo(
     () => [time.getHours(), time.getMinutes(), time.getSeconds()] as const,
-    [time],
+    [time]
   );
 
   const watchUIStyle = useMemo(
     () => ({
       fontFamily: `${uiFont}, system-ui, sans-serif`,
     }),
-    [uiFont],
+    [uiFont]
   );
 
   const watchFaceStyle = useMemo(
     () => ({
       fontFamily: `${watchFaceFont}, monospace`,
     }),
-    [watchFaceFont],
+    [watchFaceFont]
   );
 
   useEffect(() => {
     if (typeof window !== 'undefined' && (uiFont || watchFaceFont)) {
-      void import('webfontloader').then(mod => {
+      void import('webfontloader').then((mod) => {
         mod.default.load({
           google: {
             families: [uiFont, watchFaceFont]
               .filter(Boolean)
-              .map(font => `${font}:400,700,400italic,700italic`),
+              .map((font) => `${font}:400,700,400italic,700italic`),
           },
         });
       });
@@ -68,13 +67,13 @@ export function StudioClockInterface({
       className={clsx(
         'inline-flex flex-col items-center space-y-8 rounded-xl px-4 py-8',
         transparent ? undefined : 'bg-chungking-black',
-        className,
+        className
       )}
       style={style}
       {...rest}
     >
-      <div className="inline-block relative w-[384px] h-[384px] rounded-full overflow-hidden">
-        <div className="ticks relative w-full h-full" style={{ transform: `rotate(-90deg)` }}>
+      <div className="relative inline-block h-[384px] w-[384px] overflow-hidden rounded-full">
+        <div className="ticks relative h-full w-full" style={{ transform: `rotate(-90deg)` }}>
           {ticks.map((_, second) => (
             <ClockWatchTick
               key={second}
@@ -85,25 +84,25 @@ export function StudioClockInterface({
             />
           ))}
         </div>
-        <div className="absolute top-0 left-0 w-full h-full p-8">
-          <div className="flex flex-col items-center justify-center w-full h-full rounded-full overflow-hidden">
-            <div className="flex items-end flex-auto mb-4 text-center text-chungking-white">
+        <div className="absolute left-0 top-0 h-full w-full p-8">
+          <div className="flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-full">
+            <div className="mb-4 flex flex-auto items-end text-center text-chungking-white">
               <div className="space-y-2" style={watchUIStyle}>
-                <p className="text-2xl leading-none font-bold">{format(time, 'EEEE')}</p>
+                <p className="text-2xl font-bold leading-none">{format(time, 'EEEE')}</p>
                 <p className="text-2xl leading-none">{format(time, 'dd MMMM yyyy')}</p>
               </div>
             </div>
             <div>
               <p
-                className="text-8xl leading-none font-bold tabular-nums text-chungking-white"
+                className="text-8xl font-bold tabular-nums leading-none text-chungking-white"
                 style={watchFaceStyle}
               >
                 {format(time, 'HH:mm')}
               </p>
             </div>
-            <div className="flex-auto mt-2">
+            <div className="mt-2 flex-auto">
               <p
-                className="text-6xl leading-none font-bold tabular-nums text-chungking-white"
+                className="text-6xl font-bold tabular-nums leading-none text-chungking-white"
                 style={watchFaceStyle}
               >
                 {format(time, 'ss')}
@@ -113,8 +112,8 @@ export function StudioClockInterface({
         </div>
       </div>
       {hideTimezone ? null : (
-        <div className="text-center space-y-2 text-chungking-white" style={watchUIStyle}>
-          <p className="text-2xl leading-none font-bold">{timeZoneOptions.timeZone}</p>
+        <div className="space-y-2 text-center text-chungking-white" style={watchUIStyle}>
+          <p className="text-2xl font-bold leading-none">{timeZoneOptions.timeZone}</p>
         </div>
       )}
     </div>
