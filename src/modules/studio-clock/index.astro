@@ -7,7 +7,12 @@ import {
 } from './components/studio-clock-interface';
 import Document from '../_document.astro';
 
+type Props = {
+  isFullScreen?: boolean;
+};
+
 const { searchParams } = Astro.url;
+const { isFullScreen } = Astro.props;
 
 const clockProps: StudioClockInterfaceProps = {
   uiFont: parseString(searchParams.get('uiFont')),
@@ -18,12 +23,20 @@ const clockProps: StudioClockInterfaceProps = {
 
 <Document>
   <OverlayWrapper>
-    <div>
-      <StudioClockInterface {...clockProps} client:only="react">
-        <slot name="fallback">
-          <StudioClockInterface {...clockProps} />
-        </slot>
-      </StudioClockInterface>
+    <div
+      class:list={[
+        ...(isFullScreen
+          ? ['flex w-full h-screen items-center justify-center bg-chungking-black']
+          : []),
+      ]}
+    >
+      <div class:list={[...(isFullScreen ? ['scale-50'] : [])]}>
+        <StudioClockInterface hideTimezone={isFullScreen} {...clockProps} client:only="react">
+          <slot name="fallback">
+            <StudioClockInterface hideTimezone={isFullScreen} {...clockProps} />
+          </slot>
+        </StudioClockInterface>
+      </div>
     </div>
   </OverlayWrapper>
 </Document>
