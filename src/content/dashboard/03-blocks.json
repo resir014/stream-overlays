@@ -14,12 +14,16 @@
       "url": "/blocks/capture-guard"
     },
     {
-      "title": "Studio Clock",
+      "title": "Studio Clock (OBS)",
       "url": "/blocks/studio-clock"
     },
     {
-      "title": "Flightsim (FlyLive)",
-      "url": "/blocks/flylive"
+      "title": "Studio Clock",
+      "url": "/blocks/studio-clock-obs"
+    },
+    {
+      "title": "Countdown Timer",
+      "url": "/blocks/countdown-timer"
     }
   ]
 }
