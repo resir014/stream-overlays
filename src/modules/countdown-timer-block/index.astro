@@ -1,0 +1,19 @@
+---
+import OverlayWrapper from '~/components/overlay-wrapper/index.astro';
+import Document from '../_document.astro';
+import { CountdownTimer } from './components/countdown-timer';
+
+const { searchParams } = Astro.url;
+
+const minutes = parseInt(searchParams.get('minutes') ?? '1', 10) * 60 * 1000;
+---
+
+<Document>
+  <OverlayWrapper>
+    <CountdownTimer minutes={minutes} client:only="react">
+      <slot name="fallback">
+        <p class="block text-4xl font-bold text-white">00:00</p>
+      </slot>
+    </CountdownTimer>
+  </OverlayWrapper>
+</Document>

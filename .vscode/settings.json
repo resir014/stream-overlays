@@ -11,6 +11,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "css.validate": false,
   "stylelint.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "dotenv.enableAutocloaking": true,
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
