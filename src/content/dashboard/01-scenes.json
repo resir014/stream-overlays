@@ -1,0 +1,25 @@
+{
+  "title": "Scenes",
+  "items": [
+    {
+      "title": "Pre-Stream Scene",
+      "url": "/scenes/pre-stream"
+    },
+    {
+      "title": "BRB Scene",
+      "url": "/scenes/brb"
+    },
+    {
+      "title": "Technical Issues Scene",
+      "url": "/scenes/tech-issues"
+    },
+    {
+      "title": "End Scene",
+      "url": "/scenes/end"
+    },
+    {
+      "title": "Studio Clock Scene",
+      "url": "/scenes/studio-clock"
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 import * as trpc from '@trpc/server';
-import { publicProcedure, router } from '../trpc';
 import {
   getCurrentProgress,
   getGlobalLeaderboard,
 } from '../modules/deepdip/get-global-leaderboard';
+import { publicProcedure, router } from '../trpc';
 
 export const deepDipRouter = router({
   getGlobalLeaderboard: publicProcedure.query(async () => {

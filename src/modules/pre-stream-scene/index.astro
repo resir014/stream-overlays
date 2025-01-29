@@ -1,0 +1,27 @@
+---
+import Document from '../_document.astro';
+import OverlayWrapper from '~/components/overlay-wrapper/index.astro';
+import SceneWrapper from '~/components/scene-wrapper/index.astro';
+import type { PreStreamVariants } from './shared/types';
+import { SceneLayers } from './components/scene-layers';
+import { SceneContent } from './components/scene-content';
+
+type Props = {
+  headerText: string;
+  variant?: PreStreamVariants;
+};
+
+const { headerText, variant } = Astro.props;
+---
+
+<Document>
+  <OverlayWrapper>
+    <SceneWrapper>
+      <div class="grid grid-rows-scene-wrapper grid-cols-1 flex-1">
+        <SceneLayers variant={variant} client:load>
+          <SceneContent headerText={headerText} variant={variant} client:load />
+        </SceneLayers>
+      </div>
+    </SceneWrapper>
+  </OverlayWrapper>
+</Document>

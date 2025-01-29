@@ -1,0 +1,24 @@
+---
+import clsx from 'clsx';
+
+type Props = {
+  class?: string;
+  transparent?: boolean;
+  darkBackground?: boolean;
+};
+
+const { transparent, darkBackground, class: className } = Astro.props;
+---
+
+<div
+  class={clsx(
+    'flex flex-col flex-1 w-full min-w-[450px] relative',
+    {
+      'bg-chungking-black': darkBackground && !transparent,
+      'bg-chungking-black/50': !darkBackground && !transparent,
+    },
+    className,
+  )}
+>
+  <slot />
+</div>

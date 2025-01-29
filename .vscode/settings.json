@@ -11,6 +11,15 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "css.validate": false,
   "stylelint.enable": true,
-  "deno.enable": false,
-  "dotenv.enableAutocloaking": true
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "dotenv.enableAutocloaking": true,
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }

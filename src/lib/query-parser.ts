@@ -1,11 +1,11 @@
-import { ParsedUrlQuery } from 'querystring';
+import { type ParsedUrlQuery } from 'querystring';
 
 /**
  * Converts a string-like value to a number.
  *
  * @param maybeString A string or an array of string
  */
-export function parseNumber(maybeString?: string | string[]) {
+export function parseNumber(maybeString?: string | string[] | null) {
   if (maybeString) {
     if (Array.isArray(maybeString)) {
       const [num] = maybeString;
@@ -23,7 +23,7 @@ export function parseNumber(maybeString?: string | string[]) {
  *
  * @param maybeString A string or an array of string
  */
-export function parseString(maybeString?: string | string[]) {
+export function parseString(maybeString?: string | string[] | null) {
   if (maybeString) {
     if (Array.isArray(maybeString)) {
       const [string] = maybeString;

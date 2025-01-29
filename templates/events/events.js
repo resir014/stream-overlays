@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-
 const querySelector = document.querySelector.bind(document);
 
 /**

@@ -10,6 +10,14 @@ export const notionRouter = router({
     try {
       return await getCurrentStream();
     } catch (err: unknown) {
+      if (err instanceof Error) {
+        throw new trpc.TRPCError({
+          code: 'BAD_REQUEST',
+          message: err.message,
+          cause: err,
+        });
+      }
+
       throw new trpc.TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'An unexpected error occurred, please try again later.',
@@ -22,7 +30,7 @@ export const notionRouter = router({
       z.object({
         referenceDate: z.string().nullable(),
         pageSize: z.number().nullable(),
-      }),
+      })
     )
     .query(async ({ input }) => {
       try {
@@ -31,6 +39,14 @@ export const notionRouter = router({
           pageSize: input.pageSize,
         });
       } catch (err: unknown) {
+        if (err instanceof Error) {
+          throw new trpc.TRPCError({
+            code: 'BAD_REQUEST',
+            message: err.message,
+            cause: err,
+          });
+        }
+
         throw new trpc.TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
           message: 'An unexpected error occurred, please try again later.',
@@ -42,6 +58,14 @@ export const notionRouter = router({
     try {
       return await getOverlayData();
     } catch (err: unknown) {
+      if (err instanceof Error) {
+        throw new trpc.TRPCError({
+          code: 'BAD_REQUEST',
+          message: err.message,
+          cause: err,
+        });
+      }
+
       throw new trpc.TRPCError({
         code: 'INTERNAL_SERVER_ERROR',
         message: 'An unexpected error occurred, please try again later.',

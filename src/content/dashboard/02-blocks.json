@@ -1,0 +1,29 @@
+{
+  "title": "Blocks",
+  "items": [
+    {
+      "title": "BottomBar™",
+      "url": "/blocks/bottom-bar"
+    },
+    {
+      "title": "Time Signal",
+      "url": "/blocks/time-signal"
+    },
+    {
+      "title": "CaptureGuard™",
+      "url": "/blocks/capture-guard"
+    },
+    {
+      "title": "Studio Clock (OBS)",
+      "url": "/blocks/studio-clock"
+    },
+    {
+      "title": "Studio Clock",
+      "url": "/blocks/studio-clock-obs"
+    },
+    {
+      "title": "Countdown Timer",
+      "url": "/blocks/countdown-timer"
+    }
+  ]
+}

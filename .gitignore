@@ -1,12 +1,12 @@
-# =========================
-# Node.js-Specific Ignores
-# =========================
+# Build output
+dist/
+.netlify/
 
-# Build directory
-.next/
+# Generated types
+.astro/
 
-# Static export path
-out/
+# JetBrains setting folder
+.idea/
 
 # swc
 .swc/
