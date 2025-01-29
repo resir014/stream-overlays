@@ -15,6 +15,9 @@ const compat = new FlatCompat({
 
 export default [
   ...defaultConfig,
+  {
+    ignores: ['.astro/*'],
+  },
   ...compat.extends('eslint-config-gsap').map((config) => ({
     ...config,
     files: ['templates/**/*.{js,jsx,ts,tsx}'],

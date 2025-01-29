@@ -18,9 +18,9 @@ import { Image } from 'astro:assets';
               className="scale-150"
               client:only="react"
             >
-              <slot name="fallback">
+              <Fragment slot="fallback">
                 <StudioClockInterface hideTimezone transparent className="scale-150" />
-              </slot>
+              </Fragment>
             </StudioClockInterface>
           </div>
           <Image

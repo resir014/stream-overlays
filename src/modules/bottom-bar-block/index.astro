@@ -18,7 +18,7 @@ import Document from '../_document.astro';
       <div class="flex items-center justify-end px-12">
         <div class="flex items-center pl-4 text-right space-x-2">
           <BottomBarClock client:only="react">
-            <slot name="fallback">
+            <Fragment slot="fallback">
               <div
                 class:list={[
                   'flex items-center justify-center',
@@ -27,7 +27,7 @@ import Document from '../_document.astro';
                 ]}
               >
               </div>
-            </slot>
+            </Fragment>
           </BottomBarClock>
         </div>
       </div>

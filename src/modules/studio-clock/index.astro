@@ -32,9 +32,9 @@ const clockProps: StudioClockInterfaceProps = {
     >
       <div class:list={[...(isFullScreen ? ['scale-50'] : [])]}>
         <StudioClockInterface hideTimezone={isFullScreen} {...clockProps} client:only="react">
-          <slot name="fallback">
+          <Fragment slot="fallback">
             <StudioClockInterface hideTimezone={isFullScreen} {...clockProps} />
-          </slot>
+          </Fragment>
         </StudioClockInterface>
       </div>
     </div>
