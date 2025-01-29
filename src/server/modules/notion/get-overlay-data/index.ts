@@ -15,8 +15,8 @@ export async function getOverlayData(): Promise<OverlayDataInformation | undefin
       if (isFullPage(page)) {
         const { properties } = page;
 
-        if (properties.Name.type === 'title' && properties.Date.type === 'date') {
-          switch (properties.Name.title[0].plain_text) {
+        if (properties.Name?.type === 'title' && properties.Date?.type === 'date') {
+          switch (properties.Name.title[0]?.plain_text) {
             case 'Stream Start': {
               data.streamStart =
                 properties.Date.date?.start ?? properties.Date.date?.end ?? undefined;

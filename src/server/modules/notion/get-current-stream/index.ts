@@ -29,22 +29,22 @@ export async function getCurrentStream(): Promise<CurrentStreamInformation | und
 
         const currentStream: CurrentStreamInformation = {
           id,
-          date: properties.Date.type === 'date' ? properties.Date.date?.start : undefined,
-          series: properties.Series.type === 'select' ? properties.Series.select?.name : undefined,
+          date: properties.Date?.type === 'date' ? properties.Date.date?.start : undefined,
+          series: properties.Series?.type === 'select' ? properties.Series.select?.name : undefined,
           categories:
-            properties.Category.type === 'multi_select'
+            properties.Category?.type === 'multi_select'
               ? properties.Category.multi_select.map((select) => select.name)
               : undefined,
           stream_name:
-            properties['Stream Name'].type === 'title'
-              ? properties['Stream Name'].title[0].type === 'text'
-                ? properties['Stream Name'].title[0].text.content
+            properties['Stream Name']?.type === 'title'
+              ? properties['Stream Name']?.title[0]?.type === 'text'
+                ? properties['Stream Name']?.title[0].text.content
                 : undefined
               : undefined,
           description:
-            properties.Description.type === 'rich_text'
-              ? properties.Description.rich_text[0].type === 'text'
-                ? properties.Description.rich_text[0].text.content
+            properties.Description?.type === 'rich_text'
+              ? properties.Description?.rich_text[0]?.type === 'text'
+                ? properties.Description?.rich_text[0].text.content
                 : undefined
               : undefined,
         };
