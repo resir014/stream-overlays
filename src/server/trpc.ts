@@ -1,6 +1,7 @@
 import { initTRPC } from '@trpc/server';
 
 const t = initTRPC.context().create({
+  allowOutsideOfServer: true,
   errorFormatter(opts) {
     const { shape } = opts;
     return {
