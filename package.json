@@ -11,8 +11,8 @@
     "lint": "eslint \"**/*.{cjs,mjs,js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"**/*.{cjs,mjs,js,jsx,ts,tsx}\"",
     "astro": "astro",
-    "type-check": "tsc --noEmit",
-    "validate": "npm run type-check && npm run lint",
+    "type-check": "astro check",
+    "validate": "pnpm run type-check && pnpm run lint",
     "test": "vitest"
   },
   "dependencies": {
