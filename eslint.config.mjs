@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { config as defaultConfig } from '@epic-web/config/eslint';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +16,7 @@ const compat = new FlatCompat({
 
 export default [
   ...defaultConfig,
+  eslintPluginPrettierRecommended,
   {
     ignores: ['.astro/*'],
   },

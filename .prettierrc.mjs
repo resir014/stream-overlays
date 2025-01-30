@@ -6,6 +6,7 @@ import defaultConfig from '@epic-web/config/prettier';
  */
 const config = {
   ...defaultConfig,
+  plugins: ['prettier-plugin-tailwindcss'],
   printWidth: 100,
   semi: true,
   trailingComma: 'es5',
