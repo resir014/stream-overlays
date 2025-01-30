@@ -50,7 +50,7 @@ function goalLoad(obj) {
   appendText($goalCurrent, obj.detail.amount.current);
   manipulateProgressBar(
     $goalBar,
-    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`,
+    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
   );
   appendText($goalTotal, obj.detail.amount.target);
   appendText($goalEndDate, obj.detail.to_go.ends_at);
@@ -65,7 +65,7 @@ function goalEvent(obj) {
   appendText($goalCurrent, obj.detail.amount.current);
   manipulateProgressBar(
     $goalBar,
-    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`,
+    `${(obj.detail.amount.current / obj.detail.amount.target) * 100}%`
   );
 }
 

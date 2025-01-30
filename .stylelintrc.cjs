@@ -4,6 +4,7 @@ module.exports = {
     'stylelint-config-standard',
     'stylelint-config-html/html',
     'stylelint-config-html/astro',
+    'stylelint-prettier/recommended',
   ],
   rules: {
     'unit-allowed-list': [

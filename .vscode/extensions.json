@@ -1,4 +1,10 @@
 {
-  "recommendations": ["astro-build.astro-vscode"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "stylelint.vscode-stylelint",
+    "unifiedjs.vscode-mdx"
+  ],
   "unwantedRecommendations": []
 }
