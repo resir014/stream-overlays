@@ -2,8 +2,6 @@
   X-Frame-Options: DENY
 
 /*
+  Access-Control-Allow-Origin: *
   X-XSS-Protection: 1; mode=block
   X-Content-Type-Options: nosniff
-
-/_astro/*
-  Access-Control-Allow-Origin: *
